@@ -4,16 +4,21 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #333;
+    --secondary-color: #fff;
+}
+
 body {
     font-family: 'Lato', sans-serif;
-    background-color: #333;
-    color: #222;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     overflow-x: hidden;
     margin: 0;
 }
 
 .container {
-    background-color: #fafafa;
+    background-color: var(--secondary-color);
     transform-origin: top left;
     transition: transform 0.5s linear;
     width: 100vw;
@@ -32,7 +37,7 @@ body {
 }
 
 .circle {
-    background-color: #ff7979;
+    background-color: var(--primary-color);
     height: 200px;
     width: 200px;
     border-radius: 50%;
@@ -53,7 +58,7 @@ body {
     background: transparent;
     border: 0;
     font-size: 26px;
-    color: #fff;
+    color: var(--secondary-color);
     transform: translate(-50%, -50%);
 }
 
@@ -90,7 +95,7 @@ nav ul {
 
 nav ul li {
     text-transform: uppercase;
-    color: #fff;
+    color: var(--secondary-color);
     margin: 40px 0;
     transform: translateX(-100%);
     transition: transform 0.4s ease-in;
@@ -112,13 +117,13 @@ nav ul li + li + li {
 }
 
 nav a{
-    color: #fafafa;
+    color: var(--secondary-color);
     text-decoration: none;
     transition: all 0.5s;
 }
 
 nav a:hover {
-    color: #FF7979;
+    color: var(--primary-color);
     font-weight: bold;
 }
 
@@ -141,7 +146,7 @@ nav a:hover {
 }
 
 .content p {
-    color: #333;
+    color: var(--primary-color);
     line-height: 1.5;
 }
 
@@ -151,7 +156,7 @@ nav a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--secondary-color);
     padding: 10px;
     border-bottom: 1px solid #ddd;
     text-align: center;
@@ -159,5 +164,34 @@ nav a:hover {
 
 .accessibility-warning a {
     text-decoration: none;
-    color: #337ab7;
+    color: var(--primary-color);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .circle {
+        height: 150px;
+        width: 150px;
+    }
+    .circle button {
+        height: 70px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    .circle {
+        height: 100px;
+        width: 100px;
+    }
+    .circle button {
+        height: 50px;
+        font-size: 14px;
+    }
 }

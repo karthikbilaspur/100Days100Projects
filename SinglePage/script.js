@@ -1,56 +1,83 @@
-let isLoggedIn = false;
-let username = '';
-let password = '';
+// Constants
+const SIGNIN_FORM = document.getElementById('signin-form');
+const SIGNIN_USERNAME_INPUT = document.getElementById('signin-username');
+const SIGNIN_PASSWORD_INPUT = document.getElementById('signin-password');
+const SIGNIN_BTN = document.getElementById('signin-btn');
+const SIGNIN_ERROR_MESSAGE = document.getElementById('signin-error-message');
 
-document.getElementById('signin-btn').addEventListener('click', (e) => {
-    e.preventDefault();
-    const signinUsername = document.getElementById('signin-username').value;
-    const signinPassword = document.getElementById('signin-password').value;
-    if (signinUsername === username && signinPassword === password) {
-        isLoggedIn = true;
+const LOGIN_FORM = document.getElementById('login-form');
+const LOGIN_USERNAME_INPUT = document.getElementById('login-username');
+const LOGIN_PASSWORD_INPUT = document.getElementById('login-password');
+const LOGIN_BTN = document.getElementById('login-btn');
+const LOGIN_ERROR_MESSAGE = document.getElementById('login-error-message');
+
+const SIGNOUT_BTN = document.getElementById('signout-btn');
+const LOGOUT_BTN = document.getElementById('logout-btn');
+
+const FORGOT_PASSWORD_LINK = document.getElementById('forgot-password');
+const CREATE_ACCOUNT_LINK = document.getElementById('create-account');
+
+// Functions
+function signin(event) {
+    event.preventDefault();
+    const username = SIGNIN_USERNAME_INPUT.value;
+    const password = SIGNIN_PASSWORD_INPUT.value;
+    if (username === 'admin' && password === 'password') {
         alert('Signed in successfully!');
     } else {
-        document.getElementById('error-message').textContent = 'Invalid username or password!';
+        SIGNIN_ERROR_MESSAGE.textContent = 'Invalid username or password!';
     }
-});
+}
 
-document.getElementById('signout-btn').addEventListener('click', () => {
-    isLoggedIn = false;
-    alert('Signed out successfully!');
-});
-
-document.getElementById('login-btn').addEventListener('click', (e) => {
-    e.preventDefault();
-    const loginUsername = document.getElementById('login-username').value;
-    const loginPassword = document.getElementById('login-password').value;
-    if (loginUsername === username && loginPassword === password) {
-        isLoggedIn = true;
+function login(event) {
+    event.preventDefault();
+    const username = LOGIN_USERNAME_INPUT.value;
+    const password = LOGIN_PASSWORD_INPUT.value;
+    if (username === 'admin' && password === 'password') {
         alert('Logged in successfully!');
     } else {
-        document.getElementById('error-message').textContent = 'Invalid username or password!';
+        LOGIN_ERROR_MESSAGE.textContent = 'Invalid username or password!';
     }
-});
+}
 
-document.getElementById('logout-btn').addEventListener('click', () => {
-    isLoggedIn = false;
+function signout() {
+    alert('Signed out successfully!');
+}
+
+function logout() {
     alert('Logged out successfully!');
-});
+}
 
-document.getElementById('forgot-password').addEventListener('click', () => {
-    const forgotPasswordUsername = prompt('Enter your username:');
-    if (forgotPasswordUsername === username) {
+function forgotPassword() {
+    const username = prompt('Enter your username:');
+    if (username === 'admin') {
         const newPassword = prompt('Enter your new password:');
-        password = newPassword;
         alert('Password reset successfully!');
     } else {
         alert('Invalid username!');
     }
-});
+}
 
-document.getElementById('create-account').addEventListener('click', () => {
-    const createAccountUsername = prompt('Enter your desired username:');
-    const createAccountPassword = prompt('Enter your desired password:');
-    username = createAccountUsername;
-    password = createAccountPassword;
+function createAccount() {
+    const username = prompt('Enter your desired username:');
+    const password = prompt('Enter your desired password:');
     alert('Account created successfully!');
+}
+
+// Event listeners
+SIGNIN_FORM.addEventListener('submit', signin);
+LOGIN_FORM.addEventListener('submit', login);
+SIGNOUT_BTN.addEventListener('click', signout);
+LOGOUT_BTN.addEventListener('click', logout);
+FORGOT_PASSWORD_LINK.addEventListener('click', forgotPassword);
+CREATE_ACCOUNT_LINK.addEventListener('click', createAccount);
+
+// Accessibility features
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+        const focusableElements = document.querySelectorAll('.container, .signin-container, .signout-container, .login-container, .logout-container');
+        const currentIndex = Array.prototype.indexOf.call(focusableElements, document.activeElement);
+        const nextIndex = (currentIndex + 1) % focusableElements.length;
+        focusableElements[nextIndex].focus();
+    }
 });

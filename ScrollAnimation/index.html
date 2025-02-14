@@ -7,21 +7,23 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="scroll-indicator"></div>
-    <div class="custom-scrollbar"></div>
-    <section class="section" id="section-1">
-        <h1>Section 1</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-        <button class="lazy-load-button">Lazy Load</button>
-    </section>
-    <section class="section" id="section-2">
-        <h1>Section 2</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-    </section>
-    <section class="section" id="section-3">
-        <h1>Section 3</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-    </section>
+    <div class="scroll-indicator" aria-hidden="true"></div>
+    <div class="custom-scrollbar" aria-hidden="true"></div>
+    <main>
+        <section class="section" id="section-1" aria-label="Section 1" role="region">
+            <h1>Section 1</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            <button class="lazy-load-button">Lazy Load</button>
+        </section>
+        <section class="section" id="section-2" aria-label="Section 2" role="region">
+            <h1>Section 2</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+        </section>
+        <section class="section" id="section-3" aria-label="Section 3" role="region">
+            <h1>Section 3</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

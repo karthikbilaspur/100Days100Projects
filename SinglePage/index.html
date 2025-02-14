@@ -13,11 +13,14 @@
             <h2>Signin</h2>
             <form id="signin-form">
                 <label for="signin-username">Username:</label>
-                <input type="text" id="signin-username" name="signin-username"><br><br>
+                <input type="text" id="signin-username" name="signin-username" required>
+                <br><br>
                 <label for="signin-password">Password:</label>
-                <input type="password" id="signin-password" name="signin-password"><br><br>
+                <input type="password" id="signin-password" name="signin-password" required>
+                <br><br>
                 <button id="signin-btn">Signin</button>
                 <a href="#" id="forgot-password">Forgot Password?</a>
+                <p id="signin-error-message" class="error-message"></p>
             </form>
         </div>
         <div class="signout-container">
@@ -28,11 +31,14 @@
             <h2>Login</h2>
             <form id="login-form">
                 <label for="login-username">Username:</label>
-                <input type="text" id="login-username" name="login-username"><br><br>
+                <input type="text" id="login-username" name="login-username" required>
+                <br><br>
                 <label for="login-password">Password:</label>
-                <input type="password" id="login-password" name="login-password"><br><br>
+                <input type="password" id="login-password" name="login-password" required>
+                <br><br>
                 <button id="login-btn">Login</button>
                 <a href="#" id="create-account">Create Account</a>
+                <p id="login-error-message" class="error-message"></p>
             </form>
         </div>
         <div class="logout-container">

@@ -5,6 +5,8 @@ let gamesPlayed = 0;
 const rockBtn = document.getElementById('rock-btn');
 const paperBtn = document.getElementById('paper-btn');
 const scissorsBtn = document.getElementById('scissors-btn');
+const lizardBtn = document.getElementById('lizard-btn');
+const spockBtn = document.getElementById('spock-btn');
 const resultContainer = document.getElementById('result');
 const playerScoreSpan = document.getElementById('player-score');
 const computerScoreSpan = document.getElementById('computer-score');
@@ -24,12 +26,20 @@ scissorsBtn.addEventListener('click', () => {
     playGame('scissors');
 });
 
+lizardBtn.addEventListener('click', () => {
+    playGame('lizard');
+});
+
+spockBtn.addEventListener('click', () => {
+    playGame('spock');
+});
+
 resetBtn.addEventListener('click', () => {
     resetGame();
 });
 
 function playGame(playerChoice) {
-    const choices = ['rock', 'paper', 'scissors'];
+    const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
     resultContainer.textContent = `Player chose ${playerChoice}, Computer chose ${computerChoice}.`;
@@ -37,18 +47,26 @@ function playGame(playerChoice) {
     if (playerChoice === computerChoice) {
         resultContainer.textContent += ' It\'s a tie!';
         resultContainer.className = '';
-    } else if ((playerChoice === 'rock' && computerChoice === 'scissors') ||
-                (playerChoice === 'paper' && computerChoice === 'rock') ||
-                (playerChoice === 'scissors' && computerChoice === 'paper')) {
-        playerScore++;
-        playerScoreSpan.textContent = playerScore;
-        resultContainer.textContent += ' Player wins this round!';
-        resultContainer.className = 'result-win';
     } else {
-        computerScore++;
-        computerScoreSpan.textContent = computerScore;
-        resultContainer.textContent += ' Computer wins this round!';
-        resultContainer.className = 'result-lose';
+        const winConditions = {
+            rock: ['scissors', 'lizard'],
+            paper: ['rock', 'spock'],
+            scissors: ['paper', 'lizard'],
+            lizard: ['spock', 'paper'],
+            spock: ['scissors', 'rock']
+        };
+
+        if (winConditions[playerChoice].includes(computerChoice)) {
+            playerScore++;
+            playerScoreSpan.textContent = playerScore;
+            resultContainer.textContent += ' Player wins this round!';
+            resultContainer.className = 'result-win';
+        } else {
+            computerScore++;
+            computerScoreSpan.textContent = computerScore;
+            resultContainer.textContent += ' Computer wins this round!';
+            resultContainer.className = 'result-lose';
+        }
     }
 
     gamesPlayed++;

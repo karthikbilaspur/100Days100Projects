@@ -10,6 +10,9 @@ body {
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .scoreboard {
@@ -20,7 +23,8 @@ body {
 
 .game-options {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -43,6 +47,7 @@ body {
 
 .result-container {
     margin-top: 20px;
+    animation: fadeIn 1s;
 }
 
 #result {
@@ -69,11 +74,6 @@ body {
 
 .reset-btn:hover {
     background-color: #3e8e41;
-}
-
-.result-container {
-    margin-top: 20px;
-    animation: fadeIn 1s;
 }
 
 @keyframes fadeIn {
@@ -112,5 +112,29 @@ body {
     }
     to {
         transform: translateX(20px);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .game-container {
+        width: 90%;
+    }
+    .game-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    .game-btn {
+        margin: 10px auto;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .game-container {
+        width: 95%;
+    }
+    .game-btn {
+        width: 80px;
+        height: 80px;
+        font-size: 18px;
     }
 }

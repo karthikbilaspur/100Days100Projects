@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Scheduler</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="task-scheduler">
+        <h1>Task Scheduler</h1>
+        <button id="toggle-mode-btn">Toggle Mode</button>
+        <button id="google-calendar-btn">Google Calendar</button>
+        <form id="task-form">
+            <input type="text" id="task-name" placeholder="Task Name">
+            <input type="date" id="task-date" placeholder="Task Date">
+            <input type="time" id="task-time" placeholder="Task Time">
+            <select id="task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button id="add-task-btn">Add Task</button>
+        </form>
+        <ul id="task-list"></ul>
+        <button id="clear-tasks-btn">Clear Tasks</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
