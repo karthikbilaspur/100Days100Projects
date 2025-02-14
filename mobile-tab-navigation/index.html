@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Mobile Tab Navigation</title>
+</head>
+<body>
+    <div class="tab-navigation">
+        <div class="tab-bar" role="tablist" aria-label="Tab navigation">
+            <button class="tab-button active" data-tab-target="#home" role="tab" aria-controls="home" aria-selected="true">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </button>
+            <button class="tab-button" data-tab-target="#about" role="tab" aria-controls="about" aria-selected="false">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </button>
+            <button class="tab-button" data-tab-target="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </button>
+        </div>
+        <div class="tab-content">
+            <div id="home" class="tab-panel active" role="tabpanel" aria-labelledby="home-tab">
+                <h2>Home</h2>
+                <p>This is the home tab.</p>
+                <button class="btn" onclick="alert('Button clicked!')">Click me!</button>
+            </div>
+            <div id="about" class="tab-panel" role="tabpanel" aria-labelledby="about-tab">
+                <h2>About</h2>
+                <p>This is the about tab.</p>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+            </div>
+            <div id="contact" class="tab-panel" role="tabpanel" aria-labelledby="contact-tab">
+                <h2>Contact</h2>
+                <p>This is the contact tab.</p>
+                <form>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" required></textarea>
+                    <button class="btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

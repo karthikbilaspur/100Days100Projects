@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#mandelbrot-canvas {
+    border: 1px solid #ccc;
+}
+
+#controls {
+    margin-top: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+input[type="range"] {
+    width: 200px;
+    height: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}

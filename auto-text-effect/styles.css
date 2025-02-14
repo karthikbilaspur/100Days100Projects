@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --primary-color: darksalmon;
+    --background-color: #fff;
+    --animation-duration: 2s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.speed-control {
+    position: absolute;
+    bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+.speed-control input {
+    width: 50px;
+    padding: 5px;
+    font-size: 18px;
+    background-color: var(--primary-color);
+    border: none;
+    text-align: center;
+}
+
+.speed-control input:focus {
+    outline: none;
+}
+
+button#reset-btn {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button#reset-btn:hover {
+    background-color: #ff7f7f;
+}
+
+button#reset-btn:focus {
+    outline: none;
+}
+
+.animation-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animation-box {
+    width: 50%;
+    height: 50%;
+    background-color: var(--primary-color);
+    animation: animate var(--animation-duration) infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .animation-container {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .animation-container {
+        width: 100px;
+        height: 100px;
+    }
+    .speed-control {
+        position: relative;
+        bottom: auto;
+        margin-top: 20px;
+    }
+}

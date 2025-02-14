@@ -1,0 +1,264 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.product h3 {
+    margin-top: 10px;
+}
+
+.product p {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    clear: both;
+}
+
+/* Media Queries */
+
+/* Mobile Devices (max-width: 768px) */
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 0.5em;
+    }
+    main {
+        padding: 1em;
+    }
+    #product-list {
+        flex-direction: column;
+    }
+    .product {
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+/* Tablet Devices (min-width: 769px) and (max-width: 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 1em;
+    }
+    main {
+        padding: 2em;
+    }
+    #product-list {
+        flex-direction: row;
+    }
+    .product {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+/* Desktop Devices (min-width: 1025px) */
+@media only screen and (min-width: 1025px) {
+    header {
+        padding: 1.5em;
+    }
+    main {
+        padding: 3em;
+    }
+    #product-list {
+        flex-direction: row;
+    }
+    .product {
+        margin: 30px;
+        padding: 30px;
+    }
+}
+
+/* Media Queries */
+
+/* Mobile Devices (max-width: 768px) */
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 0.5em;
+    }
+    main {
+        padding: 1em;
+    }
+    #product-list {
+        flex-direction: column;
+    }
+    .product {
+        margin: 10px;
+        padding: 10px;
+    }
+    .product img {
+        height: 100px;
+    }
+}
+
+/* Tablet Devices (min-width: 769px) and (max-width: 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 1em;
+    }
+    main {
+        padding: 2em;
+    }
+    #product-list {
+        flex-direction: row;
+    }
+    .product {
+        margin: 20px;
+        padding: 20px;
+    }
+    .product img {
+        height: 150px;
+    }
+}
+
+/* Desktop Devices (min-width: 1025px) */
+@media only screen and (min-width: 1025px) {
+    header {
+        padding: 1.5em;
+    }
+    main {
+        padding: 3em;
+    }
+    #product-list {
+        flex-direction: row;
+    }
+    .product {
+        margin: 30px;
+        padding: 30px;
+    }
+    .product img {
+        height: 200px;
+    }
+}
+
+/* Landscape Orientation */
+@media only screen and (orientation: landscape) {
+    header {
+        padding: 1em;
+    }
+    main {
+        padding: 2em;
+    }
+    #product-list {
+        flex-direction: row;
+    }
+    .product {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+/* Portrait Orientation */
+@media only screen and (orientation: portrait) {
+    header {
+        padding: 0.5em;
+    }
+    main {
+        padding: 1em;
+    }
+    #product-list {
+        flex-direction: column;
+    }
+    .product {
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+/* Print Devices */
+@media print {
+    header {
+        padding: 0;
+    }
+    main {
+        padding: 0;
+    }
+    #product-list {
+        flex-direction: column;
+    }
+    .product {
+        margin: 0;
+        padding: 0;
+    }
+}

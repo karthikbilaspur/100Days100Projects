@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Increment Counter</title>
+</head>
+<body>
+    <div id="counter-container"></div>
+    <script id="counter-template" type="text/x-handlebars-template">
+        {{#counters}}
+        <div class="counter-container" role="region" aria-label="Counter Container">
+            <i class="fab fa-{{icon}} fa-3x" aria-hidden="true"></i>
+            <div class="counter" data-target="{{target}}" aria-live="polite" aria-atomic="true">0</div>
+            <span>{{label}}</span>
+        </div>
+        {{/counters}}
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2025 Karthik Coding Solutions. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

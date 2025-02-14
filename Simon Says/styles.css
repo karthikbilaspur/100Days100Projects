@@ -1,0 +1,16 @@
+#game-container {
+    width: 50%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+#simon-says {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#commands {
+    font-size: 18px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Expanding Cards</title>
+</head>
+<body>
+    <div class="container" role="tablist" aria-label="Expanding Cards">
+        <!-- Panels with background images and headings -->
+        <div class="panel" role="tab" aria-selected="true" aria-controls="panel1" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+            <h3 id="panel1" class="panel-title" role="tabpanel" aria-labelledby="panel1">Explore The World</h3>
+            <button class="panel-button" aria-label="Learn more about Explore The World">Learn More</button>
+        </div>
+        <!-- Add more panels here... -->
+        <div class="panel" role="tab" aria-selected="false" aria-controls="panel2" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+            <h3 id="panel2" class="panel-title" role="tabpanel" aria-labelledby="panel2">Wild Forest</h3>
+            <button class="panel-button" aria-label="Learn more about Wild Forest">Learn More</button>
+        </div>
+        <div class="panel" role="tab" aria-selected="false" aria-controls="panel3" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80')">
+            <h3 id="panel3" class="panel-title" role="tabpanel" aria-labelledby="panel3">Sunny Beach</h3>
+            <button class="panel-button" aria-label="Learn more about Sunny Beach">Learn More</button>
+        </div>
+        <div class="panel" role="tab" aria-selected="false" aria-controls="panel4" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80')">
+            <h3 id="panel4" class="panel-title" role="tabpanel" aria-labelledby="panel4">City on Winter</h3>
+            <button class="panel-button" aria-label="Learn more about City on Winter">Learn More</button>
+        </div>
+        <div class="panel" role="tab" aria-selected="false" aria-controls="panel5" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+            <h3 id="panel5" class="panel-title" role="tabpanel" aria-labelledby="panel5">Mountains - Clouds</h3>
+            <button class="panel-button" aria-label="Learn more about Mountains - Clouds">Learn More</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

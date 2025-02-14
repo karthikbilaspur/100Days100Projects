@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pokedex</h1>
+    </header>
+    <main>
+        <section class="pokedex">
+            <div class="pokedex-screen">
+                <div class="pokemon-info">
+                    <h2 id="pokemon-name"></h2>
+                    <p id="pokemon-description"></p>
+                    <p id="pokemon-types"></p>
+                    <p id="pokemon-strengths"></p>
+                    <p id="pokemon-weaknesses"></p>
+                </div>
+                <img id="pokemon-image" src="" alt="Pokemon Image">
+            </div>
+            <div class="pokedex-controls">
+                <button id="previous-button">Previous</button>
+                <button id="next-button">Next</button>
+                <button id="random-button">Random</button>
+            </div>
+            <div class="pokedex-filter">
+                <select id="pokemon-filter">
+                    <option value="all">All</option>
+                    <option value="fire">Fire</option>
+                    <option value="water">Water</option>
+                    <option value="grass">Grass</option>
+                    <!-- Add more types here -->
+                </select>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search for a Pokémon...">
+                <button id="search-button">Search</button>
+            </div>
+        </section>
+        <div class="poke-container" id="poke-container"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

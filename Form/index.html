@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration, Login, and Forgot Password Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h2 id="form-title">Registration Form</h2>
+        </div>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+            </div>
+            <button type="submit" id="registration-button">Register</button>
+        </form>
+        <form id="login-form" style="display: none;">
+            <div class="form-group">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="login-username">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="login-password">
+            </div>
+            <button type="submit" id="login-button">Login</button>
+            <p id="forgot-password-link">Forgot Password?</p>
+        </form>
+        <form id="forgot-password-form" style="display: none;">
+            <div class="form-group">
+                <label for="forgot-username">Username:</label>
+                <input type="text" id="forgot-username" name="forgot-username">
+            </div>
+            <button type="submit" id="forgot-password-button">Reset Password</button>
+        </form>
+        <button id="toggle-login-button">Login</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

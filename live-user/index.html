@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/dark-mode.css" />
+    <link rel="stylesheet" href="styles/animations.css" />
+    <title>Live User Filter</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="user-filter">
+            <h2>Live User Filter</h2>
+            <input type="text" id="filter" placeholder="Search users" />
+            <ul id="user-list"></ul>
+            <div id="loading-indicator" class="loading-indicator"></div>
+            <div id="empty-state" class="empty-state"></div>
+            <button id="load-more-button">Load More</button>
+        </section>
+    </main>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

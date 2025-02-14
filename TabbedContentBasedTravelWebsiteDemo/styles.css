@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.destinations {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.tabbed-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tabs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+}
+
+.tabs li {
+    margin-right: 20px;
+}
+
+.tabs a {
+    color: #333;
+    text-decoration: none;
+}
+
+.tab-panels {
+    padding: 20px;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.show {
+    display: block;
+}
+
+.accommodations {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.accordion-menu {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+}
+
+.accordion-button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.accordion-content {
+    padding: 20px;
+    display: none;
+}
+
+.accordion-content.show {
+    display: block;
+}
+
+.bookings {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.dropdown-menu {
+    position: relative;
+}
+
+.dropdown-button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f7f7f7;
+    padding: 20px;
+    display: none;
+}
+
+.dropdown-content.show {
+    display: block;
+}

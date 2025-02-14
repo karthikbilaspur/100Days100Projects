@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <h1 class="countdown-title">Countdown Timer</h1>
+    <div class="countdown-container">
+        <div class="countdown-number">
+            <span class="days countdown-time" id="days">00</span>
+            <span class="countdown-text">Days</span>
+        </div>
+        <div class="countdown-number">
+            <span class="hours countdown-time" id="hours">00</span>
+            <span class="countdown-text">Hours</span>
+        </div>
+        <div class="countdown-number">
+            <span class="minutes countdown-time" id="minutes">00</span>
+            <span class="countdown-text">Minutes</span>
+        </div>
+        <div class="countdown-number">
+            <span class="seconds countdown-time" id="seconds">00</span>
+            <span class="countdown-text">Seconds</span>
+        </div>
+    </div>
+    <div class="deadline-container">
+        <label for="deadline">Enter deadline date (YYYY-MM-DD HH:MM:SS):</label>
+        <input type="datetime-local" id="deadline" value="2025-01-31T12:00:00">
+        <button id="start-button">Start</button>
+        <button id="stop-button">Stop</button>
+        <button id="reset-button">Reset</button>
+    </div>
+    <div class="social-media-container">
+        <a href="https://www.facebook.com" target="_blank" class="social-media-link">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.twitter.com" target="_blank" class="social-media-link">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" class="social-media-link">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" class="social-media-link">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2025 V.Karthik. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

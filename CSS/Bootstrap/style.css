@@ -1,0 +1,36 @@
+#bg-color {
+    height: 100vh;
+    transition: background-color 0.5s ease;
+    background-image: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
+}
+
+h1 {
+    color: #333;
+    text-shadow: 2px 2px 4px #fff;
+    font-family: 'Open Sans', sans-serif;
+    animation: text-animate 2s infinite;
+}
+
+@keyframes text-animate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #333;
+    color: #fff;
+}

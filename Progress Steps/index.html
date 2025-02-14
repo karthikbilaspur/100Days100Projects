@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="themes/default.css" id="theme-stylesheet">
+</head>
+<body>
+    <div class="progress-tracker" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <!-- Steps will be dynamically added here -->
+    </div>
+
+    <button id="prev-btn" aria-label="Previous Step">Previous Step</button>
+    <button id="next-btn" aria-label="Next Step">Next Step</button>
+
+    <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: 0%;"></div>
+    </div>
+
+    <select id="theme-select">
+        <option value="default">Default</option>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+    </select>
+
+    <select id="language-select">
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+    </select>
+
+    <script src="script.js"></script>
+</body>
+</html>

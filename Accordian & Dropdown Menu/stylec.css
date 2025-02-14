@@ -1,0 +1,29 @@
+.hybrid-menu {
+    width: 300px;
+    margin: 20px auto;
+}
+
+.menu-item {
+    margin-bottom: 10px;
+}
+
+.menu-button {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdown {
+    margin-left: 20px;
+}
+
+.dropdown-menu {
+    min-width: 100px;
+}
+
+.menu-content {
+    padding: 10px;
+    border: 1px solid #ccc;
+}

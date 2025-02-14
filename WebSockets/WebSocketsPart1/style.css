@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#drawing-canvas {
+    border: 1px solid #ccc;
+}
+
+.toolbar {
+    margin-top: 20px;
+}
+
+#clear-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#clear-button:hover {
+    background-color: #3e8e41;
+}
+
+#color-picker {
+    margin-left: 20px;
+}
+
+#brush-size-slider {
+    margin-left: 20px;
+}
+
+#brush-size-display {
+    margin-left: 20px;
+}

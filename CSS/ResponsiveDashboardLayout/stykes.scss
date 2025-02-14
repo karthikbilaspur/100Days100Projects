@@ -1,0 +1,61 @@
+// styles.scss
+$primary-color: #333;
+$secondary-color: #666;
+$background-color: #f7f7f7;
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    background-color: $background-color;
+}
+
+.header {
+    grid-column: 1 / -1;
+    background-color: $primary-color;
+    color: #fff;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    li {
+        margin-right: 20px;
+    }
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.main {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.section {
+    flex-basis: 30%;
+    background-color: #fff;
+    padding: 1em;
+    margin: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    grid-column: 1 / -1;
+    background-color: $primary-color;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}

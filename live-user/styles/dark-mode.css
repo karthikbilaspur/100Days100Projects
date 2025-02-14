@@ -1,0 +1,51 @@
+body {
+    background-color: #333;
+}
+
+header {
+    background-color: #444;
+}
+
+nav a {
+    color: #fff;
+}
+
+main {
+    background-color: #333;
+}
+
+section {
+    background-color: #444;
+    color: #fff;
+}
+
+h2 {
+    color: #fff;
+}
+
+.user-filter {
+    background-color: #444;
+}
+
+#filter {
+    background-color: #333;
+    color: #fff;
+}
+
+#user-list {
+    background-color: #444;
+}
+
+.user-list li {
+    background-color: #333;
+    color: #fff;
+}
+
+.user-detail {
+    background-color: #444;
+}
+
+#user-detail-container {
+    background-color: #333;
+    color: #fff;
+}

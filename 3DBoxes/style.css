@@ -1,0 +1,122 @@
+:root {
+    --box-size: 125px;
+    --container-size: 500px;
+    --big-container-size: 600px;
+    --rotation-angle: 45deg;
+    --transition-duration: 0.4s;
+    --animation-duration: 1s;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.magic-button {
+    background-color: #f9ca24;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    border: 0;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 12px 20px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    letter-spacing: 1px;
+    box-shadow: 0 3px rgba(249, 202, 36, 0.5);
+    z-index: 100;
+    animation: pulse var(--animation-duration) infinite;
+}
+
+.magic-button:focus {
+    outline: none;
+}
+
+.magic-button:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: var(--container-size);
+    width: var(--container-size);
+    position: relative;
+    transition: height var(--transition-duration), width var(--transition-duration);
+}
+
+.boxes.big {
+    height: var(--big-container-size);
+    width: var(--big-container-size);
+}
+
+.boxes.big .box {
+    transform: rotateZ(360deg);
+}
+
+.box {
+    background-image: url('https://media.giphy.com/media/EZqwsBSPlvSda/giphy.gif');
+    background-repeat: no-repeat;
+    background-size: var(--container-size) var(--container-size);
+    position: relative;
+    height: var(--box-size);
+    width: var(--box-size);
+    transition: transform var(--transition-duration);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: float var(--animation-duration) infinite;
+}
+
+.box::after {
+    content: '';
+    background-color: #f6e58d;
+    position: absolute;
+    top: 8px;
+    right: -15px;
+    height: 100%;
+    width: 15px;
+    transform: skewY(var(--rotation-angle));
+}
+
+.box::before {
+    content: '';
+    background-color: #f9ca24;
+    position: absolute;
+    bottom: -15px;
+    left: 8px;
+    height: 15px;
+    width: 100%;
+    transform: skewX(var(--rotation-angle));
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

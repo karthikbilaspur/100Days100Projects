@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Animated Countdown</title>
+</head>
+
+<body>
+  <div class="counter-container" role="timer">
+    <div class="counter">
+      <div class="nums" aria-live="polite" aria-atomic="true">
+        <span class="num in" data-value="3">3</span>
+        <span class="num" data-value="2">2</span>
+        <span class="num" data-value="1">1</span>
+        <span class="num" data-value="0">0</span>
+      </div>
+      <h4>Get Ready</h4>
+      <div class="timer">
+        Time remaining: <span id="time-remaining" aria-label="Time remaining">10</span> seconds
+      </div>
+      <button id="pause-button" class="pause-button" aria-label="Pause timer">Pause</button>
+      <button id="resume-button" class="resume-button" aria-label="Resume timer" style="display: none;">Resume</button>
+    </div>
+    <div class="final-message" role="alert">
+      <h1>GO!</h1>
+      <button id="replay-button" class="replay-button" aria-label="Replay timer">
+        <span>Replay</span>
+      </button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

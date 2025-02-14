@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="scoreboard">
+            <p>Player Score: <span id="player-score">0</span></p>
+            <p>Computer Score: <span id="computer-score">0</span></p>
+        </div>
+        <div class="game-options">
+            <button id="rock-btn" class="game-btn"><i class="fas fa-hand-rock"></i></button>
+            <button id="paper-btn" class="game-btn"><i class="fas fa-hand-paper"></i></button>
+            <button id="scissors-btn" class="game-btn"><i class="fas fa-hand-scissors"></i></button>
+        </div>
+        <div class="result-container">
+            <p id="result"></p>
+        </div>
+        <div class="game-stats">
+            <p>Games Played: <span id="games-played">0</span></p>
+            <p>Win Percentage: <span id="win-percentage">0%</span></p>
+        </div>
+        <button id="reset-btn" class="reset-btn">Reset Game</button>
+    </div>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

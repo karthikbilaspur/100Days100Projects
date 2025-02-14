@@ -1,0 +1,82 @@
+/* styles.css */
+
+.testimonial-container {
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+    perspective: 1000px;
+}
+
+.testimonial-card {
+    margin-bottom: 20px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.testimonial-box {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.testimonial-box.active {
+    opacity: 1;
+}
+
+.testimonial-text {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial-author {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+}
+
+.testimonial-controls {
+    margin-top: 20px;
+}
+
+.testimonial-prev,
+.testimonial-next,
+.testimonial-play-pause {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.testimonial-prev:hover,
+.testimonial-next:hover,
+.testimonial-play-pause:hover {
+    background-color: #555;
+}
+
+.testimonial-dots {
+    margin-top: 10px;
+}
+
+.testimonial-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.testimonial-dot.active {
+    background-color: #333;
+}
+
+.testimonial-card.flip {
+    transform: rotateY(180deg);
+}

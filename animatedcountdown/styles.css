@@ -1,0 +1,121 @@
+:root {
+  --box-size: 125px;
+  --container-size: 500px;
+  --big-container-size: 600px;
+  --rotation-angle: 45deg;
+  --transition-duration: 0.4s;
+  --animation-duration: 1s;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 50vw;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nums {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 20vh;
+  width: 50vw;
+  font-size: 64px;
+}
+
+.num {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 25%;
+  background-color: #f9ca24;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 48px;
+  font-weight: bold;
+  transition: background-color var(--transition-duration);
+}
+
+.num.in {
+  background-color: #f9ca24;
+  animation: pulse var(--animation-duration) infinite;
+}
+
+.num.out {
+  background-color: #ccc;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.pause-button,
+.resume-button,
+.replay-button {
+  background-color: #f9ca24;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color var(--transition-duration);
+}
+
+.pause-button:hover,
+.resume-button:hover,
+.replay-button:hover {
+  background-color: #ff9900;
+}
+
+.final-message {
+  display: none;
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.final-message.show {
+  display: block;
+}

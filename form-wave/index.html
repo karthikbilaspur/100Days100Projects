@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Form Input Wave</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Please Login</h1>
+        <form>
+            <div class="form-control">
+                <input type="text" required>
+                <label>Email</label>
+            </div>
+
+            <div class="form-control">
+                <input type="password" required>
+                <label>Password</label>
+            </div>
+
+            <button class="btn">Login</button>
+
+            <p class="text">Don't have an account? <a href="#">Register</a> </p>
+        </form>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>

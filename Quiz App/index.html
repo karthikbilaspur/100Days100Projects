@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="start-quiz-container">
+        <h1>Welcome to the CSS Quiz!</h1>
+        <p>Test your knowledge of CSS and see how well you score.</p>
+        <button id="start-quiz-btn">Start Quiz</button>
+    </div>
+
+    <div class="quiz-container" style="display: none;">
+        <div class="quiz-header">
+            <h1 id="question"></h1>
+            <p id="timer"></p>
+            <p id="score"></p>
+            <progress id="progress-bar" value="0" max="10"></progress>
+        </div>
+        <div class="quiz-body">
+            <ul id="options"></ul>
+            <p id="result"></p>
+            <button id="hint-btn">Hint</button>
+            <button id="next-question-btn">Next Question</button>
+        </div>
+        <div class="quiz-footer">
+            <button id="restart-quiz-btn">Restart Quiz</button>
+            <button id="view-results-btn">View Results</button>
+        </div>
+        <p id="hint" style="display: none;"></p>
+    </div>
+
+    <div class="results-container" style="display: none;">
+        <h1>Congratulations! You have completed the quiz.</h1>
+        <p id="final-score"></p>
+        <button id="play-again-btn">Play Again</button>
+        <button id="view-leaderboard-btn">View Leaderboard</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

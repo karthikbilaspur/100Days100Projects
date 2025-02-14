@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="destinations">
+            <h2>Destinations</h2>
+            <div class="tabbed-content">
+                <ul class="tabs">
+                    <li><a href="#europe">Europe</a></li>
+                    <li><a href="#asia">Asia</a></li>
+                    <li><a href="#america">America</a></li>
+                </ul>
+                <div class="tab-panels">
+                    <div id="europe" class="tab-panel">
+                        <h3>Europe</h3>
+                        <ul>
+                            <li>Paris, France</li>
+                            <li>Rome, Italy</li>
+                            <li>Barcelona, Spain</li>
+                        </ul>
+                    </div>
+                    <div id="asia" class="tab-panel">
+                        <h3>Asia</h3>
+                        <ul>
+                            <li>Tokyo, Japan</li>
+                            <li>Seoul, South Korea</li>
+                            <li>Bangkok, Thailand</li>
+                        </ul>
+                    </div>
+                    <div id="america" class="tab-panel">
+                        <h3>America</h3>
+                        <ul>
+                            <li>New York City, USA</li>
+                            <li>Los Angeles, USA</li>
+                            <li>Las Vegas, USA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="accommodations">
+            <h2>Accommodations</h2>
+            <div class="accordion-menu">
+                <div class="accordion-item">
+                    <button class="accordion-button">Hotels</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Hotel 1</li>
+                            <li>Hotel 2</li>
+                            <li>Hotel 3</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button">Hostels</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Hostel 1</li>
+                            <li>Hostel 2</li>
+                            <li>Hostel 3</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button">Apartments</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Apartment 1</li>
+                            <li>Apartment 2</li>
+                            <li>Apartment 3</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bookings">
+            <h2>Bookings</h2>
+            <div class="dropdown-menu">
+                <button class="dropdown-button">Flights</button>
+                <div class="dropdown-content">
+                    <ul>
+                        <li>Flight 1</li>
+                        <li>Flight 2</li>
+                        <li>Flight 3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

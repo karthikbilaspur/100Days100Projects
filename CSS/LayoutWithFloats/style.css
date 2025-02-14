@@ -1,0 +1,103 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  --dark-mode-background-color: #333;
+  --dark-mode-text-color: #fff;
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+header {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.left-section {
+  flex-basis: 30%;
+  background-color: #e0e0e0;
+  padding: 20px;
+}
+
+.right-section {
+  flex-basis: 70%;
+  background-color: #d0d0d0;
+  padding: 20px;
+}
+
+footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+
+.accordion-toggle {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accordion-content {
+  display: none;
+  padding: 20px;
+}
+
+.dark-mode-toggle {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .left-section, .right-section {
+      flex-basis: 100%;
+  }
+}
+
+.dark-mode {
+  background-color: var(--dark-mode-background-color);
+  color: var(--dark-mode-text-color);
+}
+
+.dark-mode header {
+  background-color: var(--dark-mode-background-color);
+}
+
+.dark-mode main {
+  background-color: var(--dark-mode-background-color);
+}
+
+.dark-mode footer {
+  background-color: var(--dark-mode-background-color);
+}
+
+.dark-mode .left-section {
+  background-color: #444;
+}
+
+.dark-mode .right-section {
+  background-color: #555;
+}

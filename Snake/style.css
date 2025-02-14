@@ -1,0 +1,100 @@
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+#gameCanvas {
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    height: 400px;
+    overflow: auto;
+}
+
+.score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.level {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Media queries for different screen widths */
+
+/* Small screens (phones) */
+@media only screen and (max-width: 600px) {
+    #gameCanvas {
+        width: 300px;
+        height: 300px;
+    }
+    .score {
+        font-size: 18px;
+    }
+    .level {
+        font-size: 18px;
+    }
+}
+
+/* Medium screens (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+    #gameCanvas {
+        width: 350px;
+        height: 350px;
+    }
+    .score {
+        font-size: 20px;
+    }
+    .level {
+        font-size: 20px;
+    }
+}
+
+/* Large screens (desktops) */
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+    #gameCanvas {
+        width: 400px;
+        height: 400px;
+    }
+    .score {
+        font-size: 24px;
+    }
+    .level {
+        font-size: 24px;
+    }
+}
+
+/* Extra large screens (large desktops) */
+@media only screen and (min-width: 1201px) {
+    #gameCanvas {
+        width: 500px;
+        height: 500px;
+    }
+    .score {
+        font-size: 30px;
+    }
+    .level {
+        font-size: 30px;
+    }
+}

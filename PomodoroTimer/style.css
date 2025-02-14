@@ -1,0 +1,95 @@
+/* Global Styles */
+
+:root {
+    --primary-color: #333;
+    --secondary-color: #4CAF50;
+    --background-color: #f0f0f0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: var(--background-color);
+}
+
+.countdown-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 40px;
+    margin: 40px 0px 20;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.countdown-number {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-time {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.countdown-text {
+    font-size: 18px;
+    color: #666;
+}
+
+.deadline-container {
+    margin-top: 20px;
+}
+
+#deadline {
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#start-button, #stop-button, #reset-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-button:hover, #stop-button:hover, #reset-button:hover {
+    background-color: #3e8e41;
+}
+
+#error-message {
+    color: #f00;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.settings-container {
+    margin-top: 20px;
+}
+
+#save-settings-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#save-settings-button:hover {
+    background-color: #3e8e41;
+}

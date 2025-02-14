@@ -1,0 +1,100 @@
+/* styles.css */
+
+:root {
+    --primary-color: #333;
+    --secondary-color: #fff;
+    --background-color: #f7f7f7;
+}
+
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--background-color);
+    transition: background-color 0.5s ease;
+}
+
+.clock {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    transition: transform 0.5s ease;
+}
+
+.needle.hour {
+    width: 5px;
+    height: 100px;
+    background-color: var(--secondary-color);
+}
+
+.needle.minute {
+    width: 3px;
+    height: 150px;
+    background-color: var(--secondary-color);
+}
+
+.needle.second {
+    width: 1px;
+    height: 200px;
+    background-color: #e74c3c;
+}
+
+.center-point {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #e74c3c;
+}
+
+.digital-display {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.time {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.date {
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.toggle:focus {
+    outline: none;
+}
+
+html.dark {
+    --background-color: #333;
+    --primary-color: #fff;
+    --secondary-color: #333;
+}

@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    title Scientific Calculator
+    link(rel='stylesheet', href='style.css')
+  body
+    h1 Scientific Calculator
+    form
+      input(type='text', id='display', readonly)
+      div
+        button(onclick='clearDisplay()') C
+        button(onclick='deleteChar()') DEL
+        button(onclick='memoryRecall()') MR
+        button(onclick='memoryStore()') MS
+      div
+        button(onclick='appendChar("7")') 7
+        button(onclick='appendChar("8")') 8
+        button(onclick='appendChar("9")') 9
+        button(onclick='appendChar("/")') /
+      div
+        button(onclick='appendChar("4")') 4
+        button(onclick='appendChar("5")') 5
+        button(onclick='appendChar("6")') 6
+        button(onclick='appendChar("*")') *
+      div
+        button(onclick='appendChar("1")') 1
+        button(onclick='appendChar("2")') 2
+        button(onclick='appendChar("3")') 3
+        button(onclick='appendChar("-")') -
+      div
+        button(onclick='appendChar("0")') 0
+        button(onclick='appendChar(".")') .
+        button(onclick='appendChar("+")') +
+        button(onclick='calculateResult()') =
+      div
+        button(onclick='sin()') sin
+        button(onclick='cos()') cos
+        button(onclick='tan()') tan
+        button(onclick='log()') log
+      div
+        button(onclick='ln()') ln
+        button(onclick='exp()') exp
+        button(onclick='pow()') pow
+        button(onclick='sqrt()') sqrt
+    script(src='script.js')

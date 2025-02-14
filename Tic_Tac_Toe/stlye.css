@@ -1,0 +1,112 @@
+body {
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    font-size: 16px;
+    caret-color: transparent;
+    background-color: #f0f0f0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    min-height: 65vh;
+}
+
+section {
+    text-align: center;
+    padding: 30px;
+    background: #e5eaf5c0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+#field {
+    padding: 30px;
+    min-width: 20vh;
+}
+
+#container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    font-family: "Finger Paint", sans-serif;
+    color: #232d55;
+    box-shadow: 0 0 0 1px #6e92a3;
+    border: 1px solid #6e92a3;
+    cursor: pointer;
+    line-height: 1em;
+    background: #a0d2ebc0;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    font-size: 24px;
+    transition: background-color 0.2s;
+}
+
+.cell:hover {
+    background-color: #d0bdf4;
+}
+
+.sidebar {
+    width: 125px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button_box {
+    box-sizing: border-box;
+    background: #d0bdf4;
+    border-radius: 4px;
+    padding: 10px 0;
+    margin: 0 0 10px 0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #8458B3;
+}
+
+#titleTurns {
+    font-size: 0.8em;
+}
+
+#numberTurns {
+    font-size: 1.4em;
+    margin: 0;
+}
+
+.game-over {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.restart-button {
+    font-size: 24px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.restart-button:hover {
+    background-color: #3e8e41;
+}

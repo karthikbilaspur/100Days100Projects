@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Good, Cheap, Fast</title>
+</head>
+<body>
+    <h2>How do you want your project to be?</h2>
+    <div class="toggle-container">
+        <input type="checkbox" id="good" class="toggle" aria-label="Good">
+        <label for="good" class="label">
+            <div class="ball"></div>
+        </label>
+        <span>Good</span>
+    </div>
+
+    <div class="toggle-container">
+        <input type="checkbox" id="cheap" class="toggle" aria-label="Cheap">
+        <label for="cheap" class="label">
+            <div class="ball"></div>
+        </label>
+        <span>Cheap</span>
+    </div>
+
+    <div class="toggle-container">
+        <input type="checkbox" id="fast" class="toggle" aria-label="Fast">
+        <label for="fast" class="label">
+            <div class="ball"></div>
+        </label>
+        <span>Fast</span>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>

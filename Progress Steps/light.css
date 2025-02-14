@@ -1,0 +1,13 @@
+/* Light theme styles */
+.progress-tracker {
+    background-color: #fff;
+}
+
+.step {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+}
+
+.progress-bar-fill {
+    background-color: #007bff;
+}

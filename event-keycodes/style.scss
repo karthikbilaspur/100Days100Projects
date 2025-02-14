@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+$primary-color: #383838;
+$secondary-color: #2B2B2B;
+$highlight-color: #cccccc;
+$font-family: 'Muli', sans-serif;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-family;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.key-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #999999;
+    background-color: $secondary-color;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.key {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    min-width: 150px;
+    color: white;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    small {
+        position: absolute;
+        top: -24px;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        color: #c4c4c4;
+        font-size: 14px;
+    }
+
+    .key-code {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .key-name {
+        font-size: 18px;
+        color: $highlight-color;
+    }
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: $secondary-color;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $highlight-color;
+    }
+}
+
+/* Media queries for screen reading */
+
+@media (forced-colors: active) {
+    .key-container {
+        background-color: #000;
+        color: #fff;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .key-container {
+        background-color: #333;
+        color: #fff;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .key {
+        transition: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333;
+    }
+}
+
+@media (speech: speak) and (-ms-high-contrast: none) {
+    /* Styles for JAWS */
+    .key-container {
+        font-size: 18px;
+    }
+}
+
+@media (speech: speak) and (forced-colors: none) {
+    /* Styles for NVDA */
+    .key-container {
+        font-size: 20px;
+    }
+}
+
+@media (speech: speak) and (-webkit-voiceover-enabled: 1) {
+    /* Styles for VoiceOver */
+    .key-container {
+        font-size: 22px;
+    }
+}

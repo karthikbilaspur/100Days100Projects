@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Drawing App</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="700"></canvas>
+    <div class="toolbox">
+        <button id="decrease" aria-label="Decrease brush size">-</button>
+        <span id="size" aria-label="Brush size">10</span>
+        <button id="increase" aria-label="Increase brush size">+</button>
+        <input type="color" id="color" value="#000000" aria-label="Brush color">
+        <button id="clear" aria-label="Clear canvas">X</button>
+        <button id="save" aria-label="Save drawing">Save</button>
+        <button id="load" aria-label="Load saved drawing">Load</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

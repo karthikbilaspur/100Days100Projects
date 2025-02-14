@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Water Drinking Tracker</title>
+</head>
+<body>
+    <h1>Water Drinking Tracker</h1>
+    <h3 id="goal">Goal: <span id="goal-value">2</span> Liters</h3>
+    <input id="goal-input" type="number" placeholder="Set your goal (in liters)" aria-label="Set custom goal">
+    <button id="set-goal-btn" aria-label="Set custom goal">Set Goal</button>
+
+    <div class="cup">
+        <div class="remained" id="remained">
+            <span id="liters"></span>
+            <small>Remained</small>
+        </div>
+
+        <div class="percentage" id="percentage"></div>
+    </div>
+
+    <p class="text" id="text">Select how many glasses of water that you have drank</p>
+
+    <div class="cups" id="cups">
+        <!-- Cups will be generated dynamically -->
+    </div>
+
+    <button id="reset-btn" aria-label="Reset progress">Reset</button>
+
+    <div id="statistics">
+        <h2>Statistics</h2>
+        <p>Total water consumed: <span id="total-water"></span> liters</p>
+        <p>Average daily consumption: <span id="average-daily"></span> liters</p>
+        <p>Longest streak: <span id="longest-streak"></span> days</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

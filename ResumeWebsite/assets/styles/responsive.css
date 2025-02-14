@@ -1,0 +1,16 @@
+@media only screen and (max-width: 768px) {
+    header nav ul li {
+        display: block;
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    header {
+        padding: 0.5em;
+    }
+
+    section {
+        padding: 1em;
+    }
+}

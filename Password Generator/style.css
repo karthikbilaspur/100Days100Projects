@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-container {
+    margin-bottom: 20px;
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.settings {
+    margin-bottom: 20px;
+}
+
+.setting {
+    margin-bottom: 10px;
+}
+
+.password-strength {
+    margin-bottom: 20px;
+}
+
+#password-strength-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#password-strength-meter {
+    width: 100%;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
+}
+
+.weak {
+    background-color: #ff0000;
+}
+
+.medium {
+    background-color: #ffff00;
+}
+
+.strong {
+    background-color: #00ff00;
+}
+
+#error {
+    color: #ff0000;
+}

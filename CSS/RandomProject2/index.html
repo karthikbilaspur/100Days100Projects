@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <h1>E-commerce Website</h1>
+        <nav class="nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="product-grid">
+            <h2>Products</h2>
+            <div class="product-container">
+                <div class="product-card">
+                    <img src="product1.jpg" alt="Product 1" class="product-image">
+                    <h3 class="product-title">Product 1</h3>
+                    <p class="product-price">$19.99</p>
+                    <button class="product-button" aria-label="Add Product 1 to Cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="product2.jpg" alt="Product 2" class="product-image">
+                    <h3 class="product-title">Product 2</h3>
+                    <p class="product-price">$29.99</p>
+                    <button class="product-button" aria-label="Add Product 2 to Cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="product3.jpg" alt="Product 3" class="product-image">
+                    <h3 class="product-title">Product 3</h3>
+                    <p class="product-price">$39.99</p>
+                    <button class="product-button" aria-label="Add Product 3 to Cart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+        <section class="cart-summary">
+            <h2>Cart Summary</h2>
+            <table class="cart-table" aria-label="Cart Summary Table">
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>2025 E-commerce Website</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

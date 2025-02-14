@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Signin/Signout/Login/Logout Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enhanced Signin/Signout/Login/Logout Page</h1>
+        <div class="signin-container">
+            <h2>Signin</h2>
+            <form id="signin-form">
+                <label for="signin-username">Username:</label>
+                <input type="text" id="signin-username" name="signin-username"><br><br>
+                <label for="signin-password">Password:</label>
+                <input type="password" id="signin-password" name="signin-password"><br><br>
+                <button id="signin-btn">Signin</button>
+                <a href="#" id="forgot-password">Forgot Password?</a>
+            </form>
+        </div>
+        <div class="signout-container">
+            <h2>Signout</h2>
+            <button id="signout-btn">Signout</button>
+        </div>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="login-username"><br><br>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="login-password"><br><br>
+                <button id="login-btn">Login</button>
+                <a href="#" id="create-account">Create Account</a>
+            </form>
+        </div>
+        <div class="logout-container">
+            <h2>Logout</h2>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

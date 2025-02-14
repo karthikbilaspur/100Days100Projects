@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Movie App</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#tv-shows">TV Shows</a></li>
+                <li><a href="#search">Search</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Welcome to Movie App!</h1>
+            <p>Browse through our vast collection of movies and TV shows.</p>
+            <button>Get Started</button>
+        </section>
+
+        <section id="movies">
+            <h1>Movies</h1>
+            <div class="movie-grid">
+                <!-- Movie cards will be generated here -->
+            </div>
+        </section>
+
+        <section id="tv-shows">
+            <h1>TV Shows</h1>
+            <div class="tv-show-grid">
+                <!-- TV show cards will be generated here -->
+            </div>
+        </section>
+
+        <section id="search">
+            <h1>Search</h1>
+            <form>
+                <input type="search" placeholder="Search for movies or TV shows">
+                <button>Search</button>
+            </form>
+            <div class="search-results">
+                <!-- Search results will be generated here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

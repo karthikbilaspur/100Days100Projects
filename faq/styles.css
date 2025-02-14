@@ -1,0 +1,92 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,700&display=swap');
+
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    background-color: #f0f0f0;
+    line-height: 1.6;
+}
+
+h1 {
+    margin: 50px 0 30px;
+    text-align: center;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.faq {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.faq-toggle {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: transform 0.2s ease;
+}
+
+.faq-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+.faq-toggle .fas {
+    transition: transform 0.2s ease;
+}
+
+.faq.active .faq-toggle {
+    transform: rotate(45deg);
+}
+
+.faq.active .faq-toggle .fa-chevron-down {
+    display: none;
+}
+
+.faq.active .faq-toggle .fa-times {
+    display: block;
+}
+
+.faq-text {
+    display: none;
+    margin-top: 20px;
+}
+
+.faq.active .faq-text {
+    display: block;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .faq-container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq {
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+}
