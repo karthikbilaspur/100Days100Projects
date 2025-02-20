@@ -1,0 +1,124 @@
+// Variables
+$primary-color: #4CAF50;
+$secondary-color: #fff;
+$background-color: #f0f0f0;
+
+// Mixins
+@mixin flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition {
+    transition: all 0.2s ease-in-out;
+}
+
+// Styles
+body {
+    font-family: Arial, sans-serif;
+    background-color: $background-color;
+}
+
+.soundboard {
+    @include flexbox;
+    width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: $secondary-color;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+    margin-bottom: 20px;
+}
+
+.search-form input[type="search"] {
+    width: 50%;
+    height: 30px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+}
+
+.search-form button[type="submit"] {
+    width: 100px;
+    height: 30px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: $primary-color;
+    color: $secondary-color;
+    cursor: pointer;
+}
+
+.sound-categories {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sound-category {
+    margin-bottom: 20px;
+}
+
+.sound-category h2 {
+    margin-top: 0;
+}
+
+.sound-buttons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sound-button {
+    width: 150px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: $primary-color;
+    color: $secondary-color;
+    cursor: pointer;
+    margin: 10px;
+    @include transition;
+}
+
+.sound-button:hover {
+    background-color: darken($primary-color, 10%);
+}
+
+.sound-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.volume-control {
+    margin-top: 20px;
+}
+
+.volume-control label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.volume-control input[type="range"] {
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.volume-control span {
+    font-size: 16px;
+    margin-left: 10px;
+}

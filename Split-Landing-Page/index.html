@@ -7,17 +7,20 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="split-screen">
+    <div class="split-screen" role="main">
         <div class="left-side">
             <h1>Left Side</h1>
             <p>This is the left side of the split screen landing page.</p>
-            <button id="learn-more-button">Learn More</button>
+            <button id="learn-more-button" aria-label="Learn more about our services">Learn More</button>
         </div>
         <div class="right-side">
             <h1>Right Side</h1>
             <p>This is the right side of the split screen landing page.</p>
-            <button id="sign-up-button">Sign Up</button>
+            <button id="sign-up-button" aria-label="Sign up for our newsletter">Sign Up</button>
         </div>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-bar-fill"></div>
     </div>
     <script src="script.js"></script>
 </body>

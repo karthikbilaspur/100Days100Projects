@@ -7,25 +7,42 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="soundboard">
+    <div class="soundboard" role="main">
         <h1>Soundboard</h1>
-        <div class="sound-category">
-            <h2>Applause</h2>
-            <button class="sound-button" data-sound="applause-1">Applause 1</button>
-            <button class="sound-button" data-sound="applause-2">Applause 2</button>
-            <button class="sound-button" data-sound="applause-3">Applause 3</button>
-        </div>
-        <div class="sound-category">
-            <h2>Boos</h2>
-            <button class="sound-button" data-sound="boo-1">Boo 1</button>
-            <button class="sound-button" data-sound="boo-2">Boo 2</button>
-            <button class="sound-button" data-sound="boo-3">Boo 3</button>
-        </div>
-        <div class="sound-category">
-            <h2>Cheering</h2>
-            <button class="sound-button" data-sound="cheering-1">Cheering 1</button>
-            <button class="sound-button" data-sound="cheering-2">Cheering 2</button>
-            <button class="sound-button" data-sound="cheering-3">Cheering 3</button>
+        <form class="search-form">
+            <input type="search" id="search-input" placeholder="Search for sounds...">
+            <button type="submit" id="search-button">Search</button>
+        </form>
+        <ul class="sound-categories" aria-label="Sound categories">
+            <li class="sound-category">
+                <h2>Applause</h2>
+                <ul class="sound-buttons" aria-label="Applause sounds">
+                    <li><button class="sound-button" data-sound="applause-1" aria-label="Applause 1">Applause 1</button></li>
+                    <li><button class="sound-button" data-sound="applause-2" aria-label="Applause 2">Applause 2</button></li>
+                    <li><button class="sound-button" data-sound="applause-3" aria-label="Applause 3">Applause 3</button></li>
+                </ul>
+            </li>
+            <li class="sound-category">
+                <h2>Boos</h2>
+                <ul class="sound-buttons" aria-label="Boo sounds">
+                    <li><button class="sound-button" data-sound="boo-1" aria-label="Boo 1">Boo 1</button></li>
+                    <li><button class="sound-button" data-sound="boo-2" aria-label="Boo 2">Boo 2</button></li>
+                    <li><button class="sound-button" data-sound="boo-3" aria-label="Boo 3">Boo 3</button></li>
+                </ul>
+            </li>
+            <li class="sound-category">
+                <h2>Cheering</h2>
+                <ul class="sound-buttons" aria-label="Cheering sounds">
+                    <li><button class="sound-button" data-sound="cheering-1" aria-label="Cheering 1">Cheering 1</button></li>
+                    <li><button class="sound-button" data-sound="cheering-2" aria-label="Cheering 2">Cheering 2</button></li>
+                    <li><button class="sound-button" data-sound="cheering-3" aria-label="Cheering 3">Cheering 3</button></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="volume-control">
+            <label for="volume-slider">Volume:</label>
+            <input type="range" id="volume-slider" min="0" max="100" value="50">
+            <span id="volume-level">50%</span>
         </div>
     </div>
     <script src="script.js"></script>

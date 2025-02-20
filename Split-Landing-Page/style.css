@@ -39,8 +39,25 @@ button {
     background-color: #4CAF50;
     color: #fff;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
 button:hover {
-    background-color: #3e8e41;
+    transform: scale(1.1);
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #ccc;
+}
+
+.progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.2s ease-in-out;
 }
