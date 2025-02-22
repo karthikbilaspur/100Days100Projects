@@ -1,26 +1,42 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analog Clock with Digital Display and Dark Mode Toggle</title>
+    <title>Analog Clock with Digital Display and Theme Switcher</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="clock-container">
+    <div class="clock-container" role="timer" aria-live="polite">
         <div class="clock">
-            <div class="needle hour"></div>
-            <div class="needle minute"></div>
-            <div class="needle second"></div>
+            <div class="needle hour" aria-label="hour hand"></div>
+            <div class="needle minute" aria-label="minute hand"></div>
+            <div class="needle second" aria-label="second hand"></div>
             <div class="center-point"></div>
         </div>
         <div class="digital-display">
-            <div class="time"></div>
-            <div class="date"></div>
+            <div class="time" aria-label="digital time"></div>
+            <div class="date" aria-label="digital date"></div>
         </div>
-        <button class="toggle">Dark Mode</button>
+        <div class="theme-switcher">
+            <button class="theme-btn" data-theme="light">Light Mode</button>
+            <button class="theme-btn" data-theme="dark">Dark Mode</button>
+            <button class="theme-btn" data-theme="custom">Custom Mode</button>
+        </div>
+        <div class="theme-preview">
+            <div class="theme-preview-container">
+                <div class="theme-preview-clock">
+                    <div class="theme-preview-needle hour"></div>
+                    <div class="theme-preview-needle minute"></div>
+                    <div class="theme-preview-needle second"></div>
+                    <div class="theme-preview-center-point"></div>
+                </div>
+                <div class="theme-preview-digital-display">
+                    <div class="theme-preview-time"></div>
+                    <div class="theme-preview-date"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

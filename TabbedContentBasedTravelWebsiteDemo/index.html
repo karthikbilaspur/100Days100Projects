@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav aria-label="Main navigation">
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Destinations</a></li>
@@ -17,33 +17,33 @@
         </nav>
     </header>
     <main>
-        <section class="destinations">
-            <h2>Destinations</h2>
+        <section class="destinations" aria-labelledby="destinations-heading">
+            <h1 id="destinations-heading">Destinations</h1>
             <div class="tabbed-content">
-                <ul class="tabs">
-                    <li><a href="#europe">Europe</a></li>
-                    <li><a href="#asia">Asia</a></li>
-                    <li><a href="#america">America</a></li>
+                <ul class="tabs" role="tablist">
+                    <li role="tab" aria-controls="europe-panel"><a href="#europe">Europe</a></li>
+                    <li role="tab" aria-controls="asia-panel"><a href="#asia">Asia</a></li>
+                    <li role="tab" aria-controls="america-panel"><a href="#america">America</a></li>
                 </ul>
                 <div class="tab-panels">
-                    <div id="europe" class="tab-panel">
-                        <h3>Europe</h3>
+                    <div id="europe-panel" role="tabpanel" aria-labelledby="europe-tab">
+                        <h2>Europe</h2>
                         <ul>
                             <li>Paris, France</li>
                             <li>Rome, Italy</li>
                             <li>Barcelona, Spain</li>
                         </ul>
                     </div>
-                    <div id="asia" class="tab-panel">
-                        <h3>Asia</h3>
+                    <div id="asia-panel" role="tabpanel" aria-labelledby="asia-tab">
+                        <h2>Asia</h2>
                         <ul>
                             <li>Tokyo, Japan</li>
                             <li>Seoul, South Korea</li>
                             <li>Bangkok, Thailand</li>
                         </ul>
                     </div>
-                    <div id="america" class="tab-panel">
-                        <h3>America</h3>
+                    <div id="america-panel" role="tabpanel" aria-labelledby="america-tab">
+                        <h2>America</h2>
                         <ul>
                             <li>New York City, USA</li>
                             <li>Los Angeles, USA</li>
@@ -53,12 +53,12 @@
                 </div>
             </div>
         </section>
-        <section class="accommodations">
-            <h2>Accommodations</h2>
+        <section class="accommodations" aria-labelledby="accommodations-heading">
+            <h1 id="accommodations-heading">Accommodations</h1>
             <div class="accordion-menu">
                 <div class="accordion-item">
-                    <button class="accordion-button">Hotels</button>
-                    <div class="accordion-content">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="hotels-content">Hotels</button>
+                    <div id="hotels-content" class="accordion-content" role="region" aria-labelledby="hotels-button">
                         <ul>
                             <li>Hotel 1</li>
                             <li>Hotel 2</li>
@@ -67,8 +67,8 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-button">Hostels</button>
-                    <div class="accordion-content">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="hostels-content">Hostels</button>
+                    <div id="hostels-content" class="accordion-content" role="region" aria-labelledby="hostels-button">
                         <ul>
                             <li>Hostel 1</li>
                             <li>Hostel 2</li>
@@ -77,8 +77,8 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-button">Apartments</button>
-                    <div class="accordion-content">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="apartments-content">Apartments</button>
+                    <div id="apartments-content" class="accordion-content" role="region" aria-labelledby="apartments-button">
                         <ul>
                             <li>Apartment 1</li>
                             <li>Apartment 2</li>
@@ -88,11 +88,11 @@
                 </div>
             </div>
         </section>
-        <section class="bookings">
-            <h2>Bookings</h2>
+        <section class="bookings" aria-labelledby="bookings-heading">
+            <h1 id="bookings-heading">Bookings</h1>
             <div class="dropdown-menu">
-                <button class="dropdown-button">Flights</button>
-                <div class="dropdown-content">
+                <button class="dropdown-button" aria-haspopup="true" aria-expanded="false">Flights</button>
+                <div class="dropdown-content" role="menu" aria-labelledby="flights-button">
                     <ul>
                         <li>Flight 1</li>
                         <li>Flight 2</li>
@@ -102,6 +102,9 @@
             </div>
         </section>
     </main>
+    <button aria-label="Toggle high contrast mode" id="high-contrast-toggle">
+        Toggle high contrast mode
+    </button>
     <script src="script.js"></script>
 </body>
 </html>

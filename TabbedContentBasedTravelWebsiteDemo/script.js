@@ -46,3 +46,22 @@ dropdownButtons.forEach((button) => {
         dropdownContent.classList.add('show');
     });
 });
+
+// High contrast mode
+const highContrastToggle = document.getElementById('high-contrast-toggle');
+
+highContrastToggle.addEventListener('click', () => {
+    document.body.classList.toggle('high-contrast-mode');
+});
+
+// Screen reader support
+const srOnlyElements = document.querySelectorAll('.sr-only');
+
+srOnlyElements.forEach((element) => {
+    element.addEventListener('focus', () => {
+        element.classList.add('focused');
+    });
+    element.addEventListener('blur', () => {
+        element.classList.remove('focused');
+    });
+});

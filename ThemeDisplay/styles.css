@@ -1,9 +1,10 @@
-/* styles.css */
-
 :root {
     --primary-color: #333;
     --secondary-color: #fff;
     --background-color: #f7f7f7;
+    --dark-mode-background-color: #333;
+    --dark-mode-primary-color: #fff;
+    --custom-mode-background-color: #ff69b4;
 }
 
 .clock-container {
@@ -77,10 +78,11 @@
     color: var(--primary-color);
 }
 
-.toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+.theme-switcher {
+    margin-top: 20px;
+}
+
+.theme-btn {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     border: none;
@@ -89,12 +91,46 @@
     cursor: pointer;
 }
 
-.toggle:focus {
+.theme-btn:focus {
     outline: none;
+}
+
+.theme-preview {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-preview-clock {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.theme-preview-digital-display {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+html.light {
+    --background-color: #f7f7f7;
+    --primary-color: #333;
 }
 
 html.dark {
     --background-color: #333;
     --primary-color: #fff;
-    --secondary-color: #333;
+}
+
+html.custom {
+    --background-color: #ff69b4;
+    --primary-color: #333;
 }
