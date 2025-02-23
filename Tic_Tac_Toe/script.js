@@ -1,4 +1,3 @@
-// Import Phaser
 import Phaser from 'phaser';
 
 // Create a new Phaser game instance
@@ -21,6 +20,8 @@ let gameActive = true;
 let playerMode = 'pvp';
 let playerXScore = 0;
 let playerOScore = 0;
+let multiplayer = false;
+let socket = null;
 
 // Preload game assets
 function preload() {}
@@ -77,6 +78,21 @@ function create() {
     cell.on('pointerdown', () => handleCellClick(i));
     this.cells.push(cell);
   }
+
+  // Initialize multiplayer
+  if (playerMode === 'multiplayer') {
+    multiplayer = true;
+    socket = io();
+    socket.on('connect', () => {
+      console.log('Connected to server');
+    });
+    socket.on('disconnect', () => {
+      console.log('Disconnected from server');
+    });
+    socket.on('move', (data) => {
+      handleCellClick(data.index);
+    });
+  }
 }
 
 // Update game state
@@ -90,6 +106,8 @@ function handleCellClick(index) {
     checkWinner();
     if (playerMode === 'pva') {
       handleAIMove();
+    } else if (multiplayer) {
+      socket.emit('move', { index: index });
     }
   }
 }
@@ -132,35 +150,6 @@ function checkWinner() {
     gameActive = false;
   }
 }
-
-// Restart game
-function restartGame() {
-  gameActive = true;
-  board = ['', '', '', '', '', '', '', '', ''];
-  currentPlayer = 'X';
-  game.scene.scenes[0].gameOverText.text = '';
-  game.scene.scenes[0].turnText.text = `Turn: Player ${currentPlayer}`;
-  for (let i = 0; i < 9; i++) {
-    game.scene.scenes[0].cells[i].destroy();
-  }
-  createCells();
-}
-
-// Create cells
-function createCells() {
-  for (let i = 0; i < 9; i++) {
-    const cell = game.scene.scenes[0].add.graphics();
-    cell.fillStyle(0xffffff);
-    cell.fillRect(100 + (i % 3) * 133, 100 + Math.floor(i / 3) * 133, 133, 133);
-    cell.setInteractive();
-    cell.on('pointerdown', () => handleCellClick(i));
-    game.scene.scenes[0].cells.push(cell);
-  }
-}
-
-// Handle AI move
-function handleAIMove() {
-    let bestMove;
 
   // Random move for first turn
   if (board.filter(cell => cell !== '').length === 1) {
@@ -264,3 +253,29 @@ function switchPlayerTurn() {
   currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
   updateTurn();
 }
+
+// Handle multiplayer move
+function handleMultiplayerMove(index) {
+  if (gameActive && board[index] === '') {
+    board[index] = currentPlayer;
+    updateBoard();
+    checkWinner();
+    socket.emit('move', { index: index });
+  }
+}
+
+// Initialize socket.io
+const Socket = io();
+
+// Handle socket.io events
+socket.on('connect', () => {
+  console.log('Connected to server');
+});
+
+socket.on('disconnect', () => {
+  console.log('Disconnected from server');
+});
+
+socket.on('move', (data) => {
+  handleMultiplayerMove(data.index);
+});

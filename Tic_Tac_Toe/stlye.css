@@ -4,44 +4,44 @@ body {
     font-size: 16px;
     caret-color: transparent;
     background-color: #f0f0f0;
-}
-
-main {
+  }
+  
+  main {
     display: flex;
     justify-content: center;
     min-height: 65vh;
-}
-
-section {
+  }
+  
+  section {
     text-align: center;
     padding: 30px;
     background: #e5eaf5c0;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.hidden {
+  }
+  
+  .hidden {
     display: none;
-}
-
-#field {
+  }
+  
+  #field {
     padding: 30px;
     min-width: 20vh;
-}
-
-#container {
+  }
+  
+  #container {
     margin: auto;
     display: flex;
     flex-direction: column;
-}
-
-.row {
+  }
+  
+  .row {
     display: flex;
     flex-direction: row;
-}
-
-.cell {
+  }
+  
+  .cell {
     font-family: "Finger Paint", sans-serif;
     color: #232d55;
     box-shadow: 0 0 0 1px #6e92a3;
@@ -54,20 +54,20 @@ section {
     margin: 10px;
     font-size: 24px;
     transition: background-color 0.2s;
-}
-
-.cell:hover {
+  }
+  
+  .cell:hover {
     background-color: #d0bdf4;
-}
-
-.sidebar {
+  }
+  
+  .sidebar {
     width: 125px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.button_box {
+  }
+  
+  .button_box {
     box-sizing: border-box;
     background: #d0bdf4;
     border-radius: 4px;
@@ -76,28 +76,28 @@ section {
     border: none;
     cursor: pointer;
     font-size: 16px;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     background-color: #8458B3;
-}
-
-#titleTurns {
+  }
+  
+  #titleTurns {
     font-size: 0.8em;
-}
-
-#numberTurns {
+  }
+  
+  #numberTurns {
     font-size: 1.4em;
     margin: 0;
-}
-
-.game-over {
+  }
+  
+  .game-over {
     font-size: 36px;
     font-weight: bold;
     color: #ff0000;
-}
-
-.restart-button {
+  }
+  
+  .restart-button {
     font-size: 24px;
     padding: 10px 20px;
     border: none;
@@ -105,8 +105,46 @@ button:hover {
     background-color: #4CAF50;
     color: #fff;
     cursor: pointer;
-}
-
-.restart-button:hover {
+  }
+  
+  .restart-button:hover {
     background-color: #3e8e41;
-}
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-content p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-content button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background-color: #3e8e41;
+  }
