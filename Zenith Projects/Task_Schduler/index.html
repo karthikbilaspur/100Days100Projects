@@ -7,23 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="task-scheduler">
+    <div class="task-scheduler" role="main">
         <h1>Task Scheduler</h1>
-        <button id="toggle-mode-btn">Toggle Mode</button>
-        <button id="google-calendar-btn">Google Calendar</button>
-        <form id="task-form">
-            <input type="text" id="task-name" placeholder="Task Name">
-            <input type="date" id="task-date" placeholder="Task Date">
-            <input type="time" id="task-time" placeholder="Task Time">
-            <select id="task-priority">
+        <button id="toggle-mode-btn" aria-label="Toggle dark mode">Toggle Mode</button>
+        <button id="google-calendar-btn" aria-label="Integrate with Google Calendar">Google Calendar</button>
+        <form id="task-form" role="form">
+            <label for="task-name">Task Name:</label>
+            <input type="text" id="task-name" placeholder="Task Name" required aria-label="Task name input">
+            <label for="task-date">Task Date:</label>
+            <input type="date" id="task-date" placeholder="Task Date" required aria-label="Task date input">
+            <label for="task-time">Task Time:</label>
+            <input type="time" id="task-time" placeholder="Task Time" required aria-label="Task time input">
+            <label for="task-priority">Task Priority:</label>
+            <select id="task-priority" required aria-label="Task priority select">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-            <button id="add-task-btn">Add Task</button>
+            <button id="add-task-btn" aria-label="Add task button">Add Task</button>
         </form>
-        <ul id="task-list"></ul>
-        <button id="clear-tasks-btn">Clear Tasks</button>
+        <ul id="task-list" role="list"></ul>
+        <button id="clear-tasks-btn" aria-label="Clear tasks button">Clear Tasks</button>
+        <button id="sort-tasks-btn" aria-label="Sort tasks button">Sort Tasks</button>
     </div>
 
     <script src="script.js"></script>

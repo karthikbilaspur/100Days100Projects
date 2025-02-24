@@ -1,69 +1,137 @@
+// Task class
+class Task {
+    constructor(id, name, date, time, priority) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.priority = priority;
+    }
+}
+
+// Task list class
+class TaskList {
+    constructor() {
+        this.tasks = [];
+        this.taskId = 0;
+        this.loadTasks();
+    }
+
+    // Add task to list
+    addTask(task) {
+        this.tasks.push(task);
+        this.taskId++;
+        this.saveTasks();
+        this.renderTaskList();
+    }
+
+    // Remove task from list
+    removeTask(id) {
+        this.tasks = this.tasks.filter(task => task.id !== id);
+        this.saveTasks();
+        this.renderTaskList();
+    }
+
+    // Clear task list
+    clearTasks() {
+        this.tasks = [];
+        this.taskId = 0;
+        this.saveTasks();
+        this.renderTaskList();
+    }
+
+    // Save tasks to local storage
+    saveTasks() {
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    }
+
+    // Load tasks from local storage
+    loadTasks() {
+        const storedTasks = localStorage.getItem('tasks');
+        if (storedTasks) {
+            this.tasks = JSON.parse(storedTasks);
+        }
+    }
+
+    // Render task list
+    renderTaskList() {
+        const taskListElement = document.getElementById('task-list');
+        taskListElement.innerHTML = '';
+        this.tasks.forEach((task) => {
+            const taskItem = document.createElement('li');
+            taskItem.classList.add('task-item');
+            taskItem.innerHTML = `
+                <span class="task-name">${task.name}</span>
+                <span class="task-date">${task.date}</span>
+                <span class="task-time">${task.time}</span>
+                <span class="task-priority">${task.priority}</span>
+                <button class="delete-btn" data-id="${task.id}">Delete</button>
+            `;
+            taskListElement.appendChild(taskItem);
+        });
+    }
+
+    // Sort tasks by priority
+    sortTasksByPriority() {
+        this.tasks.sort((a, b) => {
+            if (a.priority === 'high' && b.priority !== 'high') {
+                return -1;
+            } else if (a.priority !== 'high' && b.priority === 'high') {
+                return 1;
+            } else if (a.priority === 'medium' && b.priority === 'low') {
+                return -1;
+            } else if (a.priority === 'low' && b.priority === 'medium') {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        this.renderTaskList();
+    }
+}
+
+// Initialize task list
+const taskList = new TaskList();
+
+// Get form elements
 const taskForm = document.getElementById('task-form');
-const taskList = document.getElementById('task-list');
+const taskNameInput = document.getElementById('task-name');
+const taskDateInput = document.getElementById('task-date');
+const taskTimeInput = document.getElementById('task-time');
+const taskPriorityInput = document.getElementById('task-priority');
+const addTaskBtn = document.getElementById('add-task-btn');
 const clearTasksBtn = document.getElementById('clear-tasks-btn');
-const toggleModeBtn = document.getElementById('toggle-mode-btn');
-const googleCalendarBtn = document.getElementById('google-calendar-btn');
+const sortTasksBtn = document.getElementById('sort-tasks-btn');
 
-let tasks = [];
-let taskId = 0;
-let isDarkMode = false;
-
+// Add event listeners
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const taskName = document.getElementById('task-name').value;
-    const taskDate = document.getElementById('task-date').value;
-    const taskTime = document.getElementById('task-time').value;
-    const taskPriority = document.getElementById('task-priority').value;
+    const taskName = taskNameInput.value.trim();
+    const taskDate = taskDateInput.value.trim();
+    const taskTime = taskTimeInput.value.trim();
+    const taskPriority = taskPriorityInput.value.trim();
 
-    const task = {
-        id: taskId,
-        name: taskName,
-        date: taskDate,
-        time: taskTime,
-        priority: taskPriority
-    };
-
-    tasks.push(task);
-    taskId++;
-    renderTaskList();
-    taskForm.reset();
+    if (taskName && taskDate && taskTime && taskPriority) {
+        const task = new Task(taskList.taskId, taskName, taskDate, taskTime, taskPriority);
+        taskList.addTask(task);
+        taskForm.reset();
+    } else {
+        alert('Please fill in all fields');
+    }
 });
 
 clearTasksBtn.addEventListener('click', () => {
-    tasks = [];
-    renderTaskList();
+    taskList.clearTasks();
 });
 
-toggleModeBtn.addEventListener('click', () => {
-    isDarkMode = !isDarkMode;
-    document.body.classList.toggle('dark-mode');
+sortTasksBtn.addEventListener('click', () => {
+    taskList.sortTasksByPriority();
 });
 
-googleCalendarBtn.addEventListener('click', () => {
-    // TO DO: Implement Google Calendar integration
-    console.log('Google Calendar button clicked!');
-});
-
-function renderTaskList() {
-    taskList.innerHTML = '';
-    tasks.forEach((task) => {
-        const taskItem = document.createElement('li');
-        taskItem.classList.add('task-item');
-        taskItem.innerHTML = `
-            <span class="task-name">${task.name}</span>
-            <span class="task-date">${task.date}</span>
-            <span class="task-time">${task.time}</span>
-            <span class="task-priority">${task.priority}</span>
-            <button class="delete-btn" data-id="${task.id}">Delete</button>
-        `;
-        taskList.appendChild(taskItem);
-    });
-}
-
-taskList.addEventListener('click', (e) => {
+// Delete task event listener
+document.getElementById('task-list').addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-btn')) {
         const taskId = e.target.dataset.id;
-        tasks = tasks.filter((task) => task.id !== parseInt(taskId));
-        renderTaskList();
+        taskList.removeTask(taskId);
     }
 });

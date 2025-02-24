@@ -63,6 +63,7 @@ body {
 .task-time {
     color: #666;
 }
+
 #task-priority {
     width: 100%;
     height: 40px;
@@ -86,6 +87,7 @@ body {
 #clear-tasks-btn:hover {
     background-color: #c0392b;
 }
+
 #toggle-mode-btn {
     position: absolute;
     top: 10px;
@@ -106,23 +108,4 @@ body {
     color: #fff;
     padding: 10px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.dark-mode {
-    background-color: #333;
-    color: #fff;
-}
-
-.dark-mode #task-form {
-    background-color: #444;
-}
-
-.dark-mode #task-list {
-    background-color: #444;
-}
-
-.dark-mode #clear-tasks-btn {
-    background-color: #e74c3c;
 }
