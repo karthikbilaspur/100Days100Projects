@@ -1,0 +1,68 @@
+[
+    {
+        "question": "What is the purpose of the HTML 'details' element?",
+        "answers": ["To provide a way to display additional information about a topic", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'summary' and 'details' elements?",
+        "answers": ["The 'summary' element is used to provide a summary of the details, while the 'details' element is used to provide the actual details", "The 'summary' element is used to provide the actual details, while the 'details' element is used to provide a summary of the details", "There is no difference between the two elements", "The 'summary' element is deprecated, while the 'details' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'dialog' element?",
+        "answers": ["To provide a way to display a dialog box", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'template' and 'slot' elements?",
+        "answers": ["The 'template' element is used to define a template for a web page, while the 'slot' element is used to define a placeholder for a template", "The 'template' element is used to define a placeholder for a template, while the 'slot' element is used to define a template for a web page", "There is no difference between the two elements", "The 'template' element is deprecated, while the 'slot' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'shadow' element?",
+        "answers": ["To provide a way to create a shadow DOM", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'slot' and 'shadow' elements?",
+        "answers": ["The 'slot' element is used to define a placeholder for a template, while the 'shadow' element is used to create a shadow DOM", "The 'slot' element is used to create a shadow DOM, while the 'shadow' element is used to define a placeholder for a template", "There is no difference between the two elements", "The 'slot' element is deprecated, while the 'shadow' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'picture' element?",
+        "answers": ["To provide a way to display multiple images for different devices", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'picture' and 'img' elements?",
+        "answers": ["The 'picture' element is used to display multiple images for different devices, while the 'img' element is used to display a single image", "The 'picture' element is used to display a single image, while the 'img' element is used to display multiple images for different devices", "There is no difference between the two elements", "The 'picture' element is deprecated, while the 'img' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'script' element?",
+        "answers": ["To define a script for the document", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'noscript' and 'script' elements?",
+        "answers": ["The 'noscript' element is used to provide alternative content for users who have disabled JavaScript, while the 'script' element is used to define a script for the document", "The 'noscript' element is used to define a script for the document, while the 'script' element is used to provide alternative content for users who have disabled JavaScript", "There is no difference between the two elements", "The 'noscript' element is deprecated, while the 'script' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'iframe' element?",
+        "answers": ["To embed an inline frame within a document", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    }
+]

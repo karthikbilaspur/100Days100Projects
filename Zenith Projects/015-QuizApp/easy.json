@@ -1,0 +1,62 @@
+[
+    {
+        "question": "What is the purpose of the HTML doctype declaration?",
+        "answers": ["To declare the document type", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'b' and 'strong' elements?",
+        "answers": ["The 'b' element is used for bold text, while the 'strong' element is used for strong emphasis", "The 'b' element is used for strong emphasis, while the 'strong' element is used for bold text", "There is no difference between the two elements", "The 'b' element is deprecated, while the 'strong' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'img' element?",
+        "answers": ["To embed an image in the document", "To link to an external stylesheet", "To define a JavaScript function", "To declare the document type"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'i' and 'em' elements?",
+        "answers": ["The 'i' element is used for italic text, while the 'em' element is used for emphasis", "The 'i' element is used for emphasis, while the 'em' element is used for italic text", "There is no difference between the two elements", "The 'i' element is deprecated, while the 'em' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'a' element?",
+        "answers": ["To create a hyperlink", "To embed an image in the document", "To define a JavaScript function", "To declare the document type"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'p' and 'div' elements?",
+        "answers": ["The 'p' element is used for paragraphs, while the 'div' element is used for divisions", "The 'p' element is used for divisions, while the 'div' element is used for paragraphs", "There is no difference between the two elements", "The 'p' element is deprecated, while the 'div' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'h1'-'h6' elements?",
+        "answers": ["To define headings", "To create hyperlinks", "To embed images in the document", "To declare the document type"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'span' and 'div' elements?",
+        "answers": ["The 'span' element is used for inline elements, while the 'div' element is used for block-level elements", "The 'span' element is used for block-level elements, while the 'div' element is used for inline elements", "There is no difference between the two elements", "The 'span' element is deprecated, while the 'div' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'table' element?",
+        "answers": ["To define a table", "To create a hyperlink", "To embed an image in the document", "To declare the document type"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'th' and 'td' elements?",
+        "answers": ["The 'th' element is used for table headers, while the 'td' element is used for table data", "The 'th' element is used for table data, while the 'td' element is used for table headers", "There is no difference between the two elements", "The 'th' element is deprecated, while the 'td' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    }
+]

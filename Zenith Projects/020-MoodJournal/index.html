@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Journal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mood Journal</h1>
+    </header>
+    <main>
+        <section class="journal-container">
+            <h2>Today's Entry</h2>
+            <form>
+                <label for="mood">Mood:</label>
+                <select id="mood" name="mood">
+                    <option value="happy">Happy</option>
+                    <option value="sad">Sad</option>
+                    <option value="angry">Angry</option>
+                    <option value="neutral">Neutral</option>
+                </select><br><br>
+                <label for="entry">Entry:</label>
+                <textarea id="entry" name="entry"></textarea><br><br>
+                <label for="tags">Tags:</label>
+                <input type="text" id="tags" name="tags"><br><br>
+                <input type="submit" value="Save Entry">
+            </form>
+            <ul class="entry-list">
+                <!-- entry list will be displayed here -->
+            </ul>
+            <button class="delete-button">Delete All Entries</button>
+        </section>
+        <section class="stats-container">
+            <h2>Mood Stats</h2>
+            <p>Happiness Level: <span class="happiness-level">0</span></p>
+            <p>Sadness Level: <span class="sadness-level">0</span></p>
+            <p>Anger Level: <span class="anger-level">0</span></p>
+            <p>Neutrality Level: <span class="neutrality-level">0</span></p>
+        </section>
+        <section class="chart-container">
+            <h2>Mood Chart</h2>
+            <canvas id="mood-chart"></canvas>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

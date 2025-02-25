@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Burger",
+        "description": "Juicy beef burger with lettuce, tomato, and cheese",
+        "price": 10.99,
+        "image": "burger.jpg",
+        "category": "entrees"
+    },
+    {
+        "id": 2,
+        "name": "Pizza",
+        "description": "Delicious pizza with mozzarella cheese, tomato sauce, and toppings",
+        "price": 14.99,
+        "image": "pizza.jpg",
+        "category": "entrees"
+    },
+    {
+        "id": 3,
+        "name": "Salad",
+        "description": "Fresh mix of greens, vegetables, and fruits",
+        "price": 8.99,
+        "image": "salad.jpg",
+        "category": "sides"
+    }
+]

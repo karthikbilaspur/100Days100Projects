@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoitNow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>DoitNow</h1>
+        <button id="login-btn">Login</button>
+        <button id="logout-btn" style="display: none;">Logout</button>
+    </header>
+    <main>
+        <section class="todo-list">
+            <h2>Todo List</h2>
+            <ul id="todo-list-ul">
+                <!-- Todo list items will be displayed here -->
+            </ul>
+            <form id="add-todo-form">
+                <input type="text" id="todo-input" placeholder="Enter a task">
+                <button id="add-todo-btn">Add Todo</button>
+            </form>
+            <button id="clear-todo-btn">Clear Todo List</button>
+            <button id="sort-todo-btn">Sort Todo List</button>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

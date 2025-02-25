@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Habit Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Food Habit Tracker</h1>
+    </header>
+    <main>
+        <section class="tracker-container">
+            <h2>Today's Food</h2>
+            <form>
+                <label for="food-name">Food Name:</label>
+                <input type="text" id="food-name" name="food-name"><br><br>
+                <label for="food-quantity">Food Quantity:</label>
+                <input type="number" id="food-quantity" name="food-quantity"><br><br>
+                <label for="food-calories">Food Calories:</label>
+                <input type="number" id="food-calories" name="food-calories"><br><br>
+                <label for="food-category">Food Category:</label>
+                <select id="food-category" name="food-category">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="snack">Snack</option>
+                </select><br><br>
+                <input type="submit" value="Add Food">
+            </form>
+            <ul class="food-list">
+                <!-- food list will be displayed here -->
+            </ul>
+            <button class="delete-button">Delete All Foods</button>
+        </section>
+        <section class="stats-container">
+            <h2>Today's Stats</h2>
+            <p>Total Calories: <span class="total-calories">0</span></p>
+            <p>Total Food Items: <span class="total-food-items">0</span></p>
+            <p>Average Calories per Meal: <span class="average-calories">0</span></p>
+            <p>Most Consumed Food: <span class="most-consumed-food"></span></p>
+        </section>
+        <section class="chart-container">
+            <h2>Calorie Consumption Chart</h2>
+            <canvas id="calorie-chart"></canvas>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

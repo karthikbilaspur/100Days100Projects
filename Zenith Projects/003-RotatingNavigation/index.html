@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="rotating-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <h1>Welcome to Restaurant Name</h1>
+        <p>Discover the flavors of our restaurant</p>
+        <button>Explore Menu</button>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-items">
+            <!-- Menu item 1 -->
+            <div class="menu-item">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Item Name</h3>
+                        <span class="price">$9.99</span>
+                        <button class="favorite"><i class="fa fa-heart"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <p>Description</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="view-more">View More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more menu items here -->
+        </div>
+    </section>
+
+    <!-- Progress Steps Section -->
+    <section id="progress-steps">
+        <h2>Ordering Process</h2>
+        <div class="progress-steps-container">
+            <div class="progress-step active">
+                <h3>Step 1: Choose Your Meal</h3>
+                <p>Select from our variety of dishes</p>
+            </div>
+            <div class="progress-step">
+                <h3>Step 2: Add to Cart</h3>
+                <p>Add your chosen meal to the cart</p>
+            </div>
+            <div class="progress-step">
+                <h3>Step 3: Checkout</h3>
+                <p>Proceed to checkout and payment</p>
+            </div>
+            <div class="progress-step">
+                <h3>Step 4: Order Confirmation</h3>
+                <p>Receive confirmation of your order</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart section -->
+    <section id="cart">
+        <h2>Cart</h2>
+        <div class="cart-items">
+            <!-- Cart item 1 -->
+            <!-- <div class="cart-item">
+                <h3>Item Name</h3>
+                <span class="price">$9.99</span>
+                <button class="remove-from-cart">Remove</button>
+            </div> -->
+        </div>
+        <p class="cart-total">Total: $0.00</p>
+        <button class="checkout">Checkout</button>
+    </section>
+
+    <!-- Modal for viewing more details -->
+    <div class="modal" id="menu-item-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Menu Item Details</h2>
+            <p>Description</p>
+            <p>Ingredients</p>
+            <p>Price</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>2025 Restaurant Name</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

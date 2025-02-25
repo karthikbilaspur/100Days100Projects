@@ -1,0 +1,62 @@
+[
+    {
+        "question": "What is the purpose of the HTML 'meta' element?",
+        "answers": ["To provide metadata about the document", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'section' and 'article' elements?",
+        "answers": ["The 'section' element is used for a section of a document, while the 'article' element is used for an independent piece of content", "The 'section' element is used for an independent piece of content, while the 'article' element is used for a section of a document", "There is no difference between the two elements", "The 'section' element is deprecated, while the 'article' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'nav' element?",
+        "answers": ["To define a navigation section", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'aside' and 'footer' elements?",
+        "answers": ["The 'aside' element is used for a piece of content that is only indirectly related to the main content, while the 'footer' element is used for a footer section", "The 'aside' element is used for a footer section, while the 'footer' element is used for a piece of content that is only indirectly related to the main content", "There is no difference between the two elements", "The 'aside' element is deprecated, while the 'footer' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'header' element?",
+        "answers": ["To define a header section", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'figure' and 'figcaption' elements?",
+        "answers": ["The 'figure' element is used to group a piece of content with its caption, while the 'figcaption' element is used to define the caption", "The 'figure' element is used to define the caption, while the 'figcaption' element is used to group a piece of content with its caption", "There is no difference between the two elements", "The 'figure' element is deprecated, while the 'figcaption' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'canvas' element?",
+        "answers": ["To create a graphical representation of an image", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'audio' and 'video' elements?",
+        "answers": ["The 'audio' element is used to embed an audio file, while the 'video' element is used to embed a video file", "The 'audio' element is used to embed a video file, while the 'video' element is used to embed an audio file", "There is no difference between the two elements", "The 'audio' element is deprecated, while the 'video' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the purpose of the HTML 'source' element?",
+        "answers": ["To specify the source of a multimedia file", "To specify the character encoding", "To link to an external stylesheet", "To define a JavaScript function"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    },
+    {
+        "question": "What is the difference between the HTML 'track' and 'video' elements?",
+        "answers": ["The 'track' element is used to provide a text track for a video, while the 'video' element is used to embed a video file", "The 'track' element is used to embed a video file, while the 'video' element is used to provide a text track for a video", "There is no difference between the two elements", "The 'track' element is deprecated, while the 'video' element is not"],
+        "correctAnswer": 0,
+        "timeLimit": 60
+    }
+]

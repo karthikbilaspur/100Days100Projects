@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to our restaurant!</h1>
+            <p>We serve delicious food and drinks in a cozy atmosphere.</p>
+            <button>Make a Reservation</button>
+        </section>
+        <section id="menu">
+            <h1>Our Menu</h1>
+            <ul>
+                <li>Pizza</li>
+                <li>Burger</li>
+                <li>Salad</li>
+                <li>Soup</li>
+            </ul>
+        </section>
+        <section id="about">
+            <h1>About Us</h1>
+            <p>We are a family-owned restaurant that has been serving the community for over 10 years.</p>
+        </section>
+        <section id="contact">
+            <h1>Get in Touch</h1>
+            <p>Phone: 555-555-5555</p>
+            <p>Email: [info@restaurant.com](mailto:info@restaurant.com)</p>
+            <p>Address: 123 Main St, Anytown, USA</p>
+        </section>
+        <section id="blog">
+            <h1>Our Blog</h1>
+            <ul>
+                <li>
+                    <h2>Blog Post 1</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+                    <form>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name"><br><br>
+                        <label for="comment">Comment:</label>
+                        <textarea id="comment" name="comment"></textarea><br><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                    <div class="comments">
+                        <h3>Comments:</h3>
+                        <ul>
+                            <!-- comments will be displayed here -->
+                        </ul>
+                    </div>
+                </li>
+                <!-- other blog posts -->
+            </ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Chatbot</h1>
+    </header>
+    <main>
+        <section class="chat-container">
+            <div id="chat-box">
+                <p id="welcome-message">Welcome to our restaurant! How can I assist you today?</p>
+            </div>
+            <input id="user-input" type="text" placeholder="Type your message here...">
+            <button id="send-btn">Send</button>
+            <button id="order-btn" style="display: none;">Place Order</button>
+            <button id="pay-btn" style="display: none;">Pay Now</button>
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="ar">Arabic</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="hi">Hindi</option>
+                <option value="id">Indonesian</option>
+                <option value="it">Italian</option>
+                <option value="pt">Portuguese</option>
+                <option value="es">Spanish</option>
+                <option value="tl">Tagalog</option>
+                <option value="th">Thai</option>
+                <option value="vi">Vietnamese</option>
+            </select>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

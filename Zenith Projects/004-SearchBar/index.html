@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Search Bar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Finder</h1>
+    </header>
+    <main>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for restaurants...">
+            <select id="cuisine-select">
+                <option value="">Select Cuisine</option>
+                <option value="Italian">Italian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Indian">Indian</option>
+            </select>
+            <select id="location-select">
+                <option value="">Select Location</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+            </select>
+            <div class="rating-filter">
+                <input type="radio" id="rating-4" name="rating">
+                <label for="rating-4">4+ stars</label>
+                <input type="radio" id="rating-3" name="rating">
+                <label for="rating-3">3+ stars</label>
+                <input type="radio" id="rating-all" name="rating">
+                <label for="rating-all">All</label>
+            </div>
+            <button id="search-btn">Search</button>
+            <button id="reset-btn">Reset</button>
+        </div>
+        <div class="search-results">
+            <!-- Search results will be displayed here -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

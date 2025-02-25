@@ -1,0 +1,88 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.chat-container {
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+}
+
+#chat-box {
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+}
+
+#user-input {
+    padding: 0.5em;
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+}
+
+#send-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#send-btn:hover {
+    background-color: #555;
+}
+
+#order-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#order-btn:hover {
+    background-color: #555;
+}
+
+#pay-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#pay-btn:hover {
+    background-color: #555;
+}
+
+#language-select {
+    padding: 0.5em;
+    border: none;
+    border-radius: 5px;
+    width: 20%;
+}
