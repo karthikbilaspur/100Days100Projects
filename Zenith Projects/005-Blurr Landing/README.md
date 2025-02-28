@@ -1,6 +1,6 @@
-Llama 5 Launch
+Soko 
 ====================
-A website for the launch of Llama 5, revolutionizing the way you experience AI.
+A website for the launch of Soko , revolutionizing the way you experience AI.
 Features
 ------------
 Responsive design with a blurred background image
