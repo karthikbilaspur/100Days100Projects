@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#game">Game</a></li>
+                <li><a href="#leaderboard">Leaderboard</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="game">
+            <h1>Tic-Tac-Toe</h1>
+            <div class="game-board">
+                <div class="row">
+                    <div class="cell" id="cell-0"></div>
+                    <div class="cell" id="cell-1"></div>
+                    <div class="cell" id="cell-2"></div>
+                </div>
+                <div class="row">
+                    <div class="cell" id="cell-3"></div>
+                    <div class="cell" id="cell-4"></div>
+                    <div class="cell" id="cell-5"></div>
+                </div>
+                <div class="row">
+                    <div class="cell" id="cell-6"></div>
+                    <div class="cell" id="cell-7"></div>
+                    <div class="cell" id="cell-8"></div>
+                </div>
+            </div>
+            <div class="game-info">
+                <p id="player-turn"></p>
+                <p id="game-result"></p>
+            </div>
+            <button id="reset-button">Reset Game</button>
+        </section>
+        <section id="leaderboard">
+            <h1>Leaderboard</h1>
+            <ul id="leaderboard-list"></ul>
+        </section>
+        <section id="settings">
+            <h1>Settings</h1>
+            <form id="settings-form">
+                <label for="game-mode">Game Mode:</label>
+                <select id="game-mode" name="game-mode">
+                    <option value="single-player">Single Player</option>
+                    <option value="multi-player">Multi Player</option>
+                </select>
+                <br>
+                <label for="board-size">Board Size:</label>
+                <select id="board-size" name="board-size">
+                    <option value="3x3">3x3</option>
+                    <option value="4x4">4x4</option>
+                </select>
+                <br>
+                <button id="save-settings-button">Save Settings</button>
+            </form>
+        </section>
+        <section id="login">
+            <h1>Login</h1>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+                <button id="login-button">Login</button>
+            </form>
+        </section>
+        <section id="register">
+            <h1>Register</h1>
+            <form id="register-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password"><br>
+                <button id="register-button">Register</button>
+            </form>
+        <script src="script.js"></script>
+    </body>
+</html>

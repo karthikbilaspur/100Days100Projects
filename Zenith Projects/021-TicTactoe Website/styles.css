@@ -1,0 +1,190 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+section {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: #f0f0f0;
+}
+
+.game-info {
+    margin-bottom: 20px;
+}
+
+#player-turn {
+    font-weight: bold;
+}
+
+#game-result {
+    font-style: italic;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+#leaderboard-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#leaderboard-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+#settings-form {
+    margin-bottom: 20px;
+}
+
+#settings-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#settings-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+#save-settings-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#save-settings-button:hover {
+    background-color: #444;
+}
+
+#login-form {
+    margin-bottom: 20px;
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+#login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#login-button:hover {
+    background-color: #444;
+}
+
+#register-form {
+    margin-bottom: 20px;
+}
+
+#register-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#register-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+#register-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#register-button:hover {
+    background-color: #444;
+}
