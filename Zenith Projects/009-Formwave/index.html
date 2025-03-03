@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restaurant Website">
+    <meta name="keywords" content="restaurant, food, menu">
+    <meta name="author" content="Your Name">
     <title>Restaurant Website</title>
     <link rel="stylesheet" href="https://unpkg.com/formwave/dist/formwave.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/formwave/dist/formwave.js"></script>
 </head>
 <body>
     <header>
@@ -25,7 +29,7 @@
         </section>
         <section id="menu">
             <h1>Our Menu</h1>
-            <formwave-form id="menu-form">
+            <formwave-form id="menu-form" aria-label="Menu search form">
                 <formwave-select label="Select a category" name="category" required>
                     <option value="appetizers">Appetizers</option>
                     <option value="entrees">Entrees</option>
@@ -34,11 +38,11 @@
                 <formwave-text label="Search for a dish" name="search" required></formwave-text>
                 <formwave-submit>Search</formwave-submit>
             </formwave-form>
-            <div id="menu-items"></div>
+            <div id="menu-items" aria-live="polite"></div>
         </section>
         <section id="contact">
             <h1>Get in touch</h1>
-            <formwave-form id="contact-form">
+            <formwave-form id="contact-form" aria-label="Contact form">
                 <formwave-text label="Name" name="name" required></formwave-text>
                 <formwave-email label="Email" name="email" required></formwave-email>
                 <formwave-textarea label="Message" name="message" required></formwave-textarea>
@@ -47,7 +51,7 @@
         </section>
         <section id="order-online">
             <h1>Order online</h1>
-            <formwave-form id="order-form">
+            <formwave-form id="order-form" aria-label="Order form">
                 <formwave-text label="Name" name="name" required></formwave-text>
                 <formwave-email label="Email" name="email" required></formwave-email>
                 <formwave-text label="Phone number" name="phone" required></formwave-text>
@@ -58,8 +62,42 @@
                 <formwave-submit>Place order</formwave-submit>
             </formwave-form>
         </section>
+        <section id="gallery">
+            <h1>Gallery</h1>
+            <div class="gallery-container">
+                <img src="image1.jpg" alt="Image 1">
+                <img src="image2.jpg" alt="Image 2">
+                <img src="image3.jpg" alt="Image 3">
+            </div>
+        </section>
+        <section id="testimonials">
+            <h1>Testimonials</h1>
+            <div class="testimonial-container">
+                <blockquote>
+                    <p>&quot;Great food and service!&quot;</p>
+                    <cite>John Doe</cite>
+                </blockquote>
+                <blockquote>
+                    <p>&quot;Love the atmosphere!&quot;</p>
+                    <cite>Jane Smith</cite>
+                </blockquote>
+            </div>
+        </section>
+        <section id="social-media">
+            <h1>Follow us on social media</h1>
+            <div class="social-media-container">
+                <a href="#" target="_blank">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="#" target="_blank">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="#" target="_blank">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+            </div>
+        </section>
     </main>
-    <script src="https://unpkg.com/formwave/dist/formwave.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

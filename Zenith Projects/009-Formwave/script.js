@@ -10,50 +10,13 @@ const orderForm = document.querySelector('#order-form');
 menuForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = menuForm.getFormData();
-    console.log(formData);
-    // TO DO: Display menu items based on the selected category and search query
-});
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = contactForm.getFormData();
-    console.log(formData);
-    // TO DO: Send the contact form data to the server
-});
-
-orderForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = orderForm.getFormData();
-    console.log(formData);
-    // TO DO: Process the order and send a confirmation email
-});
-
-// TO DO: Display menu items on page load
-fetch('menu-items.json')
-    .then(response => response.json())
-    .then(data => {
-        const menuItemsHtml = data.map(item => `
-            <div class="menu-item">
-                <img src="${item.image}" alt="${item.name}">
-                <h2>${item.name}</h2>
-                <p>${item.description}</p>
-                <p>Price: ${item.price}</p>
-            </div>
-        `).join('');
-        document.querySelector('#menu-items').innerHTML = menuItemsHtml;
-    })
-    .catch(error => console.error(error));
-
-// TO DO: Display menu items based on the selected category and search query
-menuForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = menuForm.getFormData();
-    const category = formData.category;
-    const searchQuery = formData.search;
-    fetch(`menu-items.json?category=${category}&search=${searchQuery}`)
+    fetch('menu-items.json')
         .then(response => response.json())
         .then(data => {
-            const menuItemsHtml = data.map(item => `
+            const filteredData = data.filter(item => {
+                return item.category === formData.category && item.name.includes(formData.search);
+            });
+            const menuItemsHtml = filteredData.map(item => `
                 <div class="menu-item">
                     <img src="${item.image}" alt="${item.name}">
                     <h2>${item.name}</h2>
@@ -66,7 +29,6 @@ menuForm.addEventListener('submit', (e) => {
         .catch(error => console.error(error));
 });
 
-// TO DO: Send the contact form data to the server
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = contactForm.getFormData();
@@ -80,7 +42,6 @@ contactForm.addEventListener('submit', (e) => {
     .catch(error => console.error(error));
 });
 
-// TO DO: Process the order and send a confirmation email
 orderForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = orderForm.getFormData();
@@ -92,4 +53,23 @@ orderForm.addEventListener('submit', (e) => {
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));
+});
+
+// Add event listener to the gallery images
+const galleryImages = document.querySelectorAll('.gallery-container img');
+galleryImages.forEach(image => {
+    image.addEventListener('click', () => {
+        // Open the image in a lightbox
+        const lightbox = document.createElement('div');
+        lightbox.classList.add('lightbox');
+        lightbox.innerHTML = `
+            <img src="${image.src}" alt="${image.alt}">
+            <button class="close-lightbox">&times;</button>
+        `;
+        document.body.appendChild(lightbox);
+        const closeLightboxButton = document.querySelector('.close-lightbox');
+        closeLightboxButton.addEventListener('click', () => {
+            lightbox.remove();
+        });
+    });
 });

@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.product-list {
+    background-color: #f7f7f7;
+    padding: 1em;
+    width: 80%;
+}
+
+.product-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-list li {
+    padding: 0.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-list li:last-child {
+    border-bottom: none;
+}
+
+.product-list button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.comparison-container {
+    background-color: #f7f7f7;
+    padding: 1em;
+    width: 80%;
+}
+
+.comparison-container table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.comparison-container th, .comparison-container td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    text-align: left;
+}
+
+.comparison-container th {
+    background-color: #f0f0f0;
+}
+
+.filter-container {
+    background-color: #f7f7f7;
+    padding: 1em;
+    width: 80%;
+}
+
+.filter-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-container label {
+    margin-bottom: 0.5em;
+}
+
+.filter-container input {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+}
+
+.filter-container button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+#product-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 2em;
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#product-modal-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+#product-modal-description {
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+#close-modal-button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+}

@@ -96,3 +96,80 @@ formwave-submit:hover {
 .menu-item p {
     margin-bottom: 20px;
 }
+
+/* Add responsive design to the website */
+
+/* Add responsive design to the website */
+
+@media only screen and (max-width: 768px) {
+    /* For mobile devices */
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    section {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /* For smaller mobile devices */
+    main {
+        padding: 10px;
+    }
+    section {
+        padding: 10px;
+    }
+}
+
+/* Style the image gallery */
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery-container img {
+    width: 30%;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the customer testimonials */
+
+.testimonial-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+blockquote {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+cite {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Style the social media integration */
+
+.social-media-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-media-container a {
+    margin: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.social-media-container a:hover {
+    color: #666;
+}

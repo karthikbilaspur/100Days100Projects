@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Comparison Website</h1>
+    </header>
+    <main>
+        <section class="product-list">
+            <h2>Products</h2>
+            <ul id="product-list">
+                <!-- products will be listed here -->
+            </ul>
+            <button id="add-product-button">Add Product</button>
+        </section>
+        <section class="comparison-container">
+            <h2>Comparison</h2>
+            <div id="product-comparison">
+                <!-- comparison table will be displayed here -->
+            </div>
+            <button id="compare-button">Compare</button>
+        </section>
+        <section class="filter-container">
+            <h2>Filter</h2>
+            <form id="filter-form">
+                <label for="price-filter">Price:</label>
+                <input type="number" id="price-filter" name="price-filter">
+                <label for="rating-filter">Rating:</label>
+                <input type="number" id="rating-filter" name="rating-filter">
+                <button id="apply-filter-button">Apply Filter</button>
+            </form>
+        </section>
+        <!-- modal window for product details -->
+        <div id="product-modal" style="display: none;">
+            <h2 id="product-modal-title"></h2>
+            <p id="product-modal-description"></p>
+            <button id="close-modal-button">Close</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
