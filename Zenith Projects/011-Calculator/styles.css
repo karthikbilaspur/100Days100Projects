@@ -62,3 +62,125 @@ button:hover {
 #history-list li:last-child {
     border-bottom: none;
 }
+/* Add a class to toggle between dark and light modes */
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode button {
+    background-color: #444;
+    color: #fff;
+}
+
+.dark-mode #display {
+    background-color: #444;
+    color: #fff;
+}
+
+/* Add a media query to switch to dark mode based on the user's system preferences */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333;
+        color: #fff;
+    }
+    button {
+        background-color: #444;
+        color: #fff;
+    }
+    #display {
+        background-color: #444;
+        color: #fff;
+    }
+}
+
+/* Add ARIA attributes to improve screen reader support */
+button {
+    aria-label: attr(data-aria-label);
+}
+
+#display {
+    aria-live: polite;
+    aria-atomic: true;
+}
+
+/* Add a class to hide content from screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Add a class to toggle high contrast mode */
+.high-contrast-mode {
+    background-color: #000;
+    color: #fff;
+}
+
+.high-contrast-mode button {
+    background-color: #fff;
+    color: #000;
+}
+
+.high-contrast-mode #display {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Add media queries to improve responsive design */
+@media (max-width: 768px) {
+    .calculator {
+        width: 100%;
+        padding: 20px;
+    }
+    .buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator {
+        padding: 10px;
+    }
+    .buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Add animations and transitions to improve user experience */
+button {
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#display {
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Add other enhancements to improve user experience */
+.calculator {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+    gap: 10px;
+}
+
+button {
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#display {
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+}
