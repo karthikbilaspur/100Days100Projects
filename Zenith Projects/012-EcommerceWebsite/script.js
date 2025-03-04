@@ -1,5 +1,3 @@
-// script.js
-
 // Define products data
 const products = [
     { id: 1, name: 'Product 1', price: 10.99 },
@@ -43,7 +41,7 @@ function updateCartDisplay() {
             <h3>${cartProduct.name}</h3>
             <p>Quantity: ${cartProduct.quantity}</p>
             <p>Price: $${cartProduct.price}</p>
-            <button class="remove-from-cart" data-product-id="${cartProduct.id}">Remove</button>
+            <button class="remove-from-cart" aria-label="Remove ${cartProduct.name} from cart" data-product-id="${cartProduct.id}">Remove</button>
         `;
         cartItemsContainer.appendChild(cartItemDiv);
     });
@@ -64,4 +62,9 @@ document.querySelector('.cart-items').addEventListener('click', (event) => {
     if (event.target.classList.contains('remove-from-cart')) {
         removeProductFromCart(event.target.dataset.productId);
     }
+});
+
+// Add event listener to checkout button
+document.querySelector('.checkout').addEventListener('click', () => {
+    alert('Checkout successful!');
 });

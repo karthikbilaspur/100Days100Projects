@@ -1,9 +1,8 @@
-/* styles.css */
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f7f7f7;
 }
 
 header {
@@ -37,9 +36,10 @@ main {
 }
 
 .products {
-    background-color: #f7f7f7;
+    background-color: #fff;
     padding: 1em;
     margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .product-grid {
@@ -79,8 +79,10 @@ main {
 }
 
 .cart {
-    background-color: #f7f7f7;
+    background-color: #fff;
     padding: 1em;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .cart-items {
@@ -98,4 +100,18 @@ main {
 
 .checkout:hover {
     background-color: #555;
+}
+
+/* Responsive design */
+
+@media only screen and (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

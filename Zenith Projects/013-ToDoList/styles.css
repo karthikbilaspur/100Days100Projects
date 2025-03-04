@@ -1,9 +1,8 @@
-/* styles.css */
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f7f7f7;
 }
 
 header {
@@ -21,9 +20,10 @@ main {
 }
 
 .todo-list {
-    background-color: #f7f7f7;
+    background-color: #fff;
     padding: 1em;
     width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #todo-list-ul {
@@ -107,34 +107,15 @@ main {
 }
 
 /* Screen reader support */
-.todo-list ul {
-    list-style: none;
-}
-
-.todo-list li {
-    padding: 0.5em;
-    border-bottom: 1px solid #ccc;
-}
-
-.todo-list li:last-child {
-    border-bottom: none;
-}
-
-.todo-list li span {
-    font-weight: bold;
-}
-
-.todo-list li button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 0.2em 0.5em;
-    font-size: 0.8em;
-    cursor: pointer;
-}
-
-.todo-list li button:hover {
-    background-color: #555;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 /* Screen width support */
@@ -161,26 +142,4 @@ main {
     #add-todo-btn {
         padding: 0.2em 0.5em;
     }
-}
-
-/* Accessibility styles */
-.todo-list li button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #333;
-}
-
-.todo-list li button:active {
-    transform: scale(0.9);
-}
-
-/* Screen reader only styles */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
 }

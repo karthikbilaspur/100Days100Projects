@@ -31,6 +31,7 @@ let currentUser = null;
 function addTodoItem(todoItem) {
     todoList.push(todoItem);
     displayTodoList();
+    saveTodoList();
 }
 
 // Function to display the todo list
@@ -51,33 +52,40 @@ function displayTodoList() {
 function clearTodoList() {
     todoList = [];
     displayTodoList();
+    saveTodoList();
 }
 
 // Function to sort the todo list
 function sortTodoList() {
     todoList.sort();
     displayTodoList();
+    saveTodoList();
 }
 
 // Function to edit a todo item
 function editTodoItem(index, newTodoItem) {
     todoList[index] = newTodoItem;
     displayTodoList();
+    saveTodoList();
 }
 
 // Function to delete a todo item
 function deleteTodoItem(index) {
     todoList.splice(index, 1);
     displayTodoList();
+    saveTodoList();
 }
 
 // Function to login
 function login() {
     const username = prompt('Enter your username:');
-    if (username) {
+    const password = prompt('Enter your password:');
+    if (username === 'admin' && password === 'password') {
         currentUser = username;
         loginBtn.style.display = 'none';
         logoutBtn.style.display = 'inline-block';
+    } else {
+        alert('Invalid username or password');
     }
 }
 
@@ -86,6 +94,34 @@ function logout() {
     currentUser = null;
     loginBtn.style.display = 'inline-block';
     logoutBtn.style.display = 'none';
+}
+
+// Function to save todo list to local storage
+function saveTodoList() {
+    const encryptedTodoList = encrypt(todoList);
+    localStorage.setItem('todoList', encryptedTodoList);
+}
+
+// Function to load todo list from local storage
+function loadTodoList() {
+    const encryptedTodoList = localStorage.getItem('todoList');
+    if (encryptedTodoList) {
+        const decryptedTodoList = decrypt(encryptedTodoList);
+        todoList = decryptedTodoList;
+        displayTodoList();
+    }
+}
+
+// Function to encrypt data
+function encrypt(data) {
+    const encryptedData = btoa(JSON.stringify(data));
+    return encryptedData;
+}
+
+// Function to decrypt data
+function decrypt(encryptedData) {
+    const decryptedData = JSON.parse(atob(encryptedData));
+    return decryptedData;
 }
 
 // Add event listener to the add todo form
@@ -124,22 +160,5 @@ todoListUl.addEventListener('click', (event) => {
     }
 });
 
-// Function to save todo list to local storage
-function saveTodoList() {
-    localStorage.setItem('todoList', JSON.stringify(todoList));
-}
-
-// Function to load todo list from local storage
-function loadTodoList() {
-    const storedTodoList = localStorage.getItem('todoList');
-    if (storedTodoList) {
-        todoList = JSON.parse(storedTodoList);
-        displayTodoList();
-    }
-}
-
 // Load todo list from local storage
 loadTodoList();
-
-// Save todo list to local storage whenever it changes
-setInterval(saveTodoList, 1000);

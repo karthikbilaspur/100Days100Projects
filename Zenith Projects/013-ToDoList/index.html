@@ -5,25 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoitNow</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 <body>
     <header>
         <h1>DoitNow</h1>
-        <button id="login-btn">Login</button>
-        <button id="logout-btn" style="display: none;">Logout</button>
+        <button id="login-btn" aria-label="Login button">Login</button>
+        <button id="logout-btn" style="display: none;" aria-label="Logout button">Logout</button>
     </header>
     <main>
         <section class="todo-list">
             <h2>Todo List</h2>
-            <ul id="todo-list-ul">
+            <ul id="todo-list-ul" aria-label="Todo list">
                 <!-- Todo list items will be displayed here -->
             </ul>
-            <form id="add-todo-form">
-                <input type="text" id="todo-input" placeholder="Enter a task">
-                <button id="add-todo-btn">Add Todo</button>
+            <form id="add-todo-form" aria-label="Add todo form">
+                <input type="text" id="todo-input" placeholder="Enter a task" aria-label="Todo input">
+                <button id="add-todo-btn" aria-label="Add todo button">Add Todo</button>
             </form>
-            <button id="clear-todo-btn">Clear Todo List</button>
-            <button id="sort-todo-btn">Sort Todo List</button>
+            <button id="clear-todo-btn" aria-label="Clear todo button">Clear Todo List</button>
+            <button id="sort-todo-btn" aria-label="Sort todo button">Sort Todo List</button>
         </section>
     </main>
     <script src="script.js"></script>
