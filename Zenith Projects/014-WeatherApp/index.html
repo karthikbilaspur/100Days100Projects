@@ -5,21 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
     <header>
         <h1>Weather App</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="current-weather-btn" class="active">Current Weather</a></li>
+                <li><a href="#" id="weather-forecast-btn">Weather Forecast</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <section class="weather-container">
             <form id="weather-form">
                 <input type="text" id="city-input" placeholder="Enter city name">
-                <button id="get-weather-btn">Get Weather</button>
+                <button id="get-weather-btn" class="waves-effect waves-light btn">Get Weather</button>
             </form>
             <div id="weather-data"></div>
             <div id="weather-forecast"></div>
+            <div id="error-message"></div>
+            <div id="loading-indicator">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

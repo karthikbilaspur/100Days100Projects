@@ -1,0 +1,228 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.game-container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-mode {
+    margin-bottom: 20px;
+}
+
+.mode-button {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.mode-button:hover {
+    background-color: #3e8e41;
+}
+
+.player-choice {
+    margin-bottom: 20px;
+}
+
+.choice {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.choice:hover {
+    background-color: #3e8e41;
+}
+
+.ai-choice {
+    margin-bottom: 20px;
+}
+
+#ai-choice-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.result {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.player-statistics {
+    margin-top: 20px;
+}
+
+#player-wins, #player-losses, #player-ties {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.leaderboard {
+    margin-top: 40px;
+}
+
+#leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#leaderboard-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+.multiplayer-container {
+    margin-top: 40px;
+}
+
+#player-name {
+    width: 200px;
+    height: 30px;
+    font-size: 16px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#join-game, #create-game {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+#join-game:hover, #create-game:hover {
+    background-color: #3e8e41;
+}
+
+.power-ups-container {
+    margin-top: 40px;
+}
+
+.power-up-button {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.power-up-button:hover {
+    background-color: #3e8e41;
+}
+
+.accessibility-features {
+    margin-top: 40px;
+}
+
+.accessibility-button {
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.accessibility-button:hover {
+    background-color: #3e8e41;
+}
+
+/* Screen width styles */
+
+@media only screen and (max-width: 768px) {
+    .game-container {
+        width: 90%;
+    }
+    .player-choice {
+        margin-bottom: 10px;
+    }
+    .ai-choice {
+        margin-bottom: 10px;
+    }
+    .result {
+        font-size: 18px;
+    }
+    .player-statistics {
+        margin-top: 10px;
+    }
+    .leaderboard {
+        margin-top: 20px;
+    }
+    .multiplayer-container {
+        margin-top: 20px;
+    }
+    .power-ups-container {
+        margin-top: 20px;
+    }
+    .accessibility-features {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .game-container {
+        width: 95%;
+    }
+    .player-choice {
+        margin-bottom: 5px;
+    }
+    .ai-choice {
+        margin-bottom: 5px;
+    }
+    .result {
+        font-size: 14px;
+    }
+    .player-statistics {
+        margin-top: 5px;
+    }
+    .leaderboard {
+        margin-top: 10px;
+    }
+    .multiplayer-container {
+        margin-top: 10px;
+    }
+    .power-ups-container {
+        margin-top: 10px;
+    }
+    .accessibility-features {
+        margin-top: 10px;
+    }
+}

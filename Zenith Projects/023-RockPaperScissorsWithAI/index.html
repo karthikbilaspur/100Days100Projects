@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <div class="game-container">
+        <div class="game-mode">
+            <button id="classic-mode" class="mode-button">Classic</button>
+            <button id="ai-challenge-mode" class="mode-button">AI Challenge</button>
+            <button id="multiplayer-mode" class="mode-button">Multiplayer</button>
+        </div>
+        <div class="player-choice">
+            <button id="rock" class="choice">Rock</button>
+            <button id="paper" class="choice">Paper</button>
+            <button id="scissors" class="choice">Scissors</button>
+        </div>
+        <div class="ai-choice">
+            <p id="ai-choice-text"></p>
+        </div>
+        <div class="result">
+            <p id="result-text"></p>
+        </div>
+        <div class="player-statistics">
+            <p id="player-wins">Wins: 0</p>
+            <p id="player-losses">Losses: 0</p>
+            <p id="player-ties">Ties: 0</p>
+        </div>
+        <div class="leaderboard">
+            <h2>Leaderboard</h2>
+            <ul id="leaderboard-list"></ul>
+        </div>
+        <div class="multiplayer-container">
+            <input id="player-name" type="text" placeholder="Enter your name">
+            <button id="join-game" class="mode-button">Join Game</button>
+            <button id="create-game" class="mode-button">Create Game</button>
+        </div>
+        <div class="power-ups-container">
+            <button id="power-up-1" class="power-up-button">Power-up 1</button>
+            <button id="power-up-2" class="power-up-button">Power-up 2</button>
+            <button id="power-up-3" class="power-up-button">Power-up 3</button>
+        </div>
+        <div class="accessibility-features">
+            <button id="screen-reader-button" class="accessibility-button">Screen Reader</button>
+            <button id="high-contrast-button" class="accessibility-button">High Contrast</button>
+            <button id="keyboard-navigation-button" class="accessibility-button">Keyboard Navigation</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0/dist/tf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

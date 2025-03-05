@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="game-canvas" width="400" height="400"></canvas>
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Game Over!</p>
+            <p>Your score: <span id="final-score"></span></p>
+            <button id="play-again-button">Play Again</button>
+        </div>
+    </div>
+    <div id="leaderboard-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Leaderboard:</p>
+            <div id="leaderboard"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io@2.3.0/dist/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

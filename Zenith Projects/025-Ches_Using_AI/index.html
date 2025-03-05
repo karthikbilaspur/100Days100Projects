@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chessboard">
+        <!-- Chessboard squares will be generated dynamically -->
+    </div>
+    <div class="game-info">
+        <p id="turn"></p>
+        <p id="move"></p>
+        <p id="capture"></p>
+        <p id="check"></p>
+        <p id="checkmate"></p>
+    </div>
+    <div class="chat-container">
+        <input id="chat-input" type="text" placeholder="Type a message...">
+        <button id="send-button">Send</button>
+        <div id="chat-log"></div>
+    </div>
+    <div class="menu-container">
+        <button id="new-game-button">New Game</button>
+        <button id="undo-move-button">Undo Move</button>
+        <button id="redo-move-button">Redo Move</button>
+        <button id="save-game-button">Save Game</button>
+        <button id="load-game-button">Load Game</button>
+    </div>
+<!-- Toggle buttons -->
+<label class="toggle-button">
+    <input type="checkbox" id="light-mode-toggle">
+    <span class="slider round"></span>
+</label>
+
+<label class="toggle-button">
+    <input type="checkbox" id="dark-mode-toggle">
+    <span class="slider round"></span>
+</label>
+
+<label class="toggle-button">
+    <input type="checkbox" id="high-contrast-mode-toggle">
+    <span class="slider round"></span>
+</label>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sudoku Game</h1>
+        <nav>
+            <button id="new-game-btn">New Game</button>
+            <button id="hint-btn">Hint</button>
+            <button id="undo-btn">Undo</button>
+            <button id="redo-btn">Redo</button>
+            <button id="solve-btn">Solve</button>
+            <button id="leaderboard-btn">Leaderboard</button>
+            <button id="save-game-btn">Save Game</button>
+            <button id="load-game-btn">Load Game</button>
+        </nav>
+    </header>
+    <main>
+        <div class="game-container">
+            <div class="game-grid">
+                <!-- 9x9 grid for Sudoku game -->
+            </div>
+            <div class="game-stats">
+                <p id="completion-time">Completion Time: 0:00</p>
+                <p id="hints-used">Hints Used: 0</p>
+                <p id="errors-made">Errors Made: 0</p>
+            </div>
+            <div class="leaderboard-container">
+                <h2>Leaderboard</h2>
+                <ul id="leaderboard-list">
+                    <!-- Leaderboard list will be populated here -->
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>2025 Sudoku Game</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
