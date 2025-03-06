@@ -177,3 +177,51 @@ main {
     top: 0;
     left: 0;
 }
+
+
+.weather-container {
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#settings-section {
+    display: none;
+}
+
+#settings-section.hide {
+    display: none;
+}
+
+#settings-section.show {
+    display: block;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode header {
+    background-color: #444;
+}
+
+.dark-mode .weather-container {
+    background-color: #444;
+    color: #fff;
+}
+
+.high-contrast-mode {
+    background-color: #000;
+    color: #fff;
+}
+
+.high-contrast-mode header {
+    background-color: #111;
+}
+
+.high-contrast-mode .weather-container {
+    background-color: #111;
+    color: #fff;
+}

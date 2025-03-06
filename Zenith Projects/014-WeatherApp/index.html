@@ -15,6 +15,7 @@
             <ul>
                 <li><a href="#" id="current-weather-btn" class="active">Current Weather</a></li>
                 <li><a href="#" id="weather-forecast-btn">Weather Forecast</a></li>
+                <li><a href="#" id="settings-btn">Settings</a></li>
             </ul>
         </nav>
     </header>
@@ -42,6 +43,28 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="settings-section" class="hide">
+            <h2>Settings</h2>
+            <form id="settings-form">
+                <label>
+                    <input type="checkbox" id="dark-mode-checkbox">
+                    <span>Dark Mode</span>
+                </label>
+                <label>
+                    <input type="radio" id="theme-1-radio" name="theme" checked>
+                    <span>Theme 1</span>
+                </label>
+                <label>
+                    <input type="radio" id="theme-2-radio" name="theme">
+                    <span>Theme 2</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="high-contrast-checkbox">
+                    <span>High Contrast Mode</span>
+                </label>
+                <button id="save-settings-btn" class="waves-effect waves-light btn">Save Settings</button>
+            </form>
         </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

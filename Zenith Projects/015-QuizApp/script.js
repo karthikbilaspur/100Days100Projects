@@ -11,15 +11,19 @@ let score = 0;
 let questions = [];
 
 async function loadQuestions() {
-    const easyResponse = await fetch('easy.json');
-    const middleResponse = await fetch('middle.json');
-    const hardResponse = await fetch('hard.json');
+    try {
+        const easyResponse = await fetch('easy.json');
+        const middleResponse = await fetch('middle.json');
+        const hardResponse = await fetch('hard.json');
 
-    const easyQuestions = await easyResponse.json();
-    const middleQuestions = await middleResponse.json();
-    const hardQuestions = await hardResponse.json();
+        const easyQuestions = await easyResponse.json();
+        const middleQuestions = await middleResponse.json();
+        const hardQuestions = await hardResponse.json();
 
-    questions = [...easyQuestions, ...middleQuestions, ...hardQuestions];
+        questions = [...easyQuestions, ...middleQuestions, ...hardQuestions];
+    } catch (error) {
+        console.error('Error loading questions:', error);
+    }
 }
 
 async function displayQuestion() {
@@ -53,9 +57,23 @@ answerContainer.addEventListener('click', (event) => {
             score++;
         }
 
-        currentQuestionIndex++;
-        displayQuestion();
+        // Disable submit button
+        submitBtn.disabled = true;
+
+        // Display next button
+        nextBtn.style.display = 'block';
     }
+});
+
+nextBtn.addEventListener('click', () => {
+    currentQuestionIndex++;
+    displayQuestion();
+
+    // Hide next button
+    nextBtn.style.display = 'none';
+
+    // Enable submit button
+    submitBtn.disabled = false;
 });
 
 function displayResult() {

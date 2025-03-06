@@ -11,6 +11,11 @@ const errorMessageDiv = document.getElementById('error-message');
 const loadingIndicatorDiv = document.getElementById('loading-indicator');
 const currentWeatherBtn = document.getElementById('current-weather-btn');
 const weatherForecastBtn = document.getElementById('weather-forecast-btn');
+const settingsBtn = document.getElementById('settings-btn');
+const settingsSection = document.getElementById('settings-section');
+const darkModeCheckbox = document.getElementById('dark-mode-checkbox');
+const highContrastCheckbox = document.getElementById('high-contrast-checkbox');
+const saveSettingsBtn = document.getElementById('save-settings-btn');
 
 // Define the functions
 async function getWeatherData(city) {
@@ -80,6 +85,23 @@ function toggleLoadingIndicator(loading) {
     }
 }
 
+function toggleDarkMode(enabled) {
+    if (enabled) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+}
+
+function toggleHighContrastMode(enabled) {
+    if (enabled) {
+        document.body.classList.add('high-contrast-mode');
+    } else {
+        document.body.classList.remove('high-contrast-mode');
+    }
+}
+
+// Add event listeners
 weatherForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     try {
@@ -101,79 +123,60 @@ weatherForm.addEventListener('submit', async (event) => {
     }
 });
 
-currentWeatherBtn.addEventListener('click', () => {
-    weatherDataDiv.style.display = 'block';
-    weatherForecastDiv.style.display = 'none';
-    currentWeatherBtn.classList.add('active');
-    weatherForecastBtn.classList.remove('active');
+settingsBtn.addEventListener('click', () => {
+    settingsSection.classList.toggle('show');
 });
 
-weatherForecastBtn.addEventListener('click', () => {
-    weatherDataDiv.style.display = 'none';
-    weatherForecastDiv.style.display = 'block';
-    weatherForecastBtn.classList.add('active');
-    currentWeatherBtn.classList.remove('active');
+darkModeCheckbox.addEventListener('change', (event) => {
+    toggleDarkMode(event.target.checked);
 });
 
-// Add animation to the loading indicator
-loadingIndicatorDiv.addEventListener('animationstart', () => {
-    console.log('Loading animation started');
+highContrastCheckbox.addEventListener('change', (event) => {
+    toggleHighContrastMode(event.target.checked);
 });
 
-loadingIndicatorDiv.addEventListener('animationend', () => {
-    console.log('Loading animation ended');
+saveSettingsBtn.addEventListener('click', () => {
+    localStorage.setItem('darkMode', darkModeCheckbox.checked);
+    localStorage.setItem('highContrastMode', highContrastCheckbox.checked);
 });
 
-// Use the Web Notifications API to provide alerts and notifications
-if ('Notification' in window) {
-    Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-            console.log('Notifications are enabled');
-        } else {
-            console.log('Notifications are not enabled');
-        }
-    });
-}
+// Initialize settings
+const storedDarkMode = localStorage.getItem('darkMode') === 'true';
+const storedHighContrastMode = localStorage.getItem('highContrastMode') === 'true';
 
-// Use the Web Storage API to store user preferences
-if ('localStorage' in window) {
-    const storedCity = localStorage.getItem('city');
-    if (storedCity) {
-        cityInput.value = storedCity;
+darkModeCheckbox.checked = storedDarkMode;
+highContrastCheckbox.checked = storedHighContrastMode;
+
+toggleDarkMode(storedDarkMode);
+toggleHighContrastMode(storedHighContrastMode);
+
+// Add event listeners for accessibility features
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        settingsSection.classList.remove('show');
     }
-}
-
-cityInput.addEventListener('input', () => {
-    localStorage.setItem('city', cityInput.value);
 });
 
-// Use the Web Workers API to perform background tasks
-if ('Worker' in window) {
-    const worker = new Worker('worker.js');
-    worker.addEventListener('message', (event) => {
-        console.log(`Received message from worker: ${event.data}`);
-    });
-}
+// Add ARIA attributes for accessibility
+settingsBtn.setAttribute('aria-controls', 'settings-section');
+settingsBtn.setAttribute('aria-expanded', 'false');
 
-// Use the Web Notifications API to provide alerts and notifications
-if ('Notification' in window) {
-    Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-            console.log('Notifications are enabled');
-        } else {
-            console.log('Notifications are not enabled');
-        }
-    });
-}
+settingsSection.setAttribute('aria-labelledby', 'settings-btn');
+settingsSection.setAttribute('aria-hidden', 'true');
 
-// Use the Web Storage API to store user preferences
-if ('localStorage' in window) {
-    const storedCity = localStorage.getItem('city');
-    if (storedCity) {
-        cityInput.value = storedCity;
+// Update ARIA attributes when settings section is toggled
+settingsBtn.addEventListener('click', () => {
+    const expanded = settingsSection.classList.contains('show');
+    settingsBtn.setAttribute('aria-expanded', expanded);
+    settingsSection.setAttribute('aria-hidden', !expanded);
+});
+
+// Add screen reader support for settings section
+settingsSection.addEventListener('transitionend', () => {
+    const expanded = settingsSection.classList.contains('show');
+    if (expanded) {
+        settingsSection.setAttribute('aria-hidden', 'false');
+    } else {
+        settingsSection.setAttribute('aria-hidden', 'true');
     }
-}
-
-cityInput.addEventListener('input', () => {
-    localStorage.setItem('city', cityInput.value);
 });
