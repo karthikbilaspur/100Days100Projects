@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 <body>
-    <canvas id="game-canvas" width="400" height="400"></canvas>
+    <canvas id="game-canvas"></canvas>
     <div id="game-over-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -16,15 +17,27 @@
             <button id="play-again-button">Play Again</button>
         </div>
     </div>
-    <div id="leaderboard-modal" class="modal">
+    <div id="level-editor-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>Leaderboard:</p>
-            <div id="leaderboard"></div>
+            <p>Level Editor</p>
+            <button id="save-level-button">Save Level</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/socket.io@2.3.0/dist/socket.io.js"></script>
     <script src="script.js"></script>
+    <!-- Add a screen reader only element for the game over screen -->
+<div class="screen-reader-only" id="game-over-announcement"></div>
+
+<!-- Update the game over screen to include a screen reader only element -->
+<div id="game-over-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Game Over!</p>
+        <p id="final-score"></p>
+        <button id="play-again-button">Play Again</button>
+        <div class="screen-reader-only" id="game-over-instructions"></div>
+    </div>
+</div>
 </body>
 </html>
