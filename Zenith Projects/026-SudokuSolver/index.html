@@ -3,45 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sudoku Game</title>
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Sudoku Game</h1>
-        <nav>
-            <button id="new-game-btn">New Game</button>
-            <button id="hint-btn">Hint</button>
-            <button id="undo-btn">Undo</button>
-            <button id="redo-btn">Redo</button>
-            <button id="solve-btn">Solve</button>
-            <button id="leaderboard-btn">Leaderboard</button>
-            <button id="save-game-btn">Save Game</button>
-            <button id="load-game-btn">Load Game</button>
-        </nav>
-    </header>
-    <main>
-        <div class="game-container">
-            <div class="game-grid">
-                <!-- 9x9 grid for Sudoku game -->
-            </div>
-            <div class="game-stats">
-                <p id="completion-time">Completion Time: 0:00</p>
-                <p id="hints-used">Hints Used: 0</p>
-                <p id="errors-made">Errors Made: 0</p>
-            </div>
-            <div class="leaderboard-container">
-                <h2>Leaderboard</h2>
-                <ul id="leaderboard-list">
-                    <!-- Leaderboard list will be populated here -->
-                </ul>
-            </div>
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Sudoku Solver</h1>
+        <button id="generate-grid-btn" class="btn btn-primary mb-5">Generate Grid</button>
+        <div class="difficulty-level">
+            <label for="difficulty">Difficulty Level:</label>
+            <select id="difficulty" class="form-control">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
         </div>
-    </main>
-    <footer>
-        <p>2025 Sudoku Game</p>
+        <div class="theme-selector">
+            <label for="theme">Theme:</label>
+            <select id="theme" class="form-control">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+        <div class="sudoku-grid">
+            <!-- 9x9 grid of input fields will be generated here -->
+        </div>
+        <button id="solve-btn" class="btn btn-success mt-5">Solve</button>
+        <button id="hint-btn" class="btn btn-info mt-5">Hint</button>
+        <button id="reset-btn" class="btn btn-danger mt-5">Reset</button>
+        <button id="clear-btn" class="btn btn-warning mt-5">Clear</button>
+    </div>
+    <footer class="footer mt-5">
+        <div class="container">
+            <p class="text-center">&copy; 2025 SudokuSolver. All rights reserved.</p>
+        </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

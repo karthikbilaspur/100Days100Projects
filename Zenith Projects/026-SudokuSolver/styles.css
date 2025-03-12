@@ -1,55 +1,105 @@
-.game-container {
-  width: 360px;
-  margin: 40px auto;
-  text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
 
-.game-grid {
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sudoku-grid {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  grid-gap: 2px;
-  border: 2px solid #000;
+  grid-gap: 1px;
+  margin-bottom: 20px;
 }
 
-.cell {
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
+.sudoku-grid input[type="number"] {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
   text-align: center;
   border: none;
-  border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.cell:focus {
+.sudoku-grid input[type="number"]:focus {
   outline: none;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.game-stats {
-  margin-top: 20px;
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-#completion-time, #hints-used, #errors-made {
-  font-size: 18px;
-  margin-bottom: 10px;
+button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.leaderboard-container {
-  margin-top: 20px;
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
 }
 
-#leaderboard-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.difficulty-level {
+  margin-bottom: 20px;
 }
 
-#leaderboard-list li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+.difficulty-level select {
+  width: 100px;
 }
 
-#leaderboard-list li:last-child {
-  border-bottom: none;
+.theme-selector {
+  margin-bottom: 20px;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .sudoku-grid input[type="number"] {
+  background-color: #444;
+  color: #fff;
+}
+
+
+/* Media queries */
+@media only screen and (max-width: 768px) {
+  .container {
+      margin: 20px auto;
+  }
+  .sudoku-grid {
+      grid-gap: 5px;
+  }
+  .sudoku-grid input[type="number"] {
+      width: 25px;
+      height: 25px;
+      font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+      margin: 10px auto;
+  }
+  .sudoku-grid {
+      grid-gap: 10px;
+  }
+  .sudoku-grid input[type="number"] {
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+  }
 }

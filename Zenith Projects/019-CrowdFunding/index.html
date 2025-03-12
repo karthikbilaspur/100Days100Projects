@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTarget</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#tree-planting">Tree Planting</a></li>
+                <li><a href="#live-updates">Live Updates</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>GreenTarget</h1>
+            <p>Raising ₹100 crores to plant trees and make a difference.</p>
+            <h2>Current Amount: ₹<span id="current-amount">0</span></h2>
+            <button id="donate-btn" class="btn">Donate Now</button>
+        </section>
+        <section id="donate">
+            <h2>Donate to Support Our Cause</h2>
+            <form id="donation-form">
+                <label for="amount">Enter Amount (₹):</label>
+                <input type="number" id="amount" required min="1">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" required>
+                <button id="submit-donation" class="btn">Donate</button>
+                <p id="donation-success-message" style="display: none;">Thank you for your donation!</p>
+            </form>
+        </section>
+        <section id="tree-planting">
+            <h2>Tree Planting Progress</h2>
+            <p>Trees Planted: <span id="trees-planted">0</span></p>
+            <p>Total Carbon Sequestered: <span id="carbon-sequestered">0</span> kg</p>
+            <div id="tree-planting-map"></div>
+        </section>
+        <section id="live-updates">
+            <h2>Live Updates</h2>
+            <ul id="update-list">
+                <!-- updates will be displayed here -->
+            </ul>
+        </section>
+        <section id="about-us">
+            <h2>About Us</h2>
+            <p>We are a team of environmentalists dedicated to making a positive impact on our planet.</p>
+        </section>
+        <section id="faqs">
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+                <li>
+                    <h3>What is the campaign's goal?</h3>
+                    <p>To raise ₹100 crores to plant trees and make a difference.</p>
+                </li>
+                <li>
+                    <h3>How will the funds be used?</h3>
+                    <p>The funds will be used to plant trees and support environmental initiatives.</p>
+                </li>
+                <li>
+                    <h3>Can I donate anonymously?</h3>
+                    <p>Yes, you can donate anonymously.</p>
+                </li>
+            </ul>
+        </section>
+        <section id="blog">
+            <h2>Blog</h2>
+            <ul>
+                <li>
+                    <h3>Update 1: Campaign Launch</h3>
+                    <p>We are excited to launch our campaign to raise ₹100 crores to plant trees and make a difference.</p>
+                </li>
+                <li>
+                    <h3>Update 2: First Donation</h3>
+                    <p>We are thrilled to receive our first donation of ₹10,000.</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
