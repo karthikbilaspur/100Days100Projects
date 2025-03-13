@@ -1,0 +1,249 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.word-container {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.guess-container {
+    margin-bottom: 20px;
+}
+
+#guess {
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#submit-guess {
+    width: 60px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#submit-guess:hover {
+    background-color: #3e8e41;
+}
+
+.hangman-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+#hangman {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+}
+
+.head {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.body {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 50px;
+    background-color: #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.arm {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    width: 5px;
+    height: 30px;
+    background-color: #ccc;
+    transform: rotate(45deg);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.arm2 {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    width: 5px;
+    height: 30px;
+    background-color: #ccc;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.leg {
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    width: 5px;
+    height: 30px;
+    background-color: #ccc;
+    transform: rotate(45deg);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.leg2 {
+    position: absolute;
+    bottom: 10%;
+    left: 60%;
+    width: 5px;
+    height: 30px;
+    background-color: #ccc;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.score-container {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+#score {
+    font-weight: bold;
+}
+
+#tries {
+    font-weight: bold;
+}
+
+.ai-container {
+    margin-top: 20px;
+}
+
+#ai-guess {
+    width: 60px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#ai-guess:hover {
+    background-color: #3e8e41;
+}
+
+.multiplayer-container {
+    margin-top: 20px;
+}
+
+#multiplayer {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#multiplayer:hover {
+    background-color: #3e8e41;
+}
+
+.leaderboard-container {
+    margin-top: 20px;
+}
+
+#leaderboard {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#leaderboard:hover {
+    background-color: #3e8e41;
+}
+
+/* Responsive design */
+
+@media only screen and (max-width: 768px) {
+    .game-container {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .game-container {
+        width: 95%;
+    }
+    .word-container {
+        font-size: 18px;
+    }
+    .guess-container {
+        margin-bottom: 10px;
+    }
+    .hangman-container {
+        width: 80px;
+        height: 80px;
+    }
+    #hangman {
+        width: 80px;
+        height: 80px;
+    }
+    .score-container {
+        font-size: 14px;
+    }
+    .ai-container {
+        margin-top: 10px;
+    }
+    .multiplayer-container {
+        margin-top: 10px;
+    }
+    .leaderboard-container {
+        margin-top: 10px;
+    }
+}

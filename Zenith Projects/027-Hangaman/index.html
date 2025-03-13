@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hangman</h1>
+    <div class="game-container">
+        <div class="word-container">
+            <span id="word"></span>
+        </div>
+        <div class="guess-container">
+            <input type="text" id="guess" maxlength="1">
+            <button id="submit-guess">Guess</button>
+        </div>
+        <div class="hangman-container">
+            <div id="hangman"></div>
+        </div>
+        <div class="score-container">
+            <span id="score">Score: 0</span>
+            <span id="tries">Tries left: 6</span>
+        </div>
+        <div class="ai-container">
+            <button id="ai-guess">AI Guess</button>
+        </div>
+        <div class="multiplayer-container">
+            <button id="multiplayer">Multiplayer</button>
+        </div>
+        <div class="leaderboard-container">
+            <button id="leaderboard">Leaderboard</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/dist/lodash.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
