@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Companies</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="btn-login">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Find Your Dream Job</h1>
+        <form>
+            <input type="search" placeholder="Search for jobs">
+            <button>Search</button>
+            <select>
+                <option value="">Location</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+                <option value="Paris">Paris</option>
+            </select>
+            <select>
+                <option value="">Category</option>
+                <option value="Software Development">Software Development</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finance">Finance</option>
+            </select>
+        </form>
+        <button class="btn-advanced-search">Advanced Search</button>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section class="job-listings">
+        <h2>Job Listings</h2>
+        <ul>
+            <!-- Job Listing 1 -->
+            <li>
+                <h3>Job Title</h3>
+                <p>Company Name</p>
+                <p>Location</p>
+                <button class="btn-apply-now">Apply Now</button>
+                <button class="btn-save-job">Save Job</button>
+            </li>
+
+            <!-- Job Listing 2 -->
+            <li>
+                <h3>Job Title</h3>
+                <p>Company Name</p>
+                <p>Location</p>
+                <button class="btn-apply-now">Apply Now</button>
+                <button class="btn-save-job">Save Job</button>
+            </li>
+
+            <!-- Job Listing 3 -->
+            <li>
+                <h3>Job Title</h3>
+                <p>Company Name</p>
+                <p>Location</p>
+                <button class="btn-apply-now">Apply Now</button>
+                <button class="btn-save-job">Save Job</button>
+            </li>
+        </ul>
+    </section>
+
+    <!-- User Registration Section -->
+    <section class="user-registration">
+        <h2>User Registration</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <button>Register</button>
+        </form>
+    </section>
+
+    <!-- Resume Builder Section -->
+    <section class="resume-builder">
+        <h2>Resume Builder</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone"><br><br>
+            <label for="summary">Summary:</label>
+            <textarea id="summary" name="summary"></textarea><br><br>
+            <label for="experience">Experience:</label>
+            <textarea id="experience" name="experience"></textarea><br><br>
+            <label for="education">Education:</label>
+            <textarea id="education" name="education"></textarea><br><br>
+            <button>Build Resume</button>
+        </form>
+    </section>
+
+    <!-- Interview Prep Section -->
+    <section class="interview-prep">
+        <h2>Interview Prep</h2>
+        <ul>            <li><a href="#">Common Interview Questions</a></li>
+            <li><a href="#">Interview Tips and Advice</a></li>
+            <li><a href="#">Practice Interviews</a></li>
+        </ul>
+    </section>
+
+    <!-- Google Forms Section -->
+    <section class="google-forms">
+        <h2>Get in Touch</h2>
+        <iframe src="https://docs.google.com/forms/d/e/your-form-id/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </section>
+
+    <!-- Google Calendar Section -->
+    <section class="google-calendar">
+        <h2>Upcoming Events</h2>
+        <iframe src="https://calendar.google.com/calendar/embed?src=your-calendar-id&ctz=America/New_York" style="border: 0" width="100%" height="500" frameborder="0" scrolling="no"></iframe>
+    </section>
+
+    <!-- Social Sharing Section -->
+    <section class="social-sharing">
+        <h2>Share with Others</h2>
+        <a href="#" class="btn-facebook-share">Share on Facebook</a>
+        <a href="#" class="btn-twitter-share">Share on Twitter</a>
+        <a href="#" class="btn-linkedin-share">Share on LinkedIn</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>2025 Job Portal</p>
+        <ul>
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
