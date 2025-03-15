@@ -1,8 +1,4 @@
-The 100 website challenge is an excellent way to improve your coding skills and build a portfolio. Here are some project ideas that cover Full Stack Development with Python and AI:
-Full Stack Development Projects
-To-Do List App: Create a simple to-do list app with user authentication, CRUD operations, and deployment.
-Blog Website: Build a blog website with user registration, posting, commenting, and tagging.
-E-commerce Website: Develop an e-commerce website with user authentication, product listing, shopping cart, and payment gateway integration.
+bloE-commerce Website: Develop an e-commerce website with user authentication, product listing, shopping cart, and payment gateway integration.
 Quiz Website: Create a quiz website with user registration, quiz creation, and scoring.
 Weather App: Build a weather app with location-based weather forecasting and alerts.
 Personal Finance Manager: Develop a personal finance manager with expense tracking, budgeting, and investment tracking.
