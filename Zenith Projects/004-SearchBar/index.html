@@ -3,44 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Search Bar</title>
+    <title>Restaurant Finder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Restaurant Finder</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Restaurant Finder</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <main>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Search for restaurants...">
-            <select id="cuisine-select">
-                <option value="">Select Cuisine</option>
-                <option value="Italian">Italian</option>
-                <option value="Chinese">Chinese</option>
-                <option value="Indian">Indian</option>
-            </select>
-            <select id="location-select">
-                <option value="">Select Location</option>
-                <option value="Mumbai">Mumbai</option>
-                <option value="Delhi">Delhi</option>
-                <option value="Bangalore">Bangalore</option>
-            </select>
-            <div class="rating-filter">
-                <input type="radio" id="rating-4" name="rating">
-                <label for="rating-4">4+ stars</label>
-                <input type="radio" id="rating-3" name="rating">
-                <label for="rating-3">3+ stars</label>
-                <input type="radio" id="rating-all" name="rating">
-                <label for="rating-all">All</label>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mt-4 mb-4">Find Your Favorite Restaurant</h1>
+                </div>
             </div>
-            <button id="search-btn">Search</button>
-            <button id="reset-btn">Reset</button>
-        </div>
-        <div class="search-results">
-            <!-- Search results will be displayed here -->
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="search-form">
+                        <div class="form-group">
+                            <label for="search-input">Search for restaurants:</label>
+                            <input type="text" class="form-control" id="search-input" placeholder="Enter restaurant name, cuisine, or location">
+                        </div>
+                        <div class="form-group">
+                            <label for="cuisine-select">Select Cuisine:</label>
+                            <select class="form-control" id="cuisine-select">
+                                <option value="">Select Cuisine</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Indian">Indian</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location-select">Select Location:</label>
+                            <select class="form-control" id="location-select">
+                                <option value="">Select Location</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Bangalore">Bangalore</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating-filter">Rating:</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rating" id="rating-4" value="4">
+                                <label class="form-check-label" for="rating-4">4+ stars</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rating" id="rating-3" value="3">
+                                <label class="form-check-label" for="rating-3">3+ stars</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rating" id="rating-all" value="all">
+                                <label class="form-check-label" for="rating-all">All</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="mt-4 mb-4">Search Results:</h2>
+                    <div id="search-results"></div>
+                </div>
+            </div>
         </div>
     </main>
 
+    <footer class="bg-dark text-white mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Restaurant Finder</h5>
+                    <p>This is a restaurant finder application.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
