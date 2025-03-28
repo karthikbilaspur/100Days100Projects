@@ -1,5 +1,5 @@
 const sliderContainer = document.querySelector('.slider-container');
-const slider = document.querySelector('.slider');
+const sliderElement = document.querySelector('.slider');
 const paginationContainer = document.querySelector('.pagination');
 const navigation = document.querySelector('.navigation');
 const prevBtn = document.querySelector('.prev-btn');
