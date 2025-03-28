@@ -1,0 +1,11 @@
+# .travis.yml
+language: node_js
+node_js:
+  - "14"
+script:
+  - npm run build
+  - npm run test
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: my-app
