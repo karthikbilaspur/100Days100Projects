@@ -1,26 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Review = mongoose.model('Review');
+const Order = mongoose.model('Order');
 
 router.get('/', async (req, res) => {
     try {
-        const reviews = await Review.find();
-        res.json(reviews);
+        const orders = await Order.find();
+        res.json(orders);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error fetching reviews' });
+        res.status(500).json({ message: 'Error fetching orders' });
     }
 });
 
 router.post('/', async (req, res) => {
     try {
-        const review = new Review(req.body);
-        await review.save();
-        res.json(review);
+        const order = new Order(req.body);
+        await order.save();
+        res.json(order);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error creating review' });
+        res.status(500).json({ message: 'Error creating order' });
     }
 });
 

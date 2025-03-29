@@ -1,11 +1,18 @@
 import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
-const Footer = () => {
-  return (
-    <footer>
-      <p>&copy; 2025 Restaurant Website</p>
-    </footer>
-  );
-};
+function Footer() {
+    return (
+        <footer className="footer">
+            <Container>
+                <Row>
+                    <Col>
+                        <p>&copy; 2023 Restaurant Website</p>
+                    </Col>
+                </Row>
+            </Container>
+        </footer>
+    );
+}
 
 export default Footer;

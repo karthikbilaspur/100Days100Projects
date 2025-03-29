@@ -1,98 +1,108 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Image, Form, Button  } from 'react-bootstrap';
 import axios from 'axios';
-import MenuItems from './MenuItems';
-import Pagination from './Pagination';
-import FeedbackForm from './FeedbackForm';
+import { Rating } from 'react-rating';
 
-const Menu = () => {
-  const [menuItems, setMenuItems] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState('');
-  const [pageNumber, setPageNumber] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [favorites, setFavorites] = useState([]);
-  const [feedback, setFeedback] = useState('');
+function Menu() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [menuItems, setMenuItems] = useState([]);
+    const [rating, setRating] = useState(0);
 
-  useEffect(() => {
-    axios.get('/api/menu')
-      .then(response => {
-        setMenuItems(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
+    const handleSearch = async (event) => {
+        event.preventDefault();
+        const response = await fetch(`/api/menu?search=${searchTerm}`);
+        const data = await response.json();
+        setMenuItems(data);
+    };
+    
+    const handleRating = (rating) => {
+        setRating(rating);
+    };
 
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
+    
+    useEffect(() => {
+        axios.get('/api/menu')
+            .then(response => {
+                setMenuItems(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
 
-  const handlePageChange = (pageNumber) => {
-    setPageNumber(pageNumber);
-  };
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <h1>Menu</h1>
+                    {menuItems.map(item => (
+                        <div key={item._id}>
+                            <Image src={item.image} loading="lazy" />
+                            <h2>{item.name}</h2>
+                            <p>{item.description}</p>
+                            <p>{item.price}</p>
+                        </div>
+                    ))}
+                </Col>
+            </Row>
+        </Container>
+    );
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <Form onSubmit={handleSearch}>
+                        <Form.Group>
+                            <Form.Control
+                                type="text"
+                                value={searchTerm}
+                                onChange={(event) => setSearchTerm(event.target.value)}
+                                placeholder="Search for menu items"
+                            />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Search
+                        </Button>
+                    </Form>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    {menuItems.map((item) => (
+                        <div key={item._id}>
+                            <h2>{item.name}</h2>
+                            <p>{item.description}</p>
+                            <p>{item.price}</p>
+                        </div>
+                    ))}
+                </Col>
+            </Row>
+        </Container>
+    );
+   
 
-  const handleFavorite = (itemId) => {
-    const favoriteItem = menuItems.find(item => item._id === itemId);
-    if (favorites.includes(favoriteItem)) {
-      setFavorites(favorites.filter(item => item._id !== itemId));
-    } else {
-      setFavorites([...favorites, favoriteItem]);
-    }
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // ... send feedback to server ...
-  };
-
-  const filteredMenuItems = menuItems.filter(item => {
-    return item.name.toLowerCase().includes(searchTerm.toLowerCase()) && item.category === category;
-  });
-
-  const paginatedMenuItems = filteredMenuItems.slice((pageNumber - 1) * itemsPerPage, pageNumber * itemsPerPage);
-
-  return (
+return (
     <Container>
-      <Row>
-        <Col md={12}>
-          <h1>Menu</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={12}>
-          <Form>
-            <Form.Group controlId="searchTerm">
-              <Form.Label>Search:</Form.Label>
-              <Form.Control type="text" value={searchTerm} onChange={handleSearch} />
-            </Form.Group>
-            <Form.Group controlId="category">
-              <Form.Label>Category:</Form.Label>
-              <Form.Control as="select" value={category} onChange={handleCategoryChange}>
-                <option value="">All</option>
-                <option value="Appetizers">Appetizers</option>
-                <option value="Entrees">Entrees</option>
-                <option value="Desserts">Desserts</option>
-              </Form.Control>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
-      <Row>
-        <MenuItems menuItems={paginatedMenuItems} handleFavorite={handleFavorite} />
-      </Row>
-      <Row>
-        <Pagination pageNumber={pageNumber} itemsPerPage={itemsPerPage} totalItems={filteredMenuItems.length} handlePageChange={handlePageChange} />
-      </Row>
-      <Row>
-  <FeedbackForm handleSubmit={handleSubmit} feedback={feedback} setFeedback={setFeedback} />
-</Row>
-</Container>
+        <Row>
+            <Col>
+                {menuItems.map((item) => (
+                    <div key={item._id}>
+                        <h2>{item.name}</h2>
+                        <p>{item.description}</p>
+                        <p>{item.price}</p>
+                        <Rating
+                            initialRating={item.rating}
+                            onChange={handleRating}
+                        />
+                    </div>
+                ))}
+            </Col>
+        </Row>
+    </Container>
 );
-};
+}
+
+
 
 export default Menu;

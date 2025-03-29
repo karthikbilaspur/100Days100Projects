@@ -1,63 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Table } from 'react-bootstrap';
 import axios from 'axios';
 
-const Order = () => {
-  const [order, setOrder] = useState({});
-  const [paymentIntent, setPaymentIntent] = useState({});
+function Orders() {
+    const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    axios.get('/api/orders')
-      .then(response => {
-        setOrder(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
+    useEffect(() => {
+        axios.get('/api/orders')
+            .then(response => {
+                setOrders(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
 
-  const handlePlaceOrder = async () => {
-    try {
-      const response = await axios.post('/api/orders', order);
-      setOrder(response.data);
-      setPaymentIntent(response.data.paymentIntent);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <h1>Orders</h1>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Order Items</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {orders.map(order => (
+                                <tr key={order._id}>
+                                    <td>{order.customerName}</td>
+                                    <td>{order.orderItems.join(', ')}</td>
+                                    <td>{order.total}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </Col>
+            </Row>
+        </Container>
+    );
+}
 
-  const handleMakePayment = async () => {
-    try {
-      const response = await axios.post('/api/payment', { paymentIntent });
-      setPaymentIntent(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Order</h1>
-      <form>
-        <label>Customer Name:</label>
-        <input type="text" value={order.customerName} onChange={(event) => setOrder({ ...order, customerName: event.target.value })} />
-        <label>Customer Email:</label>
-        <input type="email" value={order.customerEmail} onChange={(event) => setOrder({ ...order, customerEmail: event.target.value })} />
-        <label>Order Items:</label>
-        <ul>
-          {order.orderItems.map(item => (
-            <li key={item._id}>
-              <span>{item.name}</span>
-              <span>{item.price}</span>
-            </li>
-          ))}
-        </ul>
-        <button onClick={handlePlaceOrder}>Place Order</button>
-        {paymentIntent && (
-          <button onClick={handleMakePayment}>Make Payment</button>
-        )}
-      </form>
-    </div>
-  );
-};
-
-export default Order;
+export default Orders;
