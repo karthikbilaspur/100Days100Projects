@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Teams</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>NBA Teams</h1>
+        <p>This is just for fun and learning purposes only and is not related to the official NBA website.</p>
+        <input type="search" id="search" placeholder="Search for teams...">
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+    </header>
+    <main>
+        <section class="conference-dropdown">
+            <button class="dropbtn" onclick="toggleDropdown('eastern')"><i class="fas fa-chevron-down"></i> Eastern Conference</button>
+            <div id="eastern" class="dropdown-content">
+                <ul id="eastern-teams">
+                    <li><a href="https://en.wikipedia.org/wiki/Atlanta_Hawks" target="_blank">Atlanta Hawks</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Boston_Celtics" target="_blank">Boston Celtics</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Brooklyn_Nets" target="_blank">Brooklyn Nets</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Charlotte_Hornets" target="_blank">Charlotte Hornets</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Chicago_Bulls" target="_blank">Chicago Bulls</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Cleveland_Cavaliers" target="_blank">Cleveland Cavaliers</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Detroit_Pistons" target="_blank">Detroit Pistons</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Indiana_Pacers" target="_blank">Indiana Pacers</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Miami_Heat" target="_blank">Miami Heat</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Milwaukee_Bucks" target="_blank">Milwaukee Bucks</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/New_York_Knicks" target="_blank">New York Knicks</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Orlando_Magic" target="_blank">Orlando Magic</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Philadelphia_76ers" target="_blank">Philadelphia 76ers</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Toronto_Raptors" target="_blank">Toronto Raptors</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Washington_Wizards" target="_blank">Washington Wizards</a></li>
+                </ul>
+            </div>
+        </section>
+        <section class="conference-dropdown">
+            <button class="dropbtn" onclick="toggleDropdown('western')"><i class="fas fa-chevron-down"></i> Western Conference</button>
+            <div id="western" class="dropdown-content">
+                <ul id="western-teams">
+                    <li><a href="https://en.wikipedia.org/wiki/Dallas_Mavericks" target="_blank">Dallas Mavericks</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Denver_Nuggets" target="_blank">Denver Nuggets</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Golden_State_Warriors" target="_blank">Golden State Warriors</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Houston_Rockets" target="_blank">Houston Rockets</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Los_Angeles_Clippers" target="_blank">Los Angeles Clippers</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Los_Angeles_Lakers" target="_blank">Los Angeles Lakers</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Memphis_Grizzlies" target="_blank">Memphis Grizzlies</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Minnesota_Timberwolves" target="_blank">Minnesota Timberwolves</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/New_Orleans_Pelicans" target="_blank">New Orleans Pelicans</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Oklahoma_City_Thunder" target="_blank">Oklahoma City Thunder</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Phoenix_Suns" target="_blank">Phoenix Suns</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Portland_Trail_Blazers" target="_blank">Portland Trail Blazers</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Sacramento_Kings" target="_blank">Sacramento Kings</a></li>
+<li><a href="https://en.wikipedia.org/wiki/San_Antonio_Spurs" target="_blank">San Antonio Spurs</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Utah_Jazz" target="_blank">Utah Jazz</a></li>
+</ul>
+</div>
+</section>
+        
+     </main>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="team-name"></h2>
+            <p id="team-info"></p>
+            <button id="roster-btn">View Roster</button>
+            <button id="schedule-btn">View Schedule</button>
+        </div>
+    </div>
+
+   <!-- Search bar -->
+<input type="search" id="search" placeholder="Search for teams...">
+
+<!-- Modal window -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="team-name"></h2>
+        <p id="team-info"></p>
+        <button id="roster-btn">View Roster</button>
+        <button id="schedule-btn">View Schedule</button>
+    </div>
+</div>
+<footer>
+    <p>Demo  2025 NBA Teams.</p>
+</footer>   
+
+    <script src="script.js"></script>
+</body>
+</html>
