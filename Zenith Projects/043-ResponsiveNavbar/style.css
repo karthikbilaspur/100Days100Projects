@@ -1,0 +1,408 @@
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    }
+
+
+/* Header Styles */
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 1em;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-right: 2em;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ccc;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger .line {
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    margin-bottom: 5px;
+}
+
+/* Hero Styles */
+
+.hero {
+    background-image: linear-gradient(to bottom, #333, #555);
+    background-size: 100% 300px;
+    background-position: 0% 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.hero button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* Destinations Styles */
+
+.destinations {
+    padding: 2em;
+}
+
+.destinations h2 {
+    margin-bottom: 1em;
+}
+
+.destination-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.destination-card {
+    margin: 1em;
+    width: calc(33.33% - 2em);
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.destination-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.5em 0.5em 0 0;
+}
+
+.destination-card h3 {
+    margin-bottom: 0.5em;
+}
+
+.destination-card p {
+    margin-bottom: 1em;
+}
+
+/* Search Styles */
+
+.search {
+    padding: 2em;
+}
+
+.search h2 {
+    margin-bottom: 1em;
+}
+
+#search-input {
+    width: 100%;
+    padding: 1em;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+}
+
+#search-results {
+    margin-top: 1em;
+}
+
+.search-result {
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-result h3 {
+    margin-bottom: 0.5em;
+}
+
+.search-result p {
+    margin-bottom: 1em;
+}
+
+/* Blog Styles */
+
+.blog {
+    padding: 2em;
+}
+
+.blog h2 {
+    margin-bottom: 1em;
+}
+
+.blog-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.blog-post {
+    margin: 1em;
+    width: calc(50% - 2em);
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.5em 0.5em 0 0;
+}
+
+.blog-post h3 {
+    margin-bottom: 0.5em;
+}
+
+.blog-post p {
+    margin-bottom: 1em;
+}
+
+/* Contact Styles */
+
+.contact {
+    padding: 2em;
+}
+
+.contact h2 {
+    margin-bottom: 1em;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact-form input, #contact-form textarea {
+    width: 100%;
+    padding: 1em;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    margin-bottom: 1em;
+}
+
+#contact-form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* Footer Styles */
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    clear: both;
+}
+
+footer p {
+    margin-bottom: 0.5em;
+}
+
+.social-media-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.social-media-links li {
+    margin-right: 1em;
+}
+
+.social-media-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-media-links a:hover {
+    color: #ccc;
+}
+
+/* Back to Top Button Styles */
+
+#back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 1em;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: none;
+}
+
+/* Dark Mode Toggle Button Styles */
+
+#dark-mode-toggle {
+    position: fixed;
+    top: 2em;
+    right: 2em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 1em;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* Dark Mode Styles */
+
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode header {
+    background-color: #555;
+}
+
+.dark-mode .hero {
+    background-image: linear-gradient(to bottom, #555, #777);
+}
+
+.dark-mode .destination-card {
+    background-color: #444;
+    border: 1px solid #555;
+}
+
+.dark-mode .search-result {
+    background-color: #444;
+    border: 1px solid #555;
+}
+
+.dark-mode .blog-post {
+    background-color: #444;
+    border: 1px solid #555;
+}
+
+.dark-mode footer {
+    background-color: #555;
+}
+
+/* Responsive Styles */
+
+@media only screen and (max-width: 768px) {
+    header nav ul {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .nav-links.show {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        padding: 1em;
+        width: 100%;
+    }
+
+    .nav-links.show li {
+        margin-bottom: 1em;
+    }
+
+    .nav-links.show a {
+        color: #fff;
+    }
+
+    .hero {
+        height: 50vh;
+    }
+
+    .destination-cards {
+        flex-direction: column;
+    }
+
+    .destination-card {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .blog-posts {
+        flex-direction: column;
+    }
+
+    .blog-post {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+}
+
