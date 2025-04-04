@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthik Piano</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="wrap">
+        <header>
+            <h1>Karthik Piano</h1>
+            <h2>Use your keyboard. Hover for hints.</h2>
+            <section id="wrap">
+                <header>
+                    <div class="social-share">
+                        <button class="share-btn" id="share-fb">Share on Facebook</button>
+                        <button class="share-btn" id="share-tw">Share on Twitter</button>
+                        <button class="share-btn" id="share-ig">Share on Instagram</button>
+                    </div>     
+                    <div class="menu">
+                        <button class="menu-btn" id="record-btn">Record</button>
+                        <button class="menu-btn" id="playback-btn">Playback</button>
+                        <button class="menu-btn" id="settings-btn">Settings</button>
+                    </div>           
+        </header>
+        <section id="main">
+            <div class="nowplaying"></div>
+            <div class="keys">
+                <div data-key="65" class="key" data-note="C">
+                    <span class="hints">A</span>
+                </div>
+                <div data-key="87" class="key sharp" data-note="C#">
+                    <span class="hints">W</span>
+                </div>
+                <div data-key="83" class="key" data-note="D">
+                    <span class="hints">S</span>
+                </div>
+                <div data-key="69" class="key sharp" data-note="D#">
+                    <span class="hints">E</span>
+                </div>
+                <div data-key="68" class="key" data-note="E">
+                    <span class="hints">D</span>
+                </div>
+                <div data-key="70" class="key" data-note="F">
+                    <span class="hints">F</span>
+                </div>
+                <div data-key="84" class="key sharp" data-note="F#">
+                    <span class="hints">T</span>
+                </div>
+                <div data-key="71" class="key" data-note="G">
+                    <span class="hints">G</span>
+                </div>
+                <div data-key="89" class="key sharp" data-note="G#">
+                    <span class="hints">Y</span>
+                </div>
+                <div data-key="72" class="key" data-note="A">
+                    <span class="hints">H</span>
+                </div>
+                <div data-key="85" class="key sharp" data-note="A#">
+                    <span class="hints">U</span>
+                </div>
+                <div data-key="74" class="key" data-note="B">
+                    <span class="hints">J</span>
+                </div>
+                <div data-key="75" class="key" data-note="C">
+                    <span class="hints">K</span>
+                </div>
+                <div data-key="79" class="key sharp" data-note="C#">
+                    <span class="hints">O</span>
+                </div>
+                <div data-key="76" class="key" data-note="D">
+                    <span class="hints">L</span>
+                </div>
+                <div data-key="80" class="key sharp" data-note="D#">
+                    <span class="hints">P</span>
+                </div>
+                <div data-key="186" class="key" data-note="E">
+                    <span class="hints">;</span>
+                </div>
+            </div>
+
+            <!-- Add audio files for each note -->
+            <audio data-key="65" src="sounds/040.wav"></audio>
+            <audio data-key="87" src="sounds/041.wav"></audio>
+            <audio data-key="83" src="sounds/042.wav"></audio>
+            <audio data-key="69" src="sounds/043.wav"></audio>
+            <audio data-key="68" src="sounds/044.wav"></audio>
+            <audio data-key="70" src="sounds/045.wav"></audio>
+            <audio data-key="84" src="sounds/046.wav"></audio>
+            <audio data-key="71" src="sounds/047.wav"></audio>
+            <audio data-key="89" src="sounds/048.wav"></audio>
+            <audio data-key="72" src="sounds/049.wav"></audio>
+            <audio data-key="85" src="sounds/050.wav"></audio>
+            <audio data-key="74" src="sounds/051.wav"></audio>
+            <audio data-key="75" src="sounds/052.wav"></audio>
+            <audio data-key="79" src="sounds/053.wav"></audio>
+            <audio data-key="76" src="sounds/054.wav"></audio>
+            <audio data-key="80" src="sounds/055.wav"></audio>
+            <audio data-key="186" src="sounds/056.wav"></audio>
+            <audio data-key="82" src="sounds/057.wav"></audio>
+
+            <div class="recordings">
+                <h2>Recordings</h2>
+                <ul id="recordings-list"></ul>
+            </div>
+            <div class="settings">
+                <h2>Settings</h2>
+                <form id="settings-form">
+                    <label for="theme-select">Theme:</label>
+                    <select id="theme-select">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                    <br>
+                    <label for="instrument-select">Instrument:</label>
+                    <select id="instrument-select">
+                        <option value="piano">Piano</option>
+                        <option value="guitar">Guitar</option>
+                    </select>
+                </form>
+            </div>
+        </section>
+    </section>
+</main>
+    <footer>
+        <p>&copy; 2025 Karthik Piano. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recordrtc/5.6.1/RecordRTC.min.js"></script>
+</header>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/share-api-polyfill@1.1.4/dist/shareapi-polyfill.umd.js"></script>
+</body>
+</html>

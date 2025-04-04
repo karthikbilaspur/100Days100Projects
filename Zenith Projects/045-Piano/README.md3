@@ -1,0 +1,44 @@
+Karthik Piano
+A Virtual Piano Web Application
+Table of Contents
+Introduction
+Features
+Installation
+Usage
+Contributing
+License
+Acknowledgments
+Known Issues
+Future Development
+Contact
+Introduction
+Karthik Piano is a virtual piano web application built using HTML, CSS, and JavaScript. The application allows users to play piano keys using their keyboard, record and playback their performances, and customize the piano theme and instrument.
+Features
+Virtual piano keyboard with interactive keys
+Record and playback functionality
+Settings menu for theme and instrument selection
+Social sharing buttons for Facebook, Twitter, and Instagram
+Responsive design for various devices
+Installation
+Clone the repository using git clone https://github.com/your-username/karthik-piano.git
+Open the index.html file in a web browser to run the application
+Usage
+Use your keyboard to play the piano keys
+Click the "Record" button to start recording your performance
+Click the "Playback" button to listen to your recorded performance
+Use the settings menu to select a theme or instrument
+Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+Acknowledgments
+Thanks to [your-name] for creating the initial version of the Karthik Piano application.
+Known Issues
+Record and playback functionality not implemented yet
+Social sharing buttons not functional yet
+Future Development
+Implement record and playback functionality
+Make social sharing buttons functional
+Add more themes and instruments
+Improve responsive design for various devices
+
