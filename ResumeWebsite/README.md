@@ -9,7 +9,7 @@ Enhanced SEO with meta tags and header tags
 Consistent navigation menu throughout the website
 Technologies Used
 HTML5
-CSS3
+CSS3s
 JavaScript (ES6+)
 Responsive web design
 File Structure

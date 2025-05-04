@@ -5,10 +5,8 @@ rangeSlider.addEventListener('input', (e) => {
   const value = +e.target.value;
   const min = +e.target.min;
   const max = +e.target.max;
-
   const trackWidth = rangeSliderTrack.offsetWidth;
   const thumbWidth = document.querySelector('.range-slider-thumb').offsetWidth;
-
   const thumbLeft = (value - min) / (max - min) * (trackWidth - thumbWidth);
   document.querySelector('.range-slider-thumb').style.left = `${thumbLeft}px`;
 

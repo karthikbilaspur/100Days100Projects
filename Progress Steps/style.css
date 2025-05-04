@@ -49,16 +49,6 @@
     }
 }
 
-/* Add accessibility enhancements */
-.progress-tracker {
-    role: progressbar;
-    aria-valuemin: 0;
-    aria-valuemax: 100;
-}
-
-.step {
-    aria-current: step;
-}
 
 /* Add custom styles for the progress bar */
 .progress-bar {

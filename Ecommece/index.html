@@ -3,34 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>E-commerce Website</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.ico">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('products')">Products</a></li>
+                <li><a href="#" onclick="showPage('cart')">Cart</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('faq')">FAQ</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <!-- Home page content -->
-        <h2>Home</h2>
-        <button id="toggle-button">Toggle Theme</button>
-        <div id="product-list">
-            <!-- Product list will be displayed here -->
+        <div id="home" class="page">
+            <h2>Home</h2>
+            <button id="toggle-button">Toggle Theme</button>
+            <div id="product-list">
+                <!-- Product list will be displayed here -->
+            </div>
+        </div>
+        <!-- Products page content -->
+        <div id="products" class="page" style="display: none;">
+            <h2>Products</h2>
+            <div id="product-list">
+                <!-- Product list will be displayed here -->
+            </div>
+        </div>
+        <!-- Cart page content -->
+        <div id="cart" class="page" style="display: none;">
+            <h2>Cart</h2>
+            <div id="cart-list">
+                <!-- Cart list will be displayed here -->
+            </div>
+        </div>
+        <!-- Contact page content -->
+        <div id="contact" class="page" style="display: none;">
+            <h2>Contact</h2>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea><br><br>
+                <button id="send-message-button">Send Message</button>
+            </form>
+        </div>
+        <!-- About page content -->
+        <div id="about" class="page" style="display: none;">
+            <h2>About</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+        </div>
+        <!-- FAQ page content -->
+        <div id="faq" class="page" style="display: none;">
+            <h2>FAQ</h2>
+            <dl>
+                <dt>Question 1</dt>
+                <dd>Answer 1</dd>
+                <dt>Question 2</dt>
+                <dd>Answer 2</dd>
+            </dl>
+        </div>
+        <!-- Checkout page content -->
+        <div id="checkout" class="page" style="display: none;">
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address"><br><br>
+                <button id="place-order-button">Place Order</button>
+            </form>
+        </div>
+        <!-- Product details page content -->
+        <div id="product-details" class="page" style="display: none;">
+            <h2>Product Details</h2>
+            <div id="product-details-content">
+                <!-- Product details will be displayed here -->
+            </div>
         </div>
     </main>
     <footer>
         <p>&copy; 2025 E-commerce Website</p>
     </footer>
     <script src="script.js"></script>
-</body>
-</html>
+    <script>
+        function showPage(page) {
+            var pages = document.getElementsByClassName('page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+            document.getElementById(page).style.display = 'block';
+        }
+        
+        // Show the home page by default
+        showPage('home');
+        </script>
+        </body>
+        </html>
