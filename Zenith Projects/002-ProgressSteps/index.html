@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Website</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body>
     <!-- Header Section -->
@@ -49,6 +50,26 @@
         </div>
     </section>
 
+    <!-- Modal for viewing more details -->
+    <div class="modal" id="menu-item-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Menu Item Details</h2>
+            <p id="modal-description"></p>
+            <p id="modal-price"></p>
+            <button class="add-to-cart-modal">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Cart section -->
+    <section id="cart">
+        <h2>Cart</h2>
+        <div class="cart-items">
+        </div>
+        <p class="cart-total">Total: $0.00</p>
+        <button class="checkout">Checkout</button>
+    </section>
+
     <!-- Progress Steps Section -->
     <section id="progress-steps">
         <h2>Ordering Process</h2>
@@ -72,12 +93,6 @@
         </div>
     </section>
 
-    <!-- Cart section -->
-    <section id="cart">
-        <h2>Cart</h2>
-        <div class="cart-items">
-        </main>
-        <script src="script.js"></script>
-    </body>
-    </html>
-    
+    <script src="script.js"></script>
+</body>
+</html>

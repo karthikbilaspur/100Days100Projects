@@ -159,8 +159,7 @@ function checkWinner() {
     bestMove = getBestMove();
   }
 
-  handleCellClick(bestMove);
-}
+handleCellClick(bestMove);
 
 // Get random move
 function getRandomMove() {

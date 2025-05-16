@@ -72,17 +72,17 @@ h1, h2 {
 
 .card-content {
     padding: 10px;
-    display: none; /* Hide content initially */
+    display: none;
 }
 
 .card:hover .card-content {
-    display: block; /* Show content on hover */
+    display: block;
 }
 
 /* Modal styles */
 
 .modal {
-    display: none; /* Hide modal initially */
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;

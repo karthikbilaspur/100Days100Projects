@@ -18,7 +18,8 @@ document.querySelectorAll('.view-more').forEach((button) => {
         const menuItemDetails = menuItem.querySelector('.card-content');
 
         // Set the modal content
-        modalContent.innerHTML = menuItemDetails.innerHTML;
+        modalContent.querySelector('#modal-description').textContent = menuItemDetails.querySelector('p').textContent;
+        modalContent.querySelector('#modal-price').textContent = menuItem.querySelector('.card-header span.price').textContent;
 
         // Show the modal
         modal.style.display = 'block';
@@ -26,14 +27,12 @@ document.querySelectorAll('.view-more').forEach((button) => {
 });
 
 // Add event listener to close button
-document.querySelectorAll('.close').forEach((button) => {
-    button.addEventListener('click', () => {
-        // Get the modal
-        const modal = document.getElementById('menu-item-modal');
+document.querySelector('.close').addEventListener('click', () => {
+    // Get the modal
+    const modal = document.getElementById('menu-item-modal');
 
-        // Hide the modal
-        modal.style.display = 'none';
-    });
+    // Hide the modal
+    modal.style.display = 'none';
 });
 
 // Add event listener to add to cart button
@@ -65,17 +64,17 @@ document.querySelectorAll('.add-to-cart').forEach((button) => {
 });
 
 // Add event listener to remove from cart button
-document.querySelectorAll('.remove-from-cart').forEach((button) => {
-    button.addEventListener('click', () => {
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('remove-from-cart')) {
         // Get the cart item
-        const cartItem = button.closest('.cart-item');
+        const cartItem = event.target.parentNode;
 
         // Remove the cart item from the cart
         cartItem.remove();
 
         // Update the cart total
         updateCartTotal();
-    });
+    }
 });
 
 // Update the cart total
@@ -93,66 +92,6 @@ function updateCartTotal() {
     document.querySelector('.cart-total').textContent = `Total: $${total.toFixed(2)}`;
 }
 
-// Update progress steps on menu item selection
-document.querySelectorAll('.menu-item').forEach((menuItem) => {
-    menuItem.addEventListener('click', () => {
-        // Update progress steps
-        document.querySelectorAll('.progress-step').forEach((step, index) => {
-            if (index === 0) {
-                step.classList.add('active');
-            } else {
-                step.classList.remove('active');
-            }
-        });
-    });
-});
-
-// Update progress steps on add to cart button click
-document.querySelectorAll('.add-to-cart').forEach((button) => {
-    button.addEventListener('click', () => {
-        // Update progress steps
-        document.querySelectorAll('.progress-step').forEach((step, index) => {
-            if (index === 1) {
-                step.classList.add('active');
-            } else if (index === 0) {
-                step.classList.remove('active');
-            }
-        });
-    });
-});
-
-// Update progress steps on checkout button click
-document.querySelector('.checkout').addEventListener('click', () => {
-    // Update progress steps
-    document.querySelectorAll('.progress-step').forEach((step, index) => {
-        if (index === 2) {
-            step.classList.add('active');
-        } else if (index === 1) {
-            step.classList.remove('active');
-        }
-    });
-});
-
-// Add animation to progress steps
-document.querySelectorAll('.progress-step').forEach((step) => {
-    step.addEventListener('click', () => {
-        // Add animation class
-        step.classList.add('animate');
-        // Remove animation class after 0.5 seconds
-        setTimeout(() => {
-            step.classList.remove('animate');
-        }, 500);
-    });
-});
-
-// Add event listener to favorite button
-document.querySelectorAll('.favorite').forEach((button) => {
-    button.addEventListener('click', () => {
-        // Toggle favorite class
-        button.classList.toggle('favorited');
-    });
-});
-
 // Add event listener to checkout button
 document.querySelector('.checkout').addEventListener('click', () => {
     // Get the cart items
@@ -166,14 +105,4 @@ document.querySelector('.checkout').addEventListener('click', () => {
 
     // Proceed to checkout
     alert('Checkout successful!');
-});
-
-// Update progress steps on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // Update progress steps
-    document.querySelectorAll('.progress-step').forEach((step, index) => {
-        if (index === 0) {
-            step.classList.add('active');
-        }
-    });
 });
