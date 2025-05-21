@@ -94,16 +94,6 @@ button:hover {
     }
 }
 
-/* Add ARIA attributes to improve screen reader support */
-button {
-    aria-label: attr(data-aria-label);
-}
-
-#display {
-    aria-live: polite;
-    aria-atomic: true;
-}
-
 /* Add a class to hide content from screen readers */
 .sr-only {
     position: absolute;
