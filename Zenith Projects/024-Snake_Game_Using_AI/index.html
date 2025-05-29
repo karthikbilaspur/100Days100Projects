@@ -26,18 +26,15 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0/dist/tf.min.js"></script>
     <script src="script.js"></script>
-    <!-- Add a screen reader only element for the game over screen -->
-<div class="screen-reader-only" id="game-over-announcement"></div>
-
-<!-- Update the game over screen to include a screen reader only element -->
-<div id="game-over-modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Game Over!</p>
-        <p id="final-score"></p>
-        <button id="play-again-button">Play Again</button>
-        <div class="screen-reader-only" id="game-over-instructions"></div>
+    <div class="screen-reader-only" id="game-over-announcement"></div>
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Game Over!</p>
+            <p id="final-score"></p>
+            <button id="play-again-button">Play Again</button>
+            <div class="screen-reader-only" id="game-over-instructions"></div>
+        </div>
     </div>
-</div>
 </body>
 </html>

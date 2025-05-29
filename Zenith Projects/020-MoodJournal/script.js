@@ -114,21 +114,6 @@ deleteButton.addEventListener('click', () => {
     updateMoodChart();
 });
 
-// Add event listener to delete button
-const deleteButton = document.querySelector('.delete-button');
-
-deleteButton.addEventListener('click', () => {
-    entries = [];
-    happinessCount = 0;
-    sadnessCount = 0;
-    angerCount = 0;
-    neutralityCount = 0;
-
-    displayEntries();
-    updateMoodStats();
-    updateMoodChart();
-});
-
 // Add event listener to entry list
 entryList.addEventListener('click', (e) => {
     if (e.target.tagName === 'LI') {
