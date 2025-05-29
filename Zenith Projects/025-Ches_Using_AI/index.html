@@ -30,19 +30,22 @@
         <button id="load-game-button">Load Game</button>
     </div>
 <!-- Toggle buttons -->
-<label class="toggle-button">
-    <input type="checkbox" id="light-mode-toggle">
+<label class="toggle-button" for="light-mode-toggle">
+    <input type="checkbox" id="light-mode-toggle" title="Toggle light mode" aria-label="Toggle light mode">
     <span class="slider round"></span>
+    <span class="visually-hidden">Light Mode</span>
 </label>
 
-<label class="toggle-button">
-    <input type="checkbox" id="dark-mode-toggle">
+<label class="toggle-button" for="dark-mode-toggle">
+    <input type="checkbox" id="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
     <span class="slider round"></span>
+    <span class="visually-hidden">Dark Mode</span>
 </label>
 
-<label class="toggle-button">
-    <input type="checkbox" id="high-contrast-mode-toggle">
+<label class="toggle-button" for="high-contrast-mode-toggle">
+    <input type="checkbox" id="high-contrast-mode-toggle" title="Toggle high contrast mode" aria-label="Toggle high contrast mode">
     <span class="slider round"></span>
+    <span class="visually-hidden">High Contrast Mode</span>
 </label>
     <script src="script.js"></script>
 </body>
