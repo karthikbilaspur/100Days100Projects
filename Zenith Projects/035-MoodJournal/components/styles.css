@@ -1,1 +1,191 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
+.mood-journal {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mood-journal.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.mood-journal h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mood-journal button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mood-journal button:hover {
+  background-color: #3e8e41;
+}
+
+.calendar {
+  margin-bottom: 20px;
+}
+
+.calendar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.calendar li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.calendar li:last-child {
+  border-bottom: none;
+}
+
+.chart {
+  margin-bottom: 20px;
+}
+
+.chart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chart li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.chart li:last-child {
+  border-bottom: none;
+}
+
+.reminders {
+  margin-bottom: 20px;
+}
+
+.reminders ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reminders li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.reminders li:last-child {
+  border-bottom: none;
+}
+
+.reminders input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.reminders button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reminders button:hover {
+  background-color: #3e8e41;
+}
+
+.dashboard {
+  margin-bottom: 20px;
+}
+
+.dashboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.dashboard li:last-child {
+  border-bottom: none;
+}
+
+.mood-tracker {
+  margin-bottom: 20px;
+}
+
+.social-features {
+  margin-bottom: 20px;
+}
+
+.community-forum {
+  margin-bottom: 20px;
+}
+
+.buddy-system {
+  margin-bottom: 20px;
+}
+
+.gamification {
+  margin-bottom: 20px;
+}
+
+.leaderboard {
+  margin-bottom: 20px;
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.leaderboard li:last-child {
+  border-bottom: none;
+}
+
+.reward-system {
+  margin-bottom: 20px;
+}
+
+.reward-system ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reward-system li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.reward-system li:last-child {
+  border-bottom: none;
+}
