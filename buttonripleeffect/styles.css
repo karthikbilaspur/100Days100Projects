@@ -1,40 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Basic Reset */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: #000;
+  background-color: #1a1a2e; /* Darker background */
   font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
+  min-height: 100vh; /* Use min-height for full viewport, but allow content to push */
+  color: #e0e0e0; /* Light text for dark background */
 }
 
-button {
-  --button-color: purple;
-  --button-width: 200px;
-  --button-height: 50px;
-  --button-border-radius: 10px;
-  --ripple-color: #fff;
-  --ripple-size: 100px;
-  --ripple-position-top: 50%;
-  --ripple-position-left: 50%;
-  --animation-duration: 500ms;
-  --animation-timing: ease-out;
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 3em;
+  color: #e94560; /* Accent color */
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #a0a0a0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns on larger screens */
+  gap: 30px; /* Space between sections */
+  max-width: 90%;
+  width: 100%;
+  margin-bottom: 40px; /* Space above footer if any */
+}
+
+.ripple-section {
+  background-color: #0f3460; /* Section background */
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.ripple-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 25px;
+  color: #bae8e8; /* Another accent color */
+}
+
+/* Global Keyframes for Ripple */
+@keyframes scale {
+  to {
+    transform: translate(-50%, -50%) scale(3); /* Default scale out */
+    opacity: 0;
+  }
+}
+
+/* Base Button Styles */
+.ripple {
+  --button-color: #e94560; /* Default button background */
+  --button-hover-color: #d13a52; /* Default button hover */
+  --ripple-color: rgba(255, 255, 255, 0.7); /* Default ripple color */
+  --ripple-size: 100px; /* Default ripple initial size */
+  --animation-duration: 600ms; /* Default animation duration */
+  --animation-timing: ease-out; /* Default animation timing function */
+  --button-width: 220px;
+  --button-height: 60px;
+  --button-border-radius: 30px; /* More rounded default */
 
   background-color: var(--button-color);
   color: #fff;
-  border: 1px solid var(--button-color);
-  font-size: 14px;
+  border: none; /* No border for a cleaner look */
+  font-size: 1.1em;
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 20px 30px;
+  letter-spacing: 1.5px;
+  padding: 15px 30px;
   overflow: hidden;
   margin: 10px 0;
   position: relative;
@@ -42,65 +95,115 @@ button {
   width: var(--button-width);
   height: var(--button-height);
   border-radius: var(--button-border-radius);
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    background-color: #6c5ce7; /* darker purple */
-  }
-
-  & .circle {
-    position: absolute;
-    background-color: var(--ripple-color);
-    width: var(--ripple-size);
-    height: var(--ripple-size);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    top: var(--ripple-position-top);
-    left: var(--ripple-position-left);
-    animation: scale var(--animation-duration) var(--animation-timing);
-
-    @keyframes scale {
-      to {
-        transform: translate(-50%, -50%) scale(3);
-        opacity: 0;
-      }
-    }
-  }
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  outline: none; /* Remove default outline */
 }
 
-/* Media Queries */
+.ripple:focus {
+  box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.5); /* Focus ring using button color */
+}
 
+.ripple:hover {
+  background-color: var(--button-hover-color);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.ripple:active {
+  transform: translateY(0); /* Press effect */
+}
+
+.ripple .circle {
+  position: absolute;
+  background-color: var(--ripple-color);
+  width: var(--ripple-size);
+  height: var(--ripple-size);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: scale var(--animation-duration) var(--animation-timing);
+  pointer-events: none; /* Crucial: ensures the click event isn't blocked by the circle */
+}
+
+/* --- Ripple Variations --- */
+
+/* Classic Ripple */
+.classic-ripple {
+  --button-color: #e94560;
+  --button-hover-color: #d13a52;
+  --ripple-color: rgba(255, 255, 255, 0.6);
+  --animation-duration: 700ms;
+}
+
+/* Gentle Wave */
+.gentle-wave {
+  --button-color: #0e86b4; /* Blue */
+  --button-hover-color: #0b6c91;
+  --ripple-color: rgba(255, 255, 255, 0.4); /* More transparent */
+  --ripple-size: 80px;
+  --animation-duration: 1000ms; /* Slower animation */
+  --animation-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother curve */
+}
+
+/* Fast Flash */
+.fast-flash {
+  --button-color: #ffee00; /* Yellow */
+  --button-hover-color: #e6dd00;
+  --ripple-color: rgba(0, 0, 0, 0.5); /* Dark ripple on light button */
+  --animation-duration: 300ms; /* Very fast */
+  --ripple-size: 120px; /* Larger initial ripple */
+}
+
+/* Big Pulse */
+.big-pulse {
+  --button-color: #6a1b9a; /* Deep Purple */
+  --button-hover-color: #5a1584;
+  --ripple-color: rgba(255, 255, 255, 0.8);
+  --animation-duration: 1200ms; /* Slow, lingering pulse */
+  --animation-timing: ease-in-out;
+  /* Override default keyframes with a custom one for a more pronounced "pulse" */
+  /* This will be defined in JS for each circle directly */
+}
+
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-  button {
-    --button-width: 150px;
-    --button-height: 40px;
-    --ripple-size: 80px;
+  .container {
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: 20px;
+  }
+  header h1 {
+    font-size: 2.2em;
+  }
+  header p {
+    font-size: 1em;
+  }
+  .ripple-section {
+    padding: 20px;
+  }
+  .ripple-section h2 {
+    font-size: 1.5em;
+  }
+  .ripple {
+    --button-width: 180px;
+    --button-height: 50px;
+    font-size: 1em;
+    padding: 12px 25px;
   }
 }
 
 @media (max-width: 480px) {
-  button {
-    --button-width: 100px;
-    --button-height: 30px;
-    --ripple-size: 60px;
+  .ripple {
+    --button-width: 150px;
+    --button-height: 45px;
+    font-size: 0.9em;
+    padding: 10px 20px;
+    --button-border-radius: 25px;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #333;
+  header {
+    margin-bottom: 20px;
   }
-  button {
-    --button-color: #666;
-    --ripple-color: #fff;
+  header h1 {
+    font-size: 1.8em;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  button .circle {
-    animation: none;
+  header p {
+    font-size: 0.9em;
   }
 }

@@ -3,53 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer</title>
+    <title>Dynamic Countdown Timer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <h1 class="countdown-title">Countdown Timer</h1>
-    <div class="countdown-container">
-        <div class="countdown-number">
-            <span class="days countdown-time" id="days">00</span>
-            <span class="countdown-text">Days</span>
-        </div>
-        <div class="countdown-number">
-            <span class="hours countdown-time" id="hours">00</span>
-            <span class="countdown-text">Hours</span>
-        </div>
-        <div class="countdown-number">
-            <span class="minutes countdown-time" id="minutes">00</span>
-            <span class="countdown-text">Minutes</span>
-        </div>
-        <div class="countdown-number">
-            <span class="seconds countdown-time" id="seconds">00</span>
-            <span class="countdown-text">Seconds</span>
-        </div>
-    </div>
-    <div class="deadline-container">
-        <label for="deadline">Enter deadline date (YYYY-MM-DD HH:MM:SS):</label>
-        <input type="datetime-local" id="deadline" value="2025-01-31T12:00:00">
-        <button id="start-button">Start</button>
-        <button id="stop-button">Stop</button>
-        <button id="reset-button">Reset</button>
-    </div>
-    <div class="social-media-container">
-        <a href="https://www.facebook.com" target="_blank" class="social-media-link">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.twitter.com" target="_blank" class="social-media-link">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.instagram.com" target="_blank" class="social-media-link">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" class="social-media-link">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
-    </div>
+    <header>
+        <h1 class="countdown-title">Dynamic Countdown Timer</h1>
+    </header>
+
+    <main>
+        <section class="current-countdown">
+            <h2>Current Countdown</h2>
+            <div class="countdown-container">
+                <div class="countdown-segment">
+                    <span class="days countdown-time" id="current-days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-segment">
+                    <span class="hours countdown-time" id="current-hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-segment">
+                    <span class="minutes countdown-time" id="current-minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-segment">
+                    <span class="seconds countdown-time" id="current-seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            <p id="countdown-message" class="message"></p>
+        </section>
+
+        <section class="controls-panel">
+            <div class="deadline-input-group">
+                <label for="new-deadline">Set New Deadline:</label>
+                <input type="datetime-local" id="new-deadline">
+            </div>
+            <div class="countdown-actions">
+                <button id="start-new-countdown">Start New Countdown</button>
+                <button id="stop-current-countdown">Stop Current</button>
+                <button id="reset-current-countdown">Reset Current</button>
+            </div>
+
+            <div class="notification-settings">
+                <label>
+                    <input type="checkbox" id="enable-notifications"> Enable Notifications
+                </label>
+                <div class="notification-time-input">
+                    <label for="notification-threshold">Notify (minutes before):</label>
+                    <input type="number" id="notification-threshold" value="5" min="1">
+                </div>
+            </div>
+        </section>
+
+        <section class="saved-countdowns">
+            <h2>My Saved Countdowns</h2>
+            <ul id="countdowns-list">
+                <!-- Saved countdowns will be injected here by JS -->
+            </ul>
+        </section>
+
+        <section class="social-media">
+            <h3>Share This Timer!</h3>
+            <div class="social-media-container">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Share on Facebook" class="social-media-link" rel="noopener">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Share on Twitter" class="social-media-link"  rel="noopener">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Share on Instagram" class="social-media-link"  rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" aria-label="Share on LinkedIn" class="social-media-link" rel="noopener ">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
-        <p>&copy; 2025 V.Karthik. All Rights Reserved.</p>
+        <p>&copy; 2026 V.Karthik. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>

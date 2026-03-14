@@ -16,9 +16,10 @@
       </h3>
       <p class="card-excerpt" id="excerpt">
         &nbsp;
-        <span class="animated-bg animated-bg-text">&nbsp;</span>
-        <span class="animated-bg animated-bg-text">&nbsp;</span>
-        <span class="animated-bg animated-bg-text">&nbsp;</span>
+        <!-- Dynamically generated varying width spans for better loading simulation -->
+        <span class="animated-bg animated-bg-text"></span>
+        <span class="animated-bg animated-bg-text"></span>
+        <span class="animated-bg animated-bg-text"></span>
       </p>
       <div class="author">
         <div class="profile-img animated-bg" id="profile_img">&nbsp;</div>
@@ -30,6 +31,14 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="controls">
+    <button id="load-more-btn">
+      Load New Content
+      <span class="spinner" style="display: none;"></span>
+    </button>
+    <button id="theme-toggle-btn">Toggle Dark Mode</button>
   </div>
 
   <script src="script.js"></script>

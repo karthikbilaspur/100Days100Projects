@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Super Awesome Product - Landing Page</title>
+</head>
+<body>
+    <nav id="main-nav" role="navigation" aria-label="Product Page Navigation">
+        <button class="nav-toggle-button" id="toggle" aria-label="Open product navigation menu" aria-controls="nav-menu" aria-expanded="false">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+        </button>
+
+        <ul id="nav-menu" class="nav-links" aria-orientation="vertical" hidden>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#pricing">Get Started</a></li>
+        </ul>
+    </nav>
+
+    <main class="product-landing">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Unlock Your Potential with <span class="product-name">Super Awesome Product</span></h1>
+                <p class="hero-tagline">The revolutionary tool designed to streamline your workflow and boost productivity.</p>
+                <div class="hero-image-placeholder">
+                    <!-- Product Image/Video Placeholder -->
+                    <img src="https://via.placeholder.com/600x400?text=Super+Awesome+Product" alt="Super Awesome Product in action" />
+                </div>
+                <a href="#pricing" class="cta-button primary-cta">Get Started Free</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <h2 class="section-title">Powerful Features at Your Fingertips</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <img src="images/1.png" alt="Feature 1 Icon" />
+                    <h3>Intuitive Interface</h3>
+                    <p>Designed for ease of use, you'll be up and running in minutes, not hours.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="images/2.png" alt="Feature 2 Icon" />
+                    <h3>Real-time Collaboration</h3>
+                    <p>Work seamlessly with your team, no matter where you are in the world.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="images/3.png" alt="Feature 3 Icon" />
+                    <h3>Advanced Analytics</h3>
+                    <p>Gain deep insights into your data with powerful, easy-to-understand reports.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="images/4.png" alt="Feature 4 Icon" />
+                    <h3>Secure & Reliable</h3>
+                    <p>Your data is protected with enterprise-grade security and 99.9% uptime.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits/How It Works Section -->
+        <section id="benefits" class="benefits-section">
+            <h2 class="section-title">Transform Your Workflow, Achieve More</h2>
+            <div class="benefits-content">
+                <div class="benefit-item">
+                    <img src="https://via.placeholder.com/400x300?text=Benefit+Image+1" alt="Benefit 1 Illustration" />
+                    <div class="benefit-text">
+                        <h3>Save Time & Resources</h3>
+                        <p>Automate repetitive tasks and focus on what truly matters for your business.</p>
+                    </div>
+                </div>
+                <div class="benefit-item reverse">
+                    <div class="benefit-text">
+                        <h3>Boost Team Efficiency</h3>
+                        <p>Empower your team with tools that enhance communication and project management.</p>
+                    </div>
+                    <img src="https://via.placeholder.com/400x300?text=Benefit+Image+2" alt="Benefit 2 Illustration" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section">
+            <h2 class="section-title">What Our Users Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item">
+                    <p>"Super Awesome Product changed how we operate. It's incredibly powerful and simple to use!"</p>
+                    <cite>- Jane Doe, CEO of InnovateCorp</cite>
+                </div>
+                <div class="testimonial-item">
+                    <p>"The best investment we've made this year. Our team is more productive than ever before."</p>
+                    <cite>- John Smith, Project Manager at GrowthX</cite>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Finally, a tool that truly understands our needs. Highly recommend to any growing business."</p>
+                    <cite>- Emily White, Founder of Startup Boost</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Pricing Section -->
+        <section id="pricing" class="pricing-section">
+            <h2 class="section-title">Ready to Experience the Difference?</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <p class="price">$19<span>/month</span></p>
+                    <ul>
+                        <li>5 Users</li>
+                        <li>Basic Features</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <a href="#" class="cta-button">Choose Plan</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <p class="price">$49<span>/month</span></p>
+                    <ul>
+                        <li>Unlimited Users</li>
+                        <li>All Features</li>
+                        <li>Priority Support</li>
+                        <li>Custom Integrations</li>
+                    </ul>
+                    <a href="#" class="cta-button primary-cta">Choose Plan</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <p class="price">Custom</p>
+                    <ul>
+                        <li>Tailored Solutions</li>
+                        <li>Dedicated Manager</li>
+                        <li>Advanced Security</li>
+                    </ul>
+                    <a href="#" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+            <p class="small-print">No credit card required for 14-day free trial on Pro plan.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Super Awesome Product. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,14 +1,67 @@
+/* Universal Styles & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    line-height: 1.6;
+    overflow: hidden; /* Prevent body scroll */
+}
+
+/* Slider Container */
 .slider-container {
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Ensures slides stay within bounds */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.slider {
+/* Loading Overlay */
+.loading-overlay {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none; /* Allows interaction with elements behind it */
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Slider */
+.slider {
+    position: relative; /* Changed to relative for child positioning */
     width: 100%;
     height: 100%;
 }
@@ -22,67 +75,180 @@
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    visibility: hidden; /* Hide non-active slides from screen readers */
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay for text readability */
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
 }
 
 .slide.active {
     opacity: 1;
+    visibility: visible;
 }
 
+.slide h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.slide p {
+    font-size: 1.2em;
+    max-width: 700px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Pagination */
 .pagination {
     position: absolute;
-    bottom: 20px;
+    bottom: 30px; /* Slightly higher for better visibility */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 12px; /* Use gap for spacing */
+    z-index: 50;
 }
 
 .pagination-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px; /* Slightly larger */
+    height: 12px;
     border-radius: 50%;
-    background-color: #fff;
-    margin: 0 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.8);
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pagination-dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
 }
 
 .pagination-dot.active {
     background-color: orange;
+    border-color: orange;
+    transform: scale(1.2);
 }
 
+/* Navigation Buttons */
 .navigation {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    padding: 0 40px; /* More padding on sides */
+    z-index: 60;
+    pointer-events: none; /* Allows clicks to pass through to slider elements if needed */
 }
 
 .nav-btn {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
     border: none;
-    padding: 20px;
-    font-size: 24px;
+    padding: 15px 20px; /* Adjusted padding */
+    font-size: 2em; /* Larger icons */
     color: #fff;
     cursor: pointer;
+    border-radius: 50%; /* Circular buttons */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    pointer-events: all; /* Make buttons clickable */
+} 
+
+.nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: scale(1.1);
 }
 
-.prev-btn {
-    margin-right: 20px;
+.nav-btn:active {
+    transform: scale(0.95);
 }
 
-.next-btn {
-    margin-left: 20px;
+/* Focus states for accessibility */
+.nav-btn:focus,
+.pagination-dot:focus {
+    outline: 2px solid orange;
+    outline-offset: 2px;
 }
 
-/* Mobile optimization */
-@media only screen and (max-width: 768px) {
-    .slider-container {
+/* Mobile Optimization */
+@media (max-width: 768px) {
+   .slider-container {
+        height: 60vh; /* Adjust height for smaller screens */
+    }
+
+   .slide h2 {
+        font-size: 2em;
+    }
+
+   .slide p {
+        font-size: 1em;
+    }
+
+   .navigation {
+        padding: 0 20px;
+    }
+
+   .nav-btn {
+        padding: 10px 15px;
+        font-size: 1.5em;
+    }
+
+   .pagination {
+        bottom: 15px;
+        gap: 8px;
+    }
+
+   .pagination-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+   .slider-container {
         height: 50vh;
     }
+
+   .slide h2 {
+        font-size: 1.5em;
+    }
+
+   .slide p {
+        font-size: 0.9em;
+    }
+
+   .navigation {
+        padding: 0 10px;
+    }
+   .nav-btn {
+        font-size: 1.2em;
+        padding: 8px 12px;
+    }
+}
+
+/* High Contrast Mode (example, integrate with JS toggle) */
+.high-contrast-mode body {
+    background-color: black!important;
+    color: yellow!important;
+}
+.high-contrast-mode.slide {
+    background-color: rgba(0, 0, 0, 0.8)!important;
+    border: 1px solid yellow!important;
+}
+.high-contrast-mode.pagination-dot.active {
+    background-color: yellow!important;
+    border-color: yellow!important;
+}
+.high-contrast-mode.nav-btn {
+    background-color: yellow!important;
+    color: black!important;
+    border: 1px solid black!important;
 }

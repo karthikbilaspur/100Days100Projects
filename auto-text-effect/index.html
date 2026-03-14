@@ -4,16 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Auto Text Effect</title>
+    <title>Inspirational Quote Typer</title>
 </head>
 <body>
     <main>
         <h1 id="text" aria-live="polite" aria-atomic="true">Starting...</h1>
+
+        <div class="controls-group"> {/* New: Group for buttons */}
+            <button id="next-quote-btn" aria-label="Next Quote">Next Quote</button>
+            <button id="pause-play-btn" aria-label="Pause or Play Typing">Pause</button> {/* New: Pause/Play Button */}
+        </div>
+
         <div class="speed-control">
             <label for="speed">Speed:</label>
             <input type="number" name="speed" id="speed" value="1" min="1" max="10" step="1" required>
             <button id="reset-btn" aria-label="Reset speed">Reset</button>
         </div>
+
         <div class="animation-container">
             <div class="animation-box"></div>
         </div>

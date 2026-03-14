@@ -3,23 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Interface</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Primary Meta Tags (SEO) -->
+    <title>MediBot - Your AI-Powered Medical Chat Assistant | Health Info & Symptom Guide</title>
+    <meta name="description" content="Chat with MediBot, your friendly AI medical assistant, for reliable general health information, symptom guidance, and common ailment advice. Not a substitute for professional medical consultation.">
+    <meta name="keywords" content="medical chatbot, AI health assistant, symptom checker, health information, medical advice, AI doctor, online doctor, chatbot, health guide, general health">
+    <meta name="author" content="Meta AI">
+    <meta name="robots" content="index, follow"> <!-- Instructs search engines to index and follow links -->
+
+    <!-- Open Graph / Facebook / LinkedIn / Pinterest -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/medical-chatbot"> <!-- Replace with your actual URL -->
+    <meta property="og:title" content="MediBot - Your AI-Powered Medical Chat Assistant">
+    <meta property="og:description" content="Chat with MediBot, your friendly AI medical assistant, for reliable general health information, symptom guidance, and common ailment advice.">
+    <meta property="og:image" content="https://yourwebsite.com/images/medibot-preview.jpg"> <!-- Replace with a relevant image URL -->
+    <meta property="og:image:alt" content="Medical Chatbot Interface">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/medical-chatbot"> <!-- Replace with your actual URL -->
+    <meta property="twitter:title" content="MediBot - Your AI-Powered Medical Chat Assistant">
+    <meta property="twitter:description" content="Chat with MediBot, your friendly AI medical assistant, for reliable general health information, symptom guidance, and common ailment advice.">
+    <meta property="twitter:image" content="https://yourwebsite.com/images/medibot-preview.jpg"> <!-- Replace with a relevant image URL -->
+    <meta property="twitter:creator" content="@YourTwitterHandle"> <!-- Replace with your Twitter handle -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"> <!-- For iOS devices -->
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/medical-chatbot"> <!-- Replace with your actual canonical URL -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Optional: Google Fonts (example) -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
 </head>
 <body>
-    <div class="chat-container">
+    <div class="chatbot-container">
         <div class="chat-header">
-            <h2>Chat Interface</h2>
+            <h3>MediBot - Your Health Assistant</h3>
+            <button id="clear-chat-button" class="header-button">Clear Chat</button>
         </div>
-        <div class="chat-messages">
-            <ul id="message-list">
-                <!-- Messages will be displayed here -->
-            </ul>
+        <div class="chat-display" id="chat-display">
+            <!-- Initial welcome message handled by JS, or loaded history -->
         </div>
-        <div class="chat-input">
-            <input type="text" id="message-input" placeholder="Type a message...">
+
+        <!-- Quick Reply Buttons -->
+        <div class="quick-replies" id="quick-replies">
+            <button class="quick-button" data-question="What are cold symptoms?">Cold Symptoms</button>
+            <button class="quick-button" data-question="I have a headache">Headache</button>
+            <button class="quick-button" data-question="What should I do for fever?">Fever</button>
+            <button class="quick-button" data-question="Tell me about stomach ache">Stomach Ache</button>
+            <button class="quick-button" data-question="Thank you">Thank you</button>
+            <!-- Add more quick reply buttons here -->
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Ask your health question...">
             <button id="send-button">Send</button>
-            <button id="clear-button">Clear</button>
         </div>
     </div>
     <script src="script.js"></script>

@@ -8,11 +8,52 @@ body {
   background-color: #ecf0f1;
   font-family: 'Roboto', sans-serif;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   overflow: hidden;
   margin: 0;
+  transition: background-color 0.3s ease; /* Smooth theme transition */
+}
+
+/* Dark Mode styles applied when 'dark-mode' class is on body */
+body.dark-mode {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+body.dark-mode.card {
+  background-color: #444;
+}
+
+body.dark-mode.card-content {
+  background-color: #555;
+}
+
+body.dark-mode.card-excerpt {
+  color: #bbb;
+}
+
+body.dark-mode.author-info strong {
+  color: #f0f0f0;
+}
+
+body.dark-mode.author-info small {
+  color: #999;
+}
+
+body.dark-mode button {
+  background-color: #666;
+  color: #f0f0f0;
+}
+
+body.dark-mode button:hover:not(:disabled) {
+  background-color: #888;
+}
+
+body.dark-mode button:disabled {
+  background-color: #777;
 }
 
 img {
@@ -25,6 +66,8 @@ img {
   border-radius: 10px;
   overflow: hidden;
   width: 350px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease; /* Smooth theme transition */
 }
 
 .card-header {
@@ -36,15 +79,18 @@ img {
 .card-content {
   background-color: #fff;
   padding: 30px;
+  transition: background-color 0.3s ease; /* Smooth theme transition */
 }
 .card-title {
   height: 20px;
   margin: 0;
+  transition: color 0.3s ease; /* Smooth theme transition */
 }
 
 .card-excerpt {
   color: #777;
   margin: 10px 0 20px;
+  transition: color 0.3s ease; /* Smooth theme transition */
 }
 
 .author {
@@ -56,6 +102,7 @@ img {
   overflow: hidden;
   height: 40px;
   width: 40px;
+  flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .author-info {
@@ -63,14 +110,21 @@ img {
   flex-direction: column;
   justify-content: space-around;
   margin-left: 10px;
-  width: 100px;
+  width: 100%; /* Allow info to take available width */
+  min-width: 100px;
+}
+
+.author-info strong {
+  transition: color 0.3s ease; /* Smooth theme transition */
 }
 
 .author-info small {
   color: #aaa;
   margin-top: 5px;
+  transition: color 0.3s ease; /* Smooth theme transition */
 }
 
+/* Enhanced loading animations */
 .animated-bg {
   background-image: linear-gradient(
     to right,
@@ -82,13 +136,28 @@ img {
   background-size: 200% 100%;
   animation: bgPos 1s linear infinite;
 }
+body.dark-mode.animated-bg { /* Dark mode version of loading animation */
+  background-image: linear-gradient(
+    to right,
+    #4a4a4a 0%,
+    #5a5a5a 10%,
+    #4a4a4a 20%,
+    #4a4a4a 100%
+  );
+}
 
 .animated-bg-text {
   border-radius: 50px;
   display: inline-block;
   margin: 0;
   height: 10px;
-  width: 100%;
+  width: 100%; /* Default width for title and name */
+  vertical-align: middle; /* Align with text */
+}
+
+/* Specific animated-bg-text widths for excerpt */
+.card-excerpt.animated-bg-text {
+    margin-bottom: 8px; /* Space between lines */
 }
 
 @keyframes bgPos {
@@ -101,42 +170,58 @@ img {
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #333;
-  }
-
-  .card {
-    background-color: #444;
-  }
-
-  .card-content {
-    background-color: #555;
-  }
-
-  .card-excerpt {
-    color: #999;
-  }
-
-  .author-info small {
-    color: #777;
-  }
+/* Controls container for buttons */
+.controls {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px;
 }
 
 /* Button styles */
 button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   background-color: #4CAF50;
   color: #fff;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background-color: #3e8e41;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  color: #666;
+}
+
+/* Spinner for loading button */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+button.loading.spinner {
+  display: inline-block!important; /* Show spinner when loading class is active */
+}
+
+button.loading span:first-child { /* Hide text part of the button when loading */
+    visibility: hidden;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

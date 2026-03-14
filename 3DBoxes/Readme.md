@@ -1,4 +1,5 @@
-3D Boxes Background
+# 3D Boxes Background
+
 A interactive 3D boxes background effect using HTML, CSS, and JavaScript.
 
 Features
@@ -25,4 +26,3 @@ The boxes have a clear and consistent layout
 
 License
 This project is licensed under the MIT License
-

@@ -1,4 +1,5 @@
-Animated Countdown Timer
+# Animated Countdown Timer
+
 A interactive countdown timer with a modern and responsive design.
 Features
 Animated countdown effect with a smooth transition between numbers
@@ -10,9 +11,7 @@ Technologies Used
 HTML5
 CSS3 (with CSS variables and animations)
 JavaScript (with ES6+ syntax and DOM manipulation)
-Installation
-Clone the repository using git clone https://github.com/your-username/animated-countdown-timer.git
-Open the index.html file in a web browser to view the countdown timer
+
 Usage
 Click the "Pause" button to pause the timer
 Click the "Resume" button to resume the timer
@@ -24,4 +23,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Acknowledgments
 Inspired by various countdown timer designs on Dribbble and CodePen
 Uses CSS animations and JavaScript code snippets from various online resources
-
