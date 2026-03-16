@@ -1,18 +1,26 @@
-$(document).ready(function() {
-    $('#change-color').click(function() {
-        var randomColor = getRandomColor();
-        $('#bg-color').css('background-color', randomColor);
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    const bgColorElement = document.getElementById('bg-color');
+    const changeColorButton = document.getElementById('change-color');
 
-    // Initial random background color
-    $('#bg-color').css('background-color', getRandomColor());
+    // Function to generate a random hex color
+    const getRandomColor = () => {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    };
+
+    // Function to set the background color
+    const setRandomBackgroundColor = () => {
+        const randomColor = getRandomColor();
+        bgColorElement.style.backgroundColor = randomColor;
+    };
+
+    // Event listener for the button click
+    changeColorButton.addEventListener('click', setRandomBackgroundColor);
+
+    // Set an initial random background color when the page loads
+    setRandomBackgroundColor();
 });
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}

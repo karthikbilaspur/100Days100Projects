@@ -1,26 +1,69 @@
+:root {
+    --primary-color: #3498db; /* Blue */
+    --secondary-color: #2ecc71; /* Green */
+    --background-color: #ecf0f1; /* Light gray */
+    --text-color: #2c3e50; /* Dark gray */
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    overflow: hidden; /* Prevent scrolling during preloader */
+}
+
 .preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #fff;
-    z-index: 1000;
+    background: linear-gradient(135deg, var(--background-color), #bdc3c7); /* Subtle gradient */
+    z-index: 9999; /* Increased z-index */
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out; /* Smooth fade-out */
+}
+
+.preloader.hide {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .loader {
-    width: 100px;
-    height: 100px;
+    width: 120px; /* Slightly larger */
+    height: 120px;
+    display: flex; /* For centering text */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .loader svg {
     width: 100%;
     height: 100%;
-    transform: rotate(0deg);
-    animation: rotate 2s linear infinite;
+    animation: rotate 2s linear infinite; /* Rotation */
+}
+
+.loader circle {
+    fill: none;
+    stroke: url(#loaderGradient); /* Use a gradient for the stroke */
+    stroke-width: 6; /* Thicker stroke */
+    stroke-miterlimit: 10;
+    stroke-dasharray: 240; /* Make it look like it's drawing */
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: 
+        dash 1.5s ease-in-out infinite, /* Dash animation */
+        colorChange 4s ease-in-out infinite alternate; /* Color change */
+}
+
+.loader p {
+    color: var(--text-color);
+    margin-top: 15px; /* Space between loader and text */
+    font-size: 1.1em;
+    font-weight: bold;
+    animation: pulse 1.5s infinite alternate; /* Gentle pulsing text */
 }
 
 @keyframes rotate {
@@ -30,4 +73,44 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 240;
+    }
+    50% {
+        stroke-dashoffset: 60;
+    }
+    100% {
+        stroke-dashoffset: 240;
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        stroke: var(--primary-color);
+    }
+    50% {
+        stroke: var(--secondary-color);
+    }
+    100% {
+        stroke: var(--primary-color);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* Ensure the body can scroll again after preloader is gone */
+body.preloader-hidden {
+    overflow: auto;
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgraded Mega Preloader</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="overflow-hidden"> <!-- Hide scrollbar initially -->
+
+    <!-- The Upgraded Preloader -->
+    <div id="mega-preloader" class="mega-preloader d-flex flex-column justify-content-center align-items-center" aria-hidden="true">
+        <div class="text-center">
+            <div class="sprite-loader mx-auto mb-3"></div>
+            <p id="loading-text" class="lead text-light"></p> <!-- Dynamic loading text -->
+        </div>
+        <div class="loading-bar-container mt-4">
+            <div id="loading-progress-bar" class="loading-progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden until preloader is gone) -->
+    <div id="main-content" class="container mt-5 opacity-0">
+        <div class="row">
+            <div class="col-12 text-center py-5">
+                <h1 class="display-3 fw-bold text-primary animate__animated animate__fadeInUp">Welcome to the Future!</h1>
+                <p class="lead text-secondary animate__animated animate__fadeInUp animate__delay-1s">This page loaded with style and sophistication.</p>
+                <button class="btn btn-primary btn-lg mt-4 animate__animated animate__fadeInUp animate__delay-2s">Discover Now</button>
+            </div>
+        </div>
+        <div class="row mt-5 g-4"> <!-- Gutter for spacing cards -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Seamless Experience</h5>
+                        <p class="card-text text-muted">Enjoy a smooth transition from loading to engaging content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 animate__animated animate__fadeInUp animate__delay-4s">
+                    <div class="card-body">
+                        <h5 class="card-title text-info">Dynamic Animations</h5>
+                        <p class="card-text text-muted">Every element enters with purpose and grace.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 animate__animated animate__fadeInUp animate__delay-5s">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">Fully Responsive</h5>
+                        <p class="card-text text-muted">Looks great on any device, thanks to Bootstrap.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Popper.js for dropdowns, tooltips, etc., then Bootstrap JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m1HV5HQfLPM8olatjmkx8" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

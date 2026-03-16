@@ -1,0 +1,116 @@
+:root {
+    --preloader-bg-start: #6a11cb;
+    --preloader-bg-end: #2575fc;
+    --preloader-text-color: #e0e0e0;
+    --sprite-animation-speed: 0.8s; /* Slightly adjust speed for 5 frames, can tweak */
+    --loading-bar-bg: #ccc;
+    --loading-bar-fill: #00bcd4; /* Cyan */
+    --loading-bar-height: 8px;
+    --loading-bar-width: 200px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Light background for main content */
+    color: #343a40;
+    margin: 0;
+}
+
+/* Ensure body scroll is managed by JS */
+body.overflow-hidden {
+    overflow: hidden;
+}
+
+/* Preloader Container */
+.mega-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--preloader-bg-start) 0%, var(--preloader-bg-end) 100%);
+    z-index: 9999;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+    will-change: opacity, visibility; /* Optimize for smooth transition */
+}
+
+.mega-preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Prevent interaction after hidden */
+}
+
+/* CSS Sprite Loader (Robot) */
+.sprite-loader {
+    width: 64px; /* Width of a single frame */
+    height: 64px; /* Height of the sprite */
+    background-image: url('img/sprite.jpeg'); /* <<< --- UPDATED IMAGE LINK HERE --- >>> */
+    background-repeat: no-repeat;
+    /* 5 frames, so steps(5). Total sprite width is 5 * 64px = 320px */
+    animation: playSprite var(--sprite-animation-speed) steps(5) infinite;
+}
+
+@keyframes playSprite {
+    from { background-position: 0px; }
+    to { background-position: -320px; } /* <<< --- UPDATED END POSITION FOR 5 FRAMES --- >>> */
+}
+
+/* Loading Text */
+#loading-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--preloader-text-color);
+    animation: textPulse 1.5s infinite alternate; /* More pronounced text animation */
+    white-space: nowrap; /* Keep text on one line */
+    overflow: hidden; /* Hide overflow during typing effect */
+}
+
+@keyframes textPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
+/* Loading Progress Bar */
+.loading-bar-container {
+    width: var(--loading-bar-width);
+    height: var(--loading-bar-height);
+    background-color: var(--loading-bar-bg);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.loading-progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--loading-bar-fill);
+    border-radius: 5px;
+    transition: width 0.3s ease-out; /* Smooth progress update */
+}
+
+/* Main Content Visibility */
+#main-content {
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1s ease-in; /* Smooth fade in */
+}
+#main-content.visible {
+    opacity: 1;
+}
+
+/* Bootstrap Card Customization */
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Ensure a smoother reveal by making elements hidden by default before animate.css takes over */
+.animate__animated {
+    visibility: hidden; /* Hide elements before animation starts */
+}
+.animate__animated.animate__fadeInUp {
+    visibility: visible; /* Show when animation class is applied */
+}
