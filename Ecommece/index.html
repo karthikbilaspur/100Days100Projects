@@ -24,88 +24,94 @@
         <div id="home" class="page">
             <h2>Home</h2>
             <button id="toggle-button">Toggle Theme</button>
-            <div id="product-list">
-                <!-- Product list will be displayed here -->
+            <div id="home-product-list" class="product-list-container">
+                <!-- Product list for home page will be displayed here -->
             </div>
         </div>
         <!-- Products page content -->
-        <div id="products" class="page" style="display: none;">
+        <div id="products" class="page">
             <h2>Products</h2>
-            <div id="product-list">
-                <!-- Product list will be displayed here -->
+            <div id="products-product-list" class="product-list-container">
+                <!-- Product list for products page will be displayed here -->
             </div>
         </div>
         <!-- Cart page content -->
-        <div id="cart" class="page" style="display: none;">
+        <div id="cart" class="page">
             <h2>Cart</h2>
             <div id="cart-list">
                 <!-- Cart list will be displayed here -->
+                <p>Your cart is empty. Start shopping!</p>
             </div>
         </div>
         <!-- Contact page content -->
-        <div id="contact" class="page" style="display: none;">
+        <div id="contact" class="page">
             <h2>Contact</h2>
             <form id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name"><br><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br><br>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message"></textarea><br><br>
-                <button id="send-message-button">Send Message</button>
+                <label for="contact-name">Name:</label>
+                <input type="text" id="contact-name" name="name" required><br><br>
+                <label for="contact-email">Email:</label>
+                <input type="email" id="contact-email" name="email" required><br><br>
+                <label for="contact-message">Message:</label>
+                <textarea id="contact-message" name="message" required></textarea><br><br>
+                <button type="submit" id="send-message-button">Send Message</button>
             </form>
         </div>
         <!-- About page content -->
-        <div id="about" class="page" style="display: none;">
+        <div id="about" class="page">
             <h2>About</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
         </div>
         <!-- FAQ page content -->
-        <div id="faq" class="page" style="display: none;">
+        <div id="faq" class="page">
             <h2>FAQ</h2>
             <dl>
-                <dt>Question 1</dt>
-                <dd>Answer 1</dd>
-                <dt>Question 2</dt>
-                <dd>Answer 2</dd>
+                <dt>Question 1: What is this store about?</dt>
+                <dd>Answer 1: This is a demo e-commerce store built to showcase web development techniques.</dd>
+                <dt>Question 2: How can I contact support?</dt>
+                <dd>Answer 2: You can reach us via the contact form on the 'Contact' page, or email us at support@example.com.</dd>
+                <dt>Question 3: Do you offer international shipping?</dt>
+                <dd>Answer 3: Currently, we only ship domestically. We are working to expand our shipping options soon!</dd>
             </dl>
         </div>
         <!-- Checkout page content -->
-        <div id="checkout" class="page" style="display: none;">
+        <div id="checkout" class="page">
             <h2>Checkout</h2>
             <form id="checkout-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name"><br><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br><br>
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address"><br><br>
-                <button id="place-order-button">Place Order</button>
+                <label for="checkout-name">Name:</label>
+                <input type="text" id="checkout-name" name="name" required><br><br>
+                <label for="checkout-email">Email:</label>
+                <input type="email" id="checkout-email" name="email" required><br><br>
+                <label for="checkout-address">Address:</label>
+                <input type="text" id="checkout-address" name="address" required><br><br>
+                <button type="submit" id="place-order-button">Place Order</button>
             </form>
         </div>
-        <!-- Product details page content -->
-        <div id="product-details" class="page" style="display: none;">
-            <h2>Product Details</h2>
-            <div id="product-details-content">
-                <!-- Product details will be displayed here -->
+    </main>
+
+    <!-- Product Details Modal -->
+    <div id="product-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeProductDetails()">&times;</span>
+            <div id="modal-product-content">
+                <!-- Product details will be loaded here -->
             </div>
         </div>
-    </main>
+    </div>
+
     <footer>
-        <p>&copy; 2025 E-commerce Website</p>
+        <p>&copy; 2026 E-commerce Website</p>
     </footer>
     <script src="script.js"></script>
     <script>
         function showPage(page) {
-            var pages = document.getElementsByClassName('page');
-            for (var i = 0; i < pages.length; i++) {
-                pages[i].style.display = 'none';
-            }
+            var pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.style.display = 'none');
             document.getElementById(page).style.display = 'block';
+            closeProductDetails(); // Close modal if open
         }
-        
+
         // Show the home page by default
         showPage('home');
-        </script>
-        </body>
-        </html>
+    </script>
+</body>
+</html>

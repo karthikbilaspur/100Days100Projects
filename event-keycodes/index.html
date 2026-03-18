@@ -7,14 +7,18 @@
     <title>Event KeyCodes</title>
 </head>
 <body>
-    <div id="key-container" class="key-container" role="log" aria-live="polite"></div>
-    <button id="clear-keys-button">Clear Keys</button>
-    <button id="copy-keys-button">Copy Keys</button>
-    <input id="filter-input" type="text" placeholder="Filter keys...">
-    <button id="sort-name-button">Sort by Name</button>
-    <button id="sort-code-button">Sort by Code</button>
-    <button id="sort-key-code-button">Sort by Key Code</button>
-    <div id="key-statistics"></div>
+    <div class="controls">
+        <input id="filter-input" type="text" placeholder="Filter keys (by name, code, or key code)">
+        <button id="sort-name-button">Sort by Name</button>
+        <button id="sort-code-button">Sort by Code</button>
+        <button id="sort-key-code-button">Sort by Key Code</button>
+        <button id="clear-keys-button">Clear Keys</button>
+        <button id="copy-keys-button">Copy Keys</button>
+    </div>
+    <div id="key-statistics" class="key-statistics" role="status" aria-live="polite"></div>
+    <div id="key-container" class="key-container" role="log" aria-live="polite">
+        <div class="initial-message">Press any key to see its key code information!</div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

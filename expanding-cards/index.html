@@ -1,36 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Expanding Cards</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Cards - Explore Nature & City Adventures</title>
+
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Discover dynamic expanding cards featuring Nature and City adventures. Filter, search, and switch views for an engaging experience without frameworks.">
+    <meta name="keywords" content="dynamic cards, expanding cards, nature, city, JavaScript, vanilla JS, HTML, CSS, responsive, filter, search, grid view, list view, web component, example">
+    <meta name="author" content="Meta AI">
+    <link rel="canonical" href="https://yourwebsite.com/index.html"> <!-- Update with your actual URL -->
+
+    <!-- Open Graph Meta Tags (for social media sharing) -->
+    <meta property="og:title" content="Dynamic Expanding Cards - Explore Nature & City Adventures">
+    <meta property="og:description" content="Discover dynamic expanding cards featuring Nature and City adventures. Filter, search, and switch views for an engaging experience without frameworks.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/index.html"> <!-- Update with your actual URL -->
+    <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg"> <!-- Provide a relevant image for sharing -->
+    <meta property="og:image:alt" content="Preview of expanding cards with nature and city themes">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YourTwitterHandle"> <!-- If you have one -->
+    <meta name="twitter:creator" content="@YourTwitterHandle"> <!-- If you have one -->
+    <meta name="twitter:title" content="Dynamic Expanding Cards - Explore Nature & City Adventures">
+    <meta name="twitter:description" content="Discover dynamic expanding cards featuring Nature and City adventures. Filter, search, and switch views for an engaging experience without frameworks.">
+    <meta name="twitter:image" content="https://yourwebsite.com/images/twitter-image.jpg"> <!-- Provide a relevant image for sharing -->
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" role="tablist" aria-label="Expanding Cards">
-        <!-- Panels with background images and headings -->
-        <div class="panel" role="tab" aria-selected="true" aria-controls="panel1" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
-            <h3 id="panel1" class="panel-title" role="tabpanel" aria-labelledby="panel1">Explore The World</h3>
-            <button class="panel-button" aria-label="Learn more about Explore The World">Learn More</button>
-        </div>
-        <!-- Add more panels here... -->
-        <div class="panel" role="tab" aria-selected="false" aria-controls="panel2" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
-            <h3 id="panel2" class="panel-title" role="tabpanel" aria-labelledby="panel2">Wild Forest</h3>
-            <button class="panel-button" aria-label="Learn more about Wild Forest">Learn More</button>
-        </div>
-        <div class="panel" role="tab" aria-selected="false" aria-controls="panel3" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80')">
-            <h3 id="panel3" class="panel-title" role="tabpanel" aria-labelledby="panel3">Sunny Beach</h3>
-            <button class="panel-button" aria-label="Learn more about Sunny Beach">Learn More</button>
-        </div>
-        <div class="panel" role="tab" aria-selected="false" aria-controls="panel4" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80')">
-            <h3 id="panel4" class="panel-title" role="tabpanel" aria-labelledby="panel4">City on Winter</h3>
-            <button class="panel-button" aria-label="Learn more about City on Winter">Learn More</button>
-        </div>
-        <div class="panel" role="tab" aria-selected="false" aria-controls="panel5" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
-            <h3 id="panel5" class="panel-title" role="tabpanel" aria-labelledby="panel5">Mountains - Clouds</h3>
-            <button class="panel-button" aria-label="Learn more about Mountains - Clouds">Learn More</button>
-        </div>
-    </div>
+
+    <aside class="sidebar" aria-label="Main Navigation">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features-section">Features</a></li>
+                <li><a href="#about-section">About</a></li>
+                <li><a href="#contact-section">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <section id="home" class="hero-section">
+            <h1>Welcome to Dynamic Card Showcase!</h1>
+            <p>Discover beautiful places and vibrant cities through our interactive expanding cards.</p>
+            <a href="#card-section" class="action-button primary">Start Exploring</a>
+        </section>
+
+        <section id="card-section" aria-labelledby="card-section-heading">
+            <h2 id="card-section-heading" class="section-heading">Explore Destinations</h2>
+            <div class="controls-container">
+                <div class="filter-group">
+                    <label for="category-filter" class="visually-hidden">Filter by Category</label>
+                    <select id="category-filter" aria-controls="carousel-container" aria-label="Select category">
+                        <option value="all">All Categories</option>
+                        <option value="nature">Nature</option>
+                        <option value="city">City</option>
+                    </select>
+                    <label for="search-input" class="visually-hidden">Search cards</label>
+                    <input type="text" id="search-input" placeholder="Search cards..." aria-label="Search cards by title or description">
+                </div>
+
+                <div class="view-toggle">
+                    <button id="grid-view-btn" class="view-btn active" aria-label="Switch to grid view" aria-pressed="true">
+                        <span class="icon-grid" aria-hidden="true"></span>
+                    </button>
+                    <button id="list-view-btn" class="view-btn" aria-label="Switch to list view" aria-pressed="false">
+                        <span class="icon-list" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- New: ARIA live region for search announcements -->
+            <div id="search-announcer" class="visually-hidden" aria-live="polite"></div>
+
+            <div class="carousel-container grid-view" id="carousel-container" role="region" aria-live="polite" aria-label="Category specific cards">
+                <!-- Cards will be dynamically loaded here by JavaScript -->
+            </div>
+            
+            <div class="carousel-nav">
+                <!-- Placeholder for carousel navigation if a library is integrated later -->
+            </div>
+        </section>
+        
+        <section id="features-section" class="info-section" aria-labelledby="features-heading">
+            <h2 id="features-heading" class="section-heading">Key Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>Dynamic & Interactive Cards</h3>
+                    <p>Engage with content through expanding cards that reveal more details on click or focus.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Seamless Filtering & Search</h3>
+                    <p>Effortlessly narrow down your interests using category filters and a live search input.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Flexible View Modes</h3>
+                    <p>Switch between a visually appealing grid layout and a detailed list view to suit your preference.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Optimized for Accessibility</h3>
+                    <p>Designed with keyboard navigation, ARIA attributes, and screen reader announcements for all users.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Clean & Lightweight Code</h3>
+                    <p>Built with pure HTML, CSS, and vanilla JavaScript, ensuring fast performance and easy customization.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>SEO & Social Media Ready</h3>
+                    <p>Includes comprehensive meta tags for better search engine visibility and social sharing previews.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-section" class="info-section" aria-labelledby="about-heading">
+            <h2 id="about-heading" class="section-heading">About This Project</h2>
+            <p>This project is a demonstration of modern web development techniques using foundational technologies. Our goal was to create a highly functional and aesthetically pleasing component without the overhead of external frameworks. It highlights best practices in user experience, performance, and accessibility, providing a robust template for dynamic content presentation.</p>
+            <p>We believe in the power of well-crafted vanilla JavaScript to deliver compelling web experiences. This interactive card layout can be easily adapted for portfolios, product listings, blog posts, or any content requiring engaging display and organized navigation.</p>
+        </section>
+
+        <section id="contact-section" class="info-section" aria-labelledby="contact-heading">
+            <h2 id="contact-heading" class="section-heading">Get in Touch</h2>
+            <p>Have questions, feedback, or just want to connect? We'd love to hear from you!</p>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                </div>
+                <button type="submit" class="action-button primary">Send Message</button>
+            </form>
+            <p>You can also find us on social media:</p>
+            <ul class="social-links">
+                <li><a href="#" aria-label="Visit us on Twitter">Twitter</a></li>
+                <li><a href="#" aria-label="Visit us on LinkedIn">LinkedIn</a></li>
+                <li><a href="#" aria-label="Visit us on GitHub">GitHub</a></li>
+            </ul>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

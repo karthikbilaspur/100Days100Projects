@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* Variables */
+:root {
+    --primary-color: #383838;
+    --secondary-color: #2B2B2B;
+    --highlight-color: #cccccc;
+    --text-color: #ffffff;
+    --label-color: #c4c4c4;
+    --button-hover-bg: #555555;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+input[type="text"] {
+    padding: 10px 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 16px;
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+input[type="text"]::placeholder {
+    color: var(--label-color);
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--highlight-color);
+}
+
+.key-statistics {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 1.1em;
+    color: var(--highlight-color);
+}
+
+.key-statistics strong {
+    color: var(--text-color);
+}
+
+.key-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #555;
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 900px;
+    min-height: 150px;
+    gap: 20px;
+}
+
+.initial-message {
+    color: var(--label-color);
+    font-size: 1.2em;
+    text-align: center;
+    width: 100%;
+    align-self: center; /* Center vertically if only message exists */
+}
+
+.key {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    width: 180px; /* Fixed width for better grid alignment */
+    height: 120px; /* Fixed height */
+    background-color: #444;
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+}
+
+.key:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: #666;
+}
+
+.key.hidden {
+    display: none;
+}
+
+.key div {
+    font-size: 0.9em;
+    color: var(--label-color);
+    margin-bottom: 5px;
+}
+
+.key div span {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-color);
+    display: block; /* Ensure the actual value is on a new line or block */
+}
+
+.key.key-name span {
+    color: #8be9fd; /* Specific color for key name value */
+}
+
+.key.key-code span {
+    color: #50fa7b; /* Specific color for key code value */
+}
+
+.key.key-value span {
+    color: #ff79c6; /* Specific color for key code value */
+}
+
+/* Accessibility Styles */
+
+@media (forced-colors: active) {
+    body {
+        background-color: Window;
+        color: WindowText;
+    }
+   .key-container,.key,.controls button, input {
+        background-color: Window;
+        color: WindowText;
+        border: 1px solid WindowText;
+    }
+   .key:hover {
+        background-color: Highlight;
+        color: HighlightText;
+    }
+   .key-statistics {
+        background-color: Window;
+        color: WindowText;
+        border: 1px solid WindowText;
+    }
+   .key div span {
+        color: WindowText;
+    }
+   .initial-message {
+        color: WindowText;
+    }
+}
+
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: black;
+        --secondary-color: #1a1a1a;
+        --highlight-color: yellow;
+        --text-color: white;
+        --label-color: lightgray;
+        --button-hover-bg: #333;
+    }
+    body {
+        border-top: 5px solid white; /* Visual cue for high contrast */
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+   .key {
+        transition: none;
+        transform: none!important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    /* No additional changes needed as the default scheme is already dark */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+   .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input[type="text"] {
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+   .key-container {
+        padding: 15px;
+        gap: 15px;
+    }
+
+   .key {
+        width: calc(50% - 15px); /* Two columns on smaller screens */
+        height: 110px;
+    }
+
+   .key div span {
+        font-size: 1em;
+    }
+
+   .key-statistics {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+   .key {
+        width: 100%; /* Single column on very small screens */
+        height: 100px;
+    }
+
+   .key div {
+        font-size: 0.8em;
+    }
+
+    .key div span {
+        font-size: 1.1em;
+    }
+}
