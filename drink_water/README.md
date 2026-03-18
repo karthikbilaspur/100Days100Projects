@@ -1,4 +1,5 @@
-Water Drinking Tracker
+# Water Drinking Tracker
+
 A simple web application to track your daily water drinking habits.
 Features
 Set a custom daily water drinking goal
@@ -20,11 +21,3 @@ Accessibility Features
 ARIA attributes for screen reader support
 Keyboard navigation support
 High contrast color scheme
-License
-This project is licensed under the MIT License.
-Contributing
-Contributions are welcome! If you have any ideas or bug fixes, please submit a pull request.
-Acknowledgments
-Font: Montserrat, courtesy of Google Fonts
-Icons: None used
-

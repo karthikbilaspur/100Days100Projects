@@ -1,190 +1,114 @@
-const smallCups = document.querySelectorAll('.cup-small');
+const cupsContainer = document.getElementById('cups');
 const liters = document.getElementById('liters');
-const percentage = document.getElementById('percentage');
+const percentageEl = document.getElementById('percentage');
 const remained = document.getElementById('remained');
+const goalValueEl = document.getElementById('goal-value');
+
+const totalWaterEl = document.getElementById('total-water');
+const averageEl = document.getElementById('average');
+
 const goalInput = document.getElementById('goal-input');
 const setGoalBtn = document.getElementById('set-goal-btn');
 const resetBtn = document.getElementById('reset-btn');
-const cups = document.getElementById('cups');
-const text = document.getElementById('text');
 
-let goal = 2; // default goal
+let goal = Number(localStorage.getItem('goal')) || 2;
+goalValueEl.innerText = goal;
 
-// Function to update the big cup
-function updateBigCup() {
-    const fullCups = document.querySelectorAll('.cup-small.full').length;
-    const totalCups = smallCups.length;
-    const percentage = (fullCups / totalCups) * 100;
+let cupsState = JSON.parse(localStorage.getItem('cups')) || Array(8).fill(false);
 
-    if (percentage === 0) {
-        remained.style.visibility = 'visible';
-        remained.style.height = 'auto';
-        percentage.style.visibility = 'hidden';
-        percentage.style.height = 0;
-    } else {
-        remained.style.visibility = 'visible';
-        remained.style.height = 'auto';
-        percentage.style.visibility = 'visible';
-        percentage.style.height = `${percentage * 3.3}px`;
-        percentage.innerText = `${percentage}%`;
-    }
-
-    if (fullCups === totalCups) {
-        remained.style.visibility = 'hidden';
-        remained.style.height = 0;
-    } else {
-        liters.innerText = `${goal - (250 * fullCups / 1000)}L`;
-    }
-}
-
-// Function to highlight the cups
-function highlightCups(idx) {
-    smallCups.forEach((cup, index) => {
-        if (index <= idx) {
-            cup.classList.add('full');
-        } else {
-            cup.classList.remove('full');
-        }
-    });
-}
-
-// Add event listeners to the small cups
-smallCups.forEach((cup, index) => {
-    cup.addEventListener('click', () => {
-        highlightCups(index);
-        updateBigCup();
-    });
-});
-
-// Add event listener to the set goal button
-setGoalBtn.addEventListener('click', () => {
-    goal = parseFloat(goalInput.value);
-    document.getElementById('goal-value').innerText = goal;
-    updateBigCup();
-});
-
-// Add event listener to the reset button
-resetBtn.addEventListener('click', () => {
-    smallCups.forEach(cup => cup.classList.remove('full'));
-    updateBigCup();
-});
-
-// Generate the small cups dynamically
-for (let i = 0; i < 8; i++) {
+// Render cups
+function renderCups() {
+  cupsContainer.innerHTML = '';
+  cupsState.forEach((filled, i) => {
     const cup = document.createElement('div');
-    cup.classList.add('cup-small');
+    cup.className = 'cup-small' + (filled ? ' full' : '');
     cup.innerText = '250ml';
-    cups.appendChild(cup);
+
+    cup.addEventListener('click', () => toggleCup(i));
+    cupsContainer.appendChild(cup);
+  });
 }
 
-// Update the big cup initially
-updateBigCup();
+// Toggle cups (better UX)
+function toggleCup(index) {
+  if (cupsState[index] && !cupsState[index + 1]) {
+    cupsState[index] = false;
+  } else {
+    for (let i = 0; i <= index; i++) cupsState[i] = true;
+    for (let i = index + 1; i < cupsState.length; i++) cupsState[i] = false;
+  }
 
-// Function to update statistics
-function updateStatistics() {
-    const totalWater = document.getElementById('total-water');
-    const averageDaily = document.getElementById('average-daily');
-    const longestStreak = document.getElementById('longest-streak');
-
-    // Calculate statistics
-    const totalWaterConsumed = calculateTotalWaterConsumed();
-    const averageDailyConsumption = calculateAverageDailyConsumption();
-    const longestStreakDays = calculateLongestStreakDays();
-
-    // Update statistics display
-    totalWater.innerText = `${totalWaterConsumed} liters`;
-    averageDaily.innerText = `${averageDailyConsumption} liters`;
-    longestStreak.innerText = `${longestStreakDays} days`;
+  save();
+  updateUI();
 }
 
-// Function to calculate total water consumed
-function calculateTotalWaterConsumed() {
-    // Calculate total water consumed
-    const totalWaterConsumed = Array.from(smallCups).filter(cup => cup.classList.contains('full')).length * 250;
-    return totalWaterConsumed;
-}
+// Update UI
+function updateUI() {
+  renderCups();
 
-// Function to calculate average daily consumption
-function calculateAverageDailyConsumption() {
-    // Calculate average daily consumption
-    const averageDailyConsumption = calculateTotalWaterConsumed() / getDaysSinceStart();
-    return averageDailyConsumption;
-}
+  const full = cupsState.filter(c => c).length;
+  const percent = (full / cupsState.length) * 100;
 
-// Function to calculate longest streak days
-function calculateLongestStreakDays() {
-    // Calculate longest streak days
-    const longestStreakDays = getLongestStreakDays();
-    return longestStreakDays;
-}
+  percentageEl.style.height = percent + '%';
+  percentageEl.innerText = percent ? Math.round(percent) + '%' : '';
 
-// Function to get days since start
-function getDaysSinceStart() {
-    // Get days since start
-    const startDate = localStorage.getItem('startDate');
-    if (!startDate) {
-        localStorage.setItem('startDate', new Date().toISOString());
-        return 1;
-    } else {
-        const daysSinceStart = Math.round((new Date().getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24));
-        return daysSinceStart;
-    }
-}
+  if (full === 0) {
+    remained.style.visibility = 'visible';
+  }
 
-// Function to get longest streak days
-function getLongestStreakDays() {
-    // Get longest streak days
-    const longestStreakDays = localStorage.getItem('longestStreakDays');
-    if (!longestStreakDays) {
-        return 1;
-    } else {
-        return parseInt(longestStreakDays);
-    }
-}
+  if (full === cupsState.length) {
+    remained.style.visibility = 'hidden';
+  } else {
+    const remaining = goal - (full * 0.25);
+    liters.innerText = remaining.toFixed(2) + 'L';
+  }
 
-// Function to update longest streak days
-function updateLongestStreakDays() {
-    // Update longest streak days
-    const currentStreakDays = getDaysSinceLastMissedDay();
-    const longestStreakDays = getLongestStreakDays();
-    if (currentStreakDays > longestStreakDays) {
-        localStorage.setItem('longestStreakDays', currentStreakDays);
-    }
-}
-
-// Function to get days since last missed day
-function getDaysSinceLastMissedDay() {
-    // Get days since last missed day
-    const lastMissedDay = localStorage.getItem('lastMissedDay');
-    if (!lastMissedDay) {
-        return getDaysSinceStart();
-    } else {
-        const daysSinceLastMissedDay = Math.round((new Date().getTime() - new Date(lastMissedDay).getTime()) / (1000 * 3600 * 24));
-        return daysSinceLastMissedDay;
-    }
-}
-
-// Function to update last missed day
-function updateLastMissedDay() {
-    // Update last missed day
-    const today = new Date().toISOString();
-    const lastMissedDay = localStorage.getItem('lastMissedDay');
-    if (!lastMissedDay || today !== lastMissedDay) {
-        localStorage.setItem('lastMissedDay', today);
-    }
+  updateStats();
 }
 
 // Update statistics
-updateStatistics();
+function updateStats() {
+  const totalLiters = cupsState.filter(c => c).length * 0.25;
+  totalWaterEl.innerText = totalLiters.toFixed(2);
 
-// Update longest streak days
-updateLongestStreakDays();
+  const days = getDays();
+  averageEl.innerText = (totalLiters / days).toFixed(2);
+}
 
-// Add event listener to reset button
-resetBtn.addEventListener('click', () => {
-    // Reset progress
-    smallCups.forEach(cup => cup.classList.remove('full'));
-    updateBigCup();
-    updateStatistics();
-    updateLongestStreakDays();
+// Get days since start
+function getDays() {
+  let start = localStorage.getItem('start');
+  if (!start) {
+    localStorage.setItem('start', new Date().toISOString());
+    return 1;
+  }
+  const diff = Date.now() - new Date(start).getTime();
+  return Math.max(1, Math.ceil(diff / (1000 * 3600 * 24)));
+}
+
+// Save data
+function save() {
+  localStorage.setItem('cups', JSON.stringify(cupsState));
+  localStorage.setItem('goal', goal);
+}
+
+// Set goal
+setGoalBtn.addEventListener('click', () => {
+  const val = parseFloat(goalInput.value);
+  if (!val || val <= 0) return;
+
+  goal = val;
+  goalValueEl.innerText = goal;
+  save();
+  updateUI();
 });
+
+// Reset
+resetBtn.addEventListener('click', () => {
+  cupsState = Array(8).fill(false);
+  save();
+  updateUI();
+});
+
+// Initial load
+updateUI();

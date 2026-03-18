@@ -5,13 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-usVcF46m0f2Tzrv4Wp0x1U9dp8R6dV2ZOG2jVIFIAnBME1E8QFT8Cx2n6Xq0rGLO+0xLcKJ2Oz22lJ0Z" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
-    <title>Double Click Heart</title>
+    <title>Double Click Heart Post</title>
 </head>
 <body>
-    <h3>Double click on the image to <i class="fa-solid fa-heart"></i> it</h3>
+    <h3>Double click on the image to <i class="fa-solid fa-heart red-heart"></i> it</h3>
     <small>You liked it <span id="times">0</span> times</small>
 
-    <div class="loveMe"></div>
+    <!-- Enhanced "IRL" post structure -->
+    <div class="post-card">
+        <div class="post-header">
+            <img src="https://i.pravatar.cc/50?img=68" alt="Profile picture of a user" class="profile-pic">
+            <span class="username">ExploreNature</span>
+        </div>
+        <div class="image-container loveMe">
+            <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="Majestic mountain landscape at sunset" class="post-image">
+            <i class="fas fa-heart liked-feedback"></i> <!-- Added for persistent visual feedback -->
+        </div>
+        <div class="post-actions">
+            <i class="far fa-heart action-icon"></i> <!-- Changed to far-heart for initial state -->
+            <i class="far fa-comment action-icon"></i>
+            <i class="far fa-share-from-square action-icon"></i>
+        </div>
+        <div class="post-caption">
+            <span class="username">ExploreNature</span> Soaking in this breathtaking sunset over the mountains! ✨ Pure magic. #Nature #Sunset #Mountains #Travel
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

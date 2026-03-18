@@ -1,72 +1,113 @@
 /* styles.css */
 
+body {
+    font-family: sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
 .gallery-container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
-    background-color: #f7f7f7;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .gallery-title {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2.2em;
+    font-weight: 600;
 }
 
 .gallery {
-    position: relative;
-    overflow: hidden;
-    height: 200px;
+    display: grid; /* Use CSS Grid for a real gallery layout */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between gallery items */
+    padding: 10px; /* Padding around the grid */
 }
 
 .gallery-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    animation: move-slide 5s infinite;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    overflow: hidden; /* Ensures image corners match item corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 200px; /* Fixed height for consistent grid items */
+    object-fit: cover; /* Ensures images fill the space without distortion */
+    display: block; /* Remove extra space below image */
+    transition: transform 0.3s ease-in-out; /* Smooth zoom on hover */
 }
 
-@keyframes move-slide {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+.gallery-item img:hover {
+    transform: scale(1.05);
 }
 
+/* Styling for the Load More button */
 .load-more-button {
-    background-color: #4CAF50;
+    display: block; /* Make it a block element to center it */
+    margin: 30px auto 10px auto; /* Center the button */
+    background-color: #007bff; /* A nice blue */
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
 }
 
 .load-more-button:hover {
-    background-color: #3e8e41;
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
-/* Responsive styles */
+.load-more-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive styles for the grid */
+@media (max-width: 992px) {
+   .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+}
 
 @media (max-width: 768px) {
-    .gallery {
-        height: 150px;
+   .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 10px;
+    }
+   .gallery-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+   .gallery-title {
+        font-size: 1.8em;
     }
 }
 
 @media (max-width: 480px) {
-    .gallery {
-        height: 100px;
+   .gallery {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 15px;
+    }
+   .gallery-item img {
+        height: 180px; /* Adjust height for smaller screens */
     }
 }

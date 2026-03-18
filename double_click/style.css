@@ -1,53 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@300;400;700&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Oswald', sans-serif;
-    text-align: center;
-    overflow: hidden;
+    font-family: 'Roboto', sans-serif; /* Changed font for a modern look */
+    background-color: #fafafa; /* Light background like social apps */
+    display: flex; /* Use flexbox to center content */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
     margin: 0;
+    color: #262626; /* Dark text for readability */
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 h3 {
-    margin-bottom: 0;
-    text-align: center;
+    margin-bottom: 5px; /* Adjust margin */
+    font-weight: 400;
 }
 
 small {
     display: block;
-    margin-bottom: 20px;
-    text-align: center;
+    margin-bottom: 25px; /* Adjust margin */
+    font-size: 0.9em;
+    color: #8e8e8e;
 }
 
-.fa-heart {
-    color: red;
+.red-heart { /* For the heart in the H3 text */
+    color: #ed4956; /* Instagram red */
 }
 
-.loveMe {
-    height: 440px;
-    width: 300px;
-    background: url('https://images.unsplash.com/photo-1504215680853-026ed2a45def?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')
-        no-repeat center center/cover;
-    margin: auto;
-    cursor: pointer;
-    max-width: 100%;
+/* Post Card Styling */
+.post-card {
+    width: 350px; /* Slightly wider for better image display */
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 95%; /* Responsive */
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.image-container {
+    height: 350px; /* Square aspect ratio for the image */
+    width: 100%;
     position: relative;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
     overflow: hidden;
 }
 
-.loveMe .fa-heart {
+.post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Heart that appears on double click */
+.image-container .fa-heart {
     position: absolute;
-    animation: grow 0.6s linear;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%) scale(0);
+    animation: grow 0.6s linear;
+    color: #ed4956;
+    font-size: 50px; /* Larger flying heart */
+    text-shadow: 0 0 10px rgba(0,0,0,0.3); /* Add some shadow */
 }
 
 @keyframes grow {
     to {
-        transform: translate(-50%, -50%) scale(10);
+        transform: translate(-50%, -50%) scale(10); /* Grows more */
         opacity: 0;
     }
+}
+
+/* Persistent liked feedback heart */
+.liked-feedback {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ed4956;
+    font-size: 24px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s ease-in-out;
+}
+
+.liked-feedback.show {
+    opacity: 1; /* Show when liked */
+}
+
+.post-actions {
+    padding: 8px 15px;
+    display: flex;
+    gap: 15px;
+    border-top: 1px solid #eee;
+}
+
+.action-icon {
+    font-size: 22px;
+    cursor: pointer;
+    color: #262626;
+}
+.action-icon:hover {
+    opacity: 0.7;
+}
+
+.post-caption {
+    padding: 0 15px 10px 15px;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.post-caption .username {
+    margin-right: 5px;
 }

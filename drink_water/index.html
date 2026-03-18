@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Water Drinking Tracker</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Water Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Water Drinking Tracker</h1>
-    <h3 id="goal">Goal: <span id="goal-value">2</span> Liters</h3>
-    <input id="goal-input" type="number" placeholder="Set your goal (in liters)" aria-label="Set custom goal">
-    <button id="set-goal-btn" aria-label="Set custom goal">Set Goal</button>
 
-    <div class="cup">
-        <div class="remained" id="remained">
-            <span id="liters"></span>
-            <small>Remained</small>
-        </div>
+<h1>💧 Water Tracker</h1>
 
-        <div class="percentage" id="percentage"></div>
-    </div>
+<h3>Goal: <span id="goal-value">2</span> L</h3>
+<input id="goal-input" type="number" placeholder="Liters" />
+<button id="set-goal-btn">Set Goal</button>
 
-    <p class="text" id="text">Select how many glasses of water that you have drank</p>
+<div class="cup">
+  <div id="remained" class="remained">
+    <span id="liters"></span>
+    <small>Remaining</small>
+  </div>
+  <div id="percentage" class="percentage"></div>
+</div>
 
-    <div class="cups" id="cups">
-        <!-- Cups will be generated dynamically -->
-    </div>
+<div class="cups" id="cups"></div>
 
-    <button id="reset-btn" aria-label="Reset progress">Reset</button>
+<button id="reset-btn">Reset</button>
 
-    <div id="statistics">
-        <h2>Statistics</h2>
-        <p>Total water consumed: <span id="total-water"></span> liters</p>
-        <p>Average daily consumption: <span id="average-daily"></span> liters</p>
-        <p>Longest streak: <span id="longest-streak"></span> days</p>
-    </div>
+<div id="statistics">
+  <h3>Stats</h3>
+  <p>Total: <span id="total-water"></span> L</p>
+  <p>Average: <span id="average"></span> L/day</p>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

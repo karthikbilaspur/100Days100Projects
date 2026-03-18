@@ -4,30 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Image Gallery</title>
+    <title>Dynamic Image Gallery</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="gallery-container">
-        <h2 class="gallery-title">Responsive Image Gallery</h2>
-        <div class="gallery">
+        <h2 class="gallery-title">Dynamic & Responsive Image Gallery</h2>
+        <div class="gallery" id="imageGallery"> <!-- Added an ID for easier JS targeting -->
+            <!-- Initial images. Let's make them sequential for clarity with the JS -->
             <div class="gallery-item">
-                <img src="image1.jpeg" alt="Image 1" loading="lazy">
+                <img src="image1.jpeg" alt="Scenic mountain landscape" loading="lazy" id="image-1">
             </div>
             <div class="gallery-item">
-                <img src="image3.jpeg" alt="Image 3" loading="lazy">
+                <img src="image3.jpeg" alt="Forest path in autumn" loading="lazy" id="image-3">
             </div>
-            <div class="gallery-item">
-                <img src="image4.jpeg" alt="Image 4" loading="lazy">
-            </div>
-            <div class="gallery-item">
-                <img src="image5.jpeg" alt="Image 5" loading="lazy">
-            </div>  
-            <div class="gallery-item">
-                <img src="image6.jpeg" alt="Image 6" loading="lazy">
-            </div>
+            <!-- More images will be loaded here by JavaScript -->
         </div>
-        <button class="load-more-button">Load More</button>
+        <button class="load-more-button" id="loadMoreBtn">Load More</button> <!-- Added ID -->
     </div>
 
     <script src="script.js"></script>
