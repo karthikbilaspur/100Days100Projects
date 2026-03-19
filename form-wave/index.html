@@ -1,31 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com">
-    <link rel="stylesheet" href="styles.css" />
-    <title>Form Input Wave</title>
+    <!-- Progressive Enhancement: Ensures optimal rendering on older browsers too -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Preloading & Preconnecting for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"> <!-- For Font Awesome -->
+    <link rel="dns-prefetch" href="https://api.yourappname.com"> <!-- If making API calls -->
+
+    <!-- SEO & Metadata -->
+    <title itemprop="name">Secure Login - YourAppName</title>
+    <meta name="description" itemprop="description" content="Log in securely to your account on YourAppName. Access your dashboard and manage your profile with ease.">
+    <meta name="keywords" content="login, sign in, account, secure, YourAppName, dashboard, profile, access, authentication, user portal">
+    <meta name="author" itemprop="author" content="Your Company Name">
+    <link rel="canonical" href="https://www.yourappname.com/login"> <!-- Canonical URL to prevent duplicate content issues -->
+
+    <!-- Open Graph / Social Media Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourappname.com/login">
+    <meta property="og:title" content="Login to YourAppName">
+    <meta property="og:description" content="Securely access your account on YourAppName – your ultimate solution for managing everything.">
+    <meta property="og:image" content="https://www.yourappname.com/images/login-preview.png">
+    <meta property="og:image:alt" content="Login page for YourAppName, featuring a sleek user interface.">
+    <meta property="og:locale" content="en_US"> <!-- Specify locale for better targeting -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YourAppTwitterHandle"> <!-- Your app's Twitter handle -->
+    <meta name="twitter:creator" content="@YourAppTwitterHandle">
+    <meta name="twitter:url" content="https://www.yourappname.com/login">
+    <meta name="twitter:title" content="Login to YourAppName">
+    <meta name="twitter:description" content="Securely access your account on YourAppName – your ultimate solution for managing everything.">
+    <meta name="twitter:image" content="https://www.yourappname.com/images/login-preview.png">
+
+    <!-- Favicon (Multiple sizes for better compatibility) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Content Security Policy (Updated for Font Awesome CDN) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.yourappname.com; connect-src 'self' https://api.yourappname.com;">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuMWMyFuHWtVw3kU0Z/oX/z6I9kC+fWbWz1KzF9Z4z4wz4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="container">
-        <h1>Please Login</h1>
-        <form>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main class="container" id="main-content">
+        <h1 class="visually-hidden">YourAppName Login</h1> <!-- Hidden heading for accessibility, "Please Login" is visual -->
+        <p aria-hidden="true">Please Login</p> <!-- Visual heading with ARIA to hide from screen readers to avoid redundancy -->
+
+        <form id="loginForm" method="post" action="/login" aria-labelledby="login-heading">
+            <h2 id="login-heading" class="visually-hidden">User Login Form</h2> <!-- Hidden heading for form accessibility -->
+
             <div class="form-control">
-                <input type="text" required>
-                <label>Email</label>
+                <input type="email" id="email" name="email" required autocomplete="email" aria-required="true" aria-describedby="email-hint email-error">
+                <label for="email">Email <span class="visually-hidden">(required)</span></label>
+                <div id="email-hint" class="hint-text">e.g., user@example.com</div>
+                <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
             </div>
 
             <div class="form-control">
-                <input type="password" required>
-                <label>Password</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password" aria-required="true" aria-describedby="password-hint password-error">
+                <label for="password">Password <span class="visually-hidden">(required)</span></label>
+                <div id="password-hint" class="hint-text">Minimum 8 characters</div>
+                <div id="password-error" class="error-message" role="alert" aria-live="polite"></div>
             </div>
 
-            <button class="btn">Login</button>
+            <div class="form-options">
+                <a href="/forgot-password" class="forgot-password-link">Forgot Password?</a>
+            </div>
 
-            <p class="text">Don't have an account? <a href="#">Register</a> </p>
+            <button type="submit" class="btn" aria-live="assertive" aria-atomic="true">Login</button>
+
+            -->
+
+            <p class="text">Don't have an account? <a href="/register">Register</a> </p>
         </form>
-    </div>
+    </main>
+
+    <footer class="main-footer" role="contentinfo">
+        <nav aria-label="Social Media Links">
+            <ul class="social-icons">
+                <li><a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </nav>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> YourAppName. All rights reserved.</p>
+            <nav aria-label="Footer Navigation">
+                <ul class="footer-links">
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-of-service">Terms of Service</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
     <script src="script.js" defer></script>
+    <script>
+        // Dynamically update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

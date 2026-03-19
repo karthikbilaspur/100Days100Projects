@@ -1,76 +1,389 @@
+/* General Body and HTML Reset */
+:root {
+    --primary-color: #4CAF50; /* A nice green for actions */
+    --secondary-color: #007bff; /* Blue for links/accents */
+    --text-color: #333;
+    --background-color: #f0f2f5; /* Light grey background */
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+    --error-color: #dc3545; /* Red for errors */
+    --success-color: #28a745; /* Green for success */
+    --info-color: #17a2b8; /* Blue for info */
+    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.15);
+    --transition-speed: 0.3s ease;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* Container for Forms */
 .form-container {
-    width: 300px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    width: 90%;
+    max-width: 400px;
+    margin: 40px auto 20px auto; /* Adjust margin for footer */
+    padding: 30px;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative; /* For messages overlay */
 }
 
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Form Header and Tabs */
 .form-header {
     text-align: center;
+    margin-bottom: 30px;
+}
+
+#form-title {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.form-tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 12px 18px;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all var(--transition-speed);
+    outline: none;
+}
+
+.tab-button:hover:not(.active) {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Message Display */
+.messages {
+    padding: 12px 15px;
     margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    text-align: center;
+    display: none; /* Hidden by default, JS shows it */
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInSlideDown 0.5s forwards;
+}
+
+.messages.success {
+    background-color: #d4edda;
+    color: var(--success-color);
+    border: 1px solid #c3e6cb;
+}
+
+.messages.error {
+    background-color: #f8d7da;
+    color: var(--error-color);
+    border: 1px solid #f5c6cb;
+}
+
+.messages.info {
+    background-color: #d1ecf1;
+    color: var(--info-color);
+    border: 1px solid #bee5eb;
+}
+
+@keyframes fadeInSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Styling */
+form {
+    display: none; /* Hidden by default, JS handles visibility */
+    animation: fadeIn var(--transition-speed) forwards;
+}
+
+form.active-form {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .form-group {
     margin-bottom: 20px;
+    position: relative; /* For password toggle and error messages */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
 }
 
-.form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"] {
-    width: 100%;
-    height: 30px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); /* Focus ring */
+    outline: none;
+}
+
+.form-group input.input-error {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85em;
+    margin-top: 5px;
+    height: 1.2em; /* Reserve space to prevent layout shifts */
+}
+
+/* Password Toggle Icon */
+.password-toggle-icon {
+    position: absolute;
+    right: 12px;
+    top: 60%; /* Adjust based on label height and input padding */
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+    font-size: 1.1em;
+    transition: color var(--transition-speed);
+}
+
+.password-toggle-icon:hover {
+    color: var(--text-color);
+}
+
+.password-toggle-icon.visible {
+    color: var(--primary-color); /* Change color when password is visible */
+}
+
+/* Buttons */
 button[type="submit"] {
     width: 100%;
-    height: 30px;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color var(--transition-speed), transform 0.2s ease;
+    margin-top: 10px;
 }
 
 button[type="submit"]:hover {
-    background-color: #555;
+    background-color: #43a047; /* Slightly darker green */
+    transform: translateY(-2px);
 }
 
-#toggle-login-button {
-    width: 100%;
-    height: 30px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
+button[type="submit"]:active {
+    transform: translateY(0);
 }
 
-#toggle-login-button:hover {
-    background-color: #555;
-}
-
-#forgot-password-link {
+/* Links */
+.link-text {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-size: 0.95em;
+    color: var(--secondary-color);
     cursor: pointer;
+    transition: color var(--transition-speed);
 }
 
-#forgot-password-link:hover {
+.link-text:hover {
+    color: var(--primary-color);
     text-decoration: underline;
+}
+
+/* Chart Section */
+.chart-container {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto 40px auto;
+    padding: 30px;
+    text-align: center;
+}
+
+.chart-container h3 {
+    margin-top: 0;
+    color: var(--text-color);
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#activityChart {
+    max-height: 350px; /* Limit chart height */
+}
+
+/* Footer Styling */
+.site-footer {
+    background-color: #2c3e50; /* Darker background for footer */
+    color: #ecf0f1;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom */
+    font-size: 0.9em;
+}
+
+.site-footer p {
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between icons */
+}
+
+.social-icons a {
+    display: inline-block;
+    transition: transform var(--transition-speed);
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.social-icons img {
+    width: 32px; /* Standard size for social icons */
+    height: 32px;
+    border-radius: 50%; /* Make icons circular if they aren't already */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow */
+    transition: filter var(--transition-speed);
+}
+
+.social-icons img:hover {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For smaller screens (e.g., mobile phones) */
+@media (max-width: 600px) {
+    .form-container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    #form-title {
+        font-size: 1.5em;
+    }
+
+    .tab-button {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    button[type="submit"] {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .chart-container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .chart-container h3 {
+        font-size: 1.3em;
+    }
+
+    .site-footer {
+        padding: 20px 15px;
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .social-icons img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* For even smaller screens or landscape mobile */
+@media (max-width: 400px) {
+    .form-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+    .form-tabs {
+        flex-wrap: wrap; /* Allow tabs to wrap on very small screens */
+    }
+    .tab-button {
+        width: 100%; /* Full width tabs if wrapped */
+        margin-bottom: 5px;
+        border-bottom: none; /* Remove individual tab underlines when wrapped */
+    }
+    .tab-button.active {
+        border-bottom: none; /* Remove active tab underline */
+        border-radius: 5px;
+        background-color: rgba(76, 175, 80, 0.1); /* Light background for active tab */
+    }
 }

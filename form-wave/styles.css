@@ -1,7 +1,25 @@
-/* Import fonts */
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-/* Global styles */
+/* --- CSS Variables (Root and Global Styles) --- */
+:root {
+    --primary-color: steelblue; /* Main background color */
+    --accent-color: lightblue; /* Highlight/action color */
+    --text-color: #fff; /* Primary text color */
+    --bg-overlay-color: rgba(0, 0, 0, 0.4); /* Overlay for container background */
+    --error-color: #e74c3c; /* Color for error messages */
+    --hint-color: #ccc; /* Color for hint text */
+    --spacing-sm: 8px;
+    --spacing-md: 15px;
+    --spacing-lg: 30px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --border-radius: 5px;
+    --transition-speed: 0.3s;
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Base Styles --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,99 +27,369 @@
 }
 
 body {
-    background-color: steelblue;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     font-family: 'Muli', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    margin: 0;
+    min-height: 100vh; /* Use min-height for better content flow */
+    overflow-x: hidden; /* Prevent horizontal scroll on small screens */
+    line-height: 1.6;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); /* Subtle gradient */
+    background-size: 400% 400%; /* For animation */
+    animation: gradientAnimation 15s ease infinite; /* Gradient animation */
 }
 
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Skip Link for Accessibility --- */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: var(--spacing-sm);
+    z-index: 1000;
+    transform: translateY(-100%); /* Hidden off-screen */
+    transition: transform var(--transition-speed) ease-in-out;
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.skip-link:focus {
+    transform: translateY(0); /* Visible on focus */
+}
+
+/* --- Main Container & Form Styles --- */
 .container {
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 20px 40px;
-    border-radius: 5px;
+    background-color: var(--bg-overlay-color);
+    padding: var(--spacing-lg) 40px; /* Adjust padding for responsiveness */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    width: 90%; /* Responsive width */
+    max-width: 450px; /* Max width for larger screens */
+    margin: var(--spacing-lg) auto; /* Center with margin */
+    animation: fadeIn var(--transition-speed) ease-out forwards; /* Fade in animation */
 }
 
-.container h1 {
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container h1, .container .visually-hidden + p { /* Target the visual "Please Login" */
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: var(--spacing-lg);
+    font-size: 2.2em; /* Larger heading */
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle text shadow */
 }
 
 .container a {
     text-decoration: none;
-    color: lightblue;
+    color: var(--accent-color);
+    transition: color var(--transition-speed) ease-in-out;
+}
+
+.container a:hover,
+.container a:focus {
+    color: var(--text-color);
+    text-decoration: underline;
 }
 
 .btn {
     cursor: pointer;
     display: inline-block;
     width: 100%;
-    background: lightblue;
-    padding: 15px;
+    background: var(--accent-color);
+    color: var(--primary-color); /* Button text color */
+    padding: var(--spacing-md) var(--spacing-lg);
     font-family: inherit;
-    font-size: 16px;
+    font-size: var(--font-size-lg);
     border: 0;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
+    transition: transform 0.2s ease-in-out, background-color var(--transition-speed) ease-in-out;
+    font-weight: bold;
+    box-shadow: var(--shadow-light);
 }
 
 .btn:focus {
-    outline: 0;
+    outline: 2px solid var(--text-color); /* More visible focus */
+    outline-offset: 3px;
 }
 
 .btn:active {
     transform: scale(0.98);
 }
 
-.text {
-    margin-top: 30px;
+.btn:hover {
+    background-color: #79cff5; /* Slightly darker on hover */
+    box-shadow: var(--shadow-medium);
 }
 
+.btn:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.text {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    font-size: var(--font-size-base);
+}
+
+/* --- Form Control (Input/Label Wrapper) --- */
 .form-control {
     position: relative;
-    margin: 20px 0 40px;
-    width: 300px;
+    margin: var(--spacing-lg) 0 40px; /* Adjust bottom margin */
 }
 
 .form-control input {
     background-color: transparent;
     border: 0;
-    border-bottom: 2px #fff solid;
+    border-bottom: 2px solid var(--text-color);
     display: block;
     width: 100%;
-    padding: 15px 0;
-    font-size: 18px;
-    color: #fff;
+    padding: var(--spacing-md) 0;
+    font-size: var(--font-size-lg);
+    color: var(--text-color);
     position: relative;
     z-index: 100;
+    transition: border-bottom-color var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
 }
 
+/* Input focus/valid state */
 .form-control input:focus,
 .form-control input:valid {
     outline: 0;
-    border-bottom-color: lightblue;
+    border-bottom-color: var(--accent-color);
+    box-shadow: 0 1px 0 var(--accent-color); /* Subtle line shadow */
 }
 
+/* Invalid input state */
+.form-control input.invalid {
+    border-bottom-color: var(--error-color);
+    box-shadow: 0 1px 0 var(--error-color);
+}
+.form-control input.invalid:focus {
+    border-bottom-color: var(--error-color);
+    box-shadow: 0 1px 0 var(--error-color);
+}
+
+/* Label base style */
 .form-control label {
     position: absolute;
-    top: 15px;
+    top: var(--spacing-md);
     left: 0;
     pointer-events: none;
+    color: var(--hint-color); /* Slightly muted for hints */
+    transition: var(--transition-speed) cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Springy transition */
+    font-size: var(--font-size-lg);
 }
 
-.form-control label span {
-    display: inline-block;
-    font-size: 18px;
-    min-width: 5px;
-    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+/* Label movement on focus/valid/active */
+.form-control input:focus + label,
+.form-control input:valid + label,
+.form-control label.active-label { /* .active-label added by JS for pre-filled */
+    color: var(--accent-color);
+    transform: translateY(-30px) scale(0.85); /* Move up and slightly shrink */
+    font-size: var(--font-size-base); /* Ensure consistency */
 }
 
-.form-control input:focus + label span,
-.form-control input:valid + label span {
-    color: lightblue;
-    transform: translateY(-30px);
+/* Error and Hint Message Styles */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85em; /* Slightly smaller than base */
+    margin-top: 5px;
+    display: none;
+    animation: slideIn var(var(--transition-speed)) ease-out forwards;
+}
+.hint-text {
+    color: var(--hint-color);
+    font-size: 0.75em;
+    margin-top: 5px;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Password Toggle Button --- */
+.password-toggle {
+    position: absolute;
+    right: 0; /* Align to the right edge */
+    top: calc(50% + 5px); /* Adjusted to align with input text, considering padding */
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--hint-color); /* Muted color */
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: var(--spacing-sm);
+    z-index: 101; /* Ensure it's above the input */
+    transition: color var(--transition-speed) ease-in-out;
+}
+
+.password-toggle:hover,
+.password-toggle:focus {
+    color: var(--accent-color); /* Highlight on hover/focus */
+    outline: none; /* Remove default button outline */
+}
+.password-toggle:focus {
+    box-shadow: 0 0 0 2px var(--text-color); /* Custom focus indicator */
+    border-radius: var(--border-radius);
+}
+
+/* --- Form Options (Forgot Password) --- */
+.form-options {
+    text-align: right;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9em;
+}
+
+/* --- Visually Hidden for Accessibility --- */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+}
+
+/* --- Footer Styles --- */
+.main-footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--hint-color);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-footer .social-icons {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.main-footer .social-icons a {
+    color: var(--hint-color);
+    font-size: 1.5em; /* Larger icons */
+    transition: color var(--transition-speed) ease-in-out, transform 0.2s ease-in-out;
+    display: inline-block; /* For transform effect */
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+}
+
+.main-footer .social-icons a:hover,
+.main-footer .social-icons a:focus {
+    color: var(--accent-color);
+    transform: translateY(-3px) scale(1.1); /* Subtle bounce effect */
+    outline: none; /* Remove default outline */
+}
+.main-footer .social-icons a:focus {
+    box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+.main-footer .footer-bottom {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.main-footer .footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.main-footer .footer-links a {
+    color: var(--hint-color);
+    font-size: 0.9em;
+}
+
+/* --- Responsiveness (Media Queries) --- */
+
+/* Small screens / Phones */
+@media (max-width: 600px) {
+    .container {
+        padding: var(--spacing-md); /* Reduce padding on small screens */
+        width: 95%; /* Wider on very small screens */
+        margin: var(--spacing-md) auto; /* Adjust margin */
+    }
+
+    .container h1, .container .visually-hidden + p {
+        font-size: 1.8em; /* Smaller heading on small screens */
+        margin-bottom: var(--spacing-md);
+    }
+
+    .form-control {
+        margin: var(--spacing-md) 0 var(--spacing-lg); /* Adjust form control margins */
+    }
+
+    .form-control label {
+        font-size: var(--font-size-base); /* Smaller label text */
+    }
+    .form-control input:focus + label,
+    .form-control input:valid + label,
+    .form-control label.active-label {
+        transform: translateY(-25px) scale(0.8); /* Adjust label movement */
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+
+    .password-toggle {
+        font-size: 1em; /* Smaller toggle icon */
+    }
+
+    .main-footer .social-icons a {
+        font-size: 1.3em;
+        padding: var(--spacing-xs); /* Smaller padding */
+    }
+
+    .main-footer .footer-links {
+        flex-direction: column; /* Stack footer links vertically */
+        gap: var(--spacing-xs);
+    }
+}
+
+/* Medium screens / Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+    .container {
+        width: 80%;
+    }
+}
+
+/* Ensure body always occupies full viewport height, especially with footer at bottom */
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
 }

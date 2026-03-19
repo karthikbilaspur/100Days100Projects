@@ -1,57 +1,550 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* --- CSS Variables (Root and Global Styles) --- */
+:root {
+    --primary-color: #3498db; /* Blue */
+    --secondary-color: #2c3e50; /* Darker blue/grey */
+    --accent-color: #2ecc71; /* Green for success/highlight */
+    --warning-color: #f39c12; /* Orange for warnings */
+    --error-color: #e74c3c; /* Red for errors */
+    --text-color: #ecf0f1; /* Light text */
+    --bg-dark-overlay: rgba(0, 0, 0, 0.6); /* Dark overlay for container */
+    --bg-light-overlay: rgba(255, 255, 255, 0.1); /* Light overlay elements */
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 2rem;
+
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.3);
+    --shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+    background-image: linear-gradient(135deg, #0f4c75, #1b262c, #0f4c75); /* Darker, more serious gradient */
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
 }
 
-#validation-form {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.form-group {
-    margin-bottom: 20px;
+/* --- Skip Link for Accessibility --- */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-color);
+    color: var(--secondary-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    z-index: 1000;
+    transform: translateY(-100%);
+    transition: transform var(--transition-speed) ease-in-out;
+    border-bottom-right-radius: var(--border-radius);
+    text-decoration: none;
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
+.skip-link:focus {
+    transform: translateY(0);
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
+/* --- Main Container & Form Styles --- */
+.container {
+    background-color: var(--bg-dark-overlay);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-strong);
+    width: 95%;
+    max-width: 500px; /* Slightly wider for more fields */
+    margin: var(--spacing-lg) auto;
+    animation: fadeIn var(--transition-speed) ease-out forwards;
+    border: 1px solid var(--bg-light-overlay); /* Subtle border */
 }
 
-button[type="submit"] {
-    width: 100%;
-    height: 40px;
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-title { /* Visual heading */
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-xxl);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    color: var(--text-color);
+}
+
+.container a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color var(--transition-speed) ease-in-out;
+}
+
+.container a:hover,
+.container a:focus {
+    color: var(--warning-color); /* Different hover color */
+    text-decoration: underline;
+}
+
+/* General error messages for the form */
+.general-error {
+    text-align: center;
+    background-color: rgba(var(--error-color-rgb, 231, 76, 60), 0.2); /* Using RGB for rgba() */
+    color: var(--error-color);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--error-color);
+    display: none;
+}
+
+/* --- Buttons --- */
+.btn {
     cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background: var(--accent-color);
+    color: var(--secondary-color); /* Darker text on accent button */
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-family: inherit;
+    font-size: var(--font-size-lg);
+    border: 0;
+    border-radius: var(--border-radius);
+    transition: transform 0.2s ease-in-out, background-color var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+    font-weight: bold;
+    box-shadow: var(--shadow-light);
 }
 
-button[type="submit"]:hover {
-    background-color: #3e8e41;
+.btn:focus {
+    outline: 2px solid var(--warning-color); /* Distinct focus for buttons */
+    outline-offset: 3px;
 }
 
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:hover {
+    background-color: #27ae60; /* Darker green on hover */
+    box-shadow: var(--shadow-medium);
+}
+
+.btn:disabled {
+    background-color: #7f8c8d; /* Greyed out when disabled */
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.8;
+}
+
+.text {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    font-size: var(--font-size-base);
+    color: var(--hint-color, #ccc);
+}
+
+/* --- Form Group Styling --- */
+.form-group {
+    position: relative;
+    margin-bottom: var(--spacing-xl); /* Increased spacing for more breathing room */
+}
+
+/* Input, Select, Textarea base styles */
+.form-group input:not([type="checkbox"]),
+.form-group select,
+.form-group textarea {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly opaque background */
+    border: 1px solid var(--bg-light-overlay);
+    border-bottom: 2px solid var(--text-color);
+    display: block;
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-sm);
+    font-size: var(--font-size-lg);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    transition: border-color var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+}
+
+/* Placeholder color */
+.form-group input::placeholder {
+    color: var(--hint-color);
+    opacity: 0.7;
+}
+.form-group select option {
+    background-color: var(--secondary-color); /* Options background for select */
+    color: var(--text-color);
+}
+
+/* Input, Select, Textarea focus/valid state */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 0;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--accent-color); /* Custom focus ring */
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Input, Select, Textarea with content */
+.form-group input:valid:not(:placeholder-shown), /* Only apply if not placeholder shown */
+.form-group select:valid:not([value=""]),
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 1px var(--accent-color);
+}
+
+/* Invalid state for input, select, textarea */
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 2px var(--error-color);
+    animation: shake 0.2s ease-in-out 0s 2; /* Small shake effect */
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.form-group input.invalid:focus,
+.form-group select.invalid:focus,
+.form-group textarea.invalid:focus {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 2px var(--error-color);
+}
+
+/* Label base style */
+.form-group label {
+    display: block; /* Make labels block for easier positioning relative to input */
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    transition: color var(--transition-speed) ease-in-out;
+}
+
+/* Error and Hint Message Styles */
 .error-message {
-    color: #f00;
-    font-size: 14px;
-    margin-bottom: 10px;
+    color: var(--error-color);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+    min-height: 1.2em; /* Reserve space to prevent layout shifts */
+    display: block; /* Always visible for screen readers, but text content determines visual */
+    visibility: hidden; /* Hidden by default visually */
+    opacity: 0;
+    transition: visibility 0s linear var(--transition-speed), opacity var(--transition-speed) ease-in-out;
+}
+.error-message:not(:empty) { /* Show only if it has content */
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity var(--transition-speed) ease-in-out;
 }
 
-.success-message {
-    color: #0f0;
-    font-size: 14px;
-    margin-bottom: 10px;
+.hint-text {
+    color: var(--hint-color);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+    display: block;
+}
+
+/* --- Password Toggle Button --- */
+.password-group {
+    position: relative;
+}
+.password-toggle {
+    position: absolute;
+    right: var(--spacing-sm);
+    top: calc(var(--spacing-lg) + 5px); /* Adjusted to align with input text, considering padding */
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--hint-color);
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-xs);
+    z-index: 101;
+    transition: color var(--transition-speed) ease-in-out;
+}
+
+.password-toggle:hover,
+.password-toggle:focus {
+    color: var(--accent-color);
+    outline: none;
+}
+.password-toggle:focus {
+    box-shadow: 0 0 0 2px var(--warning-color); /* Distinct focus for controls */
+    border-radius: var(--border-radius);
+}
+
+/* --- Password Strength Indicator --- */
+.password-strength {
+    background-color: var(--bg-light-overlay);
+    height: 8px;
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-sm);
+    overflow: hidden;
+    position: relative;
+}
+.password-strength .strength-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: var(--border-radius);
+    transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+/* Strength levels colors (set by JS) */
+.strength-bar.weak { background-color: var(--error-color); }
+.strength-bar.medium { background-color: var(--warning-color); }
+.strength-bar.strong { background-color: var(--accent-color); }
+.strength-bar.very-strong { background-color: #00b894; } /* A darker green */
+
+/* --- Checkbox Group --- */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start; /* Align checkbox with text top */
+    margin-bottom: var(--spacing-xl);
+}
+.checkbox-group input[type="checkbox"] {
+    width: var(--spacing-xl); /* Size of custom checkbox */
+    height: var(--spacing-xl);
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    margin-right: var(--spacing-sm);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0; /* Prevent checkbox from shrinking */
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+.checkbox-group input[type="checkbox"]:focus {
+    outline: 2px solid var(--warning-color);
+    outline-offset: 3px;
+}
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: "\f00c"; /* Font Awesome checkmark */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--secondary-color);
+    font-size: var(--font-size-sm);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.checkbox-group label {
+    flex-grow: 1; /* Allow label to take remaining space */
+    margin-bottom: 0;
+    font-weight: normal;
+    font-size: var(--font-size-sm);
+}
+.checkbox-group input[type="checkbox"].invalid {
+    border-color: var(--error-color);
+}
+
+/* --- Flatpickr (Date Picker) overrides --- */
+.flatpickr-calendar {
+    background: var(--secondary-color);
+    border: 1px solid var(--bg-light-overlay);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    font-family: 'Muli', sans-serif;
+    color: var(--text-color);
+}
+.flatpickr-day, .flatpickr-weekday, .flatpickr-month, .flatpickr-current-month span.cur-month {
+    color: var(--text-color);
+}
+.flatpickr-day.selected, .flatpickr-day.selected:hover, .flatpickr-day.startRange, .flatpickr-day.startRange:hover, .flatpickr-day.endRange, .flatpickr-day.endRange:hover, .flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+.flatpickr-day.today {
+    border-color: var(--accent-color);
+}
+.flatpickr-day.today:hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+.flatpickr-months .flatpickr-prev-month, .flatpickr-months .flatpickr-next-month {
+    color: var(--text-color);
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-month, .flatpickr-current-month .numInputWrapper {
+    color: var(--text-color);
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+    background: var(--secondary-color);
+}
+/* Adjust position of the date picker to not overlap password toggle */
+.form-group #dob.flatpickr-input {
+    padding-right: var(--spacing-md); /* Make room if no toggle here */
+}
+/* If you add an icon to DOB, you'd adjust padding-right more */
+
+/* --- Visually Hidden for Accessibility --- */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+}
+
+/* --- Footer Styles --- */
+.main-footer {
+    margin-top: auto;
+    width: 100%;
+    background-color: var(--bg-dark-overlay);
+    color: var(--hint-color);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    border-top: 1px solid var(--bg-light-overlay);
+}
+
+.main-footer .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.main-footer .social-icons a {
+    color: var(--hint-color);
+    font-size: var(--font-size-xl);
+    transition: color var(--transition-speed) ease-in-out, transform 0.2s ease-in-out;
+    display: inline-block;
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+}
+
+.main-footer .social-icons a:hover,
+.main-footer .social-icons a:focus {
+    color: var(--accent-color);
+    transform: translateY(-3px) scale(1.1);
+    outline: none;
+}
+.main-footer .social-icons a:focus {
+    box-shadow: 0 0 0 2px var(--warning-color); /* Consistent focus indicator */
+}
+
+.main-footer .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.main-footer .footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.main-footer .footer-links a {
+    color: var(--hint-color);
+    font-size: var(--font-size-sm);
+}
+
+/* --- Responsiveness (Media Queries) --- */
+
+/* Small screens / Phones */
+@media (max-width: 600px) {
+    .container {
+        padding: var(--spacing-lg) var(--spacing-md);
+        width: 98%;
+        margin: var(--spacing-md) auto;
+    }
+
+    .form-title {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .form-group input:not([type="checkbox"]),
+    .form-group select,
+    .form-group textarea {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-base);
+    }
+
+    .form-group label, .form-group .hint-text, .form-group .error-message {
+        font-size: var(--font-size-sm);
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+
+    .password-toggle {
+        font-size: var(--font-size-base);
+        right: var(--spacing-xs);
+        top: calc(var(--spacing-md) + 3px);
+    }
+
+    .checkbox-group label {
+        font-size: var(--font-size-sm);
+    }
+
+    .main-footer .social-icons a {
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-xs);
+    }
+
+    .main-footer .footer-links {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
 }

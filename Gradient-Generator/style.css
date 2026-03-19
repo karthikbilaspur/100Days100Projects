@@ -1,0 +1,531 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    --bg-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --primary-color: #0f3460;
+    --accent-color: #e94560;
+    --card-bg: #16213e;
+    --control-bg: #223253;
+    --border-color: #533483;
+    --button-hover-bg: #e94560;
+    --drag-color: #a8dadc;
+    --trash-color: #e63946;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align to top primarily */
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.gradient-generator-container {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    max-width: 900px; /* Slightly wider */
+    width: 95%;
+    margin: 0 auto 30px auto; /* Centered, with space at bottom for footer */
+    border: 1px solid var(--border-color);
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+/* Live Preview */
+.live-preview {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(90deg, #6dd5ed 0%, #2193b0 100%); /* Default */
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+}
+
+/* Controls Section */
+.controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for more sections */
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--control-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.control-group, .color-stops, .presets, .save-load-controls, .undo-redo-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+.control-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+select, input[type="range"], input[type="color"], textarea, button, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    appearance: none;
+}
+input[type="text"] {
+    padding: 10px 15px; /* Adjust padding for text input */
+}
+
+select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230f3460'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 35px;
+}
+
+input[type="range"] {
+    height: 8px;
+    cursor: grab; /* Indicate draggable */
+    background: var(--primary-color);
+    outline: none;
+    transition: opacity.2s;
+    border: none;
+}
+input[type="range"]:active {
+    cursor: grabbing;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: grab;
+    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.4);
+}
+input[type="range"]::-webkit-slider-thumb:active {
+    cursor: grabbing;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: grab;
+    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.4);
+}
+input[type="range"]::-moz-range-thumb:active {
+    cursor: grabbing;
+}
+
+#angleValue, #positionXValue, #positionYValue {
+    align-self: flex-end;
+    margin-top: 5px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Color Stops */
+.color-stops {
+    grid-column: 1 / -1; /* Span all columns */
+}
+.color-stops h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.drag-hint {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.color-stop-list {
+    width: 100%;
+}
+
+.color-stop-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--control-bg);
+    border: 1px solid var(--border-color);
+    cursor: grab; /* Indicate draggable item */
+    position: relative;
+    z-index: 1; /* For drag-and-drop layering */
+}
+.color-stop-item:active {
+    cursor: grabbing;
+}
+
+/* Drag & Drop Styles */
+.color-stop-item.dragging {
+    opacity: 0.7;
+    border: 2px dashed var(--drag-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.color-stop-item.drag-over {
+    border-top: 2px solid var(--drag-color);
+}
+.color-stop-item.drag-over-bottom {
+    border-bottom: 2px solid var(--drag-color);
+}
+
+.color-stop-item input[type="color"] {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.color-stop-item input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+.color-stop-item input[type="color"]::-webkit-color-swatch { border: none; border-radius: 4px; }
+.color-stop-item input[type="color"]::-moz-color-swatch { border: none; border-radius: 4px; }
+
+.color-stop-item input[type="range"] {
+    flex-grow: 1;
+}
+
+.stop-value {
+    min-width: 45px;
+    text-align: right;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.add-remove-btn, .remove-color-stop-btn, .action-btn, .preset-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    margin-left: 10px;
+}
+.add-remove-btn:hover:not(:disabled), .remove-color-stop-btn:hover:not(:disabled), .action-btn:hover:not(:disabled), .preset-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+.add-remove-btn:disabled, .remove-color-stop-btn:disabled, .action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+.action-btn {
+    margin-left: 0; /* Override margin for standard action buttons */
+}
+.delete-btn {
+    background-color: var(--trash-color);
+}
+.delete-btn:hover:not(:disabled) {
+    background-color: #ff0000;
+}
+
+/* Color Stop Actions */
+.color-stop-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+.color-stop-trash {
+    background-color: var(--control-bg);
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0a0a0;
+    font-size: 1.1em;
+    width: 150px; /* Fixed width */
+    height: 50px;
+    transition: all 0.2s ease;
+    visibility: hidden; /* Hidden by default */
+    opacity: 0;
+}
+.color-stop-trash.visible {
+    visibility: visible;
+    opacity: 1;
+    border-color: var(--trash-color);
+    background-color: rgba(230, 57, 70, 0.2);
+}
+.color-stop-trash.drag-over-trash {
+    border-style: solid;
+    background-color: var(--trash-color);
+    color: white;
+}
+
+/* Presets */
+.presets h3 {
+    margin-top: 0;
+}
+.presets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.presets .action-btn {
+    margin-left: 0;
+}
+
+/* Save/Load Controls */
+.save-load-controls {
+    grid-column: span 1; /* Specific column spanning */
+}
+.save-gradient-group, .load-gradient-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.save-gradient-group input, .load-gradient-group select {
+    flex-grow: 1;
+}
+
+/* Undo/Redo Controls */
+.undo-redo-controls {
+    grid-column: span 1;
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    justify-content: center;
+    gap: 10px;
+}
+.undo-redo-controls h3 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.undo-redo-controls .action-btn {
+    flex-grow: 1;
+    max-width: 150px;
+    margin-left: 0;
+}
+
+/* Code Output */
+.code-output {
+    grid-column: 1 / -1; /* Span all columns */
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--control-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.code-output h3 {
+    margin-top: 0;
+}
+
+.code-block {
+    position: relative;
+}
+
+textarea#cssCodeOutput {
+    width: calc(100% - 2px); /* Adjust for padding/border */
+    min-height: 150px; /* Taller for more code */
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; /* Good for code */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    resize: vertical;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+}
+
+button#copyCodeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 15px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+button#copyCodeBtn:hover {
+    background-color: var(--accent-color);
+}
+
+.copy-message {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color); /* Use primary color for feedback */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.copy-message.visible {
+    opacity: 1;
+}
+
+.hidden {
+    display: none!important;
+}
+
+/* --- Footer Styles --- */
+.generator-footer {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 0.9em;
+    width: 100%;
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+}
+
+.generator-footer p {
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: var(--primary-color);
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+   .gradient-generator-container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+   .controls {
+        grid-template-columns: 1fr; /* Stack controls on smaller screens */
+    }
+   .color-stop-item {
+        flex-wrap: wrap; /* Allow items to wrap */
+    }
+   .color-stop-item input[type="range"] {
+        width: calc(100% - 100px); /* Adjust range width */
+    }
+   .color-stop-item.stop-value {
+        order: -1; /* Move stop value before range for better flow */
+        margin-right: 10px;
+    }
+    button#copyCodeBtn {
+        position: static; /* Remove absolute positioning */
+        margin-top: 15px;
+        width: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+   .color-stop-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+   .color-stop-trash {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+   .color-stop-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+   .color-stop-item input[type="range"] {
+        width: 100%;
+    }
+   .color-stop-item .stop-value {
+        order: 0;
+        align-self: flex-end;
+    }
+   .remove-color-stop-btn {
+        align-self: flex-end;
+        margin-left: 0;
+    }
+   .save-gradient-group, .load-gradient-group {
+        flex-direction: column;
+    }
+}

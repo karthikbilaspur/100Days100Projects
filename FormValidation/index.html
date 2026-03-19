@@ -1,38 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Preloading & Preconnecting for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"> <!-- For Font Awesome and Date Picker -->
+    <!-- <link rel="dns-prefetch" href="https://api.yourdomain.com"> -->
+
+    <!-- SEO & Metadata -->
+    <title itemprop="name">Register Account - Your Awesome App</title>
+    <meta name="description" itemprop="description" content="Create your account with Your Awesome App. Fast, secure, and easy registration to get started.">
+    <meta name="keywords" content="register, signup, create account, new user, Your Awesome App, join, free account">
+    <meta name="author" itemprop="author" content="Your Company Name">
+    <link rel="canonical" href="https://www.yourdomain.com/register">
+
+    <!-- Open Graph / Social Media Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com/register">
+    <meta property="og:title" content="Join Your Awesome App Today!">
+    <meta property="og:description" content="Sign up for free and unlock amazing features.">
+    <meta property="og:image" content="https://www.yourdomain.com/images/register-preview.png">
+    <meta property="og:image:alt" content="Registration page for Your Awesome App">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YourAppTwitterHandle">
+    <meta name="twitter:creator" content="@YourAppTwitterHandle">
+    <meta name="twitter:url" content="https://www.yourdomain.com/register">
+    <meta name="twitter:title" content="Join Your Awesome App Today!">
+    <meta name="twitter:description" content="Sign up for free and unlock amazing features.">
+    <meta name="twitter:image" content="https://www.yourdomain.com/images/register-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.yourdomain.com; connect-src 'self' https://api.yourdomain.com;">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuMWMyFuHWtVw3kU0Z/oX/z6I9kC+fWbWz1KzF9Z4z4wz4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Flatpickr for Date Picker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
 </head>
 <body>
-    <form id="validation-form">
-        <h2>Registration Form</h2>
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required aria-required="true">
-            <small class="error-message"></small>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required aria-required="true">
-            <small class="error-message"></small>
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required aria-required="true">
-            <small class="error-message"></small>
-        </div>
-        <div class="form-group">
-            <label for="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required aria-required="true">
-            <small class="error-message"></small>
-        </div>
-        <button type="submit">Submit</button>
-        <div class="success-message"></div>
-    </form>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <script src="script.js"></script>
+    <main class="container" id="main-content">
+        <h1 class="visually-hidden">Your Awesome App Registration</h1>
+        <p class="form-title" aria-hidden="true">Create Your Account</p>
+
+        <form id="registrationForm" method="post" action="/register" aria-labelledby="form-heading">
+            <h2 id="form-heading" class="visually-hidden">User Registration Form</h2>
+            <div id="general-error" class="error-message general-error" role="alert" aria-live="assertive"></div>
+
+            <div class="form-group">
+                <label for="username">Username <span class="visually-hidden">(required)</span></label>
+                <input type="text" id="username" name="username" required autocomplete="username"
+                       minlength="4" maxlength="20" pattern="[a-zA-Z0-9_]+"
+                       aria-required="true" aria-describedby="username-hint username-error">
+                <div id="username-hint" class="hint-text">4-20 alphanumeric characters or underscores</div>
+                <div id="username-error" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="visually-hidden">(required)</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email"
+                       aria-required="true" aria-describedby="email-hint email-error">
+                <div id="email-hint" class="hint-text">e.g., user@example.com</div>
+                <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth <span class="visually-hidden">(required)</span></label>
+                <input type="text" id="dob" name="dob" required autocomplete="bday"
+                       aria-required="true" aria-describedby="dob-hint dob-error" placeholder="YYYY-MM-DD">
+                <div id="dob-hint" class="hint-text">You must be at least 13 years old</div>
+                <div id="dob-error" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country <span class="visually-hidden">(required)</span></label>
+                <select id="country" name="country" required aria-required="true" aria-describedby="country-error">
+                    <option value="">Select your country</option>
+                    <option value="us">United States</option>
+                    <option value="ca">Canada</option>
+                    <option value="gb">United Kingdom</option>
+                    <option value="au">Australia</option>
+                    <option value="in">India</option>
+                    <option value="de">Germany</option>
+                    <!-- Add more countries as needed -->
+                </select>
+                <div id="country-error" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group password-group">
+                <label for="password">Password <span class="visually-hidden">(required)</span></label>
+                <input type="password" id="password" name="password" required autocomplete="new-password"
+                       aria-required="true" aria-describedby="password-hint password-error password-strength-indicator">
+                <button type="button" class="password-toggle" aria-label="Show password"><i class="far fa-eye"></i></button>
+                <div id="password-hint" class="hint-text">Minimum 8 characters, with uppercase, lowercase, number, and special character</div>
+                <div id="password-error" class="error-message" role="alert" aria-live="polite"></div>
+                <div id="password-strength-indicator" class="password-strength" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" title="Password Strength">
+                    <div class="strength-bar"></div>
+                    <span class="strength-label visually-hidden">Password Strength: Very Weak</span>
+                </div>
+            </div>
+
+            <div class="form-group password-group">
+                <label for="confirm-password">Confirm Password <span class="visually-hidden">(required)</span></label>
+                <input type="password" id="confirm-password" name="confirm-password" required autocomplete="new-password"
+                       aria-required="true" aria-describedby="confirm-password-error">
+                <button type="button" class="password-toggle" aria-label="Show confirm password"><i class="far fa-eye"></i></button>
+                <div id="confirm-password-error" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required aria-required="true" aria-describedby="terms-error">
+                <label for="terms">I agree to the <a href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> and <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> <span class="visually-hidden">(required)</span></label>
+                <div id="terms-error" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <button type="submit" class="btn" aria-live="assertive" aria-atomic="true">Register</button>
+
+            <p class="text">Already have an account? <a href="/login">Login here</a> </p>
+        </form>
+    </main>
+
+    <footer class="main-footer" role="contentinfo">
+        <nav aria-label="Social Media Links">
+            <ul class="social-icons">
+                <li><a href="https://facebook.com/yourapp" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://twitter.com/yourapp" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://instagram.com/yourapp" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://linkedin.com/company/yourapp" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </nav>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Your Awesome App. All rights reserved.</p>
+            <nav aria-label="Footer Navigation">
+                <ul class="footer-links">
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-of-service">Terms of Service</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Flatpickr JS for date picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+    <script src="script.js" defer></script>
+    <script>
+        // Dynamically update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

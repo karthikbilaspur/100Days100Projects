@@ -3,54 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration, Login, and Forgot Password Form</title>
+    <title>Secure User Forms: Register, Login, Reset Password</title>
+
+    <!-- SEO & Metadata -->
+    <meta name="description" content="A secure and user-friendly web application for registration, login, and password reset. Built with modern web standards for optimal performance and accessibility.">
+    <meta name="keywords" content="registration form, login form, password reset, user authentication, web app, HTML, CSS, JavaScript, secure login">
+    <meta name="author" content="Your Name/Meta AI">
+    <link rel="canonical" href="https://www.yourwebsite.com/index.html"> <!-- Replace with your actual URL -->
+
+    <!-- OpenGraph / Social Media Sharing (Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="Secure User Forms: Register, Login, Reset Password">
+    <meta property="og:description" content="A robust web application featuring streamlined user registration, secure login, and an easy-to-use password reset functionality.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourwebsite.com/index.html"> <!-- Replace with your actual URL -->
+    <meta property="og:image" content="https://www.yourwebsite.com/images/social-share.png"> <!-- Create a suitable image for sharing -->
+    <meta property="og:image:alt" content="Screenshot of the registration and login forms">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@yourtwitterhandle"> <!-- Replace with your Twitter handle -->
+    <meta name="twitter:creator" content="@yourtwitterhandle"> <!-- Replace with your Twitter handle -->
+    <meta name="twitter:title" content="Secure User Forms: Register, Login, Reset Password">
+    <meta name="twitter:description" content="Get started quickly with a secure and efficient user authentication system. Register, log in, or reset your password with ease.">
+    <meta name="twitter:image" content="https://www.yourwebsite.com/images/social-share.png"> <!-- Use the same image as OpenGraph or a Twitter-specific one -->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- External Libraries (for graphs) -->
+    <!-- We'll use Chart.js for graphs. Link to its CDN here. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Your custom stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="form-container">
         <div class="form-header">
             <h2 id="form-title">Registration Form</h2>
+            <div class="form-tabs">
+                <button class="tab-button active" data-form="registration-form">Register</button>
+                <button class="tab-button" data-form="login-form">Login</button>
+                <button class="tab-button" data-form="forgot-password-form">Forgot Password</button>
+            </div>
         </div>
-        <form id="registration-form">
+
+        <div class="messages">
+            <!-- Messages like success or error will appear here -->
+        </div>
+
+        <form id="registration-form" class="active-form">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="username" name="username" required aria-label="Username for registration">
+                <div class="error-message" id="username-error"></div>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" required aria-label="Email for registration">
+                <div class="error-message" id="email-error"></div>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" required aria-label="Password for registration">
+                <div class="error-message" id="password-error"></div>
             </div>
             <div class="form-group">
                 <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password">
+                <input type="password" id="confirm-password" name="confirm-password" required aria-label="Confirm password for registration">
+                <div class="error-message" id="confirm-password-error"></div>
             </div>
             <button type="submit" id="registration-button">Register</button>
         </form>
+
         <form id="login-form">
             <div class="form-group">
                 <label for="login-username">Username:</label>
-                <input type="text" id="login-username" name="login-username">
+                <input type="text" id="login-username" name="login-username" required aria-label="Username for login">
+                <div class="error-message" id="login-username-error"></div>
             </div>
             <div class="form-group">
                 <label for="login-password">Password:</label>
-                <input type="password" id="login-password" name="login-password">
+                <input type="password" id="login-password" name="login-password" required aria-label="Password for login">
+                <div class="error-message" id="login-password-error"></div>
             </div>
             <button type="submit" id="login-button">Login</button>
-            <p id="forgot-password-link">Forgot Password?</p>
+            <p class="link-text" id="forgot-password-link">Forgot Password?</p>
         </form>
+
         <form id="forgot-password-form">
             <div class="form-group">
                 <label for="forgot-username">Username:</label>
-                <input type="text" id="forgot-username" name="forgot-username">
+                <input type="text" id="forgot-username" name="forgot-username" required aria-label="Username for password reset">
+                <div class="error-message" id="forgot-username-error"></div>
             </div>
             <button type="submit" id="forgot-password-button">Reset Password</button>
+            <p class="link-text" id="back-to-login-link">Back to Login</p>
         </form>
-        <button id="toggle-login-button">Login</button>
     </div>
+
+    <!-- Graph Section -->
+    <div class="chart-container">
+        <h3>User Activity Overview</h3>
+        <canvas id="activityChart"></canvas>
+    </div>
+
+    <footer class="site-footer">
+    <p>&copy; 2026 Secure User Forms. All rights reserved.</p>
+    <div class="social-icons">
+        <a href="https://facebook.com/yourpage" target="_blank" aria-label="Visit us on Facebook" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Visit us on Twitter" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Visit us on Instagram" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="Visit us on LinkedIn" rel="noopener noreferrer">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <!-- Add more social icons as needed, e.g., for GitHub: -->
+        <a href="https://github.com/yourprofile" target="_blank" aria-label="Visit us on GitHub" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+</footer>
+
+    <!-- Your custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>

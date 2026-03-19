@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags (Keep existing from previous round) -->
+    <title>Super Advanced Gradient Generator - Create Stunning CSS Gradients</title>
+    <meta name="description" content="Generate beautiful CSS linear and radial gradients with advanced controls, drag-and-drop color stops, save/load functionality, undo/redo, and precise customization.">
+    <meta name="keywords" content="css gradient generator, linear gradient, radial gradient, html5, css3, javascript, web design tool, color picker, front-end development, css tool, drag and drop, save gradient, undo redo">
+    <meta name="author" content="Your Name or Meta AI">
+    <link rel="canonical" href="https://yourwebsite.com/gradient-generator">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/gradient-generator">
+    <meta property="og:title" content="Super Advanced Gradient Generator - Design Your Gradients!">
+    <meta property="og:description" content="Create stunning CSS linear and radial gradients with advanced controls, drag-and-drop color stops, save/load functionality, undo/redo, and precise customization.">
+    <meta property="og:image" content="https://yourwebsite.com/path/to/gradient-generator-thumbnail.jpg">
+    <meta property="og:image:alt" content="Screenshot of the Advanced Gradient Generator interface">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yourwebsite.com/gradient-generator">
+    <meta name="twitter:title" content="Super Advanced Gradient Generator - Design Your Gradients!">
+    <meta name="twitter:description" content="Create stunning CSS linear and radial gradients with advanced controls, drag-and-drop color stops, save/load functionality, undo/redo, and precise customization.">
+    <meta name="twitter:image" content="https://yourwebsite.com/path/to/gradient-generator-thumbnail.jpg">
+    <meta name="twitter:creator" content="@YourTwitterHandle">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for social icons and copy icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="gradient-generator-container">
+        <h1>Super Advanced CSS Gradient Generator</h1>
+
+        <section class="live-preview" id="livePreview" role="img" aria-label="Live preview of the generated gradient">
+            <p>Your Gradient Live Preview</p>
+        </section>
+
+        <section class="controls">
+            <div class="control-group">
+                <label for="gradientType">Gradient Type:</label>
+                <select id="gradientType" aria-label="Select gradient type">
+                    <option value="linear">Linear Gradient</option>
+                    <option value="radial">Radial Gradient</option>
+                </select>
+            </div>
+
+            <div class="control-group linear-controls">
+                <label for="gradientAngle">Angle:</label>
+                <input type="range" id="gradientAngle" min="0" max="360" value="90" aria-label="Gradient angle in degrees">
+                <span id="angleValue">90°</span>
+            </div>
+
+            <div class="control-group radial-controls hidden" aria-hidden="true">
+                <label for="radialShape">Shape:</label>
+                <select id="radialShape" aria-label="Select radial gradient shape">
+                    <option value="ellipse">Ellipse</option>
+                    <option value="circle">Circle</option>
+                </select>
+                <label for="radialSize">Size:</label>
+                <select id="radialSize" aria-label="Select radial gradient size">
+                    <option value="farthest-corner">Farthest Corner</option>
+                    <option value="farthest-side">Farthest Side</option>
+                    <option value="closest-corner">Closest Corner</option>
+                    <option value="closest-side">Closest Side</option>
+                </select>
+                <label for="radialPositionX">Position X:</label>
+                <input type="range" id="radialPositionX" min="0" max="100" value="50" aria-label="Radial gradient X position in percentage">
+                <span id="positionXValue">50%</span>
+                <label for="radialPositionY">Position Y:</label>
+                <input type="range" id="radialPositionY" min="0" max="100" value="50" aria-label="Radial gradient Y position in percentage">
+                <span id="positionYValue">50%</span>
+            </div>
+
+            <div class="color-stops" id="colorStopsContainer">
+                <h3>Color Stops <button id="addColorStop" class="add-remove-btn" aria-label="Add color stop"><i class="fas fa-plus"></i></button></h3>
+                <p class="drag-hint" role="alert">Drag color stops to reorder.</p>
+                <div class="color-stop-list" id="colorStopList" role="group" aria-labelledby="colorStopsContainer">
+                    <!-- Color stop items will be dynamically inserted here -->
+                </div>
+                <div class="color-stop-actions">
+                    <button id="distributeStops" class="action-btn" aria-label="Evenly distribute color stop positions"><i class="fas fa-arrows-alt-h"></i> Distribute Evenly</button>
+                    <div id="colorStopTrash" class="color-stop-trash" aria-label="Drag color stop here to delete"><i class="fas fa-trash-alt"></i> Drop to Delete</div>
+                </div>
+            </div>
+            
+            <div class="presets">
+                <h3>Presets</h3>
+                <button class="preset-btn" data-preset="preset1">Sunset</button>
+                <button class="preset-btn" data-preset="preset2">Ocean</button>
+                <button class="preset-btn" data-preset="preset3">Forest</button>
+            </div>
+
+            <div class="save-load-controls">
+                <h3>Saved Gradients</h3>
+                <div class="save-gradient-group">
+                    <input type="text" id="gradientNameInput" placeholder="Gradient Name" aria-label="Name for saving gradient">
+                    <button id="saveGradientBtn" class="action-btn" aria-label="Save current gradient"><i class="fas fa-save"></i> Save</button>
+                </div>
+                <div class="load-gradient-group">
+                    <select id="savedGradientsSelect" aria-label="Load a saved gradient">
+                        <option value="">Load a gradient...</option>
+                    </select>
+                    <button id="loadGradientBtn" class="action-btn" aria-label="Load selected gradient" disabled><i class="fas fa-folder-open"></i> Load</button>
+                    <button id="deleteGradientBtn" class="action-btn delete-btn" aria-label="Delete selected gradient" disabled><i class="fas fa-times"></i> Delete</button>
+                </div>
+            </div>
+
+            <div class="undo-redo-controls">
+                <h3>History</h3>
+                <button id="undoBtn" class="action-btn" aria-label="Undo last change" disabled><i class="fas fa-undo"></i> Undo</button>
+                <button id="redoBtn" class="action-btn" aria-label="Redo last undone change" disabled><i class="fas fa-redo"></i> Redo</button>
+            </div>
+        </section>
+
+        <section class="code-output">
+            <h3>Generated CSS</h3>
+            <div class="code-block">
+                <textarea id="cssCodeOutput" rows="7" readonly aria-label="Generated CSS code"></textarea>
+                <button id="copyCodeBtn" aria-label="Copy CSS to clipboard"><i class="far fa-copy"></i> Copy CSS</button>
+                <span id="copyMessage" class="copy-message hidden" role="status" aria-live="polite">Copied!</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="generator-footer">
+        <p>&copy; 2026 Gradient Generator. Built with ❤️ by Meta AI.</p>
+        <div class="social-icons">
+            <a href="https://github.com/your-profile" target="_blank" aria-label="GitHub Profile" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/your-handle" target="_blank" aria-label="Twitter Profile"  rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" aria-label="LinkedIn Profile"  rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

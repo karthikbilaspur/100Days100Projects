@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Guess the Number Game - Advanced HTML, CSS & JS Challenge</title>
+    <meta name="description" content="Play an advanced 'Guess the Number' game with multiple difficulty levels, smart hints, visual feedback, and high scores. Built with HTML5, CSS3, and JavaScript for a modern web experience.">
+    <meta name="keywords" content="guess the number, javascript game, html5, css3, web development, front-end project, programming game, difficulty levels, interactive game, even odd hint, high scores">
+    <meta name="author" content="Your Name or Meta AI">
+    <link rel="canonical" href="https://yourwebsite.com/guess-the-number-game"> <!-- IMPORTANT: Update with your actual URL -->
+
+    <!-- Open Graph / Social Media Meta Tags (for Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/guess-the-number-game"> <!-- IMPORTANT: Update with your actual URL -->
+    <meta property="og:title" content="Advanced Guess the Number Game - Play Now!">
+    <meta property="og:description" content="Challenge your guessing skills with multiple difficulty levels, clever hints, and engaging visual feedback in this modern web game. Track your high scores!">
+    <meta property="og:image" content="https://yourwebsite.com/path/to/game-thumbnail.jpg"> <!-- IMPORTANT: Create and update with a compelling image -->
+    <meta property="og:image:alt" content="Screenshot of the Advanced Guess the Number game interface">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yourwebsite.com/guess-the-number-game"> <!-- IMPORTANT: Update with your actual URL -->
+    <meta name="twitter:title" content="Advanced Guess the Number Game - Play Now!">
+    <meta name="twitter:description" content="Challenge your guessing skills with multiple difficulty levels, clever hints, and engaging visual feedback in this modern web game. Track your high scores!">
+    <meta name="twitter:image" content="https://yourwebsite.com/path/to/game-thumbnail.jpg"> <!-- IMPORTANT: Create and update with a compelling image -->
+    <meta name="twitter:creator" content="@YourTwitterHandle"> <!-- Optional: Your Twitter handle -->
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="game-container">
+        <h1>Guess the Number!</h1>
+        <section class="settings">
+            <label for="difficulty">Choose Difficulty:</label>
+            <select id="difficulty" aria-label="Select game difficulty">
+                <option value="easy">Easy (1-50, 10 guesses)</option>
+                <option value="medium">Medium (1-100, 7 guesses)</option>
+                <option value="hard">Hard (1-200, 5 guesses)</option>
+            </select>
+            <button id="startGameBtn" aria-label="Start new game">Start Game</button>
+        </section>
+
+        <section class="game-area" aria-live="polite">
+            <p class="message" id="message">Select a difficulty and click "Start Game"!</p>
+            <p class="guesses-left" id="guessesLeft">Guesses Left: --</p>
+
+            <div class="input-section">
+                <input type="number" id="guessInput" min="1" max="200" placeholder="Enter your guess" aria-label="Enter your guess" disabled>
+                <button id="submitGuessBtn" aria-label="Submit your guess" disabled>Guess</button>
+            </div>
+            
+            <button id="resetGameBtn" aria-label="Reset game" disabled>Play Again</button>
+        </section>
+
+        <!-- New: Guess History -->
+        <section class="guess-history-section">
+            <h2>Guess History</h2>
+            <ul id="guessHistoryList">
+                <!-- Guesses will be added here -->
+            </ul>
+        </section>
+
+        <!-- New: High Scores Display -->
+        <section class="high-scores-section">
+            <h2>High Scores</h2>
+            <ul id="highScoresList">
+                <!-- High scores will be loaded here -->
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- New: Instructions Modal -->
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>How to Play Guess the Number</h2>
+            <p><strong>Goal:</strong> Guess the secret number the computer has picked!</p>
+            <ul>
+                <li>Choose a difficulty level, which sets the number range and your allowed guesses.</li>
+                <li>Click "Start Game" to begin.</li>
+                <li>Enter your guess in the input field and click "Guess" or press Enter.</li>
+                <li>You'll get feedback: "Too high!", "Too low!", or "You got it!".</li>
+                <li>The background color will change based on how close your guess is.</li>
+                <li>On your last guess, you'll get an extra hint: whether the number is even or odd!</li>
+                <li>Try to get the number in the fewest guesses to earn a high score!</li>
+            </ul>
+            <p>Good luck!</p>
+        </div>
+    </div>
+
+    <footer class="game-footer">
+        <p>&copy; 2026 GuessTheNumberGame. Built with ❤️ by Meta AI.</p>
+        <div class="social-icons">
+            <a href="https://github.com/your-profile" target="_blank" aria-label="GitHub Profile" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/your-handle" target="_blank" aria-label="Twitter Profile"  rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" aria-label="LinkedIn Profile" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+             <a href="#" id="instructionsBtn" aria-label="How to Play" class="instructions-link">How to Play</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
