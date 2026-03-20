@@ -5,23 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css" />
-    <title>Increment Counter</title>
+    <title>Dynamic Increment Counters</title>
 </head>
 <body>
-    <div id="counter-container"></div>
-    <script id="counter-template" type="text/x-handlebars-template">
-        {{#counters}}
-        <div class="counter-container" role="region" aria-label="Counter Container">
-            <i class="fab fa-{{icon}} fa-3x" aria-hidden="true"></i>
-            <div class="counter" data-target="{{target}}" aria-live="polite" aria-atomic="true">0</div>
-            <span>{{label}}</span>
+    <header class="main-header">
+        <h1>Our Achievements</h1>
+        <p>A quick look at what we've accomplished!</p>
+    </header>
+
+    <main class="main-content">
+        <div id="counters-display" class="counters-grid" role="group" aria-label="Company Metrics">
+            <!-- Counters will be injected here by Handlebars -->
         </div>
-        {{/counters}}
+
+        <section class="add-counter-section">
+            <h2>Add New Counter</h2>
+            <form id="add-counter-form">
+                <div class="form-group">
+                    <label for="icon-input">Font Awesome Icon (e.g., 'twitter', 'youtube'):</label>
+                    <input type="text" id="icon-input" placeholder="e.g., 'twitter'" required>
+                </div>
+                <div class="form-group">
+                    <label for="target-input">Target Number:</label>
+                    <input type="number" id="target-input" placeholder="e.g., 12000" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="label-input">Counter Label:</label>
+                    <input type="text" id="label-input" placeholder="e.g., 'Followers'" required>
+                </div>
+                <button type="submit">Add Counter</button>
+            </form>
+        </section>
+    </main>
+
+    <script id="counter-template" type="text/x-handlebars-template">
+        {{#each counters}}
+        <div class="counter-item" role="article" aria-label="{{label}} Counter">
+            <i class="fab fa-{{icon}} fa-3x" aria-hidden="true"></i>
+            <div class="counter" data-target="{{target}}" data-duration="2000" aria-live="polite" aria-atomic="true">0</div>
+            <span class="counter-label">{{label}}</span>
+        </div>
+        {{/each}}
     </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <script src="script.js"></script>
     <footer>
-        <p>&copy; 2025 Karthik Coding Solutions. All Rights Reserved.</p>
+        <p>&copy; 2026 Karthik Coding Solutions. All Rights Reserved.</p>
     </footer>
 </body>
 </html>

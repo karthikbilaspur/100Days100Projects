@@ -29,6 +29,8 @@ h1 {
     padding: 15px 20px;
     font-family: inherit;
     cursor: pointer;
+    font-size: 16px; /* Ensure button text is readable */
+    margin: 5px; /* Add some margin between buttons */
 }
 
 .btn:hover {
@@ -47,10 +49,28 @@ h1 {
     height: 100vh;
     width: 100vw;
     transition: margin 0.5s ease-out;
+    position: absolute; /* Ensures screens stack on top of each other for 'up' transition */
+    top: 0;
+    left: 0;
 }
 
 .screen.up {
     margin-top: -100vh;
+}
+
+/* Difficulty Selection */
+.difficulty-selection {
+    margin-bottom: 30px;
+}
+
+.difficulty-selection h2 {
+    margin-bottom: 15px;
+}
+
+.difficulty-btn.active {
+    background-color: #3f51b5; /* A darker shade to indicate active */
+    color: #fff;
+    border: 2px solid #fff;
 }
 
 .insects-list {
@@ -73,6 +93,12 @@ h1 {
     font-family: inherit;
     width: 150px;
     height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Add padding to prevent text/img hitting border */
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .choose-insect-btn:hover {
@@ -85,33 +111,56 @@ h1 {
 }
 
 .choose-insect-btn img {
-    width: 100px;
-    height: 100px;
+    width: 80px; /* Slightly smaller to fit better */
+    height: 80px;
     object-fit: contain;
+    margin-bottom: 5px; /* Space between img and text */
+}
+
+.choose-insect-btn p {
+    margin: 0;
+    font-size: 0.9em;
 }
 
 .game-container {
     position: relative;
+    /* Ensure game-container takes full screen height for insect positioning */
+    height: 100vh;
+    width: 100vw;
+}
+
+.game-info {
+    position: absolute;
+    top: 20px;
+    width: 100%; /* Occupy full width to distribute info */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10; /* Ensure game info is above insects */
 }
 
 .time,
 .score,
-.high-score {
-    position: absolute;
-    top: 20px;
+.high-score,
+.lives {
+    margin: 0; /* Remove default margin */
+    font-size: 1.1em;
 }
 
+/* Specific positioning for readability, but flexible with flexbox in.game-info */
 .time {
-    left: 20px;
+    text-align: left;
 }
-
 .score {
-    right: 20px;
+    text-align: right;
 }
-
 .high-score {
-    left: 50%;
-    transform: translateX(-50%);
+    position: initial; /* Reset absolute positioning from original */
+    transform: none; /* Reset transform */
+    text-align: center;
+}
+.lives {
+    text-align: left; /* Keep lives on left */
 }
 
 .message {
@@ -123,7 +172,7 @@ h1 {
     text-align: center;
     opacity: 0;
     position: absolute;
-    top: 0;
+    top: 0; /* Position at top of game-container */
     left: 50%;
     transform: translate(-50%, -150%);
     transition: transform 0.4s ease-in;
@@ -135,7 +184,7 @@ h1 {
 }
 
 .insect {
-    cursor: pointer;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>') 12 12, auto; /* Custom cursor for game play */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,13 +193,55 @@ h1 {
     position: absolute;
     transform: translate(-50%, -50%) scale(1);
     transition: transform 0.3s ease-in-out;
+    /* Add animation for insects to move out after a short delay, to simulate missing */
+    animation: moveAway 5s linear forwards; /* Insect moves away if not caught in 5s */
 }
 
 .insect.caught {
     transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    animation: caughtShrink 0.3s ease-in forwards; /* Quicker animation for caught insects */
+}
+
+@keyframes caughtShrink {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+}
+
+@keyframes moveAway {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; } /* Fade and shrink if missed */
 }
 
 .insect img {
     width: 100px;
     height: 100px;
+    pointer-events: none; /* Prevent clicks on image itself to allow parent div click */
+}
+
+/* Game Over Screen */
+#game-over-screen {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 150;
+    font-size: 1.2em;
+}
+
+#game-over-screen h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffeb3b; /* Gold-like color for emphasis */
+}
+
+#game-over-screen p {
+    margin-bottom: 10px;
+}
+
+#game-over-screen.btn {
+    margin-top: 20px;
+    min-width: 200px;
 }

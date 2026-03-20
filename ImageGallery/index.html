@@ -3,31 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <meta name="description" content="A simple and interactive image gallery showcasing various images, built with HTML, CSS, and JavaScript.">
+    <meta name="keywords" content="image gallery, photos, interactive, responsive, web development, HTML, CSS, JavaScript">
+    <meta name="author" content="Meta AI">
+    <title>Stunning & Interactive Image Gallery by Meta AI</title>
+    
+    <!-- Favicon (replace with your own) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Link to Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for social media icons (ensure you have this for the icons to show!) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="gallery">
-        <div class="gallery-item">
-            <img src="image1.jpeg" alt="Image 1" data-description="This is image 1">
+    <header class="main-header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <!-- Replace with your logo image if you have one -->
+                <i class="fa-solid fa-camera-retro"></i> Gallery
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#gallery-section">Gallery</a></li>
+                    <li><a href="#about-section">About</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="gallery-item">
-            <img src="image2.jpeg" alt="Image 2" data-description="This is image 2">
+    </header>
+
+    <main>
+        <section id="gallery-section" class="gallery-container">
+            <h2 class="section-title">Our Visual Showcase</h2>
+            <p class="section-subtitle">A curated selection of images to inspire and captivate.</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="image1.jpeg" alt="Vibrant cityscape at sunset" 
+                         data-title="Cityscape Glow" 
+                         data-description="Experience the magic of a bustling metropolis as the sun dips below the horizon, casting a warm, golden hue across the modern architecture and busy streets. A moment of urban serenity.">
+                </div>
+                <div class="gallery-item">
+                    <img src="image2.jpeg" alt="Majestic mountain landscape" 
+                         data-title="Alpine Majesty" 
+                         data-description="Witness the breathtaking grandeur of snow-capped peaks, their jagged silhouettes piercing the sky, while a tranquil lake below perfectly mirrors the dramatic scene above.">
+                </div>
+                <div class="gallery-item">
+                    <img src="image3.jpeg" alt="Lush green forest path" 
+                         data-title="Enchanted Forest Trail" 
+                         data-description="Step into a world of green as dappled sunlight filters through the dense canopy, illuminating a winding path that invites quiet contemplation and discovery within nature's embrace.">
+                </div>
+                <div class="gallery-item">
+                    <img src="image4.jpeg" alt="Serene beach at sunrise" 
+                         data-title="Coastal Awakening" 
+                         data-description="Feel the calm of dawn on a secluded beach. The sky blazes with soft pastels, meeting the gentle rhythm of waves kissing golden sands, promising a fresh start.">
+                </div>
+                <div class="gallery-item">
+                    <img src="image5.jpeg" alt="Abstract geometric pattern" 
+                         data-title="Geometric Harmony" 
+                         data-description="An intricate dance of shapes and colors, this abstract pattern explores symmetry and contrast, creating a visually stimulating piece that draws the eye into its depths.">
+                </div>
+                <div class="gallery-item">
+                    <img src="image6.jpeg" alt="Cozy reading nook" 
+                         data-title="Perfect Escape" 
+                         data-description="Imagine curling up in this inviting reading nook, bathed in the soft glow of a lamp, surrounded by books, a warm blanket, and a steaming cup of tea – the ultimate personal sanctuary.">
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholder for additional sections -->
+        <section id="about-section" class="info-section">
+            <h2 class="section-title">About This Gallery</h2>
+            <p>This image gallery is a demonstration of responsive web design and interactive JavaScript features. It allows users to browse a collection of images, view them in full-screen mode, navigate with intuitive controls, and enjoy descriptive captions.</p>
+            <p>Developed with a focus on user experience and modern web standards.</p>
+        </section>
+
+        <section id="contact-section" class="info-section">
+            <h2 class="section-title">Get in Touch</h2>
+            <p>Have questions or feedback? We'd love to hear from you!</p>
+            <address>
+                Email: <a href="mailto:info@metaai.com">info@metaai.com</a><br>
+                Address: Virtual Plaza, AI City<br>
+                Phone: +1 800-META-AI
+            </address>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://facebook.com/meta" target="_blank" aria-label="Meta AI on Facebook"><i class="fab fa-facebook-f" rel="noopener noreferrer"></i></a>
+                <a href="https://twitter.com/meta" target="_blank" aria-label="Meta AI on Twitter"><i class="fab fa-twitter" rel="noopener noreferrer"></i></a>
+                <a href="https://instagram.com/meta" target="_blank" aria-label="Meta AI on Instagram"><i class="fab fa-instagram" rel="noopener noreferrer"></i></a>
+                <a href="https://linkedin.com/company/meta" target="_blank" aria-label="Meta AI on LinkedIn"><i class="fab fa-linkedin-in" rel="noopener noreferrer"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 Meta AI. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: All images presented in this gallery are Meta-generated and are for demonstration purposes only.</p>
         </div>
-        <div class="gallery-item">
-            <img src="image3.jpeg" alt="Image 3" data-description="This is image 3">
-        </div>
-        <div class="gallery-item">
-            <img src="image4.jpeg" alt="Image 4" data-description="This is image 4">
-        </div>
-        <div class="gallery-item">
-            <img src="image5.jpeg" alt="Image 5" data-description="This is image 5">
-        </div>
-        <div class="gallery-item">
-            <img src="image6.jpeg" alt="Image 6" data-description="This is image 6">
-        </div>
-    </div>
-</div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

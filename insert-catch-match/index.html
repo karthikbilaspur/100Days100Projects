@@ -4,15 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Catch The Insect</title>
+    <title>Catch The Insect - Enhanced</title>
 </head>
 <body>
+    <!-- Screen 1: Start Screen & Difficulty Selection -->
     <div class="screen">
         <h1>Catch The Insect</h1>
+        <div class="difficulty-selection">
+            <h2>Choose Difficulty:</h2>
+            <button class="btn difficulty-btn" data-difficulty="easy">Easy</button>
+            <button class="btn difficulty-btn" data-difficulty="normal">Normal</button>
+            <button class="btn difficulty-btn" data-difficulty="hard">Hard</button>
+        </div>
         <button class="btn" id="start-btn">Play Game</button>
         <audio src="background-music.mp3" loop></audio>
     </div>
 
+    <!-- Screen 2: Insect Selection -->
     <div class="screen">
         <h1>What is your "favorite" insect?</h1>
         <ul class="insects-list">
@@ -43,16 +51,29 @@
         </ul>
     </div>
 
+    <!-- Screen 3: Game Container -->
     <div class="screen game-container" id="game-container">
-        <h3 id="time" class="time">Time: 00:00</h3>
-        <h3 id="score" class="score">Score: 0</h3>
-        <h3 id="high-score" class="high-score">High Score: 0</h3>
+        <div class="game-info">
+            <h3 id="time" class="time">Time: 00:00</h3>
+            <h3 id="score" class="score">Score: 0</h3>
+            <h3 id="high-score" class="high-score">High Score: 0</h3>
+            <div id="lives" class="lives">Lives: <span id="lives-count">3</span></div>
+        </div>
         <h5 id="message" class="message">
             Are you annoyed yet? <br>
             You are playing an impossible game!!
         </h5>
         <audio src="catch-sound.mp3"></audio>
         <audio src="game-over-sound.mp3"></audio>
+    </div>
+
+    <!-- Screen 4: Game Over Screen -->
+    <div class="screen" id="game-over-screen">
+        <h1>Game Over!</h1>
+        <p>Your Score: <span id="final-score">0</span></p>
+        <p>High Score: <span id="game-over-high-score">0</span></p>
+        <button class="btn" id="play-again-btn">Play Again</button>
+        <button class="btn" id="back-to-menu-btn">Back to Main Menu</button>
     </div>
 
     <script src="script.js"></script>

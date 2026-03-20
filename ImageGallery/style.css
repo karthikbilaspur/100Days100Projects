@@ -1,63 +1,478 @@
-.gallery {
+/* Basic Reset & Body Styles */
+:root {
+    --primary-color: #007bff; /* Meta blue, for example */
+    --accent-color: #28a745; /* A complementary accent color */
+    --dark-bg: #222;
+    --light-text: #f8f9fa;
+    --dark-text: #343a40;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; /* Light grey background */
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Accessibility: Visually hidden content */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Global Link Styles */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* Header Styles */
+.main-header {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    padding: 15px 0;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 1.2em;
+    color: var(--primary-color);
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    color: var(--light-text);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Main Content Section Styling */
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.5em;
+    text-align: center;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.2em;
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 40px;
+}
+
+/* Gallery Styles */
+.gallery-container {
+    padding: 40px 0;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+}
+
+.gallery {
+    display: grid; /* Using CSS Grid for more flexible layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
 }
 
 .gallery-item {
-    margin: 10px;
-    width: calc(25% - 20px);
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-item img {
     width: 100%;
-    height: 150px;
+    height: 200px; /* Increased height for better thumbnails */
     object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    display: block; /* Remove extra space below image */
+    transition: transform 0.3s ease-in-out; /* Smooth zoom on hover */
 }
 
-.gallery-item img:hover {
-    transform: scale(1.1);
+/* No specific hover for img within gallery-item as we have it on the item now */
+/* .gallery-item img:hover {
+    transform: scale(1.05); 
+} */
+
+/* Info Sections (About, Contact) */
+.info-section {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+    text-align: center;
 }
 
+.info-section p, .info-section address {
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    color: #555;
+}
+
+.info-section address a {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Overlay Styles */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9); /* Darker, more immersive overlay */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active { /* Add this class via JS when overlay is open */
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-indicator {
+    color: var(--primary-color);
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
 }
 
 .full-screen-image {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 90%;
+    max-height: 85vh; /* Use viewport height for better fitting */
     object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+    opacity: 0; /* Hidden initially, fade in with JS */
+    transform: scale(0.9); /* Slightly scaled down initially */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.full-screen-image.loaded { /* Add this class via JS when image is loaded */
+    opacity: 1;
+    transform: scale(1);
+}
+
+.full-screen-image-title { /* New style for data-title */
+    color: var(--light-text);
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-align: center;
+    max-width: 80%;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards 0.3s; /* Fade in after image */
 }
 
 .full-screen-image-description {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    font-size: 16px;
+    position: relative;
+    width: auto;
+    max-width: 80%;
+    padding: 15px 25px; /* More padding */
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly darker description background */
+    color: var(--light-text);
+    font-size: 1.1em;
+    text-align: center;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards 0.4s; /* Fade in after title */
+}
+
+/* Animations for text elements */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .close-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
+    top: 25px;
+    right: 25px;
+    font-size: 32px;
     cursor: pointer;
-    color: #fff;
+    color: var(--light-text);
+    background-color: rgba(255, 255, 255, 0.2); /* Lighter background */
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: var(--primary-color);
+    transform: rotate(90deg); /* Little animation on hover */
+}
+
+/* Navigation buttons */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 45px; /* Larger nav buttons */
+    color: var(--light-text);
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 18px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Add shadow to buttons */
+}
+
+.nav-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-50%) scale(1.05); /* Slightly pop out */
+}
+
+.prev-button {
+    left: 25px;
+}
+
+.next-button {
+    right: 25px;
+}
+
+/* Footer Styles */
+.main-footer {
+    background-color: var(--dark-bg);
+    color: #adb5bd; /* Lighter grey for footer text */
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: var(--light-text);
+    font-size: 1.5em;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Required for transform */
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px) scale(1.1);
+}
+
+.copyright, .disclaimer {
+    margin-bottom: 10px;
+}
+
+.disclaimer {
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav ul {
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .logo {
+        font-size: 1.5em;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .section-subtitle {
+        font-size: 1em;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        padding: 10px;
+    }
+
+    .gallery-item img {
+        height: 180px;
+    }
+
+    .full-screen-image {
+        max-width: 95%;
+        max-height: 75vh;
+    }
+
+    .full-screen-image-title {
+        font-size: 1.4em;
+        max-width: 90%;
+    }
+
+    .full-screen-image-description {
+        font-size: 0.9em;
+        max-width: 90%;
+        padding: 10px 15px;
+    }
+
+    .close-button {
+        top: 15px;
+        right: 15px;
+        font-size: 28px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-button {
+        font-size: 35px;
+        padding: 5px 12px;
+        left: 10px;
+        right: 10px;
+    }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Two columns for tablets */
+    }
+
+    .full-screen-image {
+        max-height: 80vh;
+    }
+
+    .nav-button {
+        font-size: 40px;
+    }
+}
+
+/* Large devices (desktops, 992px and down) */
+@media (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Back to 3-ish columns for slightly larger tablets/small desktops */
+    }
+}
+
+/* Extra large devices (desktops, 1200px and up) */
+@media (min-width: 1201px) {
+    /* No specific changes, base styles cover this well */
 }

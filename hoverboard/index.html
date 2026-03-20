@@ -3,11 +3,148 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Interactive Ripple Hoverboard – A Mesmerizing Web Experience</title>
+    <meta name="description" content="Experience a captivating interactive hoverboard with a unique ripple effect. Watch squares light up and create dynamic patterns as you move your mouse. Built with HTML, CSS, and JavaScript." />
+    <meta name="keywords" content="hoverboard, interactive, JavaScript, CSS, animation, ripple effect, web design, front-end development, creative coding, mouse effect, visual experience" />
+    <meta name="author" content="Meta AI for [Your Name/Project Name]" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://yourwebsite.com/index.html" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Interactive Ripple Hoverboard" />
+    <meta property="og:description" content="Experience a captivating interactive hoverboard with a unique ripple effect. Watch squares light up and create dynamic patterns as you move your mouse." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourwebsite.com/index.html" />
+    <meta property="og:image" content="https://yourwebsite.com/preview.jpg" />
+    <meta property="og:image:alt" content="Screenshot of the interactive ripple hoverboard effect" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Interactive Ripple Hoverboard" />
+    <meta name="twitter:description" content="Experience a captivating interactive hoverboard with a unique ripple effect. Watch squares light up and create dynamic patterns as you move your mouse." />
+    <meta name="twitter:image" content="https://yourwebsite.com/preview.jpg" />
+    <meta name="twitter:creator" content="@YourTwitterHandle" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Link to your external stylesheet -->
     <link rel="stylesheet" href="style.css" />
-    <title>Hoverboard</title>
+    <!-- Font Awesome for icons (social, close buttons, theme toggle) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlHYs+b+VzD1o2uT8U9L2rC5K2l1f2/F/M6R/2U8sQ2K6A7U9Q2v4l5/I5Z5v2K2j2J6f2+9Q2F2Z2+8Q2Z2+4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <div class="container" id="container"></div>
+<body class="dark-mode"> <!-- Default to dark mode, can be changed via JS -->
+    <div class="top-controls">
+        <button id="theme-toggle" class="control-button">
+            <i class="fas fa-sun"></i> <!-- Sun icon for light mode -->
+        </button>
+        <button id="info-button" class="control-button">
+            <i class="fas fa-info-circle"></i> About
+        </button>
+        <button id="settings-button" class="control-button">
+            <i class="fas fa-cog"></i> Settings
+        </button>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <h1>🎨 Interactive Ripple Hoverboard</h1>
+            <p class="tagline">Dive into a mesmerizing visual experience with every mouse movement!</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <h2>What is this?</h2>
+            <p>This project showcases a dynamic web interface where individual squares react to your mouse cursor. Instead of just lighting up, they create a beautiful, spreading ripple effect, making your interaction feel fluid and alive.</p>
+            <p>It's a simple yet powerful demonstration of front-end web development, utilizing pure HTML, CSS, and JavaScript to bring an engaging visual concept to life.</p>
+        </section>
+
+        <section class="hoverboard-section">
+            <h3>Try it out!</h3>
+            <p>Move your mouse over the grid below and watch the magic unfold:</p>
+            <div class="container" id="container">
+                <!-- Squares will be generated here dynamically by JavaScript -->
+            </div>
+            <p class="instruction">Every hover creates a unique, colorful ripple!</p>
+        </section>
+
+        <section class="features-section">
+            <h2>Key Features:</h2>
+            <ul>
+                <li><strong>Dynamic Ripple Effect:</strong> Squares light up and influence their neighbors.</li>
+                <li><strong>Randomized Colors:</strong> Each interaction brings a new splash of color.</li>
+                <li><strong>Smooth Transitions:</strong> Colors fade in and out for a polished look.</li>
+                <li><strong>Pure Front-End:</strong> Built entirely with client-side technologies.</li>
+                <li><strong>Interactive & Engaging:</strong> A fun way to interact with a web page.</li>
+            </ul>
+        </section>
+
+        <section class="technologies-section">
+            <h2>Technologies Used:</h2>
+            <p>This project is a testament to the power of the web's foundational languages:</p>
+            <ul>
+                <li><abbr title="HyperText Markup Language">HTML</abbr> for structure</li>
+                <li><abbr title="Cascading Style Sheets">CSS</abbr> for styling and animations</li>
+                <li><abbr title="JavaScript">JavaScript</abbr> for interactivity and logic</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Interactive Web Creations. All rights reserved.</p>
+            <p>Crafted with passion by Meta AI & the Web Development Community.</p>
+            <div class="social-links">
+                <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://github.com/YourGitHubRepo" target="_blank" rel="noopener noreferrer" aria-label="View project on GitHub"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/YourLinkedInProfile" target="_blank" rel="noopener noreferrer" aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>About This Project</h2>
+            <p>This "Interactive Ripple Hoverboard" is a creative coding experiment designed to explore dynamic visual feedback on web pages. It demonstrates how simple HTML elements, combined with CSS transitions and JavaScript logic, can create an engaging and artistic user experience.</p>
+            <p>The core idea is to make each square in a grid react to your mouse by changing color and, importantly, triggering a "ripple" effect that subtly illuminates its neighbors. This creates a fluid, organic visual flow as you move your cursor.</p>
+            <h3>Inspiration</h3>
+            <p>Inspired by classic interactive grid effects and the beauty of cascading animations, this project aims to provide a simple yet captivating interaction. It's a testament to the power of front-end technologies to build delightful web experiences.</p>
+        </div>
+    </div>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Settings</h2>
+            <div class="setting-item">
+                <label for="rippleRadiusSlider">Ripple Radius:</label>
+                <input type="range" id="rippleRadiusSlider" min="0" max="5" value="2">
+                <span id="rippleRadiusValue">2</span>
+                <p class="setting-description">Controls how far the ripple effect spreads from the hovered square.</p>
+            </div>
+             <div class="setting-item">
+                <label for="fadeDurationSlider">Fade Duration (ms):</label>
+                <input type="range" id="fadeDurationSlider" min="100" max="2000" step="100" value="500">
+                <span id="fadeDurationValue">500</span>
+                <p class="setting-description">Determines how long the ripple colors stay visible before fading out.</p>
+            </div>
+            <div class="setting-item">
+                <label for="boardSizeSlider">Board Size (Total Squares):</label>
+                <input type="range" id="boardSizeSlider" min="100" max="1000" step="100" value="500">
+                <span id="boardSizeValue">500</span>
+                <p class="setting-description">Adjusts the total number of squares in the grid. (Requires refresh)</p>
+            </div>
+            <p class="note">Some settings might require a page refresh to take full effect.</p>
+        </div>
+    </div>
+
+    <!-- Link to your external JavaScript file, placed at the end of the body -->
     <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,19 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Hidden Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Product Search - Enhanced</title>
+    <meta name="description" content="An enhanced e-commerce product search page with a dynamic search bar, live filtering, and responsive design.">
+    <meta name="keywords" content="e-commerce, product search, HTML, CSS, JavaScript, responsive, animated, debounced search">
+    <meta name="author" content="Meta AI">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="search">
-        <input type="text" class="input" placeholder="Search...">
-        <button class="btn">
-            <i class="fas fa-search"></i>
-        </button>
-    </div>
-    <script src="script.js" defer></script>
+
+    <header class="site-header">
+        <a href="#" class="site-logo"><h1>Our Awesome Store</h1></a>
+        <nav class="main-nav">
+            <!-- Navigation links could go here -->
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="search-container" role="search">
+            <input type="text" class="search-input" placeholder="Search products..." aria-label="Search products" />
+            <button class="clear-button" aria-label="Clear search input">✕</button>
+            <button class="search-button" aria-label="Toggle search bar">🔍</button>
+        </div>
+    </header>
+
+    <main class="product-listing">
+        <h2 class="section-title">Featured Products</h2>
+        <ul id="product-list" class="grid-layout">
+            <li class="product-item">
+                <img src="https://via.placeholder.com/150x100?text=T-Shirt" alt="Blue T-Shirt" class="product-image">
+                <h3 data-original-text="Blue T-Shirt">Blue T-Shirt</h3>
+                <p data-original-text="A comfortable cotton t-shirt for everyday wear.">A comfortable cotton t-shirt for everyday wear.</p>
+                <span class="price">$19.99</span>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+            <li class="product-item">
+                <img src="https://via.placeholder.com/150x100?text=Shoes" alt="Running Shoes" class="product-image">
+                <h3 data-original-text="Running Shoes">Running Shoes</h3>
+                <p data-original-text="Lightweight shoes for your daily run, maximum comfort.">Lightweight shoes for your daily run, maximum comfort.</p>
+                <span class="price">$79.99</span>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+            <li class="product-item">
+                <img src="https://via.placeholder.com/150x100?text=Cap" alt="Baseball Cap" class="product-image">
+                <h3 data-original-text="Baseball Cap">Baseball Cap</h3>
+                <p data-original-text="Stylish cap for sunny days, adjustable fit.">Stylish cap for sunny days, adjustable fit.</p>
+                <span class="price">$15.00</span>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+            <li class="product-item">
+                <img src="https://via.placeholder.com/150x100?text=Wallet" alt="Leather Wallet" class="product-image">
+                <h3 data-original-text="Leather Wallet">Leather Wallet</h3>
+                <p data-original-text="Durable wallet with multiple compartments, genuine leather.">Durable wallet with multiple compartments, genuine leather.</p>
+                <span class="price">$35.50</span>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+            <li class="product-item">
+                <img src="https://via.placeholder.com/150x100?text=Boots" alt="Hiking Boots" class="product-image">
+                <h3 data-original-text="Hiking Boots">Hiking Boots</h3>
+                <p data-original-text="Sturdy boots for your outdoor adventures, waterproof.">Sturdy boots for your outdoor adventures, waterproof.</p>
+                <span class="price">$120.00</span>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+            <li class="product-item">
+                <img src="https://via.placeholder.com/150x100?text=Socks" alt="Athletic Socks" class="product-image">
+                <h3 data-original-text="Athletic Socks">Athletic Socks</h3>
+                <p data-original-text="Comfortable athletic socks, breathable fabric.">Comfortable athletic socks, breathable fabric.</p>
+                <span class="price">$8.00</span>
+                <button class="add-to-cart">Add to Cart</button>
+            </li>
+        </ul>
+        <div id="no-results" class="no-results-feedback">
+            <img src="https://via.placeholder.com/100x100?text=No+Results" alt="No products found" class="no-results-icon">
+            <p>Oops! No products match your search. Try broadening your terms!</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Our Awesome Store. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
