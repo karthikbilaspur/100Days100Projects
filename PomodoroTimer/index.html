@@ -3,53 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer</title>
+
+    <!-- SEO Meta Tags -->
+    <title>Karthik's Advanced Countdown Timer</title>
+    <meta name="description" content="An advanced, customizable countdown timer with deadline setting, start/stop/reset functions, persistent settings, and dark mode. Perfect for tracking events, deadlines, and special occasions.">
+    <meta name="keywords" content="countdown timer, customizable timer, deadline tracker, event timer, javascript timer, HTML, CSS, dark mode, persistent settings, Karthik's solutions">
+    <meta name="author" content="V.Karthik">
+    <meta name="robots" content="index, follow"> <!-- Instructs search engines to index and follow links -->
+
+    <!-- Open Graph / Social Media Tags -->
+    <meta property="og:title" content="Karthik's Advanced Countdown Timer">
+    <meta property="og:description" content="An advanced, customizable countdown timer with deadline setting, start/stop/reset functions, persistent settings, and dark mode.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/countdown-timer"> <!-- IMPORTANT: Replace with your actual URL -->
+    <meta property="og:image" content="https://yourwebsite.com/og-image.jpg"> <!-- IMPORTANT: Replace with a relevant image for sharing -->
+    <meta property="og:image:alt" content="Screenshot of the Countdown Timer application">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Karthik's Advanced Countdown Timer">
+    <meta name="twitter:description" content="An advanced, customizable countdown timer with deadline setting, start/stop/reset functions, persistent settings, and dark mode.">
+    <meta name="twitter:image" content="https://yourwebsite.com/twitter-image.jpg"> <!-- IMPORTANT: Replace with a relevant image for Twitter -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Optional: Add a Google Font for better aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1 class="countdown-title">Countdown Timer</h1>
+        <h1 class="countdown-title">Karthik's Countdown Timer</h1>
+        <button id="theme-toggle" aria-label="Toggle dark mode">
+            <span class="icon">💡</span> <!-- Light mode icon -->
+        </button>
     </header>
     <main>
-        <section class="countdown-container">
-            <div class="countdown-number">
-                <span class="days countdown-time" id="days">00</span>
-                <span class="countdown-text">Days</span>
+        <section class="countdown-display-wrapper">
+            <div class="countdown-container" id="countdown-display">
+                <div class="countdown-number">
+                    <span class="days countdown-time" id="days">00</span>
+                    <span class="countdown-text">Days</span>
+                </div>
+                <div class="countdown-number">
+                    <span class="hours countdown-time" id="hours">00</span>
+                    <span class="countdown-text">Hours</span>
+                </div>
+                <div class="countdown-number">
+                    <span class="minutes countdown-time" id="minutes">00</span>
+                    <span class="countdown-text">Minutes</span>
+                </div>
+                <div class="countdown-number">
+                    <span class="seconds countdown-time" id="seconds">00</span>
+                    <span class="countdown-text">Seconds</span>
+                </div>
             </div>
-            <div class="countdown-number">
-                <span class="hours countdown-time" id="hours">00</span>
-                <span class="countdown-text">Hours</span>
-            </div>
-            <div class="countdown-number">
-                <span class="minutes countdown-time" id="minutes">00</span>
-                <span class="countdown-text">Minutes</span>
-            </div>
-            <div class="countdown-number">
-                <span class="seconds countdown-time" id="seconds">00</span>
-                <span class="countdown-text">Seconds</span>
-            </div>
+            <div class="message-display" id="message-display" aria-live="polite"></div>
         </section>
+
         <section class="deadline-container">
-            <label for="deadline">Enter deadline date (YYYY-MM-DD HH:MM:SS):</label>
-            <input type="datetime-local" id="deadline" value="2025-01-31T12:00:00">
-            <button id="start-button">Start</button>
-            <button id="stop-button">Stop</button>
-            <button id="reset-button">Reset</button>
-            <span id="error-message"></span>
+            <label for="deadline">Set Deadline Date & Time:</label>
+            <input type="datetime-local" id="deadline">
+            <div class="control-buttons">
+                <button id="start-button" aria-label="Start countdown">Start</button>
+                <button id="stop-button" aria-label="Pause countdown">Pause</button>
+                <button id="reset-button" aria-label="Reset countdown">Reset</button>
+            </div>
+            <span id="error-message" class="error-message" role="alert"></span>
         </section>
+
         <section class="settings-container">
             <h2>Settings</h2>
-            <label for="font-size">Font Size:</label>
-            <input type="number" id="font-size" value="24">
-            <label for="font-color">Font Color:</label>
-            <input type="color" id="font-color" value="#000000">
-            <label for="background-color">Background Color:</label>
-            <input type="color" id="background-color" value="#ffffff">
-            <button id="save-settings-button">Save Settings</button>
+            <div class="setting-item">
+                <label for="font-size">Font Size:</label>
+                <input type="range" id="font-size" min="16" max="72" value="48">
+                <span id="font-size-value">48px</span>
+            </div>
+            <div class="setting-item">
+                <label for="font-color">Text Color:</label>
+                <input type="color" id="font-color" value="#333333">
+            </div>
+            <div class="setting-item">
+                <label for="background-color">Background Color:</label>
+                <input type="color" id="background-color" value="#f8f9fa">
+            </div>
+            <button id="save-settings-button" aria-label="Apply custom style settings">Apply Settings</button>
         </section>
     </main>
     <footer class="footer">
-        <p>2025 V.Karthik. All Rights Reserved.</p>
+        <p>© <span id="current-year"></span> V.Karthik. All Rights Reserved. Powered by <a href="https://github.com/KarthikCodingSolutions" target="_blank" rel="noopener noreferrer">KarthikCodingSolutions</a>.</p>
     </footer>
     <script src="script.js"></script>
 </body>
