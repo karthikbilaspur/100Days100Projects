@@ -1,95 +1,511 @@
 /* Global Styles */
-
 :root {
-    --primary-color: #333;
-    --secondary-color: #4CAF50;
-    --background-color: #f0f0f0;
+    /* Light Mode Variables */
+    --primary-text-color: #333333;
+    --secondary-text-color: #555555;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+    --accent-color: #28a745; /* Success green for primary actions */
+    --accent-hover-color: #218838;
+    --warning-color: #ffc107; /* Yellow for pause */
+    --warning-hover-color: #e0a800;
+    --info-color: #6c757d; /* Grey for reset */
+    --info-hover-color: #5a6268;
+    --error-color: #dc3545; /* Red for errors */
+
+    /* Dark Mode Variables (will override light mode when dark class is applied) */
+    --dark-primary-text-color: #e0e0e0;
+    --dark-secondary-text-color: #a0a0a0;
+    --dark-background-color: #282c34;
+    --dark-card-background: #3a3f4a;
+    --dark-border-color: #505560;
+    --dark-accent-color: #4CAF50;
+    --dark-accent-hover-color: #409244;
+    --dark-warning-color: #ffda79;
+    --dark-warning-hover-color: #e6c265;
+    --dark-info-color: #a0a0a0;
+    --dark-info-hover-color: #909090;
+    --dark-error-color: #ff6b6b;
+
+    /* Font stack for better compatibility */
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
 }
 
+/* Base body styles */
 body {
-    font-family: Arial, sans-serif;
     text-align: center;
     background-color: var(--background-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--primary-text-color);
+    transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition for theme changes */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    --primary-text-color: var(--dark-primary-text-color);
+    --secondary-text-color: var(--dark-secondary-text-color);
+    --background-color: var(--dark-background-color);
+    --card-background: var(--dark-card-background);
+    --border-color: var(--dark-border-color);
+    --accent-color: var(--dark-accent-color);
+    --accent-hover-color: var(--dark-accent-hover-color);
+    --warning-color: var(--dark-warning-color);
+    --warning-hover-color: var(--dark-warning-hover-color);
+    --info-color: var(--dark-info-color);
+    --info-hover-color: var(--dark-info-hover-color);
+    --error-color: var(--dark-error-color);
+}
+
+/* Header styles */
+header {
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* For theme toggle positioning */
 }
 
 .countdown-title {
-    color: var(--primary-color);
-    font-weight: bold;
-    font-size: 40px;
-    margin: 40px 0px 20;
+    font-weight: 700;
+    font-size: 2.8em;
+    margin: 0;
+    padding: 20px 0;
+    color: var(--primary-text-color);
+    transition: color 0.4s ease;
+}
+
+#theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.2s ease;
+}
+
+#theme-toggle:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#theme-toggle .icon {
+    transition: transform 0.3s ease;
+}
+body.dark-mode #theme-toggle .icon {
+    content: "🌙"; /* Dark mode icon */
+    transform: rotate(360deg);
+}
+
+/* Main content container */
+main {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--card-background);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Countdown display wrapper */
+.countdown-display-wrapper {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
 .countdown-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .countdown-number {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+    background-color: #f0f0f0; /* Use a slightly different color for blocks */
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out, background-color 0.4s ease; /* Include theme transition */
+    transform: scale(1); /* Initial state for animation */
+}
+
+/* Animation for countdown numbers on hover */
+.countdown-number:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .countdown-number {
+    background-color: var(--dark-background-color);
 }
 
 .countdown-time {
-    font-size: 48px;
-    font-weight: bold;
-    color: var(--primary-color);
+    font-size: 3.5em;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 5px;
+    color: var(--primary-text-color); /* Inherit from global var */
+    transition: color 0.4s ease, font-size 0.3s ease;
 }
 
 .countdown-text {
-    font-size: 18px;
-    color: #666;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--secondary-text-color); /* Inherit from global var */
+    transition: color 0.4s ease;
 }
 
-.deadline-container {
+.message-display {
+    font-size: 2.5em;
+    font-weight: bold;
     margin-top: 20px;
+    display: none;
+    text-align: center;
+    color: var(--primary-text-color);
+    transition: color 0.4s ease;
+    animation: fadeIn 0.8s ease-out; /* Fade in animation for message */
 }
 
-#deadline {
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form sections */
+.deadline-container,
+.settings-container {
+    width: 100%;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 25px;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.deadline-container label,
+.settings-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--secondary-text-color);
+    transition: color 0.4s ease;
+}
+
+input[type="datetime-local"],
+input[type="number"],
+input[type="color"],
+input[type="range"] {
+    appearance: none; /* Remove default browser styling */
+    -webkit-appearance: none;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     padding: 10px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 1em;
+    color: var(--primary-text-color);
+    transition: all 0.3s ease;
 }
 
-#start-button, #stop-button, #reset-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: var(--secondary-color);
+input[type="datetime-local"] {
+    width: calc(100% - 22px);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1.05em;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    min-width: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#start-button:hover, #stop-button:hover, #reset-button:hover {
-    background-color: #3e8e41;
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-#error-message {
-    color: #f00;
-    font-size: 16px;
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#start-button, #save-settings-button {
+    background-color: var(--accent-color);
+}
+#start-button:hover, #save-settings-button:hover {
+    background-color: var(--accent-hover-color);
+}
+
+#stop-button {
+    background-color: var(--warning-color);
+}
+#stop-button:hover {
+    background-color: var(--warning-hover-color);
+}
+#reset-button {
+    background-color: var(--info-color);
+}
+#reset-button:hover {
+    background-color: var(--info-hover-color);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.95em;
     margin-top: 10px;
+    display: block;
+    text-align: center;
+    min-height: 20px;
+    animation: shake 0.5s; /* Shake animation for error message */
+    transition: color 0.4s ease;
 }
 
-.settings-container {
-    margin-top: 20px;
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.settings-container h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--primary-text-color);
+    font-size: 1.8em;
+    transition: color 0.4s ease;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 15px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.setting-item label {
+    flex-basis: 120px;
+    margin-bottom: 0;
+    text-align: right;
+    flex-shrink: 0; /* Prevent label from shrinking */
+}
+
+input[type="range"] {
+    flex-grow: 1;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.8;
+    cursor: grab;
+    transition: opacity .2s, background-color 0.4s ease, border-color 0.4s ease;
+}
+
+input[type="range"]:hover {
+    opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: grab;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    transition: background-color 0.4s ease, box-shadow 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: grab;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    transition: background-color 0.4s ease, box-shadow 0.2s ease;
+}
+
+input[type="color"] {
+    width: 60px;
+    height: 35px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.4s ease;
+}
+
+#font-size-value {
+    min-width: 60px;
+    text-align: left;
+    font-size: 1em;
+    color: var(--secondary-text-color);
+    transition: color 0.4s ease;
 }
 
 #save-settings-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: var(--secondary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-top: 20px;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#save-settings-button:hover {
-    background-color: #3e8e41;
+/* Footer */
+.footer {
+    width: 100%;
+    padding: 20px 0;
+    margin-top: auto;
+    color: var(--secondary-text-color);
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+    transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--accent-hover-color);
+    text-decoration: underline;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .countdown-title {
+        font-size: 2.2em;
+        text-align: center;
+    }
+    #theme-toggle {
+        position: static; /* Remove absolute positioning */
+        transform: none;
+    }
+    .countdown-number {
+        width: 100px;
+        height: 100px;
+        font-size: 0.9em;
+    }
+    .countdown-time {
+        font-size: 3em;
+    }
+    .message-display {
+        font-size: 2em;
+    }
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .setting-item label {
+        text-align: left;
+        flex-basis: auto;
+    }
+    main {
+        padding: 20px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    .countdown-title {
+        font-size: 1.8em;
+    }
+    .countdown-number {
+        width: 80px;
+        height: 80px;
+        padding: 10px;
+    }
+    .countdown-time {
+        font-size: 2.5em;
+    }
+    .countdown-text {
+        font-size: 0.8em;
+    }
+    .message-display {
+        font-size: 1.5em;
+    }
+    .control-buttons {
+        flex-direction: column;
+    }
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .deadline-container, .settings-container {
+        padding: 15px;
+    }
 }
