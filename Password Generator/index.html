@@ -3,53 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Generator</title>
+    <title>Strong Password Generator - KarthikCodingSolutions</title>
+
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Generate strong, secure, and customizable passwords with ease. Choose length, character types, and exclude similar characters for maximum security.">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.karthikcodingsolutions.com/password-generator"> <!-- Replace with your actual URL -->
+    <meta property="og:title" content="Strong Password Generator - KarthikCodingSolutions">
+    <meta property="og:description" content="Generate strong, secure, and customizable passwords with ease. Choose length, character types, and exclude similar characters for maximum security.">
+    <meta property="og:image" content="https://www.karthikcodingsolutions.com/og-image.jpg"> <!-- Optional: Add a URL to an image for social sharing -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.karthikcodingsolutions.com/password-generator"> <!-- Replace with your actual URL -->
+    <meta property="twitter:title" content="Strong Password Generator - KarthikCodingSolutions">
+    <meta property="twitter:description" content="Generate strong, secure, and customizable passwords with ease. Choose length, character types, and exclude similar characters for maximum security.">
+    <meta property="twitter:image" content="https://www.karthikcodingsolutions.com/twitter-image.jpg"> <!-- Optional: Add a URL to an image for social sharing -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0TLhScbJpjFLmgJrO64YnI081/X+o+emG/sQG5NqF0/E5R2gKx3s1qjV3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <div class="container">
-        <h2>Password Generator</h2>
-        <div class="result-container">
-            <span id="result"></span>
-            <button class="btn" id="clipboard">
-                <i class="far fa-clipboard"></i>
+<body class="light-mode">
+    <header>
+        <div class="logo">
+            <a href="/">KarthikCodingSolutions</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <div class="theme-switch">
+            <input type="checkbox" id="dark-mode-toggle" class="checkbox" title="Theme">Theme 
+            <label for="dark-mode-toggle" class="toggle-label">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+                <div class="ball"></div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Secure Password Generator</h1>
+            <div class="result-container">
+                <span id="result"></span>
+                <button class="btn" id="clipboard" aria-label="Copy password to clipboard">
+                    <i class="far fa-clipboard"></i>
+                </button>
+            </div>
+            <div class="settings">
+                <div class="setting">
+                    <label for="length">Password Length</label>
+                    <input type="number" id="length" min="8" max="128" value="12" aria-live="polite">
+                </div>
+                <p id="length-error" class="error"></p>
+                <div class="setting">
+                    <label for="uppercase">Include uppercase letters (A-Z)</label>
+                    <input type="checkbox" id="uppercase" checked>
+                </div>
+                <div class="setting">
+                    <label for="lowercase">Include lowercase letters (a-z)</label>
+                    <input type="checkbox" id="lowercase" checked>
+                </div>
+                <div class="setting">
+                    <label for="numbers">Include numbers (0-9)</label>
+                    <input type="checkbox" id="numbers" checked>
+                </div>
+                <div class="setting">
+                    <label for="symbols">Include symbols (!@#...)</label>
+                    <input type="checkbox" id="symbols" checked>
+                </div>
+                <div class="setting">
+                    <label for="exclude-similar">Exclude similar characters (i, l, 1, o, O, 0)</label>
+                    <input type="checkbox" id="exclude-similar">
+                </div>
+            </div>
+            <div class="password-strength">
+                <span id="password-strength-text">Password Strength:</span>
+                <div id="password-strength-meter"></div>
+            </div>
+            <button class="btn btn-large" id="generate">
+                Generate Password
             </button>
         </div>
-        <div class="settings">
-            <div class="setting">
-                <label>Password Length</label>
-                <input type="number" id="length" min="8" max="128" value="12">
-                <span id="length-error"></span>
+
+        <section id="how-it-works" class="info-section">
+            <h2>How It Works</h2>
+            <p>Our password generator creates strong, unique passwords tailored to your specifications. Simply choose your desired length and character types, and we'll do the rest!</p>
+            <ul>
+                <li><strong>Customizable Length:</strong> From 8 to 128 characters.</li>
+                <li><strong>Character Sets:</strong> Include uppercase, lowercase, numbers, and symbols.</li>
+                <li><strong>Similar Character Exclusion:</strong> Avoids ambiguous characters like 'l', '1', 'I', 'o', 'O', '0'.</li>
+                <li><strong>Real-time Strength Meter:</strong> Get instant feedback on your password's security.</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="info-section">
+            <h2>Contact KarthikCodingSolutions</h2>
+            <p>Have questions or feedback? Feel free to reach out to us!</p>
+            <p>Email: <a href="mailto:contact@karthikcodingsolutions.com">contact@karthikcodingsolutions.com</a></p>
+            <p>Follow us on social media:</p>
+            <div class="social-links">
+                <a href="https://twitter.com/karthikcodes" target="_blank" aria-label="Follow us on Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/karthikcodes" target="_blank" aria-label="Visit our GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/karthikcodes" target="_blank" aria-label="Connect with us on LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://youtube.com/karthikcodingsolutions" target="_blank" aria-label="Subscribe to our YouTube channel" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="setting">
-                <label>Include uppercase letters</label>
-                <input type="checkbox" id="uppercase" checked>
-            </div>
-            <div class="setting">
-                <label>Include lowercase letters</label>
-                <input type="checkbox" id="lowercase" checked>
-            </div>
-            <div class="setting">
-                <label>Include numbers</label>
-                <input type="checkbox" id="numbers" checked>
-            </div>
-            <div class="setting">
-                <label>Include symbols</label>
-                <input type="checkbox" id="symbols" checked>
-            </div>
-            <div class="setting">
-                <label>Exclude similar characters</label>
-                <input type="checkbox" id="exclude-similar">
-            </div>
-        </div>
-        <div class="password-strength">
-            <span id="password-strength-text"></span>
-            <div id="password-strength-meter"></div>
-        </div>
-        <button class="btn btn-large" id="generate">
-            Generate Password
-        </button>
-    </div>
+        </section>
+
+        <section id="about" class="info-section">
+            <h2>About KarthikCodingSolutions</h2>
+            <p>KarthikCodingSolutions is dedicated to providing high-quality coding resources and tools. We believe in making technology accessible and empowering developers with the knowledge and utilities they need to succeed.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> KarthikCodingSolutions. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
