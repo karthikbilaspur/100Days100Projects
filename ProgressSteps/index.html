@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Progress Tracker - KarthikCodingSolutions</title>
+
+    <!-- Meta Tags for SEO and Social Sharing -->
+    <meta name="description" content="A dynamic and responsive progress tracker application with theme and language switching by KarthikCodingSolutions.">
+    <meta name="keywords" content="progress tracker, web development, HTML, CSS, JavaScript, responsive design, themes, multilingual">
+    <meta name="author" content="KarthikCodingSolutions">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourwebsite.com/progress-tracker"> <!-- Replace with actual URL -->
+    <meta property="og:title" content="Dynamic Progress Tracker - KarthikCodingSolutions">
+    <meta property="og:description" content="A dynamic and responsive progress tracker application with theme and language switching.">
+    <meta property="og:image" content="https://www.yourwebsite.com/images/tracker-thumbnail.jpg"> <!-- Replace with actual image -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yourwebsite.com/progress-tracker"> <!-- Replace with actual URL -->
+    <meta property="twitter:title" content="Dynamic Progress Tracker - KarthikCodingSolutions">
+    <meta property="twitter:description" content="A dynamic and responsive progress tracker application with theme and language switching.">
+    <meta property="twitter:image" content="https://www.yourwebsite.com/images/tracker-thumbnail.jpg"> <!-- Replace with actual image -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Preconnect to Font Awesome for faster loading of icons -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Preload Font Awesome CSS for better performance -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="default-theme">
+    <main>
+        <h1 id="main-app-title">My Progress Tracker Application</h1>
+
+        <section class="progress-container">
+            <h2 id="steps-section-title">Progress Steps</h2>
+            <div class="progress-tracker" role="list" aria-live="polite">
+                <!-- Steps will be dynamically added here by JavaScript -->
+            </div>
+
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Overall Progress">
+                <div class="progress-bar-fill"></div>
+            </div>
+
+            <div class="controls">
+                <button id="prev-btn" aria-label="Go to previous step" title="Previous Step">Previous Step</button>
+                <button id="next-btn" aria-label="Go to next step" title="Next Step">Next Step</button>
+            </div>
+
+            <div class="settings">
+                <div class="setting-item">
+                    <label for="theme-select" id="theme-label-text">Theme:</label>
+                    <select id="theme-select" aria-labelledby="theme-label-text">
+                        <option value="default">Default</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="language-select" id="language-label-text">Language:</label>
+                    <select id="language-select" aria-labelledby="language-label-text">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-media">
+            <a href="#" target="_blank" aria-label="Follow us on Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Connect with us on LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank" aria-label="Check out our GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank" aria-label="Email us" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 KarthikCodingSolutions. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
