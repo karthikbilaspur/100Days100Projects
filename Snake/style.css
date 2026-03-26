@@ -1,0 +1,283 @@
+/* General Styling */
+:root {
+    --bg-color: #2c3e50; /* Dark blue-grey */
+    --accent-color: #f1c40f; /* Yellow */
+    --primary-btn: #27ae60; /* Green */
+    --danger-btn: #c0392b; /* Red */
+    --text-color: #ecf0f1; /* Light grey */
+    --border-color: #34495e; /* Slightly lighter blue-grey */
+    --overlay-bg: rgba(0, 0, 0, 0.8);
+    --font-game: 'Press Start 2P', cursive;
+    --font-header: 'Bangers', cursive;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: var(--font-game);
+    font-size: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent scrollbars from game overflow */
+}
+
+.game-container {
+    background-color: var(--border-color);
+    border: 5px solid var(--accent-color);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.game-header.game-title {
+    font-family: var(--font-header);
+    font-size: 3em;
+    color: var(--accent-color);
+    text-shadow: 3px 3px 0 var(--bg-color);
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.game-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.game-info-panel {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.game-info-panel p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+.game-info-panel span {
+    color: var(--accent-color);
+}
+
+#gameCanvas {
+    background-color: #000;
+    border: 3px solid var(--accent-color);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+    display: block; /* Remove extra space below canvas */
+}
+
+/* Overlay Styles */
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.overlay-content {
+    background-color: var(--border-color);
+    border: 3px solid var(--accent-color);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.overlay-content h2 {
+    font-family: var(--font-game);
+    font-size: 1.8em;
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.overlay-content p {
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.game-btn {
+    font-family: var(--font-game);
+    background-color: var(--primary-btn);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.game-btn:hover {
+    background-color: #2ecc71; /* Lighter green */
+    transform: translateY(-1px);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.game-btn:active {
+    transform: translateY(2px);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Control Buttons (Mute, Pause, Reset) */
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.control-btn {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    transform: translateY(-1px);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.control-btn:active {
+    transform: translateY(1px);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.control-btn.active { /* For mute button toggling */
+    background-color: var(--primary-btn);
+    border-color: var(--primary-btn);
+    color: var(--text-color);
+}
+
+.control-btn.reset { /* Specific style for reset button, if desired */
+    background-color: var(--danger-btn);
+    border-color: var(--danger-btn);
+}
+.control-btn.reset:hover {
+    background-color: #e74c3c;
+    color: var(--text-color);
+}
+
+/* Footer Styling */
+.game-footer {
+    padding-top: 15px;
+    border-top: 1px dashed var(--accent-color);
+    font-size: 0.7em;
+    color: var(--text-color);
+}
+
+.game-footer p {
+    margin-bottom: 10px;
+}
+
+.game-footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.game-footer a:hover {
+    color: #f39c12; /* Slightly darker yellow */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons a {
+    font-size: 1.2em;
+    color: var(--text-color);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Utility classes */
+.hidden {
+    display: none!important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        font-size: 12px;
+    }
+   .game-container {
+        padding: 15px;
+        gap: 15px;
+    }
+   .game-header.game-title {
+        font-size: 2.2em;
+    }
+   .game-info-panel {
+        font-size: 0.8em;
+    }
+   .overlay-content h2 {
+        font-size: 1.5em;
+    }
+   .overlay-content p {
+        font-size: 0.7em;
+    }
+   .game-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+   .control-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+   .game-footer {
+        font-size: 0.6em;
+    }
+}
