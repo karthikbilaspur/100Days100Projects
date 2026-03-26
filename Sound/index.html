@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Soundboard Ultimate</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="An interactive, customizable, and super-powered soundboard with various sound effects. Search, adjust volume, record, and play with ease.">
+    <meta name="keywords" content="soundboard, audio, sound effects, HTML, CSS, JavaScript, web app, interactive, recording, favorites, custom sounds">
+    <meta name="author" content="Karthik">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com/soundboard"> <!-- TODO: Replace with your actual URL -->
+    <meta property="og:title" content="Super Soundboard Ultimate">
+    <meta property="og:description" content="An interactive, customizable, and super-powered soundboard with various sound effects. Search, adjust volume, record, and play with ease.">
+    <meta property="og:image" content="https://www.yourdomain.com/images/soundboard-preview.jpg"> <!-- TODO: Replace with a relevant preview image -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yourdomain.com/soundboard"> <!-- TODO: Replace with your actual URL -->
+    <meta property="twitter:title" content="Super Soundboard Ultimate">
+    <meta property="twitter:description" content="An interactive, customizable, and super-powered soundboard with various sound effects. Search, adjust volume, record, and play with ease.">
+    <meta property="twitter:image" content="https://www.yourdomain.com/images/soundboard-preview.jpg"> <!-- TODO: Replace with a relevant preview image -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='90' text-anchor='middle' dominant-baseline='central'%3E🎤🔊%3C/text%3E%3C/svg%3E">
+
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0PzGc/6gY36y48t+l+g/j4n/aY8m4P7dJt4L+aY8m4P7dJt4L+a7D5t5q1sF5+l+q1O5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="soundboard-app" role="main">
+        <header class="app-header">
+            <h1><i class="fas fa-microphone-alt"></i> Super Soundboard <i class="fas fa-compact-disc"></i></h1>
+        </header>
+
+        <div id="loading-screen" class="loading-screen">
+            <div class="loader"></div>
+            <p>Loading sounds... <span id="loading-progress">0%</span></p>
+        </div>
+
+        <div id="main-content" class="main-content hidden">
+            <section class="controls-panel">
+                <form class="search-form">
+                    <div class="input-group">
+                        <input type="search" id="search-input" placeholder="Search for sounds (e.g., applause, bell)" aria-label="Search for sounds">
+                        <button type="button" id="clear-search-button" class="clear-search-btn" aria-label="Clear search">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <button type="submit" id="search-button" aria-label="Perform search">Search</button>
+                </form>
+
+                <div class="filter-sort-group">
+                    <div class="filter-dropdown">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" aria-label="Filter sounds by category">
+                            <option value="all">All</option>
+                            <!-- Options populated by JS -->
+                        </select>
+                    </div>
+                    <div class="sort-dropdown">
+                        <label for="sort-by">Sort by:</label>
+                        <select id="sort-by" aria-label="Sort sounds by criteria">
+                            <option value="default">Default</option>
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="volume-control">
+                    <label for="volume-slider"><i class="fas fa-volume-down"></i> Volume:</label>
+                    <input type="range" id="volume-slider" min="0" max="100" value="50" aria-label="Master volume control">
+                    <span id="volume-level" aria-live="polite">50%</span>
+                    <button id="mute-toggle-button" class="mute-toggle-btn" aria-label="Mute/Unmute">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <div class="playback-options">
+                    <label><input type="checkbox" id="loop-toggle"> Loop</label>
+                    <label for="playback-rate">Speed: <span id="playback-rate-value">1x</span></label>
+                    <input type="range" id="playback-rate" min="0.5" max="2" value="1" step="0.1" aria-label="Playback speed">
+                </div>
+                <div class="action-buttons">
+                    <button id="record-button" class="action-btn record-btn" aria-label="Record new sound">
+                        <i class="fas fa-microphone"></i> <span id="record-text">Record</span>
+                    </button>
+                    <button id="stop-all-button" class="action-btn stop-all-btn" aria-label="Stop all playing sounds">
+                        <i class="fas fa-stop-circle"></i> Stop All
+                    </button>
+                </div>
+            </section>
+
+            <section class="sound-categories-container" aria-label="Sound categories">
+                <div class="no-results hidden">
+                    <p><i class="fas fa-exclamation-circle"></i> No sounds found for your current filters. Try a different keyword!</p>
+                </div>
+                <!-- Sound categories will be dynamically loaded here by JavaScript -->
+            </section>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; <span id="current-year"></span> <a href="https://www.karthikcodingsolutions.com" target="_blank" rel="noopener noreferrer">KarthikCodingSolutions</a>. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/your-twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
