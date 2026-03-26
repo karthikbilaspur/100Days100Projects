@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Auth Portal</title> <!-- Initial title, will be updated by JS -->
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="A secure and modern authentication portal demonstrating best practices for login, registration, and 2FA. Built with HTML, CSS, and JavaScript.">
+    <meta name="keywords" content="authentication, login, signup, register, 2FA, two-factor authentication, security, web development, HTML, CSS, JavaScript, frontend, portal">
+    <meta name="author" content="Karthik">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com/auth-portal"> <!-- TODO: Replace with your actual URL -->
+    <meta property="og:title" content="Secure Auth Portal - Login & Register">
+    <meta property="og:description" content="A secure and modern authentication portal demonstrating best practices for login, registration, and 2FA.">
+    <meta property="og:image" content="https://www.yourdomain.com/images/auth-preview.jpg"> <!-- TODO: Replace with a relevant preview image -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yourdomain.com/auth-portal"> <!-- TODO: Replace with your actual URL -->
+    <meta property="twitter:title" content="Secure Auth Portal - Login & Register">
+    <meta property="twitter:description" content="A secure and modern authentication portal demonstrating best practices for login, registration, and 2FA.">
+    <meta property="twitter:image" content="https://www.yourdomain.com/images/auth-preview.jpg"> <!-- TODO: Replace with a relevant preview image -->
+
+    <!-- Favicon for better branding (using a brain emoji for "smart" auth) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='90' text-anchor='middle' dominant-baseline='central'%3E🔐%3C/text%3E%3C/svg%3E">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (e.g., password toggle, spinner, social media) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0PzGc/6gY36y48t+l+g/j4n/aY8m4P7dJt4L+a7D5t5q1sF5+l+q1O5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="auth-wrapper">
+        <h1 class="portal-title">Secure Auth Portal</h1>
+
+        <div class="auth-card" id="auth-card">
+            <div class="auth-header">
+                <button class="auth-tab active" data-action="login">Login</button>
+                <button class="auth-tab" data-action="register">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active" aria-labelledby="login-heading">
+                <h2 id="login-heading">Welcome Back!</h2>
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" name="email" required autocomplete="email" aria-required="true">
+                    <div class="error-message" id="login-email-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group password-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" required autocomplete="current-password" aria-required="true">
+                    <span class="password-toggle" data-target="login-password" role="button" aria-label="Show password"><i class="far fa-eye"></i></span>
+                    <div class="error-message" id="login-password-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <button type="submit" class="submit-btn" id="login-submit-btn">
+                    <span class="btn-text">Login</span>
+                    <span class="spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+                <a href="#" id="forgot-password" class="auth-link">Forgot Password?</a>
+                <div class="auth-message success" id="login-success" aria-live="polite"></div>
+                <div class="auth-message error" id="login-error" aria-live="polite"></div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form" aria-labelledby="register-heading">
+                <h2 id="register-heading">Create Account</h2>
+                <div class="form-group">
+                    <label for="register-username">Username:</label>
+                    <input type="text" id="register-username" name="username" required autocomplete="username" aria-required="true">
+                    <div class="error-message" id="register-username-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" name="email" required autocomplete="email" aria-required="true">
+                    <div class="error-message" id="register-email-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group password-group">
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" name="password" required autocomplete="new-password" aria-required="true">
+                    <span class="password-toggle" data-target="register-password" role="button" aria-label="Show password"><i class="far fa-eye"></i></span>
+                    <div class="error-message" id="register-password-error" aria-live="polite"></div>
+                    <div class="password-strength" id="password-strength">
+                        <div class="strength-bar-segment" data-segment="0"></div>
+                        <div class="strength-bar-segment" data-segment="1"></div>
+                        <div class="strength-bar-segment" data-segment="2"></div>
+                        <div class="strength-bar-segment" data-segment="3"></div>
+                    </div>
+                    <p class="strength-text" id="password-strength-text" aria-live="polite"></p>
+                </div>
+                <div class="form-group password-group">
+                    <label for="register-confirm-password">Confirm Password:</label>
+                    <input type="password" id="register-confirm-password" name="confirm-password" required autocomplete="new-password" aria-required="true">
+                    <span class="password-toggle" data-target="register-confirm-password" role="button" aria-label="Show password"><i class="far fa-eye"></i></span>
+                    <div class="error-message" id="register-confirm-password-error" aria-live="polite"></div>
+                </div>
+                <button type="submit" class="submit-btn" id="register-submit-btn">
+                    <span class="btn-text">Register</span>
+                    <span class="spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+                <div class="auth-message success" id="register-success" aria-live="polite"></div>
+                <div class="auth-message error" id="register-error" aria-live="polite"></div>
+            </form>
+
+            <!-- 2FA Form -->
+            <form id="twofa-form" class="auth-form hidden" aria-labelledby="twofa-heading">
+                <h2 id="twofa-heading">Two-Factor Authentication</h2>
+                <p class="twofa-info">A verification code has been sent to your registered device/email.</p>
+                <div class="form-group">
+                    <label for="twofa-code">Verification Code:</label>
+                    <input type="text" id="twofa-code" name="twofa-code" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" aria-required="true">
+                    <div class="error-message" id="twofa-code-error" aria-live="polite"></div>
+                </div>
+                <button type="submit" class="submit-btn" id="twofa-submit-btn">
+                    <span class="btn-text">Verify Code</span>
+                    <span class="spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+                <div class="auth-message error" id="twofa-error" aria-live="polite"></div>
+                <button type="button" class="resend-code-btn" id="resend-twofa-code">Resend Code</button>
+            </form>
+        </div>
+
+        <!-- User Dashboard (Shown after successful login/registration) -->
+        <div class="dashboard-card hidden" id="dashboard-card">
+            <h2>Welcome, <span id="dashboard-username"></span>!</h2>
+            <p>You are now logged in to the Secure Auth Portal.</p>
+            <button id="logout-btn" class="submit-btn">Logout</button>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; 2026 <a href="https://www.karthikcodingsolutions.com" target="_blank" rel="noopener noreferrer">KarthikCodingSolutions</a>. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/your-twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <!-- Add more social icons as needed -->
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
