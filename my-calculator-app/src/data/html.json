@@ -1,0 +1,242 @@
+[
+  {
+    "id": "q1e",
+    "question": "What does HTML stand for?",
+    "options": ["Hyper Text Markup Language", "High-level Text Machine Language", "Hyperlink and Text Markup Language", "Home Tool Markup Language"],
+    "answer": "Hyper Text Markup Language",
+    "difficulty": "easy",
+    "hint": "It's the standard language for creating web pages."
+  },
+  {
+    "id": "q2e",
+    "question": "Which HTML tag is used for the largest heading?",
+    "options": ["<h1>", "<h6>", "<head>", "<heading>"],
+    "answer": "<h1>",
+    "difficulty": "easy",
+    "hint": "Think 'header one'."
+  },
+  {
+    "id": "q3e",
+    "question": "Which HTML tag is used to define an unordered list?",
+    "options": ["<ol>", "<li>", "<ul>", "<list>"],
+    "answer": "<ul>",
+    "difficulty": "easy",
+    "hint": "It typically displays list items with bullet points."
+  },
+  {
+    "id": "q4e",
+    "question": "What is the correct HTML tag for inserting a line break?",
+    "options": ["<lb>", "<br>", "<break>", "<newline>"],
+    "answer": "<br>",
+    "difficulty": "easy",
+    "hint": "It's a self-closing tag."
+  },
+  {
+    "id": "q5e",
+    "question": "Which attribute is used to provide an alternate text for an image?",
+    "options": ["src", "href", "alt", "title"],
+    "answer": "alt",
+    "difficulty": "easy",
+    "hint": "It's important for accessibility."
+  },
+  {
+    "id": "q6e",
+    "question": "What is the primary purpose of the HTML <body> element?",
+    "options": ["To define the document's head", "To contain all the visible page content", "To link external stylesheets", "To include JavaScript files"],
+    "answer": "To contain all the visible page content",
+    "difficulty": "easy",
+    "hint": "If you see it on the page, it's probably here."
+  },
+  {
+    "id": "q7e",
+    "question": "Which tag defines the document's title shown in the browser's title bar or tab?",
+    "options": ["<head>", "<meta>", "<title>", "<header>"],
+    "answer": "<title>",
+    "difficulty": "easy",
+    "hint": "It goes inside the <head> section."
+  },
+  {
+    "id": "q8e",
+    "question": "Which HTML element is used to define an important text?",
+    "options": ["<i>", "<b>", "<strong>", "<emphasize>"],
+    "answer": "<strong>",
+    "difficulty": "easy",
+    "hint": "It conveys semantic importance, not just visual boldness."
+  },
+  {
+    "id": "q9e",
+    "question": "What is the correct HTML tag for creating a hyperlink?",
+    "options": ["<link>", "<href>", "<a>", "<url>"],
+    "answer": "<a>",
+    "difficulty": "easy",
+    "hint": "The 'a' stands for anchor."
+  },
+  {
+    "id": "q10e",
+    "question": "Which HTML tag is used to define a paragraph?",
+    "options": ["<para>", "<p>", "<text>", "<line>"],
+    "answer": "<p>",
+    "difficulty": "easy",
+    "hint": "It's one of the most basic block-level elements."
+  },
+  {
+    "id": "q1m",
+    "question": "Which HTML5 element is used to define a section of navigation links?",
+    "options": ["<sections>", "<navigation>", "<nav>", "<links>"],
+    "answer": "<nav>",
+    "difficulty": "medium",
+    "hint": "It's a semantic element introduced in HTML5."
+  },
+  {
+    "id": "q2m",
+    "question": "What is the purpose of the <head> element in HTML?",
+    "options": ["To display the main content of the page", "To contain meta-information about the HTML document", "To define the page's header section", "To group related content within the body"],
+    "answer": "To contain meta-information about the HTML document",
+    "difficulty": "medium",
+    "hint": "Information here isn't directly visible on the page."
+  },
+  {
+    "id": "q3m",
+    "question": "Which input type allows users to select multiple options from a list?",
+    "options": ["radio", "checkbox", "text", "dropdown"],
+    "answer": "checkbox",
+    "difficulty": "medium",
+    "hint": "You can tick more than one box."
+  },
+  {
+    "id": "q4m",
+    "question": "What is the correct HTML for a comment?",
+    "options": ["// This is a comment", "<!-- This is a comment -->", "/* This is a comment */", "<! This is a comment >"],
+    "answer": "<!-- This is a comment -->",
+    "difficulty": "medium",
+    "hint": "It's similar to XML comments."
+  },
+  {
+    "id": "q5m",
+    "question": "Which HTML tag is used to embed a video in an HTML page?",
+    "options": ["<media>", "<src>", "<video>", "<movie>"],
+    "answer": "<video>",
+    "difficulty": "medium",
+    "hint": "It supports various video formats."
+  },
+  {
+    "id": "q6m",
+    "question": "What does the 'target=\"_blank\"' attribute do in an anchor tag?",
+    "options": ["Opens the linked document in the same window/tab", "Opens the linked document in a new window/tab", "Opens the linked document in a parent frame", "Downloads the linked document"],
+    "answer": "Opens the linked document in a new window/tab",
+    "difficulty": "medium",
+    "hint": "It's often used for external links."
+  },
+  {
+    "id": "q7m",
+    "question": "Which HTML tag is used to define the structure of a table?",
+    "options": ["<grid>", "<tab>", "<table>", "<data>"],
+    "answer": "<table>",
+    "difficulty": "medium",
+    "hint": "It's accompanied by <tr>, <th>, and <td>."
+  },
+  {
+    "id": "q8m",
+    "question": "What is the purpose of the HTML <meta> tag?",
+    "options": ["To define metadata about an HTML document", "To embed images", "To create a paragraph", "To link external CSS files"],
+    "answer": "To define metadata about an HTML document",
+    "difficulty": "medium",
+    "hint": "It goes inside the <head> and is used for things like character set, viewport, etc."
+  },
+  {
+    "id": "q9m",
+    "question": "Which HTML attribute specifies an input field should be required?",
+    "options": ["mandatory", "must", "validate", "required"],
+    "answer": "required",
+    "difficulty": "medium",
+    "hint": "It's a boolean attribute."
+  },
+  {
+    "id": "q10m",
+    "question": "Which semantic HTML5 element defines a self-contained content, like an article or a blog post?",
+    "options": ["<section>", "<article>", "<main>", "<content>"],
+    "answer": "<article>",
+    "difficulty": "medium",
+    "hint": "Think of an individual piece of content that could be distributed independently."
+  },
+  {
+    "id": "q1h",
+    "question": "What is the correct way to specify character encoding as UTF-8 in HTML5?",
+    "options": ["<meta charset='UTF-8'>", "<meta type='charset' content='UTF-8'>", "<charset value='UTF-8'>", "<link rel='charset' href='UTF-8'>"],
+    "answer": "<meta charset='UTF-8'>",
+    "difficulty": "hard",
+    "hint": "It's a specific meta tag attribute."
+  },
+  {
+    "id": "q2h",
+    "question": "Which HTML attribute is used to provide a unique identifier for an HTML element?",
+    "options": ["class", "name", "id", "data-id"],
+    "answer": "id",
+    "difficulty": "hard",
+    "hint": "It must be unique within the entire HTML document."
+  },
+  {
+    "id": "q3h",
+    "question": "What is the purpose of the <aside> element in HTML5?",
+    "options": ["To define content related to the main content but separate from it", "To define a block of quotes", "To create a sidebar navigation", "To embed an external document"],
+    "answer": "To define content related to the main content but separate from it",
+    "difficulty": "hard",
+    "hint": "It's often used for sidebars, pull-quotes, or advertisements."
+  },
+  {
+    "id": "q4h",
+    "question": "Which HTML tag is specifically designed to handle mathematical expressions?",
+    "options": ["<math>", "<formula>", "<expression>", "<calc>"],
+    "answer": "<math>",
+    "difficulty": "hard",
+    "hint": "It's part of MathML, which can be embedded in HTML5."
+  },
+  {
+    "id": "q5h",
+    "question": "What is the primary role of the `defer` attribute in an HTML <script> tag?",
+    "options": ["It makes the script execute immediately", "It delays script execution until the HTML parsing is complete", "It forces the script to load asynchronously", "It makes the script run only after user interaction"],
+    "answer": "It delays script execution until the HTML parsing is complete",
+    "difficulty": "hard",
+    "hint": "It's similar to moving the script to the end of the body, but without blocking rendering."
+  },
+  {
+    "id": "q6h",
+    "question": "Which of these is NOT a valid value for the 'rel' attribute of a <link> tag?",
+    "options": ["stylesheet", "icon", "preload", "script"],
+    "answer": "script",
+    "difficulty": "hard",
+    "hint": "Scripts are linked with a different tag."
+  },
+  {
+    "id": "q7h",
+    "question": "In HTML forms, what is the significance of the 'for' attribute in a <label> tag?",
+    "options": ["It specifies the form element the label is related to, by its name attribute", "It specifies the form element the label is related to, by its id attribute", "It specifies the CSS class to apply to the label", "It specifies the placeholder text for the input"],
+    "answer": "It specifies the form element the label is related to, by its id attribute",
+    "difficulty": "hard",
+    "hint": "It improves accessibility by linking the label directly to its input."
+  },
+  {
+    "id": "q8h",
+    "question": "What does the 'srcset' attribute in an <img> tag facilitate?",
+    "options": ["Lazy loading of images", "Defining alternative text for images", "Providing different image sources for different screen densities or viewport sizes", "Applying CSS styles conditionally"],
+    "answer": "Providing different image sources for different screen densities or viewport sizes",
+    "difficulty": "hard",
+    "hint": "It's crucial for responsive images."
+  },
+  {
+    "id": "q9h",
+    "question": "Which HTML tag is used to provide options within a <datalist> element?",
+    "options": ["<input>", "<select>", "<option>", "<item>"],
+    "answer": "<option>",
+    "difficulty": "hard",
+    "hint": "It's the same tag used inside a <select> element."
+  },
+  {
+    "id": "q10h",
+    "question": "What is the HTML5 element that provides a client-side public key generation facility?",
+    "options": ["<keygen>", "<key>", "<cipher>", "<publickey>"],
+    "answer": "<keygen>",
+    "difficulty": "hard",
+    "hint": "It's related to cryptographic operations, though its use is now deprecated."
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "q1e_php",
+    "question": "What does PHP stand for?",
+    "options": ["Personal Home Page", "Hypertext Preprocessor", "Preprocessed Hypertext Pages", "Programming Home Pages"],
+    "answer": "Hypertext Preprocessor",
+    "difficulty": "easy",
+    "hint": "It's a recursive acronym."
+  },
+  {
+    "id": "q2e_php",
+    "question": "PHP scripts are executed on the:",
+    "options": ["Client side", "Server side", "Browser", "User's computer"],
+    "answer": "Server side",
+    "difficulty": "easy",
+    "hint": "It's a common language for web backends."
+  },
+  {
+    "id": "q3e_php",
+    "question": "How do you start a PHP script?",
+    "options": ["<php>", "<?php", "$php", "<!--php-->"],
+    "answer": "<?php",
+    "difficulty": "easy",
+    "hint": "It's a special tag that signals the start of PHP code."
+  },
+  {
+    "id": "q4e_php",
+    "question": "All variables in PHP start with which symbol?",
+    "options": ["&", "%", "$", "#"],
+    "answer": "$",
+    "difficulty": "easy",
+    "hint": "It's unique to PHP variable declaration."
+  },
+  {
+    "id": "q5e_php",
+    "question": "Which function is used to output text in PHP?",
+    "options": ["print()", "write()", "output()", "display()"],
+    "answer": "print()",
+    "difficulty": "easy",
+    "hint": "Another common one is `echo`."
+  },
+  {
+    "id": "q6e_php",
+    "question": "Which operator is used to concatenate strings?",
+    "options": ["+", ".", "&", "concat()"],
+    "answer": ".",
+    "difficulty": "easy",
+    "hint": "It's a single dot."
+  },
+  {
+    "id": "q7e_php",
+    "question": "How do you define a constant in PHP?",
+    "options": ["const MY_CONST = 'value';", "define('MY_CONST', 'value');", "$MY_CONST = 'value';", "constant MY_CONST = 'value';"],
+    "answer": "define('MY_CONST', 'value');",
+    "difficulty": "easy",
+    "hint": "It's a built-in function."
+  },
+  {
+    "id": "q8e_php",
+    "question": "Which superglobal variable holds information about headers, paths, and script locations?",
+    "options": ["$_GET", "$_POST", "$_SERVER", "$_REQUEST"],
+    "answer": "$_SERVER",
+    "difficulty": "easy",
+    "hint": "It contains information about the server environment."
+  },
+  {
+    "id": "q9e_php",
+    "question": "Which function is used to get the length of a string?",
+    "options": ["len()", "str_length()", "strlen()", "length()"],
+    "answer": "strlen()",
+    "difficulty": "easy",
+    "hint": "It's short for 'string length'."
+  },
+  {
+    "id": "q10e_php",
+    "question": "What is the correct way to include an external file 'header.php' into a PHP script?",
+    "options": ["#include 'header.php';", "include_file('header.php');", "include 'header.php';", "require 'header.php';"],
+    "answer": "include 'header.php';",
+    "difficulty": "easy",
+    "hint": "Another common one is `require`."
+  },
+  {
+    "id": "q1m_php",
+    "question": "Which array function is used to remove duplicate values from an array?",
+    "options": ["array_unique()", "array_diff()", "array_filter()", "array_splice()"],
+    "answer": "array_unique()",
+    "difficulty": "medium",
+    "hint": "It leaves only the unique values."
+  },
+  {
+    "id": "q2m_php",
+    "question": "What is the purpose of `isset()` function?",
+    "options": ["To check if a variable has a value and is not NULL", "To check if a variable is declared", "To check if a variable is empty", "To check if a variable is a string"],
+    "answer": "To check if a variable has a value and is not NULL",
+    "difficulty": "medium",
+    "hint": "It's often used with superglobals like `$_POST` or `$_GET`."
+  },
+  {
+    "id": "q3m_php",
+    "question": "Which superglobal variable is used to collect data from an HTML form with method='post'?",
+    "options": ["$_GET", "$_REQUEST", "$_SESSION", "$_POST"],
+    "answer": "$_POST",
+    "difficulty": "medium",
+    "hint": "It corresponds directly to the HTTP method."
+  },
+  {
+    "id": "q4m_php",
+    "question": "What does `==` operator do in PHP?",
+    "options": ["Checks for equality of value and type", "Checks for equality of value only", "Assigns a value", "Performs strict comparison"],
+    "answer": "Checks for equality of value only",
+    "difficulty": "medium",
+    "hint": "It performs type juggling if necessary."
+  },
+  {
+    "id": "q5m_php",
+    "question": "How do you define a class in PHP?",
+    "options": ["create class MyClass {}", "class MyClass {}", "new class MyClass {}", "def class MyClass {}"],
+    "answer": "class MyClass {}",
+    "difficulty": "medium",
+    "hint": "It uses the `class` keyword."
+  },
+  {
+    "id": "q6m_php",
+    "question": "What is the output of `var_dump(null === false);`?",
+    "options": ["true", "false", "NULL", "Error"],
+    "answer": "false",
+    "difficulty": "medium",
+    "hint": "The `===` operator checks for strict equality (value and type)."
+  },
+  {
+    "id": "q7m_php",
+    "question": "Which magic method is called when an object is treated as a string?",
+    "options": ["__toString()", "__convertString()", "__asString()", "__print()"],
+    "answer": "__toString()",
+    "difficulty": "medium",
+    "hint": "It allows you to define how an object should behave when converted to a string."
+  },
+  {
+    "id": "q8m_php",
+    "question": "What is the purpose of `final` keyword in PHP classes/methods?",
+    "options": ["To mark a class/method as abstract", "To prevent a class from being inherited or a method from being overridden", "To indicate the end of a class/method definition", "To make a class/method static"],
+    "answer": "To prevent a class from being inherited or a method from being overridden",
+    "difficulty": "medium",
+    "hint": "It ensures the implementation cannot be changed by child classes."
+  },
+  {
+    "id": "q9m_php",
+    "question": "How can you disable error reporting in PHP?",
+    "options": ["error_reporting(0);", "display_errors = Off;", "ini_set('display_errors', 0);", "Both A and C"],
+    "answer": "Both A and C",
+    "difficulty": "medium",
+    "hint": "You can do it both programmatically and via `php.ini`."
+  },
+  {
+    "id": "q10m_php",
+    "question": "What is the `spl_autoload_register()` function used for?",
+    "options": ["To register a custom error handler", "To register functions that are automatically called when an undefined class is used", "To register a new PHP extension", "To optimize PHP script loading"],
+    "answer": "To register functions that are automatically called when an undefined class is used",
+    "difficulty": "medium",
+    "hint": "It helps manage class dependencies without manually including files."
+  },
+  {
+    "id": "q1h_php",
+    "question": "What is the correct way to declare an abstract method in an abstract class?",
+    "options": ["abstract function myMethod();", "public abstract function myMethod();", "abstract public function myMethod();", "function abstract myMethod();"],
+    "answer": "abstract public function myMethod();",
+    "difficulty": "hard",
+    "hint": "The `abstract` keyword comes first, then the visibility."
+  },
+  {
+    "id": "q2h_php",
+    "question": "What does the `use` keyword do in PHP (outside of namespaces)?",
+    "options": ["It imports classes from a namespace", "It's used in anonymous functions to inherit variables from the parent scope", "It defines a trait", "It defines a closure"],
+    "answer": "It's used in anonymous functions to inherit variables from the parent scope",
+    "difficulty": "hard",
+    "hint": "It allows a closure to access variables defined outside its own scope."
+  },
+  {
+    "id": "q3h_php",
+    "question": "Which of these is NOT a valid type hint in PHP 7+?",
+    "options": ["string", "int", "float", "array", "void", "object", "resource"],
+    "answer": "resource",
+    "difficulty": "hard",
+    "hint": "While `resource` is a type, it cannot be used for type hinting directly."
+  },
+  {
+    "id": "q4h_php",
+    "question": "What is the purpose of `yield` keyword in PHP?",
+    "options": ["To define a new variable", "To return a value from a function and then immediately terminate it", "To pause a generator function and return a value, allowing it to be resumed later", "To throw an exception"],
+    "answer": "To pause a generator function and return a value, allowing it to be resumed later",
+    "difficulty": "hard",
+    "hint": "It's used for creating generator functions for efficient iteration."
+  },
+  {
+    "id": "q5h_php",
+    "question": "Which of these is used for strict comparison in PHP?",
+    "options": ["==", "===", "!=", "<=>"],
+    "answer": "===",
+    "difficulty": "hard",
+    "hint": "It checks both value and type without type juggling."
+  },
+  {
+    "id": "q6h_php",
+    "question": "What is the `static` keyword used for in PHP class properties/methods?",
+    "options": ["To make a property/method accessible without creating an instance of the class", "To make a property/method constant", "To prevent a property/method from being overridden", "To make a property/method private"],
+    "answer": "To make a property/method accessible without creating an instance of the class",
+    "difficulty": "hard",
+    "hint": "You access them using the class name and `::`."
+  },
+  {
+    "id": "q7h_php",
+    "question": "What is a `Trait` in PHP?",
+    "options": ["A way to achieve multiple inheritance in PHP", "A class that can only contain abstract methods", "A mechanism for code reuse in single inheritance languages like PHP", "A special type of interface"],
+    "answer": "A mechanism for code reuse in single inheritance languages like PHP",
+    "difficulty": "hard",
+    "hint": "They allow you to horizontally compose behaviors."
+  },
+  {
+    "id": "q8h_php",
+    "question": "Which function is best to sanitize user input to prevent XSS attacks?",
+    "options": ["strip_tags()", "htmlspecialchars()", "filter_var()", "addslashes()"],
+    "answer": "htmlspecialchars()",
+    "difficulty": "hard",
+    "hint": "It converts special characters to HTML entities."
+  },
+  {
+    "id": "q9h_php",
+    "question": "What does the `spaceship operator` (`<=>`) do in PHP 7?",
+    "options": ["Compares two values and returns true if they are equal, false otherwise", "Compares two values and returns -1, 0, or 1 if the first is less than, equal to, or greater than the second respectively", "Concatenates two strings", "Performs a bitwise XOR operation"],
+    "answer": "Compares two values and returns -1, 0, or 1 if the first is less than, equal to, or greater than the second respectively",
+    "difficulty": "hard",
+    "hint": "It's used for combined comparison, similar to `strcmp` or `version_compare`."
+  },
+  {
+    "id": "q10h_php",
+    "question": "What is the `__clone()` magic method used for?",
+    "options": ["To define how an object behaves when it's converted to a string", "To perform custom logic when an object is duplicated using the `clone` keyword", "To prevent an object from being cloned", "To create a deep copy of an object"],
+    "answer": "To perform custom logic when an object is duplicated using the `clone` keyword",
+    "difficulty": "hard",
+    "hint": "It's invoked right after an object has been cloned."
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "q1e_js",
+    "question": "Which keyword is used to declare a variable in JavaScript?",
+    "options": ["var", "let", "const", "All of the above"],
+    "answer": "All of the above",
+    "difficulty": "easy",
+    "hint": "There are multiple ways depending on scope and mutability."
+  },
+  {
+    "id": "q2e_js",
+    "question": "Which symbol is used for single-line comments in JavaScript?",
+    "options": ["//", "/*", "#", "<!--"],
+    "answer": "//",
+    "difficulty": "easy",
+    "hint": "It's similar to C++ or Java."
+  },
+  {
+    "id": "q3e_js",
+    "question": "How do you write 'Hello World' in an alert box?",
+    "options": ["msg('Hello World');", "alertBox('Hello World');", "alert('Hello World');", "console.log('Hello World');"],
+    "answer": "alert('Hello World');",
+    "difficulty": "easy",
+    "hint": "It's a common browser function for pop-ups."
+  },
+  {
+    "id": "q4e_js",
+    "question": "Which operator is used for strict equality (value and type)?",
+    "options": ["==", "=", "===", "!="],
+    "answer": "===",
+    "difficulty": "easy",
+    "hint": "It involves three equal signs."
+  },
+  {
+    "id": "q5e_js",
+    "question": "How do you call a function named 'myFunction'?",
+    "options": ["call myFunction();", "myFunction();", "call function myFunction();", "run myFunction();"],
+    "answer": "myFunction();",
+    "difficulty": "easy",
+    "hint": "You just use its name followed by parentheses."
+  },
+  {
+    "id": "q6e_js",
+    "question": "Which of these is NOT a primitive data type in JavaScript?",
+    "options": ["string", "number", "boolean", "object"],
+    "answer": "object",
+    "difficulty": "easy",
+    "hint": "It's a complex data type, not primitive."
+  },
+  {
+    "id": "q7e_js",
+    "question": "What is the result of `10 + '5'` in JavaScript?",
+    "options": ["15", "105", "Error", "NaN"],
+    "answer": "105",
+    "difficulty": "easy",
+    "hint": "The '+' operator can also perform string concatenation."
+  },
+  {
+    "id": "q8e_js",
+    "question": "Which method is used to remove the last element from an array?",
+    "options": ["shift()", "pop()", "splice()", "removeLast()"],
+    "answer": "pop()",
+    "difficulty": "easy",
+    "hint": "It's the opposite of `push()`."
+  },
+  {
+    "id": "q9e_js",
+    "question": "What is the correct syntax for an `if` statement?",
+    "options": ["if (x > y)", "if x > y", "if x > y then", "if x > y {"],
+    "answer": "if (x > y)",
+    "difficulty": "easy",
+    "hint": "The condition is usually enclosed in parentheses."
+  },
+  {
+    "id": "q10e_js",
+    "question": "Which global function is used to convert a string to an integer?",
+    "options": ["toInt()", "parseInt()", "stringToInt()", "convertInt()"],
+    "answer": "parseInt()",
+    "difficulty": "easy",
+    "hint": "It literally parses an integer from a string."
+  },
+  {
+    "id": "q1m_js",
+    "question": "What is the difference between `let` and `const`?",
+    "options": ["`let` is function-scoped, `const` is block-scoped", "`let` allows reassignment, `const` does not", "`let` is hoisted, `const` is not", "There is no difference"],
+    "answer": "`let` allows reassignment, `const` does not",
+    "difficulty": "medium",
+    "hint": "One is for variables that can change, the other for immutable references."
+  },
+  {
+    "id": "q2m_js",
+    "question": "What is a 'closure' in JavaScript?",
+    "options": ["A function that returns another function", "A function that has access to its outer function's scope even after the outer function has finished executing", "A function that is defined inside an object", "A method for securely closing a web connection"],
+    "answer": "A function that has access to its outer function's scope even after the outer function has finished executing",
+    "difficulty": "medium",
+    "hint": "It's often used to create private variables."
+  },
+  {
+    "id": "q3m_js",
+    "question": "What does `NaN` mean in JavaScript?",
+    "options": ["Not a Number", "No and Null", "New Attribute", "Negative Number"],
+    "answer": "Not a Number",
+    "difficulty": "medium",
+    "hint": "It's a property of the global object."
+  },
+  {
+    "id": "q4m_js",
+    "question": "Which method is used to add new elements to the beginning of an array?",
+    "options": ["push()", "unshift()", "concat()", "addFirst()"],
+    "answer": "unshift()",
+    "difficulty": "medium",
+    "hint": "It's the opposite of `shift()`."
+  },
+  {
+    "id": "q5m_js",
+    "question": "What is the purpose of `bind()` method?",
+    "options": ["To attach an event listener to an element", "To create a new function that, when called, has its `this` keyword set to the provided value", "To merge two objects into one", "To link a JavaScript file to an HTML document"],
+    "answer": "To create a new function that, when called, has its `this` keyword set to the provided value",
+    "difficulty": "medium",
+    "hint": "It permanently sets the `this` context for a function."
+  },
+  {
+    "id": "q6m_js",
+    "question": "How do you access the value of a property named 'name' from an object 'person'?",
+    "options": ["person->name", "person.name", "person['name']", "Both B and C"],
+    "answer": "Both B and C",
+    "difficulty": "medium",
+    "hint": "There are two common syntaxes for property access."
+  },
+  {
+    "id": "q7m_js",
+    "question": "What is 'event delegation'?",
+    "options": ["Assigning an event listener to every element individually", "Attaching a single event listener to a parent element to manage events for its children", "Passing events from one function to another", "Preventing default event behavior"],
+    "answer": "Attaching a single event listener to a parent element to manage events for its children",
+    "difficulty": "medium",
+    "hint": "It leverages event bubbling to improve performance."
+  },
+  {
+    "id": "q8m_js",
+    "question": "Which built-in object contains methods for performing mathematical operations?",
+    "options": ["Calculations", "Number", "Math", "Arithmetic"],
+    "answer": "Math",
+    "difficulty": "medium",
+    "hint": "It's a global object, not a constructor."
+  },
+  {
+    "id": "q9m_js",
+    "question": "What does the `defer` attribute on a `<script>` tag do?",
+    "options": ["Forces the script to execute immediately", "Delays script execution until HTML parsing is complete", "Makes the script load asynchronously", "Prevents the script from running"],
+    "answer": "Delays script execution until HTML parsing is complete",
+    "difficulty": "medium",
+    "hint": "It ensures the DOM is fully constructed before the script runs."
+  },
+  {
+    "id": "q10m_js",
+    "question": "Which method stops the propagation of an event?",
+    "options": ["e.stopPropagation()", "e.preventDefault()", "e.stopImmediatePropagation()", "e.cancelBubble()"],
+    "answer": "e.stopPropagation()",
+    "difficulty": "medium",
+    "hint": "It prevents the event from bubbling up to parent elements."
+  },
+  {
+    "id": "q1h_js",
+    "question": "What is the 'event loop' in JavaScript?",
+    "options": ["A loop that continuously checks for new events in the DOM", "A mechanism that allows JavaScript to perform non-blocking I/O operations by offloading tasks to the browser's APIs and pushing callbacks to the event queue", "A way to handle asynchronous code in Node.js only", "A specific type of `for` loop used for events"],
+    "answer": "A mechanism that allows JavaScript to perform non-blocking I/O operations by offloading tasks to the browser's APIs and pushing callbacks to the event queue",
+    "difficulty": "hard",
+    "hint": "It's fundamental to JavaScript's concurrency model."
+  },
+  {
+    "id": "q2h_js",
+    "question": "What is a 'Promise' in JavaScript?",
+    "options": ["A guarantee that a function will always return a value", "An object representing the eventual completion or failure of an asynchronous operation and its resulting value", "A way to handle synchronous errors", "A keyword for defining asynchronous functions"],
+    "answer": "An object representing the eventual completion or failure of an asynchronous operation and its resulting value",
+    "difficulty": "hard",
+    "hint": "It has three states: pending, fulfilled, and rejected."
+  },
+  {
+    "id": "q3h_js",
+    "question": "What is the 'Temporal Dead Zone' in JavaScript?",
+    "options": ["A period of time during which `var` variables are undefined", "The time between when a variable is declared using `let` or `const` and when it is initialized", "A memory area where unused variables are stored", "A concept related to JavaScript garbage collection"],
+    "answer": "The time between when a variable is declared using `let` or `const` and when it is initialized",
+    "difficulty": "hard",
+    "hint": "Accessing a variable in this zone will result in a `ReferenceError`."
+  },
+  {
+    "id": "q4h_js",
+    "question": "What is the difference between `call()`, `apply()`, and `bind()`?",
+    "options": ["They are all identical methods for function invocation", "They all set the `this` context, but `call()` takes arguments separately, `apply()` takes an array of arguments, and `bind()` returns a new function with `this` set permanently", "They are used for different types of functions (e.g., arrow functions vs. regular functions)", "They relate to event handling, not `this` context"],
+    "answer": "They all set the `this` context, but `call()` takes arguments separately, `apply()` takes an array of arguments, and `bind()` returns a new function with `this` set permanently",
+    "difficulty": "hard",
+    "hint": "The core difference lies in how arguments are passed and whether a new function is returned."
+  },
+  {
+    "id": "q5h_js",
+    "question": "What is 'hoisting' in JavaScript?",
+    "options": ["A technique for optimizing browser rendering", "The JavaScript interpreter's action of moving all declarations to the top of the current scope before code execution", "A method for making HTTP requests", "A way to manage asynchronous operations"],
+    "answer": "The JavaScript interpreter's action of moving all declarations to the top of the current scope before code execution",
+    "difficulty": "hard",
+    "hint": "It's why you can sometimes use a variable before it's declared (though `let`/`const` mitigate this)."
+  },
+  {
+    "id": "q6h_js",
+    "question": "What is a 'debounce' function used for?",
+    "options": ["To execute a function immediately when called", "To limit the rate at which a function is called, executing it only after a certain period of inactivity", "To ensure a function is called at a steady rate", "To queue up multiple function calls for later execution"],
+    "answer": "To limit the rate at which a function is called, executing it only after a certain period of inactivity",
+    "difficulty": "hard",
+    "hint": "It's commonly used for events like window resizing or search input typing."
+  },
+  {
+    "id": "q7h_js",
+    "question": "What is `__proto__` and `prototype` in JavaScript?",
+    "options": ["They are two different names for the same thing", "`__proto__` is a property of an object instance pointing to its prototype object; `prototype` is a property of a constructor function, pointing to the object that will become the `__proto__` of instances created by it", "`__proto__` is for classes, `prototype` is for functions", "They are both used for inheritance, but in different browsers"],
+    "answer": "`__proto__` is a property of an object instance pointing to its prototype object; `prototype` is a property of a constructor function, pointing to the object that will become the `__proto__` of instances created by it",
+    "difficulty": "hard",
+    "hint": "It's fundamental to understanding JavaScript's prototypal inheritance."
+  },
+  {
+    "id": "q8h_js",
+    "question": "What does the `WeakMap` object do?",
+    "options": ["It's a Map that holds only weak references to its keys, which must be objects", "It's a Map with limited size", "It's a Map that can only store primitive values as keys", "It's a Map that doesn't allow iteration"],
+    "answer": "It's a Map that holds only weak references to its keys, which must be objects",
+    "difficulty": "hard",
+    "hint": "Its keys can be garbage collected if there are no other references to them."
+  },
+  {
+    "id": "q9h_js",
+    "question": "What is the purpose of `Symbol` in ES6?",
+    "options": ["To create unique identifiers for object properties", "To represent mathematical symbols", "To define new primitive data types", "To replace strings as object keys"],
+    "answer": "To create unique identifiers for object properties",
+    "difficulty": "hard",
+    "hint": "They guarantee uniqueness and prevent name clashes."
+  },
+  {
+    "id": "q10h_js",
+    "question": "What is the difference between `null` and `undefined`?",
+    "options": ["They are identical in JavaScript", "`null` represents the intentional absence of any object value; `undefined` means a variable has been declared but has not yet been assigned a value", "`null` is a number, `undefined` is a string", "`null` is a primitive, `undefined` is an object"],
+    "answer": "`null` represents the intentional absence of any object value; `undefined` means a variable has been declared but has not yet been assigned a value",
+    "difficulty": "hard",
+    "hint": "`typeof null` returns 'object', but `typeof undefined` returns 'undefined'."
+  }
+]
