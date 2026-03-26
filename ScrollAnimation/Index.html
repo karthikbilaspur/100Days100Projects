@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Simon Says: The Modern Challenge </title>
+    <meta name="description" content="Test your memory and reaction time with Simon Says, brought to you by K. A fun, interactive game to challenge your focus!">
+    <meta name="keywords" content="Simon Says, memory game, reaction game, JavaScript game, web game, K, front-end development, HTML, CSS, JS">
+    <meta name="author" content="K">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourwebsite.com/simon-says-game"> <!-- Replace with your actual URL -->
+    <meta property="og:title" content="Simon Says: The Modern Challenge by K">
+    <meta property="og:description" content="Test your memory and reaction time with Simon Says, brought to you by K. A fun, interactive game to challenge your focus!">
+    <meta property="og:image" content="https://www.yourwebsite.com/images/simon-says-preview.jpg"> <!-- Replace with a game preview image -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yourwebsite.com/simon-says-game"> <!-- Replace with your actual URL -->
+    <meta property="twitter:title" content="Simon Says: The Modern Challenge by K">
+    <meta property="twitter:description" content="Test your memory and reaction time with Simon Says, brought to you by K. A fun, interactive game to challenge your focus!">
+    <meta property="twitter:image" content="https://www.yourwebsite.com/images/simon-says-preview.jpg"> <!-- Replace with a game preview image -->
+
+    <!-- Favicon for better branding -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='90' text-anchor='middle' dominant-baseline='central'%3E🧠%3C/text%3E%3C/svg%3E">
+
+    <!-- Custom CSS (style.css contains all game styles now) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts for retro-gaming aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Social Media Icons (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0PzGc/6gY36y48t+l+g/j4n/aY8m4P7dJt4L+a7D5t5q1sF5+l+q1O5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="game-wrapper">
+        <header class="game-header">
+            <h1 class="game-title">Simon Says</h1>
+            <p class="game-tagline">The Modern Challenge by <a href="https://www.k.com" target="_blank" rel="noopener noreferrer" class="company-link">K</a></p>
+        </header>
+
+        <main class="game-main">
+            <div id="game-info">
+                <p id="round-info" class="info-text">Round: <span>0</span></p>
+                <p id="score-info" class="info-text">Score: <span>0</span></p>
+            </div>
+
+            <div id="game-display">
+                <p id="simon-says-display" class="simon-text"></p>
+                <p id="command-display" class="command-text"></p>
+                <div id="countdown-timer" class="timer-bar"></div>
+            </div>
+
+            <div id="game-controls">
+                <button id="start-game" class="btn btn-primary">Start New Game</button>
+                <div class="difficulty-select">
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="game-feedback" aria-live="polite">
+                <!-- Messages like "Correct!", "Wrong!", "Time's up!" will appear here -->
+            </div>
+        </main>
+
+        <footer class="game-footer">
+            <p>&copy; 2026 KarthikCodingSolutions. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <details>
+                <summary>How to play</summary>
+                <p>Simon will give you a command starting with "Simon says:". Your task is to remember it. After a short delay, you'll be prompted to "Do the command!". You then have a limited time to click the "I did it!" button. Be quick and accurate!</p>
+                <p><strong>Note:</strong> This is a mental exercise game. You actually perform the actions yourself; there's no physical input other than clicking "I did it!".</p>
+            </details>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
