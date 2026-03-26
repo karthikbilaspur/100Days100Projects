@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Snake Classic</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Experience the timeless Snake game with a retro twist! Navigate your snake, eat food, avoid obstacles, and beat your high score.">
+    <meta name="keywords" content="Snake game, retro game, JavaScript game, HTML5 canvas, memory game, classic arcade, web game">
+    <meta name="author" content="Karthik">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com/snake-game"> <!-- TODO: Replace with your actual URL -->
+    <meta property="og:title" content="Retro Snake Classic - HTML5 Game">
+    <meta property="og:description" content="Experience the timeless Snake game with a retro twist! Navigate your snake, eat food, avoid obstacles, and beat your high score.">
+    <meta property="og:image" content="https://www.yourdomain.com/images/snake-preview.jpg"> <!-- TODO: Replace with a relevant preview image -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yourdomain.com/snake-game"> <!-- TODO: Replace with your actual URL -->
+    <meta property="twitter:title" content="Retro Snake Classic - HTML5 Game">
+    <meta property="twitter:description" content="Experience the timeless Snake game with a retro twist! Navigate your snake, eat food, avoid obstacles, and beat your high score.">
+    <meta property="twitter:image" content="https://www.yourdomain.com/images/snake-preview.jpg"> <!-- TODO: Replace with a relevant preview image -->
+
+    <!-- Favicon (using a snake emoji) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='90' text-anchor='middle' dominant-baseline='central'%3E🐍%3C/text%3E%3C/svg%3E">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for retro/game aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Bangers&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0PzGc/6gY36y48t+l+g/j4n/aY8m4P7dJt4L+a7D5t5q1sF5+l+q1O5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1 class="game-title">Retro Snake</h1>
+        </header>
+
+        <div class="game-area">
+            <div class="game-info-panel">
+                <p>Score: <span id="score">0</span></p>
+                <p>High Score: <span id="highScore">0</span></p>
+                <p>Level: <span id="level">1</span></p>
+            </div>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+            <!-- Game Over / Start Screen Overlay -->
+            <div class="game-overlay" id="gameOverlay">
+                <div class="overlay-content">
+                    <h2 id="overlayTitle">Press START to Play!</h2>
+                    <p id="overlayMessage"></p>
+                    <button id="startGameBtn" class="game-btn">START GAME</button>
+                </div>
+            </div>
+
+            <!-- Pause Screen Overlay -->
+            <div class="game-overlay hidden" id="pauseOverlay">
+                <div class="overlay-content">
+                    <h2>PAUSED</h2>
+                    <p>Press 'P' or RESUME to continue</p>
+                    <button id="resumeGameBtn" class="game-btn">RESUME</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <button id="muteBtn" class="control-btn"><i class="fas fa-volume-up"></i></button>
+            <button id="pauseBtn" class="control-btn"><i class="fas fa-pause"></i></button>
+            <button id="resetBtn" class="control-btn"><i class="fas fa-redo"></i></button>
+        </div>
+
+        <footer class="game-footer">
+            <p>&copy; 2026 <a href="https://www.karthikcodingsolutions.com" target="_blank" rel="noopener noreferrer">KarthikCodingSolutions</a>. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/your-twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
