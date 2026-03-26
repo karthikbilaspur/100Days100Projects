@@ -1,0 +1,270 @@
+/* ==========================================================
+// Constants and Root Variables
+// ========================================================== */
+:root {
+    --scroll-indicator-height: 4px;
+    --scroll-indicator-bg: #e0e0e0;
+    --scroll-indicator-fill: var(--primary-color); /* Using a primary color variable */
+
+    --custom-scrollbar-width: 8px;
+    --custom-scrollbar-track: rgba(0, 0, 0, 0.1);
+    --custom-scrollbar-thumb: var(--primary-color);
+    --custom-scrollbar-thumb-hover: var(--secondary-color);
+    --custom-scrollbar-thumb-radius: 4px; /* Rounded thumb */
+
+    --section-min-height: 100vh;
+    --section-transition-duration: 0.8s; /* Align with JS duration */
+    --section-transition-timing: ease-out; /* Smooth transition */
+    --section-text-color: #333;
+    --section-bg-default: #f5f5f5;
+    --section-bg-alt: #f0f0f0; /* Alternate background for sections */
+
+    --primary-color: #007bff; /* Example: A vibrant blue */
+    --secondary-color: #0056b3; /* Darker shade of primary */
+    --accent-color: #28a745; /* Green for success/actions */
+    --text-light: #fff;
+    --text-dark: #343a40;
+    --border-color: #dee2e6;
+    --box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================
+// Base Styles and Resets
+// ========================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: auto; /* Managed by JS for more control */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    background-color: var(--section-bg-default); /* Match default section background */
+    -webkit-font-smoothing: antialiased; /* Better font rendering */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure focus outline is visible for accessibility */
+*:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* ==========================================================
+// Scroll Indicator
+// ========================================================== */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--scroll-indicator-height);
+    background-color: var(--scroll-indicator-bg);
+    z-index: 1000;
+    overflow: hidden; /* Ensure bar stays within bounds */
+}
+
+.scroll-indicator-bar { /* This is the moving part */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%; /* Initial width */
+    height: 100%;
+    background-color: var(--scroll-indicator-fill);
+    transition: width 0.3s ease-out; /* Smooth width transition */
+}
+
+/* ==========================================================
+// Custom Scrollbar
+// ========================================================== */
+/* Hide native scrollbar */
+body::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.custom-scrollbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--custom-scrollbar-width);
+    height: 100vh;
+    background-color: var(--custom-scrollbar-track);
+    z-index: 999; /* Below scroll indicator */
+}
+
+.custom-scrollbar-thumb {
+    width: 100%;
+    height: 80px; /* Example fixed height, could be dynamic */
+    background-color: var(--custom-scrollbar-thumb);
+    border-radius: var(--custom-scrollbar-thumb-radius);
+    transition: background-color 0.2s ease, transform 0.1s ease-out;
+}
+
+.custom-scrollbar-thumb:hover {
+    background-color: var(--custom-scrollbar-thumb-hover);
+}
+
+/* ==========================================================
+// Main Content & Sections
+// ========================================================== */
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    min-height: var(--section-min-height); /* Use min-height for flexibility */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px; /* More padding */
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Ensure lazy-loaded background doesn't overflow */
+
+    /* Initial state for animation */
+    transform: translateY(50px);
+    opacity: 0;
+    transition: transform var(--section-transition-duration) var(--section-transition-timing),
+                opacity var(--section-transition-duration) var(--section-transition-timing);
+
+    /* Alternate background colors */
+    &:nth-of-type(even) {
+        background-color: var(--section-bg-alt);
+    }
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.section.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Style for lazy-loaded background image */
+.section.image-loaded {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-out; /* Smooth transition for background image */
+}
+
+/* Loading state for section */
+.section.loading-image {
+    background-color: #e9ecef; /* Lighter background during loading */
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23e9ecef%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22%23ccc%22%20stroke-width%3D%225%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22%23007bff%22%20stroke-width%3D%225%22%20stroke-dasharray%3D%22125.66%22%20stroke-dashoffset%3D%22125.66%22%3E%3CanimateTransform%20attributeName%3D%22transform%22%20type%3D%22rotate%22%20from%3D%220%2050%2050%22%20to%3D%22360%2050%2050%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%3Canimate%20attributeName%3D%22stroke-dashoffset%22%20values%3D%22125.66%3B0%3B125.66%22%20dur%3D%222s%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Fcircle%3E%3C%2Fsvg%3E'); /* Simple SVG spinner */
+    background-size: 50px, cover; /* Size for spinner and cover for fallback bg */
+    background-position: center center, center center;
+    background-repeat: no-repeat, no-repeat;
+}
+
+.section h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+}
+
+.section p {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin-bottom: 30px;
+    line-height: 1.8;
+    color: var(--section-text-color);
+}
+
+.lazy-load-button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 28px;
+    font-size: 1.1em;
+    border-radius: 30px; /* More rounded button */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.lazy-load-button:hover:not(:disabled) {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.lazy-load-button:disabled {
+    background-color: #cccccc;
+    cursor: progress; /* Indicate loading state */
+    opacity: 0.8;
+}
+
+/* ==========================================================
+// Responsive Design
+// ========================================================== */
+@media (max-width: 768px) {
+   .section {
+        padding: 60px 15px;
+    }
+
+   .section h1 {
+        font-size: 2.5em;
+    }
+
+   .section p {
+        font-size: 1em;
+        max-width: 90%;
+    }
+
+   .lazy-load-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+   .custom-scrollbar {
+        width: 6px; /* Thinner scrollbar on mobile */
+    }
+   .custom-scrollbar-thumb {
+        height: 60px; /* Shorter thumb */
+        border-radius: 3px;
+    }
+
+   .scroll-indicator-height {
+        --scroll-indicator-height: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+   .section {
+        padding: 40px 10px;
+    }
+
+   .section h1 {
+        font-size: 2em;
+    }
+
+   .section p {
+        font-size: 0.9em;
+    }
+
+   .lazy-load-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}
