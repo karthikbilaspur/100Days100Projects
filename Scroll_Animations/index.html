@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Scroll Experience</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Preconnect to improve performance for image loading from Picsum -->
+    <link rel="preconnect" href="https://picsum.photos">
+</head>
+<body>
+    <!-- Live region for screen reader announcements - visually hidden -->
+    <div id="aria-live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scroll Indicator (visually fixed to top) -->
+    <div class="scroll-indicator" role="progressbar" aria-label="Page scroll progress">
+        <div class="scroll-indicator-bar"></div>
+    </div>
+
+    <!-- Custom Scrollbar (visually fixed to right) -->
+    <div class="custom-scrollbar" aria-hidden="true">
+        <div class="custom-scrollbar-thumb"></div>
+    </div>
+
+    <main id="main-content">
+        <!-- Section 1 -->
+        <section class="section" id="section-1" aria-label="Welcome Section">
+            <h1>Welcome to Our Page!</h1>
+            <p>Experience smooth scroll animations and dynamic content loading. Use your arrow keys to navigate effortlessly!</p>
+            <button class="lazy-load-button">Load Dynamic Background</button>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="section" id="section-2" aria-label="Features Section" tabindex="-1">
+            <h1>Discover Amazing Features</h1>
+            <p>Each section offers a unique perspective. Click the button below to transform the background of this section.</p>
+            <button class="lazy-load-button">Load Dynamic Background</button>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="section" id="section-3" aria-label="Gallery Section" tabindex="-1">
+            <h1>Explore Our Gallery</h1>
+            <p>Our content adapts to your scrolling. Try lazy loading a beautiful image here!</p>
+            <button class="lazy-load-button">Load Dynamic Background</button>
+        </section>
+
+        <!-- Section 4 (Added for more content) -->
+        <section class="section" id="section-4" aria-label="Contact Section" tabindex="-1">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you. This is the final section of our scroll experience.</p>
+            <button class="lazy-load-button">Load Dynamic Background</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
