@@ -1,136 +1,778 @@
+/* --- CSS Variables for Global Theming --- */
 :root {
-    --primary-color: #333;
-    --secondary-color: #fff;
-    --background-color: #f7f7f7;
-    --dark-mode-background-color: #333;
-    --dark-mode-primary-color: #fff;
-    --custom-mode-background-color: #ff69b4;
+    --bg-color: #f0f2f5; /* Light gray background */
+    --primary-text-color: #333333;
+    --secondary-text-color: #666666;
+    --accent-color: #007bff; /* Blue accent for buttons, links */
+    --analog-clock-face-color: #ffffff;
+    --analog-clock-border-color: #cccccc;
+    --hour-hand-color: var(--primary-text-color);
+    --minute-hand-color: var(--primary-text-color);
+    --second-hand-color: #dc3545; /* Red */
+    --center-point-color: var(--second-hand-color);
+    --digital-display-bg: #e9ecef;
+    --digital-time-color: var(--primary-text-color);
+    --digital-date-color: var(--secondary-text-color);
+    --button-bg-color: var(--accent-color);
+    --button-text-color: #ffffff;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --transition-duration-theme: 0.5s ease-in-out;
+    --transition-duration-hands: 0.2s ease-out; /* Smoother hand movement */
+    --font-family-body: 'Poppins', sans-serif;
+    --font-family-display: 'Poppins', monospace; /* Monospace for digital time */
+}
+
+/* --- Theme Specific Overrides --- */
+/* Dark Theme */
+html.dark {
+    --bg-color: #2c3e50;
+    --primary-text-color: #ecf0f1;
+    --secondary-text-color: #bdc3c7;
+    --accent-color: #3498db;
+    --analog-clock-face-color: #34495e;
+    --analog-clock-border-color: #2c3e50;
+    --hour-hand-color: var(--primary-text-color);
+    --minute-hand-color: var(--primary-text-color);
+    --second-hand-color: #e74c3c;
+    --center-point-color: var(--second-hand-color);
+    --digital-display-bg: #212121; /* Slightly darker */
+    --digital-time-color: #00ff00; /* Green LED effect */
+    --digital-date-color: #00cc00;
+    --button-bg-color: var(--accent-color);
+}
+
+/* Custom Theme (example) */
+html.custom {
+    --bg-color: #fce4ec; /* Light pink */
+    --primary-text-color: #880e4f; /* Dark magenta */
+    --secondary-text-color: #ad1457;
+    --accent-color: #ec407a; /* Pink */
+    --analog-clock-face-color: #ffe0b2; /* Light orange */
+    --analog-clock-border-color: #ffcc80;
+    --hour-hand-color: var(--primary-text-color);
+    --minute-hand-color: var(--primary-text-color);
+    --second-hand-color: #d81b60; /* Dark pink */
+    --center-point-color: var(--second-hand-color);
+    --digital-display-bg: #f8bbd0;
+    --digital-time-color: #4a148c; /* Purple */
+    --digital-date-color: #7b1fa2;
+    --button-bg-color: var(--accent-color);
+}
+
+/* Vibrant Theme (example) */
+html.vibrant {
+    --bg-color: #4CAF50; /* Green */
+    --primary-text-color: #fff;
+    --secondary-text-color: #e0f2f1;
+    --accent-color: #FFC107; /* Amber */
+    --analog-clock-face-color: #8BC34A; /* Light Green */
+    --analog-clock-border-color: #689F38;
+    --hour-hand-color: #fff;
+    --minute-hand-color: #fff;
+    --second-hand-color: #FF5722; /* Deep Orange */
+    --center-point-color: var(--second-hand-color);
+    --digital-display-bg: #2E7D32; /* Darker Green */
+    --digital-time-color: #FFECB3; /* Lighter Amber */
+    --digital-date-color: #FFD54F;
+    --button-bg-color: var(--accent-color);
+}
+
+/* --- Base Styles --- */
+body {
+    font-family: var(--font-family-body);
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    transition: background-color var(--transition-duration-theme), color var(--transition-duration-theme);
+}
+
+/* --- Global Header --- */
+.site-header {
+    background-color: var(--primary-text-color); /* Matches current primary text color */
+    color: var(--analog-clock-face-color); /* Matches current analog face color */
+    padding: 15px 0;
+    box-shadow: var(--shadow-light);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-brand a {
+    font-family: var(--font-family-body);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: inherit; /* Inherit from parent (header-container) */
+    text-decoration: none;
+    transition: color var(--transition-duration-hands);
+}
+
+.site-brand a:hover {
+    color: var(--accent-color);
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    color: inherit; /* Inherit from parent */
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color var(--transition-duration-hands);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width var(--transition-duration-hands);
+}
+
+.main-nav a:hover {
+    color: var(--accent-color);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Main Content Section --- */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.clock-app-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    background-color: var(--analog-clock-face-color); /* Clock face color as section bg */
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
+    transition: background-color var(--transition-duration-theme);
+}
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-text-color);
+    margin-bottom: 10px;
+    text-align: center;
+    transition: color var(--transition-duration-theme);
 }
 
 .clock-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: var(--background-color);
-    transition: background-color 0.5s ease;
+    gap: 25px;
+    position: relative; /* For preview wrapper positioning */
+    width: 100%;
+    max-width: 500px;
 }
 
+/* --- Analog Clock --- */
 .clock {
     position: relative;
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background-color: var(--primary-color);
+    background-color: var(--analog-clock-face-color);
+    border: 5px solid var(--analog-clock-border-color);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1), 0 0 0 5px var(--analog-clock-border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color var(--transition-duration-theme), border-color var(--transition-duration-theme), box-shadow var(--transition-duration-theme);
+}
+
+.center-point {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--center-point-color);
+    z-index: 10;
+    transition: background-color var(--transition-duration-theme);
 }
 
 .needle {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform-origin: bottom center;
-    transition: transform 0.5s ease;
+    transform-origin: 0% 100%; /* Rotate from bottom-center */
+    transform: translate(-50%, -100%) rotate(0deg); /* Initial position */
+    border-radius: 5px 5px 0 0; /* Rounded top */
+    z-index: 5;
+    transition: transform var(--transition-duration-hands); /* Smooth rotation */
 }
 
 .needle.hour {
-    width: 5px;
-    height: 100px;
-    background-color: var(--secondary-color);
+    width: 8px;
+    height: 80px;
+    background-color: var(--hour-hand-color);
+    z-index: 7;
+    transition: transform var(--transition-duration-hands), background-color var(--transition-duration-theme);
 }
 
 .needle.minute {
-    width: 3px;
-    height: 150px;
-    background-color: var(--secondary-color);
+    width: 6px;
+    height: 110px;
+    background-color: var(--minute-hand-color);
+    z-index: 8;
+    transition: transform var(--transition-duration-hands), background-color var(--transition-duration-theme);
 }
 
 .needle.second {
-    width: 1px;
-    height: 200px;
-    background-color: #e74c3c;
+    width: 2px;
+    height: 120px;
+    background-color: var(--second-hand-color);
+    z-index: 9;
+    transition: transform var(--transition-duration-hands), background-color var(--transition-duration-theme);
 }
 
-.center-point {
+/* Clock Marks */
+.mark {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #e74c3c;
+    background-color: var(--primary-text-color);
+    transition: background-color var(--transition-duration-theme);
 }
 
+.mark-12,.mark-3,.mark-6,.mark-9 {
+    width: 4px;
+    height: 15px;
+    position: absolute;
+    transform-origin: center;
+    background-color: var(--primary-text-color);
+    border-radius: 2px;
+}
+.mark-12 { top: 10px; left: calc(50% - 2px); }
+.mark-3 { right: 10px; top: calc(50% - 7.5px); transform: rotate(90deg); }
+.mark-6 { bottom: 10px; left: calc(50% - 2px); }
+.mark-9 { left: 10px; top: calc(50% - 7.5px); transform: rotate(-90deg); }
+
+/* --- Digital Display --- */
 .digital-display {
-    margin-top: 20px;
     text-align: center;
+    background-color: var(--digital-display-bg);
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    transition: background-color var(--transition-duration-theme);
 }
 
 .time {
-    font-size: 48px;
-    font-weight: bold;
-    color: var(--primary-color);
+    font-family: var(--font-family-display);
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--digital-time-color);
+    margin: 0;
+    line-height: 1;
+    transition: color var(--transition-duration-theme);
 }
 
 .date {
-    font-size: 18px;
-    color: var(--primary-color);
+    font-size: 1.1rem;
+    color: var(--digital-date-color);
+    margin-top: 5px;
+    transition: color var(--transition-duration-theme);
 }
 
+.gmt-offset {
+    font-size: 0.9rem;
+    color: var(--digital-date-color);
+    margin-top: 5px;
+    transition: color var(--transition-duration-theme);
+}
+
+/* --- Theme Switcher --- */
 .theme-switcher {
+    display: flex;
+    gap: 10px;
     margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .theme-btn {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
+    box-shadow: var(--shadow-light);
+    transition: background-color var(--transition-duration-hands), transform 0.2s ease-out, box-shadow var(--transition-duration-hands);
+    outline: none; /* Remove default outline */
 }
 
-.theme-btn:focus {
-    outline: none;
+.theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.theme-btn:focus-visible { /* Custom focus state */
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+.theme-btn[aria-pressed="true"] {
+    background-color: var(--accent-color); /* Highlight active button */
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+    transform: none; /* No lift */
+    pointer-events: none; /* Prevent clicking active button */
+}
+
+/* --- Custom Theme Options --- */
+.custom-theme-options {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid var(--analog-clock-border-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--analog-clock-face-color);
+    box-shadow: var(--shadow-light);
+    transition: background-color var(--transition-duration-theme), border-color var(--transition-duration-theme);
+    max-width: 300px;
+    width: 100%;
+}
+
+.custom-theme-options[aria-hidden="true"] {
+    display: none;
+}
+
+.custom-theme-options h3 {
+    font-size: 1.2rem;
+    color: var(--primary-text-color);
+    margin-bottom: 10px;
+    transition: color var(--transition-duration-theme);
+}
+
+.color-picker-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primary-text-color);
+    transition: color var(--transition-duration-theme);
+}
+
+.color-picker-group label {
+    font-weight: 400;
+}
+
+.color-picker-group input[type="color"] {
+    width: 60px;
+    height: 30px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#apply-custom-colors, #reset-custom-colors {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: var(--shadow-light);
+    transition: background-color var(--transition-duration-hands), transform 0.2s ease-out;
+}
+
+#apply-custom-colors {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+#apply-custom-colors:hover {
+    background-color: darken(var(--accent-color), 10%); /* This would require a preprocessor */
+    transform: translateY(-1px);
+}
+
+#reset-custom-colors {
+    background-color: var(--secondary-text-color);
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+#reset-custom-colors:hover {
+    background-color: darken(var(--secondary-text-color), 10%);
+    transform: translateY(-1px);
+}
+
+/* --- Theme Preview --- */
+.theme-preview-wrapper {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--analog-clock-face-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    max-width: 250px;
+    transition: background-color var(--transition-duration-theme);
+}
+
+.theme-preview-wrapper[aria-hidden="true"] {
+    display: none;
+}
+
+.preview-title {
+    font-size: 1.2rem;
+    color: var(--primary-text-color);
+    margin-bottom: 15px;
+    transition: color var(--transition-duration-theme);
 }
 
 .theme-preview {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 100px;
-    height: 100px;
+    position: relative;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    background-color: var(--background-color);
+    background-color: var(--analog-clock-face-color);
+    border: 3px solid var(--analog-clock-border-color);
+    margin: 15px auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color var(--transition-duration-theme), border-color var(--transition-duration-theme);
 }
 
-.theme-preview-clock {
-    width: 50px;
-    height: 50px;
+.theme-preview-center-point {
+    position: absolute;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background-color: var(--primary-color);
+    background-color: var(--center-point-color);
+    z-index: 10;
+    transition: background-color var(--transition-duration-theme);
+}
+
+.theme-preview-needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 100%;
+    transform: translate(-50%, -100%) rotate(0deg);
+    border-radius: 3px 3px 0 0;
+    transition: background-color var(--transition-duration-theme);
+}
+
+.theme-preview-needle.hour {
+    width: 5px;
+    height: 40px;
+    background-color: var(--hour-hand-color);
+    z-index: 7;
+}
+
+.theme-preview-needle.minute {
+    width: 4px;
+    height: 60px;
+    background-color: var(--minute-hand-color);
+    z-index: 8;
+}
+
+.theme-preview-needle.second {
+    width: 1px;
+    height: 65px;
+    background-color: var(--second-hand-color);
+    z-index: 9;
 }
 
 .theme-preview-digital-display {
-    font-size: 12px;
-    color: var(--primary-color);
+    margin-top: 10px;
+    color: var(--digital-time-color);
+    font-family: var(--font-family-display);
+    transition: color var(--transition-duration-theme);
 }
 
-html.light {
-    --background-color: #f7f7f7;
-    --primary-color: #333;
+.theme-preview-time {
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
-html.dark {
-    --background-color: #333;
-    --primary-color: #fff;
+.theme-preview-date {
+    font-size: 0.8rem;
+    color: var(--digital-date-color);
 }
 
-html.custom {
-    --background-color: #ff69b4;
-    --primary-color: #333;
+/* --- Global Footer --- */
+.site-footer {
+    background-color: var(--primary-text-color);
+    color: var(--analog-clock-face-color);
+    padding: 30px 20px;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-light);
+    margin-top: 40px;
+    transition: background-color var(--transition-duration-theme), color var(--transition-duration-theme);
 }
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding-bottom: 20px; /* Space above bottom section */
+}
+
+.footer-brand a {
+    font-family: var(--font-family-body);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--analog-clock-face-color);
+    text-decoration: none;
+    transition: color var(--transition-duration-hands);
+    display: block; /* Ensures tagline is below */
+    margin-bottom: 5px;
+}
+
+.footer-brand a:hover {
+    color: var(--accent-color);
+}
+
+.footer-brand.tagline {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--secondary-text-color);
+    margin-top: 0;
+    transition: color var(--transition-duration-theme);
+}
+
+.site-footer h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--analog-clock-face-color);
+    margin-bottom: 15px;
+    transition: color var(--transition-duration-theme);
+}
+
+.site-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    transition: color var(--transition-duration-hands);
+}
+
+.site-footer a:hover {
+    color: var(--accent-color);
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: var(--analog-clock-face-color);
+    transition: color var(--transition-duration-hands), transform 0.2s ease-out;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.social-icons svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.footer-contact p {
+    margin: 5px 0;
+}
+
+.footer-contact a {
+    display: inline-block; /* Ensure link spans text */
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--secondary-text-color);
+    transition: color var(--transition-duration-theme);
+}
+
+.footer-bottom.copyright {
+    margin: 0;
+    flex-grow: 1; /* Allow it to take space */
+}
+
+.footer-bottom.privacy-terms {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-bottom.privacy-terms a {
+    color: var(--secondary-text-color);
+}
+.footer-bottom.privacy-terms.separator {
+    color: var(--secondary-text-color);
+    opacity: 0.6;
+}
+
+/* --- Accessibility (Screen Reader Only) --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+   .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+   .main-nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+   .app-title {
+        font-size: 2rem;
+    }
+   .clock-container {
+        padding: 0 15px;
+    }
+   .digital-display {
+        padding: 10px 20px;
+    }
+   .time {
+        font-size: 3rem;
+    }
+   .date,.gmt-offset {
+        font-size: 0.9rem;
+    }
+   .theme-switcher {
+        flex-direction: column;
+        width: 100%;
+        max-width: 250px;
+    }
+   .theme-btn {
+        width: 100%;
+    }
+   .custom-theme-options {
+        padding: 15px;
+    }
+   .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+   .footer-brand,.footer-links,.social-links,.footer-contact {
+        align-items: center;
+    }
+   .footer-links ul,.social-icons {
+        justify-content: center;
+    }
+   .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+   .footer-bottom.privacy-terms {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+   .site-brand a {
+        font-size: 1.4rem;
+    }
+   .main-nav a {
+        font-size: 0.85rem;
+    }
+   .clock {
+        width: 250px;
+        height: 250px;
+    }
+   .needle.hour { height: 65px; width: 7px; }
+   .needle.minute { height: 90px; width: 5px; }
+   .needle.second { height: 100px; width: 1.5px; }
+   .digital-display {
+        padding: 8px 15px;
+    }
+   .time {
+        font-size: 2.5rem;
+    }
+   .date,.gmt-offset {
+        font-size: 0.8rem;
+    }
+   .theme-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+   .site-footer {
+        padding: 20px 15px;
+    }
+   .footer-brand a {
+        font-size: 1.2rem;
+    }
+   .site-footer h4 {
+        font-size: 0.95rem;
+    }
+   .social-icons svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
