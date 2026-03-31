@@ -1,39 +1,257 @@
+/* Base styles */
+:root {
+    --primary-bg: #282c34;
+    --secondary-bg: #3e4451;
+    --accent-color: #61dafb;
+    --button-color: #4CAF50;
+    --button-hover-color: #3e8e41;
+    --text-color: #ffffff;
+    --border-color: #ccc;
+    --disabled-color: #888;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll due to animations */
 }
 
-#mandelbrot-canvas {
-    border: 1px solid #ccc;
+h1 {
+    color: var(--accent-color);
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease-out;
 }
 
+header, footer {
+    width: 100%;
+    padding: 20px 0;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+header {
+    animation: slideInLeft 1s ease-out;
+}
+
+footer {
+    margin-top: 40px; /* Space between content and footer */
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    animation: slideInUp 1s ease-out;
+}
+
+#instructions {
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    text-align: left;
+    line-height: 1.6;
+    animation: zoomIn 0.8s ease-out;
+}
+
+#instructions h2 {
+    color: var(--accent-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#instructions ol {
+    padding-left: 20px;
+}
+
+#instructions li {
+    margin-bottom: 10px;
+}
+
+/* Image and Canvas container */
+#image-container {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center;
+    gap: 20px;
+    max-width: 100%;
+}
+
+#filtered-canvas {
+    border: 1px solid var(--border-color);
+    background-color: var(--secondary-bg);
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Ensure images don't overflow */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center center;
+}
+
+#filtered-canvas:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Controls styling */
 #controls {
-    margin-top: 20px;
+    margin-top: 30px;
+    background-color: var(--secondary-bg);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: inline-flex; /* Use flexbox for button layout */
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    justify-content: center;
+    gap: 15px; /* Space between buttons */
+    animation: fadeInUp 1s ease-out;
 }
 
-label {
-    display: inline-block;
-    width: 150px;
-    text-align: right;
-    margin-right: 10px;
+input[type="file"] {
+    margin-bottom: 15px;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 8px;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-input[type="range"] {
-    width: 200px;
-    height: 20px;
-    margin-bottom: 20px;
+input[type="file"]::file-selector-button {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #4da5c2; /* Darken accent color */
 }
 
 button {
-    width: 100px;
-    height: 30px;
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: var(--button-color);
+    color: var(--text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 0; /* Managed by gap in parent */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-button:hover {
-    background-color: #3e8e41;
+button:hover:not(:disabled) {
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    background-color: var(--disabled-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+p.counter-display {
+    font-size: 1.2em;
+    color: var(--accent-color);
+    margin: 15px 0 0 0;
+    width: 100%; /* Take full width in flex container */
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    #instructions {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    #image-container {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center;
+    }
+
+    #filtered-canvas {
+        max-width: 90%; /* Adjust size for smaller screens */
+        width: auto;
+    }
+
+    #controls {
+        flex-direction: column; /* Stack buttons vertically */
+        padding: 15px;
+        gap: 10px;
+    }
+
+    button {
+        width: 90%; /* Make buttons wider */
+    }
+
+    p.counter-display {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    input[type="file"] {
+        width: 100%;
+    }
+    button {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
 }
