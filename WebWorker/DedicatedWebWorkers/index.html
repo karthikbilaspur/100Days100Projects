@@ -3,19 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandelbrot Set Explorer</title>
+    <title>Image Filter with Web Worker | KarthikCodingSolutions</title>
+    <meta name="description" content="Explore responsive image filtering using Web Workers to keep your UI smooth and unblocked. Upload an image and apply a grayscale filter in the background.">
+    <meta name="keywords" content="web worker, javascript, html, css, image processing, grayscale, frontend, performance, UI responsiveness, KarthikCodingSolutions">
+    <meta name="author" content="Meta AI for KarthikCodingSolutions">
+    <meta property="og:title" content="Image Filter with Web Worker | KarthikCodingSolutions">
+    <meta property="og:description" content="Offload heavy image processing to a Web Worker to prevent UI freezes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://karthikcodingsolutions.com/image-filter-worker"> <!-- Placeholder URL -->
+    <!-- You might add an og:image tag here if you had a thumbnail image for social sharing -->
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Mandelbrot Set Explorer</h1>
-    <canvas id="mandelbrot-canvas" width="800" height="800"></canvas>
-    <div id="controls">
-        <label for="zoom-level">Zoom Level:</label>
-        <input type="range" id="zoom-level" min="1" max="100" value="50">
-        <label for="iteration-count">Iteration Count:</label>
-        <input type="range" id="iteration-count" min="10" max="1000" value="100">
-        <button id="generate-button">Generate</button>
-    </div>
+    <header>
+        <h1>Image Filter with Web Worker | KarthikCodingSolutions</h1>
+    </header>
+
+    <main>
+        <section id="instructions">
+            <h2>How This Demo Works</h2>
+            <p>This interactive example showcases the power of **Web Workers** for improving web application performance and user experience. Here's a step-by-step guide:</p>
+            <ol>
+                <li><strong>Upload an Image:</strong> Use the "Choose File" button below to select any image from your computer. Once loaded, you'll see it displayed on the right.</li>
+                <li><strong>Observe UI Responsiveness:</strong> Before or during image processing, click the "Increment Main UI Counter" button. Notice that the counter updates instantly. This demonstrates that the main browser thread (which handles UI updates) is completely free and responsive.</li>
+                <li><strong>Apply Grayscale Filter:</strong> Click the "Apply Grayscale Filter" button. This action triggers a computationally intensive process to convert the image to grayscale.</li>
+                <li><strong>The Magic of Web Workers:</strong> Instead of freezing your entire browser tab, the heavy grayscale calculation is offloaded to a separate JavaScript thread called a **Web Worker**. This worker performs the task in the background.</li>
+                <li><strong>Seamless Result:</strong> Once the Web Worker completes its job, it sends the processed (grayscale) image data back to the main thread, which then updates the display canvas without any interruption to your interaction with the page.</li>
+                <li><strong>Explore Performance:</strong> Try with larger images to truly appreciate how Web Workers prevent your UI from becoming unresponsive!</li>
+            </ol>
+            <p>This technique is invaluable for tasks like complex data processing, real-time analytics, large image manipulations, or any calculation that might otherwise block the user interface.</p>
+        </section>
+
+        <div id="image-container">
+            <canvas id="filtered-canvas" width="400" height="400"></canvas>
+        </div>
+
+        <div id="controls">
+            <input type="file" id="image-upload" accept="image/*" placeholder="Choose an image to upload" title="image-upload">
+            <button id="apply-filter-button" disabled>Apply Grayscale Filter</button>
+            <button id="main-thread-button">Increment Main UI Counter</button>
+            <p class="counter-display">Main UI Counter: <span id="ui-counter-display">0</span></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> 2026 KarthikCodingSolutions. All Rights Reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
