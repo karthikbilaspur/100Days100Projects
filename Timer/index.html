@@ -2,28 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Timer</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Ultimate Timer by arthiCodingSolutions</title>
+
+    <!-- SEO & General Meta Tags -->
+    <meta name="description" content="The ultimate online timer by arthiCodingSolutions: countdown/count-up, progress bar, notifications, local storage, full screen, sound control, and dynamic title updates.">
+    <meta name="eywords" content="timer, online timer, countdown, count-up, stopwatch, productivity tool, arthicodingsolutions, web app, custom timer, pomodoro, local storage, full screen, notification, sound control">
+    <meta name="author" content="arthiCodingSolutions">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Faceboo Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/timer"> <!-- Replace with your actual URL -->
+    <meta property="og:title" content="Ultimate Timer by arthiCodingSolutions">
+    <meta property="og:description" content="The ultimate online timer by arthiCodingSolutions: countdown/count-up, progress bar, notifications, local storage, full screen, sound control, and dynamic title updates.">
+    <meta property="og:image" content="https://yourwebsite.com/timer-thumbnail.png"> <!-- Create a thumbnail image -->
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/timer"> <!-- Replace with your actual URL -->
+    <meta property="twitter:title" content="Ultimate Timer by arthiCodingSolutions">
+    <meta property="twitter:description" content="The ultimate online timer by arthiCodingSolutions: countdown/count-up, progress bar, notifications, local storage, full screen, sound control, and dynamic title updates.">
+    <meta property="twitter:image" content="https://yourwebsite.com/timer-thumbnail.png"> <!-- Create a thumbnail image -->
+
+    <!-- Favicons -->
+    <lin rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> <!-- Create these favicon files -->
+    <lin rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <lin rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <lin rel="manifest" href="/site.webmanifest">
+    <lin rel="mas-icon" href="/safari-pinned-tab.svg" color="#2c3e50">
+    <meta name="msapplication-TileColor" content="#2b5797">
+
+    <!-- Google Fonts -->
+    <lin rel="preconnect" href="https://fonts.googleapis.com">
+    <lin rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <lin href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for social icons -->
+    <lin rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Your Styles -->
+    <lin rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="timer-container">
-        <h1 id="timer-display">00:00:00</h1>
-        <div class="timer-controls">
-            <button id="start-button">Start</button>
-            <button id="stop-button">Stop</button>
-            <button id="reset-button">Reset</button>
+    <main>
+        <div class="timer-card" id="timer-card">
+            <h1 class="app-title">Ultimate Timer <span class="brand-name">by karthiCodingSolutions</span></h1>
+
+            <div class="top-controls">
+                <div class="timer-mode-selector">
+                    <label for="timer-mode">Mode:</label>
+                    <select id="timer-mode" title="Select timer mode: Countdown or Count-Up">
+                        <option value="countdown">Countdown</option>
+                        <option value="countup">Count-Up</option>
+                    </select>
+                </div>
+                <div class="utility-buttons">
+                    <button id="mute-button" class="btn-icon" title="Mute/Unmute alarm sound" aria-label="Mute/Unmute alarm sound"><i class="fas fa-volume-up"></i></button>
+                    <button id="fullscreen-button" class="btn-icon" title="Toggle Fullscreen" aria-label="Toggle Fullscreen"><i class="fas fa-expand"></i></button>
+                </div>
+            </div>
+
+            <div class="timer-display-wrapper">
+                <div id="timer-display" class="timer-display" aria-live="polite">00:00:00</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div id="countdown-message" class="countdown-message hidden" aria-live="assertive"></div>
+            </div>
+
+            <div class="timer-controls">
+                <button id="start-button" class="btn btn-start" aria-label="Start timer">Start</button>
+                <button id="pause-button" class="btn btn-pause hidden" aria-label="Pause timer">Pause</button>
+                <button id="stop-button" class="btn btn-stop" aria-label="Stop timer">Stop</button>
+                <button id="reset-button" class="btn btn-reset" aria-label="Reset timer">Reset</button>
+            </div>
+
+            <div class="timer-settings">
+                <h2>Set Custom Time</h2>
+                <div class="input-group">
+                    <label for="hours-input">Hours:</label>
+                    <input type="number" id="hours-input" value="0" min="0" max="99" aria-label="Set hours" title="Hours (0-99)" />
+                </div>
+                <div class="input-group">
+                    <label for="minutes-input">Minutes:</label>
+                    <input type="number" id="minutes-input" value="0" min="0" max="59" aria-label="Set minutes" title="Minutes (0-59)" />
+                </div>
+                <div class="input-group">
+                    <label for="seconds-input">Seconds:</label>
+                    <input type="number" id="seconds-input" value="0" min="0" max="59" aria-label="Set seconds" title="Seconds (0-59)" />
+                </div>
+                <button id="set-timer-button" class="btn btn-set" aria-label="Apply custom time">Set Timer</button>
+                <button id="clear-inputs-button" class="btn btn-clear-inputs" aria-label="Clear all input fields">Clear Inputs</button>
+            </div>
+            <audio id="alarm-sound" src="alarm.mp3" preload="auto" loop></audio> <!-- Create an alarm.mp3 file -->
         </div>
-        <div class="timer-settings">
-            <label for="hours">Hours:</label>
-            <input type="number" id="hours" value="0" />
-            <label for="minutes">Minutes:</label>
-            <input type="number" id="minutes" value="0" />
-            <label for="seconds">Seconds:</label>
-            <input type="number" id="seconds" value="0" />
-            <button id="set-timer-button">Set Timer</button>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 <span class="brand-name">karthiCodingSolutions</span>. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://github.com/karthiCodingSolutions" target="_blank" aria-label="GitHub profile of arthiCodingSolutions" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/karthicodingsolutions" target="_blank" aria-label="LinkedIn profile of arthiCodingSolutions" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/karthiCodingSolutions" target="_blank" aria-label="Twitter profile of arthiCodingSolutions" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:contact@karthicodingsolutions.com" aria-label="Email arthiCodingSolutions" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
         </div>
-    </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
