@@ -2,58 +2,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Tic Tac Toe by KarthikCodingSolutions</title>
+
+    <!-- SEO & General Meta Tags -->
+    <meta name="description" content="Play Tic Tac Toe online! Choose between Player vs Player or Player vs AI on a customizable board. Developed by KarthikCodingSolutions.">
+    <meta name="keywords" content="tic tac toe, online game, player vs ai, pvp, customizable board, karthikcodingsolutions, web game, phaser game">
+    <meta name="author" content="KarthikCodingSolutions">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/tictactoe"> <!-- Replace with your actual URL -->
+    <meta property="og:title" content="Tic Tac Toe by KarthikCodingSolutions">
+    <meta property="og:description" content="Play Tic Tac Toe online! Choose between Player vs Player or Player vs AI on a customizable board.">
+    <meta property="og:image" content="https://yourwebsite.com/tictactoe-thumbnail.png"> <!-- Create a thumbnail image -->
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/tictactoe"> <!-- Replace with your actual URL -->
+    <meta property="twitter:title" content="Tic Tac Toe by KarthikCodingSolutions">
+    <meta property="twitter:description" content="Play Tic Tac Toe online! Choose between Player vs Player or Player vs AI on a customizable board.">
+    <meta property="twitter:image" content="https://yourwebsite.com/tictactoe-thumbnail.png"> <!-- Create a thumbnail image -->
+
+ 
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> <!-- Create these favicon files -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2c3e50">
+    <meta name="msapplication-TileColor" content="#2b5797">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Your Styles -->
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.50.1/dist/phaser.min.js"></script>
+
+    <!-- Phaser library -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <main>
-        <section>
-            <h1>Tic Tac Toe</h1>
-            <div id="mode-selector">
-                <label for="mode">Game Mode:</label>
+        <section class="game-wrapper">
+            <h1 class="game-title">Tic Tac Toe <span class="brand-name">by KarthikCodingSolutions</span></h1>
+
+            <div id="mode-selector" class="game-setup-panel">
+                <label for="mode">Choose Your Battle:</label>
                 <select id="mode">
                     <option value="pvp">Player vs Player</option>
-                    <option value="pva">Player vs AI</option>
-                    <option value="multiplayer">Multiplayer</option>
+                    <option value="pva">Player vs AI (Challenging!)</option>
+                    <!-- Multiplayer requires backend, so keeping it out for now -->
                 </select>
+                <p class="mode-description">Select your opponent: a friend or our smart AI!</p>
             </div>
-            <div id="startBox" class="sidebar">
-                <input id="player1_name" type="text" placeholder="Player 1 Name">
-                <input id="player2_name" type="text" placeholder="Player 2 Name">
-                <input id="columns" type="number" placeholder="Number of Columns" value="3">
-                <input id="rows" type="number" placeholder="Number of Rows" value="3">
-                <input id="steps" type="number" placeholder="Number of Steps to Win" value="3">
-                <button id="start">Start Game</button>
+
+            <div id="startBox" class="sidebar game-setup-panel">
+                <h2 class="setup-heading">Game Configuration</h2>
+                <div class="input-group">
+                    <label for="player1_name">Player X Name:</label>
+                    <input id="player1_name" type="text" placeholder="Player X Name" value="Player X">
+                </div>
+                <div class="input-group">
+                    <label for="player2_name">Player O Name:</label>
+                    <input id="player2_name" type="text" placeholder="Player O Name" value="Player O">
+                </div>
+                <div class="input-group">
+                    <label for="board_size_input">Board Size (3-10):</label>
+                    <input id="board_size_input" type="number" placeholder="e.g., 3 for 3x3" value="3" min="3" max="10">
+                </div>
+                <div class="input-group">
+                    <label for="win_steps_input">Steps to Win (3-Board Size):</label>
+                    <input id="win_steps_input" type="number" placeholder="e.g., 3" value="3" min="3">
+                </div>
+                <button id="start-game-button">Start New Game!</button>
+                <p class="setup-tip">Customize your game before the challenge begins!</p>
             </div>
-            <div id="playField"></div>
-            <div id="status"></div>
-            <div id="counter">
-                <span id="titleTurns">Turns:</span>
-                <span id="numberTurns">0</span>
-            </div>
-            <div id="playerInfo">
-                <div id="player1"></div>
-                <div id="player2"></div>
-            </div>
-            <button id="playAgain">Play Again</button>
-            <button id="restart">Restart</button>
-            <div id="info">
-                <div id="turn"></div>
-                <div id="score">
-                    <div class="player-score" id="playerXScore">Player X: 0</div>
-                    <div class="player-score" id="playerOScore">Player O: 0</div>
+
+            <!-- This is where the Phaser game canvas will be injected -->
+            <div id="phaser-game-container" class="game-container hidden"></div>
+
+            <div id="game-info" class="hidden">
+                <div id="player-names">
+                    <span id="display-player1-name" class="player-x"></span> <span class="vs">vs</span> <span id="display-player2-name" class="player-o"></span>
+                </div>
+                <div id="score" class="score-board">
+                    <span class="player-score player-x-score" id="playerXScoreDisplay">X: 0</span>
+                    <span class="player-score player-o-score" id="playerOScoreDisplay">O: 0</span>
+                </div>
+                <div id="current-turn">It's <span id="turn-display" class="current-player-name"></span>'s Turn</div>
+                <p id="status-message" class="game-status"></p>
+                <div class="game-controls">
+                    <button id="playAgain-button" class="btn-play-again">Play This Round Again</button>
+                    <button id="restart-game-button" class="btn-restart-game">Restart Game (New Scores)</button>
+                    <button id="back-to-setup-button" class="btn-back-to-setup">Change Settings</button>
                 </div>
             </div>
-            <div id="modal" class="modal">
+
+            <!-- Modal for game end -->
+            <div id="modal" class="modal hidden">
                 <div class="modal-content">
                     <p id="modal-message"></p>
-                    <button id="play-again">Play Again</button>
+                    <div class="modal-buttons">
+                        <button id="modal-play-again-button" class="btn-play-again">Play Again</button>
+                        <button id="modal-new-game-button" class="btn-new-game">New Game (Setup)</button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 <span class="brand-name">KarthikCodingSolutions</span>. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://github.com/KarthikCodingSolutions" target="_blank" aria-label="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/karthikcodingsolutions" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/KarthikCode" target="_blank" aria-label="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:contact@karthikcodingsolutions.com" aria-label="Email" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <!-- All JavaScript logic now in this single file -->
     <script src="script.js"></script>
 </body>
 </html>
