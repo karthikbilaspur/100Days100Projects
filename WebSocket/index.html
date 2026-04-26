@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time collaborative drawing and chat app using WebSockets. Draw together, chat live, multiple users supported.">
+    <meta name="keywords" content="websocket, canvas, drawing, chat, realtime, collaborative, multiplayer">
+    <meta name="author" content="KarthikCodingSolutions">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Collaborative Draw + Chat">
+    <meta property="og:description" content="Draw and chat together in real-time with friends">
+    <meta property="og:type" content="website">
+    <title>Collaborative Draw + Chat | Real-time Canvas</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Collaborative Draw + Chat</h1>
+
+    <div class="app-container">
+        <div class="drawing-section">
+            <div class="canvas-wrapper">
+                <canvas id="drawing-canvas" width="800" height="500"></canvas>
+                <canvas id="cursor-canvas" width="800" height="500"></canvas>
+            </div>
+            <div class="toolbar">
+                <button id="clear-canvas-btn">Clear Canvas</button>
+                <button id="eraser-btn">Eraser</button>
+                <button id="undo-btn">Undo</button>
+                <input type="color" id="color-picker" value="#000000" title="Brush Color">
+                <input type="range" id="brush-size-slider" min="1" max="50" value="5" title="Brush Size">
+                <span id="brush-size-display">Size: 5</span>
+            </div>
+        </div>
+
+        <div class="chat-section">
+            <div class="user-list">
+                <h3>Online: <span id="user-count">0</span></h3>
+                <ul id="user-list"></ul>
+            </div>
+            <div class="chat-container">
+                <div class="chat-log">
+                    <ul id="chat-log-list"></ul>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type a message..." maxlength="200">
+                    <button id="send-button">Send</button>
+                </div>
+                <button id="clear-chat-btn">Clear Chat</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="username-modal" class="modal">
+        <div class="modal-content">
+            <h2>Pick a username</h2>
+            <input type="text" id="username-input" placeholder="Enter username" maxlength="16">
+            <button id="join-btn">Join</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <a href="#" target="_blank">KarthikCodingSolutions</a>. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
