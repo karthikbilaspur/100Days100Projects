@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time Pixel Battle game with Web Workers. Capture territory, chat, react with emojis, and play mini-games together without UI freeze.">
+    <meta name="keywords" content="pixel battle, multiplayer game, websocket, web worker, realtime, emoji, chat, html5, javascript">
+    <meta name="author" content="KarthikCodingSolutions">
+    <meta property="og:title" content="Pixel Wars Arena - Multiplayer Battle">
+    <meta property="og:description" content="Draw, chat, and process images with Web Workers - all in real-time">
+    <meta property="og:type" content="website">
+    <title>Pixel Wars Arena | Real-time Battle</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>⚔️ Pixel Wars Arena</h1>
+
+    <div class="stats-bar">
+        <div class="stat">🏆 Score: <span id="user-score">0</span></div>
+        <div class="stat">👥 Online: <span id="user-count">0</span></div>
+        <div class="stat">🔥 Streak: <span id="streak-count">0</span></div>
+        <div class="stat">⚡ CPU Free: <span id="cpu-status">100%</span></div>
+    </div>
+
+    <div class="app-container">
+        <div class="game-section">
+            <div class="canvas-wrapper">
+                <canvas id="pixel-canvas" width="500" height="500"></canvas>
+                <canvas id="effects-canvas" width="500" height="500"></canvas>
+                <div id="target" class="hidden">🎯</div>
+            </div>
+
+            <div class="toolbar">
+                <div class="team-selector">
+                    <button class="team-btn active" data-color="#FF6B6B" :#FF6B6B">Red</button>
+                    <button class="team-btn" data-color="#4ECDC4" :#4ECDC4">Cyan</button>
+                    <button class="team-btn" data-color="#FFE66D" :#FFE66D">Yellow</button>
+                    <button class="team-btn" data-color="#95E1D3" :#95E1D3">Mint</button>
+                </div>
+                <button id="flood-fill-btn">💣 Flood Fill</button>
+                <button id="clear-btn">🗑️ Reset</button>
+                <button id="mini-game-btn">🎮 Mini Game</button>
+            </div>
+
+            <div class="leaderboard">
+                <h3>🏅 Leaderboard</h3>
+                <ul id="leaderboard-list"></ul>
+            </div>
+        </div>
+
+        <div class="chat-section">
+            <div class="user-list">
+                <h3>Players</h3>
+                <ul id="user-list"></ul>
+            </div>
+
+            <div class="emoji-bar">
+                <button class="emoji-btn" data-emoji="🔥">🔥</button>
+                <button class="emoji-btn" data-emoji="💯">💯</button>
+                <button class="emoji-btn" data-emoji="😂">😂</button>
+                <button class="emoji-btn" data-emoji="⚡">⚡</button>
+                <button class="emoji-btn" data-emoji="🎉">🎉</button>
+                <button class="emoji-btn" data-emoji="💀">💀</button>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-log">
+                    <ul id="chat-log-list"></ul>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type message or /startgame" maxlength="200">
+                    <button id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="username-modal" class="modal">
+        <div class="modal-content">
+            <h2>Enter the Arena</h2>
+            <input type="text" id="username-input" placeholder="Your warrior name" maxlength="16">
+            <button id="join-btn">Fight!</button>
+        </div>
+    </div>
+
+    <div id="game-overlay" class="hidden">
+        <div class="game-result">
+            <h2 id="game-result-text"></h2>
+            <p id="game-result-score"></p>
+            <button id="close-game-btn">Continue</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> KarthikCodingSolutions. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

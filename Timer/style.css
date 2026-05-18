@@ -1,53 +1,490 @@
+/* Universal Box-Sizing and Font Smoothing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
-
-.timer-container {
-    width: 300px;
-    margin: 50px auto;
+    font-family: 'Roboto', sans-serif; /* Primary font for general text */
     text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #1a202c; /* Darker, deep space background */
+    color: #e2e8f0; /* Light off-white for text */
+    margin: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column; /* Stack main and footer vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-#timer-display {
-    font-size: 48px;
-    margin-bottom: 20px;
+main {
+    flex-grow: 1; /* Allows main content to expand and push footer down */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center timer card vertically */
+    width: 100%;
+    max-width: 1000px; /* Max width for the main area */
+    padding: 20px 0;
+}
+
+.timer-card {
+    background: linear-gradient(145deg, #2d3748, #1a202c); /* Gradient background */
+    border: 1px solid #4a5568;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 5px rgba(66, 153, 225, 0.2); /* Soft glow blue */
+    padding: 35px;
+    width: 100%;
+    max-width: 450px; /* Adjust max-width for the timer card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* Space between sections */
+    transition: all 0.3s ease-in-out; /* For full screen transition */
+}
+
+/* Fullscreen styling */
+.timer-card:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    margin: 0;
+    background: #1a202c; /* Solid dark background in fullscreen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-card:fullscreen .app-title,
+.timer-card:fullscreen .brand-name,
+.timer-card:fullscreen .timer-mode-selector,
+.timer-card:fullscreen .timer-settings,
+.timer-card:fullscreen .site-footer {
+    display: none; /* Hide non-essential elements in fullscreen for focus */
+}
+
+.timer-card:fullscreen .timer-display-wrapper {
+    width: 80%; /* Larger display in fullscreen */
+    max-width: 800px;
+}
+
+.timer-card:fullscreen .timer-display {
+    font-size: 8em; /* Much larger font */
+}
+
+.timer-card:fullscreen .countdown-message {
+    font-size: 2.5em;
+}
+
+.timer-card:fullscreen .timer-controls {
+    flex-wrap: nowrap; /* Keep buttons in one line */
+    gap: 25px;
+    width: 60%;
+    margin-top: 50px; /* More space */
+}
+
+.timer-card:fullscreen .btn {
+    padding: 15px 30px;
+    font-size: 1.3em;
+}
+
+.timer-card:fullscreen .top-controls .utility-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.app-title {
+    font-family: 'Roboto', sans-serif;
+    color: #90cdf4; /* Light blue */
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(144, 205, 244, 0.3);
+}
+
+.brand-name {
+    display: block; /* New line for branding */
+    font-size: 0.5em; /* Smaller than title */
+    color: #a0aec0;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    gap: 15px; /* Space between mode selector and utility buttons */
+}
+
+.utility-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: #90cdf4;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-icon:hover {
+    color: #63b3ed;
+    transform: translateY(-2px);
+}
+
+.btn-icon:focus {
+    outline: 2px solid #63b3ed;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.timer-mode-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timer-mode-selector label {
+    font-size: 1.1em;
+    color: #a0aec0;
+}
+
+.timer-mode-selector select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #4a5568;
+    background-color: #2d3748;
+    color: #e2e8f0;
+    font-size: 1em;
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e2e8f0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.4L146.2%20220.7%2018.8%2074.8a17.6%2017.6%200%200%200-25.3%2023.2l132.4%20138.8a17.6%2017.6%200%200%200%2025.3%200l132.4-138.8a17.6%2017.6%200%200%200-12.9-28.6z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+.timer-mode-selector select:focus:not(:disabled) {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.4);
+}
+
+.timer-display-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #10151f;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #336633;
+    overflow: hidden; /* For progress bar */
+}
+
+.timer-display {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 4.5em;
+    font-weight: 700;
+    color: #66ff66;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px rgba(0, 255, 0, 0.4);
+    position: relative;
+    z-index: 1; /* Above progress bar */
+    line-height: 1.2; /* Adjust line height for better vertical centering */
+}
+
+.countdown-message {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #f56565;
+    text-shadow: 0 0 8px rgba(245, 101, 101, 0.5);
+    margin-top: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px; /* Height of progress bar */
+    background-color: rgba(160, 174, 192, 0.2); /* Light gray transparent background */
+    z-index: 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #66ff66; /* Neon green */
+    transition: width 0.9s linear, background-color 0.5s ease; /* Smooth transition for width and color */
+}
+
+.progress-bar.infinite-progress {
+    width: 100%; /* Start at 100% width for indefinite */
+    animation: infiniteProgressBar 2s linear infinite;
+    background: linear-gradient(90deg, transparent, #63b3ed, transparent);
+    background-size: 200% 100%;
+}
+
+@keyframes infiniteProgressBar {
+    0% { background-position: -100% 0; }
+    100% { background-position: 100% 0; }
 }
 
 .timer-controls {
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
 }
 
-button {
-    width: 100px;
-    height: 30px;
+.btn {
+    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: #fff;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: white;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    min-width: 100px;
 }
 
-button:hover {
-    background-color: #3e8e41;
+.btn:disabled {
+    background-color: #4a5568!important;
+    cursor: not-allowed;
+    transform: none!important;
+    box-shadow: none!important;
+    filter: brightness(0.8);
 }
+
+.btn-start { background-color: #48bb78; } /* Green */
+.btn-start:hover:not(:disabled) { background-color: #68d391; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(72, 187, 120, 0.4); }
+
+.btn-pause { background-color: #ecc94b; } /* Yellow */
+.btn-pause:hover:not(:disabled) { background-color: #f6e05e; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(236, 201, 75, 0.4); }
+
+.btn-stop { background-color: #ed8936; } /* Orange */
+.btn-stop:hover:not(:disabled) { background-color: #f6ad55; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(237, 137, 54, 0.4); }
+
+.btn-reset { background-color: #a0aec0; color: #2d3748; } /* Light Gray */
+.btn-reset:hover:not(:disabled) { background-color: #cbd5e0; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(160, 174, 192, 0.4); }
 
 .timer-settings {
-    margin-top: 20px;
+    background-color: #2d3748;
+    border-radius: 10px;
+    padding: 25px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-label {
-    display: inline-block;
-    width: 50px;
+.timer-settings h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3em;
+    color: #90cdf4;
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
-input[type="number"] {
-    width: 50px;
-    height: 20px;
-    margin: 0 10px;
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 1em;
+    color: #a0aec0;
+    flex-basis: 30%; /* Give labels some consistent width */
+    text-align: left;
+}
+
+.timer-settings input[type="number"] {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #4a5568;
+    background-color: #1a202c;
+    color: #e2e8f0;
+    font-size: 1.1em;
+    width: 100px; /* Fixed width for inputs */
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.timer-settings input[type="number"]::-webkit-outer-spin-button,
+.timer-settings input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Remove default spinner for Chrome, Safari */
+    margin: 0;
+}
+
+.timer-settings input[type="number"]:focus:not(:disabled) {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.4);
+}
+
+.btn-set {
+    background-color: #4299e1; /* Blue */
+    width: 100%;
+    margin-top: 10px;
+}
+.btn-set:hover:not(:disabled) { background-color: #63b3ed; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(66, 153, 225, 0.4); }
+
+.btn-clear-inputs {
+    background-color: #e53e3e; /* Red for clear */
+    width: 100%;
+    margin-top: 10px;
+}
+.btn-clear-inputs:hover:not(:disabled) { background-color: #f56565; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(229, 62, 62, 0.4); }
+
+.hidden {
+    display: none!important;
+}
+
+/* Footer Styles (reused from Tic Tac Toe) */
+.site-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #4a5568;
+    width: 100%;
+    max-width: 900px;
+    color: #a0aec0;
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-footer .brand-name {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #e2e8f0;
+    display: inline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: #90cdf4; /* Light blue for icons */
+    font-size: 1.8em;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: #63b3ed;
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timer-card {
+        padding: 25px;
+        gap: 20px;
+    }
+    .app-title {
+        font-size: 1.8em;
+    }
+    .brand-name {
+        font-size: 0.6em;
+    }
+    .timer-display {
+        font-size: 3.5em;
+    }
+    .countdown-message {
+        font-size: 1.5em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 1em;
+        min-width: 80px;
+    }
+    .timer-settings h2 {
+        font-size: 1.1em;
+    }
+    .input-group label {
+        font-size: 0.9em;
+    }
+    .timer-settings input[type="number"] {
+        padding: 8px 10px;
+        font-size: 1em;
+        width: 80px;
+    }
+    .social-icons a {
+        font-size: 1.5em;
+    }
+    .top-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    .timer-card {
+        padding: 20px;
+    }
+    .app-title {
+        font-size: 1.5em;
+    }
+    .brand-name {
+        font-size: 0.7em;
+    }
+    .timer-display {
+        font-size: 2.8em;
+    }
+    .countdown-message {
+        font-size: 1.2em;
+    }
+    .timer-controls {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+        min-width: unset;
+    }
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .input-group label {
+        width: 100%;
+        text-align: left;
+    }
+    .timer-settings input[type="number"] {
+        width: 100%;
+    }
+    .site-footer {
+        font-size: 0.8em;
+    }
+    .social-icons {
+        gap: 15px;
+    }
+    .social-icons a {
+        font-size: 1.3em;
+    }
 }

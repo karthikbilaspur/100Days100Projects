@@ -1,0 +1,491 @@
+/* --- Base Styles & Variables --- */
+:root {
+  /* Light Theme */
+  --background-color-light: #f4f7f6;
+  --text-color-light: #333;
+  --card-background-light: #ffffff;
+  --border-color-light: #e0e0e0;
+  --button-primary-bg-light: #007bff;
+  --button-primary-text-light: #ffffff;
+  --button-secondary-bg-light: #f0f0f0;
+  --button-secondary-text-light: #333;
+  --accent-color-light: #007bff; /* Blue */
+  --success-color-light: #28a745; /* Green */
+  --warning-color-light: #ffc107; /* Yellow */
+  --danger-color-light: #dc3545; /* Red */
+  --strength-weak-color-light: #dc3545;
+  --strength-medium-color-light: #ffc107;
+  --strength-strong-color-light: #28a745;
+  --strength-excellent-color-light: #17a2b8; /* Teal */
+}
+
+.dark-theme {
+  /* Dark Theme Overrides */
+  --background-color-dark: #282c34;
+  --text-color-dark: #e0e0e0;
+  --card-background-dark: #3a3f4a;
+  --border-color-dark: #555;
+  --button-primary-bg-dark: #61dafb;
+  --button-primary-text-dark: #282c34;
+  --button-secondary-bg-dark: #555;
+  --button-secondary-text-dark: #e0e0e0;
+  --accent-color-dark: #61dafb; /* Cyan */
+  --success-color-dark: #20c997; /* Green-ish */
+  --warning-color-dark: #ffc107; /* Yellow */
+  --danger-color-dark: #dc3545; /* Red */
+  --strength-weak-color-dark: #dc3545;
+  --strength-medium-color-dark: #ffc107;
+  --strength-strong-color-dark: #20c997;
+  --strength-excellent-color-dark: #61dafb;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme application */
+body.light-theme {
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+}
+
+body.dark-theme {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+/* Generic Button Styles */
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-left: 5px;
+}
+
+body.light-theme button {
+  background-color: var(--button-primary-bg-light);
+  color: var(--button-primary-text-light);
+}
+
+body.light-theme button:hover {
+  background-color: darken(var(--button-primary-bg-light), 10%); /* This would require a preprocessor like SASS */
+  /* For plain CSS, pick a slightly darker color manually */
+  background-color: #0056b3;
+}
+
+body.dark-theme button {
+  background-color: var(--button-primary-bg-dark);
+  color: var(--button-primary-text-dark);
+}
+
+body.dark-theme button:hover {
+  background-color: #4dc5e8;
+}
+
+/* Secondary Button (for copy, clear history) */
+button.secondary {
+  border: 1px solid var(--border-color-light);
+}
+body.light-theme button.secondary {
+  background-color: var(--button-secondary-bg-light);
+  color: var(--button-secondary-text-light);
+  border-color: var(--border-color-light);
+}
+body.light-theme button.secondary:hover {
+  background-color: #e0e0e0;
+}
+
+body.dark-theme button.secondary {
+  background-color: var(--button-secondary-bg-dark);
+  color: var(--button-secondary-text-dark);
+  border-color: var(--border-color-dark);
+}
+body.dark-theme button.secondary:hover {
+  background-color: #666;
+}
+
+/* --- App Container & Layout --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  padding: 20px;
+}
+
+.app-header {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr 1fr;
+  }
+  .generator-section {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+  .options-section {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+  .history-section {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+}
+
+section {
+  background-color: var(--card-background-light);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme section {
+  background-color: var(--card-background-dark);
+  border-color: var(--border-color-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  color: var(--accent-color-light);
+}
+body.dark-theme h2 {
+  color: var(--accent-color-dark);
+}
+
+/* --- PasswordDisplay Component --- */
+.password-display {
+  display: flex;
+  align-items: center;
+  background-color: var(--button-secondary-bg-light);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  word-break: break-all;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+body.dark-theme .password-display {
+  background-color: var(--button-secondary-bg-dark);
+  border-color: var(--border-color-dark);
+}
+
+.generated-password {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.password-display button {
+  white-space: nowrap;
+}
+
+.password-display button.mask-toggle-button {
+  background-color: transparent;
+  color: var(--text-color-light);
+  border: 1px solid var(--border-color-light);
+}
+body.dark-theme .password-display button.mask-toggle-button {
+  color: var(--text-color-dark);
+  border-color: var(--border-color-dark);
+}
+.password-display button.mask-toggle-button:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Light theme subtle hover */
+}
+body.dark-theme .password-display button.mask-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Dark theme subtle hover */
+}
+
+/* --- PasswordOptions Component --- */
+.password-options .option-group {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed var(--border-color-light);
+}
+body.dark-theme .password-options .option-group {
+  border-color: var(--border-color-dark);
+}
+.password-options .option-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.password-options label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.password-options input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-color-light); /* Colors the checkbox itself */
+}
+body.dark-theme .password-options input[type="checkbox"] {
+  accent-color: var(--accent-color-dark);
+}
+
+.password-options input[type="range"] {
+  width: 100%;
+  margin-left: 10px;
+  flex-grow: 1;
+  accent-color: var(--accent-color-light); /* Colors the slider handle */
+}
+body.dark-theme .password-options input[type="range"] {
+  accent-color: var(--accent-color-dark);
+}
+
+.password-options .length-hint {
+  font-size: 0.85rem;
+  color: #777;
+  margin-left: 10px;
+}
+body.dark-theme .password-options .length-hint {
+  color: #bbb;
+}
+
+.password-options input[type="text"] {
+  width: calc(100% - 120px); /* Adjust based on label width */
+  padding: 8px;
+  border: 1px solid var(--border-color-light);
+  border-radius: 4px;
+  margin-left: 10px;
+  background-color: var(--card-background-light);
+  color: var(--text-color-light);
+  transition: border-color 0.2s ease;
+}
+body.dark-theme .password-options input[type="text"] {
+  border-color: var(--border-color-dark);
+  background-color: var(--card-background-dark);
+  color: var(--text-color-dark);
+}
+
+.password-options input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-color-light);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+body.dark-theme .password-options input[type="text"]:focus {
+  border-color: var(--accent-color-dark);
+  box-shadow: 0 0 0 2px rgba(97, 218, 251, 0.2);
+}
+
+.password-options input[type="text"]:disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+body.dark-theme .password-options input[type="text"]:disabled {
+  background-color: #555;
+  color: #aaa;
+}
+
+.password-options .hint-text {
+  font-size: 0.8rem;
+  color: #888;
+  margin-left: 5px;
+}
+body.dark-theme .password-options .hint-text {
+  color: #ccc;
+}
+
+/* --- PasswordStrengthIndicator Component --- */
+.password-strength-indicator {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.strength-bar-container {
+  width: 100%;
+  background-color: var(--button-secondary-bg-light);
+  border-radius: 5px;
+  height: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+body.dark-theme .strength-bar-container {
+  background-color: var(--button-secondary-bg-dark);
+}
+
+.strength-bar {
+  height: 100%;
+  background-color: gray; /* Default */
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.strength-text {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.strength-weak .strength-bar { background-color: var(--strength-weak-color-light); }
+.strength-medium .strength-bar { background-color: var(--strength-medium-color-light); }
+.strength-strong .strength-bar { background-color: var(--strength-strong-color-light); }
+.strength-excellent .strength-bar { background-color: var(--strength-excellent-color-light); }
+.strength-weak strong { color: var(--strength-weak-color-light); }
+.strength-medium strong { color: var(--strength-medium-color-light); }
+.strength-strong strong { color: var(--strength-strong-color-light); }
+.strength-excellent strong { color: var(--strength-excellent-color-light); }
+
+body.dark-theme .strength-weak .strength-bar { background-color: var(--strength-weak-color-dark); }
+body.dark-theme .strength-medium .strength-bar { background-color: var(--strength-medium-color-dark); }
+body.dark-theme .strength-strong .strength-bar { background-color: var(--strength-strong-color-dark); }
+body.dark-theme .strength-excellent .strength-bar { background-color: var(--strength-excellent-color-dark); }
+body.dark-theme .strength-weak strong { color: var(--strength-weak-color-dark); }
+body.dark-theme .strength-medium strong { color: var(--strength-medium-color-dark); }
+body.dark-theme .strength-strong strong { color: var(--strength-strong-color-dark); }
+body.dark-theme .strength-excellent strong { color: var(--strength-excellent-color-dark); }
+
+/* --- PasswordHistory Component --- */
+.password-history-container h2 {
+  margin-bottom: 15px;
+}
+
+.clear-history-button {
+  margin-bottom: 15px;
+  background-color: var(--danger-color-light); /* Red for clear */
+  color: white;
+}
+body.dark-theme .clear-history-button {
+  background-color: var(--danger-color-dark);
+}
+.clear-history-button:hover {
+  background-color: darken(var(--danger-color-light), 10%);
+}
+body.dark-theme .clear-history-button:hover {
+  background-color: #bb2d3b;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color-light);
+}
+body.dark-theme .history-list li {
+  border-color: var(--border-color-dark);
+}
+.history-list li:last-child {
+  border-bottom: none;
+}
+
+.history-list li.even-item {
+  background-color: var(--button-secondary-bg-light);
+}
+body.dark-theme .history-list li.even-item {
+  background-color: var(--button-secondary-bg-dark);
+}
+
+.history-list .history-password {
+  flex-grow: 1;
+  margin-right: 10px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 0.95rem;
+  word-break: break-all;
+}
+
+.history-list .copy-history-button {
+  background-color: var(--accent-color-light);
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+body.dark-theme .history-list .copy-history-button {
+  background-color: var(--accent-color-dark);
+  color: var(--button-primary-text-dark);
+}
+.history-list .copy-history-button:hover {
+  background-color: darken(var(--accent-color-light), 10%);
+}
+body.dark-theme .history-list .copy-history-button:hover {
+  background-color: #4dc5e8;
+}
+
+/* --- ThemeToggle Component --- */
+.theme-toggle {
+  background-color: var(--button-secondary-bg-light);
+  color: var(--text-color-light);
+  border: 1px solid var(--border-color-light);
+  padding: 8px 15px;
+}
+body.dark-theme .theme-toggle {
+  background-color: var(--button-secondary-bg-dark);
+  color: var(--text-color-dark);
+  border-color: var(--border-color-dark);
+}
+.theme-toggle:hover {
+  background-color: #e0e0e0;
+}
+body.dark-theme .theme-toggle:hover {
+  background-color: #666;
+}
+
+.generate-button {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+  .password-display {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .generated-password {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .password-display button {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 5px;
+  }
+}

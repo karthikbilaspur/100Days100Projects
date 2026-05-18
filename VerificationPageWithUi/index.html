@@ -1,23 +1,115 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Verification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ultimate Verification by KarthikCodingSolutions</title>
+
+    <!-- SEO & General Meta Tags -->
+    <meta name="description" content="Ultimate secure account verification portal with advanced UX, dynamic code handling, and robust error management. Developed by KarthikCodingSolutions.">
+    <meta name="keywords" content="account verification, OTP, security code, two-factor authentication, KarthikCodingSolutions, web security, MFA, one-time-code, UX, frontend security">
+    <meta name="author" content="KarthikCodingSolutions">
+    <meta name="robots" content="noindex, nofollow"> <!-- Verification pages often noindex -->
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/verify"> <!-- Replace with your actual URL -->
+    <meta property="og:title" content="Ultimate Verification by KarthikCodingSolutions">
+    <meta property="og:description" content="Ultimate secure account verification portal with advanced UX, dynamic code handling, and robust error management.">
+    <meta property="og:image" content="https://yourwebsite.com/verification-thumbnail.png"> <!-- Create a thumbnail image -->
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/verify"> <!-- Replace with your actual URL -->
+    <meta property="twitter:title" content="Ultimate Verification by KarthikCodingSolutions">
+    <meta property="twitter:description" content="Ultimate secure account verification portal with advanced UX, dynamic code handling, and robust error management.">
+    <meta property="twitter:image" content="https://yourwebsite.com/verification-thumbnail.png"> <!-- Create a thumbnail image -->
+
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> <!-- Create these favicon files -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2c3e50">
+    <meta name="msapplication-TileColor" content="#2b5797">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="verification-container">
-        <h1>Account Verification</h1>
-        <form id="verification-form">
-            <label for="verification-code">Enter Verification Code:</label>
-            <input type="text" id="verification-code" name="verification-code">
-            <button id="verify-btn">Verify</button>
-        </form>
-        <div id="error-message"></div>
-    </div>
+    <main>
+        <div class="verification-card">
+            <h1 class="app-title">Ultimate Verification <span class="brand-name">by KarthikCodingSolutions</span></h1>
+            <p class="instruction-text" id="instruction-text">A 6-digit verification code has been sent to your email/phone. Please enter it below to verify your account.</p>
+
+            <form id="verification-form" class="verification-form">
+                <label for="code-input-0" class="input-label">Enter Verification Code:</label>
+                <div class="code-input-group" role="group" aria-label="Verification Code Input">
+                    <input type="text" id="code-input-0" class="code-digit-input" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 1 of 6" autocomplete="off" data-index="0" required>
+                    <input type="text" id="code-input-1" class="code-digit-input" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 2 of 6" autocomplete="off" data-index="1" required>
+                    <input type="text" id="code-input-2" class="code-digit-input" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 3 of 6" autocomplete="off" data-index="2" required>
+                    <span class="code-separator"></span> <!-- Separator for visual grouping -->
+                    <input type="text" id="code-input-3" class="code-digit-input" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 4 of 6" autocomplete="off" data-index="3" required>
+                    <input type="text" id="code-input-4" class="code-digit-input" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 5 of 6" autocomplete="off" data-index="4" required>
+                    <input type="text" id="code-input-5" class="code-digit-input" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 6 of 6" autocomplete="off" data-index="5" required>
+                </div>
+                <div id="hidden-full-code-input-container" class="hidden-full-code-input" aria-hidden="true">
+                    <!-- This hidden input captures the full code for copy/paste and autocomplete -->
+                    <input type="text" id="full-code-input" name="verification-code" placeholder="------" maxlength="6" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+                </div>
+
+                <div id="code-info-container" class="code-info-container">
+                    <div id="countdown-timer" class="countdown-timer" aria-live="polite">Code expires in <span id="timer-value">00:60</span></div>
+                    <!-- Debug element to show generated code - remove in production -->
+                    <div id="debug-code-display" class="debug-code-display hidden">
+                        <span id="debug-code-value"></span> <button type="button" id="copy-code-btn" class="btn-icon" title="Copy code"><i class="fas fa-copy"></i></button>
+                    </div>
+                </div>
+
+                <button type="submit" id="verify-btn" class="btn btn-verify" aria-label="Verify code">
+                    Verify Account <span class="spinner hidden"></span>
+                </button>
+            </form>
+
+            <div class="feedback-area">
+                <div id="error-message" class="message error-message" role="alert" aria-live="assertive"></div>
+                <div id="success-message" class="message success-message" role="status" aria-live="polite"></div>
+            </div>
+
+            <div class="resend-section">
+                <p>Didn't receive the code?</p>
+                <button id="resend-btn" class="btn btn-resend" disabled aria-label="Resend verification code">
+                    Resend Code <span class="spinner hidden"></span>
+                </button>
+                <p id="resend-cooldown-message" class="resend-cooldown-message hidden">You can resend a code in <span id="resend-timer-value"></span> seconds.</p>
+            </div>
+
+            <div class="additional-options">
+                <p>
+                    <a href="#" id="return-to-login" class="link-option">Return to Login</a> |
+                    <a href="mailto:support@karthikcodingsolutions.com" class="link-option">Get Help</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 <span class="brand-name">KarthikCodingSolutions</span>. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://github.com/KarthikCodingSolutions" target="_blank" aria-label="GitHub profile of KarthikCodingSolutions" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/karthikcodingsolutions" target="_blank" aria-label="LinkedIn profile of KarthikCodingSolutions" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/KarthikCode" target="_blank" aria-label="Twitter profile of KarthikCodingSolutions" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:contact@karthikcodingsolutions.com" aria-label="Email KarthikCodingSolutions"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

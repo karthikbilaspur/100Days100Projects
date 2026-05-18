@@ -3,52 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Testimonial Box Switcher</title>
+    <!-- Enhanced Title with Branding -->
+    <title>Client Success Stories | KarthikCodingSolutions</title>
+
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Preconnect for performance with Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Using Merriweather for testimonial quotes, Poppins for general body, Montserrat for headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,400&family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Discover inspiring client success stories and testimonials featuring KarthikCodingSolutions' innovative digital solutions. See how we help businesses thrive." />
+
+    <!-- Favicon (replace 'favicon.ico' with your actual path) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Theme Color for mobile browsers -->
+    <meta name="theme-color" content="#3f51b5" /> <!-- Matches primary color -->
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Client Success Stories | KarthikCodingSolutions" />
+    <meta property="og:description" content="Discover inspiring client success stories and testimonials featuring KarthikCodingSolutions' innovative digital solutions. See how we help businesses thrive." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourwebsite.com/testimonials" /> <!-- IMPORTANT: Replace with your actual URL -->
+    <meta property="og:image" content="https://yourwebsite.com/testimonial-share-image.jpg" /> <!-- IMPORTANT: Replace with a relevant image for sharing -->
+    <meta property="og:site_name" content="KarthikCodingSolutions" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@KarthikCode" /> <!-- IMPORTANT: Replace with your Twitter handle if you have one -->
+    <meta name="twitter:creator" content="@KarthikCode" /> <!-- IMPORTANT: Replace with your Twitter handle if you have one -->
+    <meta name="twitter:title" content="Client Success Stories | KarthikCodingSolutions" />
+    <meta name="twitter:description" content="Discover inspiring client success stories and testimonials featuring KarthikCodingSolutions' innovative digital solutions. See how we help businesses thrive." />
+    <meta name="twitter:image" content="https://yourwebsite.com/testimonial-share-image.jpg" /> <!-- IMPORTANT: Use the same image as og:image or a Twitter-optimized one -->
+
 </head>
 <body>
-    <div class="testimonial-container">
-        <div class="testimonial-card">
-            <div class="testimonial-box front">
-                <p class="testimonial-text">"This is a great product! I highly recommend it."</p>
-                <p class="testimonial-author">- John Doe</p>
+    <!-- Global Header for the site -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="site-brand">
+                <a href="/" aria-label="Home - KarthikCodingSolutions">KarthikCodingSolutions</a>
             </div>
-            <div class="testimonial-box back">
-                <p class="testimonial-text">"I've been using this product for months and it's amazing!"</p>
-                <p class="testimonial-author">- John Doe</p>
+            <nav class="main-nav" aria-label="Primary Navigation">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="main-content">
+        <section class="testimonial-section">
+            <h2 class="section-title">What Our Valued Clients Say</h2>
+            <div class="testimonial-carousel" aria-live="polite" aria-atomic="true">
+                <div class="testimonial-display-wrapper">
+                    <!-- Testimonial cards will be dynamically inserted here by JavaScript -->
+                </div>
+
+                <div class="testimonial-controls-area">
+                    <button class="control-button prev" aria-label="Previous testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.75 18.75L9 12L15.75 5.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+
+                    <div class="center-controls">
+                        <div class="testimonial-dots-container" role="tablist">
+                            <!-- Dots will be generated dynamically by JS -->
+                        </div>
+                        <button class="play-pause-button" aria-label="Toggle autoplay" data-playing="true">
+                            <svg class="icon-pause" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 4H10V20H6V4ZM14 4H18V20H14V4Z" fill="currentColor"/></svg>
+                            <svg class="icon-play" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5V19L19 12L8 5Z" fill="currentColor"/></svg>
+                        </button>
+                    </div>
+
+                    <button class="control-button next" aria-label="Next testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.25 5.25L15 12L8.25 18.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                <div class="autoplay-progress-bar"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer for the site -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="/" aria-label="Home - KarthikCodingSolutions">KarthikCodingSolutions</a>
+                <p class="tagline">Crafting Digital Excellence</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="https://twitter.com/KarthikCode" target="_blank" rel="noopener noreferrer" aria-label="Follow KarthikCodingSolutions on Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.37-.83.5-1.75.85-2.73 1.04C18.3 4.2 17.22 3.5 16 3.5c-2.35 0-4.27 1.9-4.27 4.25 0.33.04.66.12.98C8.3 8.7 5.5 7.14 3.7 4.6l-.6.98c-.5 1.5-.16 3.1 1.03 4.07-.76-.02-1.48-.23-2.1-.57v.03c0 2.08 1.48 3.82 3.44 4.2-.36.1-.74.15-1.14.15-.28 0-.54-.03-.8-.08.54 1.7 2.13 2.92 4 2.95C14 18.27 9.8 17 8 16c.07.6 1.76 2.3 4.4 2.3 3.3 0 5.4-2.78 5.4-5.25v-.25c.37-.26.68-.58.93-.94.34.25.7.4 1.08.45z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/KarthikCode" target="_blank" rel="noopener noreferrer" aria-label="View KarthikCodingSolutions on GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017 2 16.29 4.84 19.86 8.71 21.06c.4.07.54-.17.54-.38v-1.5c-3.66.8-4.43-1.76-4.43-1.76-.6-.15-1.23-.39-1.23-.39-.99-.67.07-.66.07-.66 1.1.08 1.68 1.13 1.68 1.13.97 1.67 2.56 1.19 3.2.91.1-.7.4-1.19.72-1.46-2.5-.28-5.12-1.25-5.12-5.54 0-1.22.43-2.2.14-2.97-.13-.3-.46-1.41.1-2.94 0 0.86-.29 2.82 1.12.82-.23 1.68-.34 2.54-.35.86.01 1.72.12 2.54.35 1.96-1.41 2.82-1.12 2.82-1.12.56 1.53.23 2.64.1 2.94-.29.77.14 1.75.14 2.97 0 4.29-2.62 5.25-5.13 5.53.4.34.78.96.78 1.95v2.88c0.21.14.45.54.38C19.16 19.86 22 16.29 22 12.017 22 6.484 17.523 2 12 2z"/>
+                        </svg>
+                    </a>
+                    <!-- Add more social icons here -->
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Get in Touch</h4>
+                <p>Email: <a href="mailto:info@karthikcodingsolutions.com">info@karthikcodingsolutions.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; <span id="current-year"></span> KarthikCodingSolutions. All rights reserved.</p>
+                <div class="privacy-terms">
+                    <a href="#privacy">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="#terms">Terms of Service</a>
+                </div>
             </div>
         </div>
-        <div class="testimonial-card">
-            <div class="testimonial-box front">
-                <p class="testimonial-text">"I was blown away by the quality of this product."</p>
-                <p class="testimonial-author">- Jane Smith</p>
-            </div>
-            <div class="testimonial-box back">
-                <p class="testimonial-text">"This product has exceeded my expectations in every way."</p>
-                <p class="testimonial-author">- Jane Smith</p>
-            </div>
-        </div>
-        <div class="testimonial-card">
-            <div class="testimonial-box front">
-                <p class="testimonial-text">"This product has exceeded my expectations in every way."</p>
-                <p class="testimonial-author">- Bob Johnson</p>
-            </div>
-            <div class="testimonial-box back">
-                <p class="testimonial-text">"I highly recommend this product to anyone looking for quality."</p>
-                <p class="testimonial-author">- Bob Johnson</p>
-            </div>
-        </div>
-        <div class="testimonial-controls">
-            <button class="testimonial-prev">Prev</button>
-            <button class="testimonial-next">Next</button>
-            <button class="testimonial-play-pause">Play/Pause</button>
-            <div class="testimonial-dots">
-                <div class="testimonial-dot active"></div>
-                <div class="testimonial-dot"></div>
-                <div class="testimonial-dot"></div>
-            </div>
-        </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

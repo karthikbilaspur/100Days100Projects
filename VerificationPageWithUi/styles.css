@@ -1,52 +1,466 @@
-/* styles.css */
+/* Universal Box-Sizing and Font Smoothing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif; /* Primary font for general text */
+    text-align: center;
+    background-color: #1a202c; /* Darker, deep space background */
+    color: #e2e8f0; /* Light off-white for text */
+    margin: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column; /* Stack main and footer vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.verification-container {
-    width: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+main {
+    flex-grow: 1; /* Allows main content to expand and push footer down */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center verification card vertically */
+    width: 100%;
+    max-width: 1000px; /* Max width for the main area */
+    padding: 20px 0;
 }
 
-#verification-form {
-    margin-top: 20px;
+.verification-card {
+    background: linear-gradient(145deg, #2d3748, #1a202c); /* Gradient background */
+    border: 1px solid #4a5568;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 5px rgba(66, 153, 225, 0.2); /* Soft glow blue */
+    padding: 35px;
+    width: 100%;
+    max-width: 450px; /* Adjust max-width for the card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between sections */
 }
 
-label {
-    display: block;
+.app-title {
+    font-family: 'Roboto', sans-serif;
+    color: #90cdf4; /* Light blue */
+    margin-bottom: 5px;
+    font-size: 2.2em;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(144, 205, 244, 0.3);
+}
+
+.brand-name {
+    display: block; /* New line for branding */
+    font-size: 0.5em; /* Smaller than title */
+    color: #a0aec0;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.instruction-text {
+    font-size: 1em;
+    color: #a0aec0;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.verification-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.input-label {
+    font-size: 1em;
+    color: #90cdf4;
+    font-weight: 500;
+    align-self: flex-start; /* Align label to the left */
+}
+
+/* New: Code Digit Inputs Styling */
+.code-input-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
 }
 
-input[type="text"] {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
+.code-digit-input {
+    width: 45px; /* Fixed width for individual digits */
+    height: 50px;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #4a5568;
+    background-color: #1a202c;
+    color: #e2e8f0;
+    font-size: 1.8em;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: textfield; /* For Firefox */
+    appearance: none; /* Remove default spinner */
 }
 
-button[type="button"] {
+.code-digit-input:focus {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.4);
+}
+
+.code-digit-input.input-error {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.4);
+}
+
+.code-digit-input.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.code-digit-input::placeholder {
+    color: #718096;
+}
+
+.code-separator {
+    width: 1px;
+    height: 40px; /* Match input height roughly */
+    background-color: #4a5568; /* Visual separator */
+    align-self: center;
+    margin: 0 5px;
+}
+
+.hidden-full-code-input {
+    /* Used for autocomplete and paste functionality, hidden from user */
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.code-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
     width: 100%;
-    height: 40px;
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px;
+}
+
+.countdown-timer {
+    font-size: 0.9em;
+    color: #a0aec0;
+    margin-bottom: 5px; /* Reduced margin */
+    transition: color 0.3s ease;
+}
+
+.countdown-timer.expired {
+    color: #e53e3e;
+    font-weight: bold;
+}
+
+/* Debug code display styling */
+.debug-code-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #3f556b;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1em;
+    color: #66ff66;
+    margin-top: 5px;
+}
+
+.debug-code-display #debug-code-value {
+    letter-spacing: 0.1em;
+}
+
+.btn-icon {
+    background: none;
     border: none;
-    border-radius: 5px;
+    color: #90cdf4;
+    font-size: 1.1em;
     cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
-button[type="button"]:hover {
-    background-color: #3e8e41;
+.btn-icon:hover {
+    color: #63b3ed;
+    transform: translateY(-2px);
 }
 
-#error-message {
-    font-size: 14px;
+.btn-icon:focus {
+    outline: 2px solid #63b3ed;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: white;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 250px;
+    position: relative; /* For spinner */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:disabled {
+    background-color: #4a5568!important;
+    cursor: not-allowed;
+    transform: none!important;
+    box-shadow: none!important;
+    filter: brightness(0.8);
+}
+
+.btn-verify {
+    background-color: #4299e1; /* Blue */
+}
+.btn-verify:hover:not(:disabled) { background-color: #63b3ed; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(66, 153, 225, 0.4); }
+
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+    flex-shrink: 0; /* Prevent spinner from shrinking */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.feedback-area {
+    width: 100%;
+    min-height: 40px; /* Reserve space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 10px;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.error-message {
+    background-color: #f56565; /* Red */
+    color: #fff;
+}
+
+.success-message {
+    background-color: #48bb78; /* Green */
+    color: #fff;
+}
+
+.resend-section {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.resend-section p {
+    margin: 0;
+    font-size: 0.95em;
+    color: #a0aec0;
+}
+
+.btn-resend {
+    background-color: #ed8936; /* Orange */
+    max-width: 180px;
+}
+.btn-resend:hover:not(:disabled) { background-color: #f6ad55; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(237, 137, 54, 0.4); }
+
+.resend-cooldown-message {
+    font-size: 0.85em;
+    color: #718096;
+    margin-top: -5px; /* Adjust spacing */
+}
+
+.additional-options {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #a0aec0;
+}
+
+.link-option {
+    color: #63b3ed;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.link-option:hover {
+    text-decoration: underline;
+    color: #90cdf4;
+}
+
+.hidden {
+    display: none!important;
+}
+
+/* Footer Styles (reused) */
+.site-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #4a5568;
+    width: 100%;
+    max-width: 900px;
+    color: #a0aec0;
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-footer.brand-name {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #e2e8f0;
+    display: inline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: #90cdf4; /* Light blue for icons */
+    font-size: 1.8em;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: #63b3ed;
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+   .verification-card {
+        padding: 25px;
+        gap: 15px;
+    }
+   .app-title {
+        font-size: 1.8em;
+    }
+   .brand-name {
+        font-size: 0.6em;
+    }
+   .instruction-text {
+        font-size: 0.9em;
+    }
+   .code-digit-input {
+        width: 35px;
+        height: 40px;
+        font-size: 1.5em;
+    }
+   .code-input-group {
+        gap: 5px;
+        max-width: 250px;
+    }
+   .code-separator {
+        height: 30px;
+        margin: 0 3px;
+    }
+   .btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+   .resend-section {
+        margin-top: 10px;
+    }
+   .social-icons a {
+        font-size: 1.5em;
+    }
+   .debug-code-display {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+   .verification-card {
+        padding: 20px;
+        gap: 10px;
+    }
+   .app-title {
+        font-size: 1.5em;
+    }
+   .brand-name {
+        font-size: 0.7em;
+    }
+   .instruction-text {
+        font-size: 0.8em;
+    }
+   .code-digit-input {
+        width: 30px;
+        height: 35px;
+        font-size: 1.2em;
+    }
+   .code-input-group {
+        gap: 3px;
+        max-width: 220px;
+    }
+   .code-separator {
+        height: 25px;
+        margin: 0 2px;
+    }
+   .btn {
+        width: 100%;
+        max-width: unset;
+        min-width: unset;
+    }
+   .site-footer {
+        font-size: 0.8em;
+    }
+   .social-icons {
+        gap: 15px;
+    }
+   .social-icons a {
+        font-size: 1.3em;
+    }
+   .debug-code-display {
+        font-size: 0.8em;
+    }
 }

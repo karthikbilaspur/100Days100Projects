@@ -1,0 +1,876 @@
+/* src/index.css */
+
+/* --- General Body and Base Styles --- */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* To ensure content is not hidden behind the fixed navbar */
+.content-placeholder {
+  height: 70px; /* Adjust this based on your navbar's actual height (padding + line height) */
+}
+
+/* Base styles for all content sections */
+.section-content {
+  min-height: 80vh; /* Make sections a good height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 80px 20px; /* More generous padding */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+  text-align: center;
+}
+
+.section-inner-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-content h1, .section-content h2 {
+  font-size: 2.8rem;
+  color: #222;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-content h1::after, .section-content h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 4px;
+  background-color: #00bcd4; /* Accent color */
+  border-radius: 2px;
+}
+
+.section-content p {
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.section-content .lead-paragraph {
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.service-item {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.service-item h3 {
+  font-size: 1.8rem;
+  color: #00bcd4;
+  margin-bottom: 15px;
+}
+
+.service-item p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn't increase width */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+  outline: none;
+}
+
+.contact-form .cta-button {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+  align-self: center; /* Center the button in the column layout */
+  width: auto; /* Prevent button from stretching full width */
+}
+
+.contact-form .cta-button:hover {
+  background-color: #008fa7;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Sticky Navbar Styles --- */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 15px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar.sticky {
+  background-color: #222;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.navbar-logo {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 30px;
+}
+
+.nav-links {
+  color: white;
+  text-decoration: none;
+  font-size: 1.15rem;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #00bcd4;
+  transition: width 0.3s ease-out;
+}
+
+.nav-links:hover::after,
+.nav-links.active-link::after {
+  width: 100%;
+}
+
+.nav-links:hover,
+.nav-links.active-link {
+  color: #00bcd4;
+}
+
+/* Hamburger menu icon */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.menu-icon .bar {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+/* Animations for hamburger menu */
+.bar1-open { transform: rotate(-45deg) translate(-5px, 6px); }
+.bar2-open { opacity: 0; }
+.bar3-open { transform: rotate(45deg) translate(-5px, -6px); }
+
+/* Reading Progress Bar */
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #00bcd4;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* Scroll-to-Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* --- Testimonial Switcher Styles --- */
+.testimonial-switcher-section {
+  background-color: #f9f9f9;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.testimonial-switcher-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.testimonial-section-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 50px;
+  position: relative;
+  display: inline-block;
+}
+
+.testimonial-section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: #00bcd4; /* Accent color */
+  border-radius: 2px;
+}
+
+.testimonial-box {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin-bottom: 40px;
+  transition: all 0.5s ease-in-out;
+  transform: translateY(0);
+  opacity: 1;
+  /* animation is handled by React transition group for smoother effects */
+}
+
+.testimonial-quote {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+  font-style: italic;
+  position: relative;
+  padding: 0 20px;
+}
+
+.testimonial-quote::before {
+  content: "“";
+  font-size: 4rem;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  color: #00bcd4; /* Accent color */
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.testimonial-quote::after {
+  content: "”";
+  font-size: 4rem;
+  position: absolute;
+  bottom: -40px;
+  right: 0;
+  color: #00bcd4; /* Accent color */
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.testimonial-author-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.testimonial-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 3px solid #00bcd4; /* Accent border */
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+.author-details {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.testimonial-author {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.testimonial-title {
+  font-size: 0.95rem;
+  color: #777;
+  margin: 0;
+}
+
+/* Star Rating */
+.star-rating {
+  display: flex;
+  margin-top: 5px;
+}
+
+.star {
+  color: #ccc; /* Unfilled star color */
+  font-size: 1.2rem;
+  margin-right: 2px;
+}
+
+.star.filled {
+  color: #ffc107; /* Filled star color (gold) */
+}
+
+.testimonial-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.nav-arrow {
+  background: none;
+  border: 2px solid #00bcd4; /* Accent color */
+  color: #00bcd4; /* Accent color */
+  font-size: 2rem;
+  padding: 5px 15px;
+  margin: 0 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  outline: none;
+}
+
+.nav-arrow:hover {
+  background-color: #00bcd4; /* Accent color */
+  color: white;
+}
+
+.nav-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-dot.active {
+  background-color: #00bcd4; /* Accent color */
+  transform: scale(1.2);
+}
+
+/* --- Split Landing Page Styles --- */
+.split-landing-section {
+  min-height: 100vh; /* Make sure it takes full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Important for the hover effect */
+  position: relative;
+}
+
+.split-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh; /* Ensure containers fill the section height */
+  position: relative; /* For absolute positioning of children */
+}
+
+.split-half {
+  flex: 1; /* Each half takes equal space initially */
+  display: flex;
+  flex-direction: column; /* For content and hover content */
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  transition: all 0.7s ease-in-out; /* Smooth transition for hover effects */
+  cursor: pointer;
+  position: relative; /* For background image */
+  overflow: hidden; /* Hide overflowing pseudo-elements */
+  outline: none; /* Remove default outline */
+}
+
+/* Accessibility: focus style */
+.split-half:focus {
+  box-shadow: 0 0 0 5px #00bcd4; /* Accent color ring */
+  z-index: 1; /* Ensure focus ring is on top */
+}
+
+/* Background images for each half */
+.split-half.left::before,
+.split-half.right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.7s ease-in-out;
+  z-index: -1; /* Place behind content */
+}
+
+.split-half.left::before {
+  background-image: url('https://via.placeholder.com/1920x1080/FF6B6B/FFFFFF?text=Left+Side'); /* Replace with your image */
+}
+
+.split-half.right::before {
+  background-image: url('https://via.placeholder.com/1920x1080/4ECDC4/FFFFFF?text=Right+Side'); /* Replace with your image */
+}
+
+/* Overlay for text readability */
+.split-half::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  transition: background-color 0.3s ease-in-out;
+  z-index: -1;
+}
+
+/* Content styling */
+.split-half .content {
+  position: relative; /* Above overlay */
+  z-index: 1;
+  max-width: 400px;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out; /* For hover content */
+}
+
+.split-half .title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.split-half .description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Hover-specific description */
+.split-half .hover-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+  margin-top: -15px; /* Adjust spacing */
+}
+
+.split-half.hovered .hover-description,
+.split-half.active .hover-description { /* Show on hover or active (keyboard) */
+  opacity: 1;
+  max-height: 100px; /* Needs a defined max-height for transition */
+  margin-bottom: 15px;
+}
+
+.split-half .cta-button {
+  background-color: #00bcd4; /* Accent color */
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.split-half .cta-button:hover {
+  background-color: #008fa7; /* Darker accent */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon integration */
+.split-icon {
+  font-size: 4rem; /* Size of the icon */
+  margin-bottom: 20px;
+  display: block; /* Ensure it takes its own line */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover effects for split halves */
+.split-container:hover .split-half {
+  flex: 0.8; /* Shrink inactive side */
+}
+
+.split-container .split-half:hover {
+  flex: 1.2; /* Expand active side */
+}
+
+.split-container .split-half:hover::before {
+  transform: scale(1.1); /* Zoom background image on hover */
+}
+
+.split-container .split-half:hover::after {
+  background-color: rgba(0, 0, 0, 0.2); /* Lighter overlay on hover */
+}
+
+/* Active state for keyboard navigation */
+.split-half.active {
+  box-shadow: 0 0 0 5px #00bcd4; /* Accent color ring */
+  z-index: 1;
+}
+
+/* --- Footer Styles --- */
+.footer-section {
+  background-color: #222;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-social-links {
+  margin-bottom: 20px;
+}
+
+.footer-social-links a {
+  color: white;
+  font-size: 1.8rem;
+  margin: 0 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-decoration: none; /* Remove underline from links */
+}
+
+.footer-social-links a:hover {
+  color: #00bcd4; /* Accent color on hover */
+  transform: translateY(-3px);
+}
+
+.footer-copyright {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 768px) {
+  /* --- Navbar Mobile --- */
+ .navbar-container {
+      padding: 0 15px;
+    }
+
+ .menu-icon {
+      display: flex;
+      z-index: 1001;
+    }
+
+ .nav-menu {
+      flex-direction: column;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      opacity: 0;
+      height: 100vh;
+      background: rgba(51, 51, 51, 0.95);
+      padding-top: 80px;
+      justify-content: flex-start;
+      align-items: center;
+      transition: left 0.5s ease, opacity 0.5s ease;
+    }
+
+ .nav-menu.active {
+      left: 0;
+      opacity: 1;
+    }
+
+ .nav-item {
+      margin: 20px 0;
+      width: 80%;
+      text-align: center;
+    }
+
+ .nav-links {
+      display: block;
+      padding: 15px 0;
+      font-size: 1.3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+ .nav-item:last-child .nav-links {
+      border-bottom: none;
+    }
+
+ .nav-links::after {
+      height: 1px;
+      bottom: -3px;
+    }
+
+  /* --- Testimonial Switcher Mobile --- */
+ .testimonial-switcher-section {
+      padding: 60px 15px;
+    }
+
+ .testimonial-section-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+ .testimonial-box {
+      padding: 30px 20px;
+    }
+
+ .testimonial-quote {
+      font-size: 1.2rem;
+      padding: 0 10px;
+    }
+
+ .testimonial-quote::before,
+ .testimonial-quote::after {
+      font-size: 3rem;
+    }
+
+ .testimonial-avatar {
+      width: 60px;
+      height: 60px;
+    }
+
+ .author-details {
+      align-items: center;
+      text-align: center;
+    }
+
+ .testimonial-author-info {
+      flex-direction: column;
+    }
+
+ .testimonial-avatar {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+ .nav-arrow {
+      font-size: 1.5rem;
+      padding: 3px 12px;
+      margin: 0 10px;
+    }
+
+ .nav-dots {
+      gap: 8px;
+    }
+
+ .nav-dot {
+      width: 10px;
+      height: 10px;
+    }
+
+  /* --- Split Landing Page Mobile --- */
+  .split-container {
+    flex-direction: column;
+  }
+
+  .split-half {
+    flex: none;
+    width: 100%;
+    min-height: 50vh;
+  }
+
+  .split-container:hover .split-half,
+  .split-container .split-half:hover {
+    flex: none;
+  }
+
+  .split-half .title {
+    font-size: 2.2rem;
+  }
+
+  .split-half .description {
+    font-size: 1rem;
+  }
+
+  /* --- General Section Mobile --- */
+  .section-content {
+    padding: 60px 15px;
+  }
+
+  .section-content h1, .section-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+
+  .section-content .lead-paragraph {
+    font-size: 1.15rem;
+  }
+
+  .service-item {
+    padding: 25px;
+  }
+
+  .service-item h3 {
+    font-size: 1.5rem;
+  }
+
+  .contact-form {
+    gap: 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px;
+  }
+
+  .contact-form .cta-button {
+    padding: 12px 25px;
+  }
+}
+
+/* --- Further small screen adjustments for Split Landing --- */
+@media (max-width: 480px) {
+  .split-half .title {
+    font-size: 1.8rem;
+  }
+  .split-half .description {
+    font-size: 0.9rem;
+  }
+  .split-half .cta-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  .split-icon {
+    font-size: 3rem;
+  }
+  /* Footer social links */
+  .footer-social-links a {
+    font-size: 1.5rem;
+    margin: 0 10px;
+  }
+}

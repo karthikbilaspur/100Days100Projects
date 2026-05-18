@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100Days100Projects | Karthik V</title>
+  <meta name="description" content="80+ vanilla HTML, CSS, JS projects built in 100 days by Karthik Bilaspur">
+  <style>
+    :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --text-muted: #8b949e; --accent: #58a6ff; --green: #238636; }
+    * { box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 2rem 1rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 3rem; }
+    .header h1 { font-size: 3rem; margin: 0 0 0.5rem 0; background: linear-gradient(90deg, #58a6ff, #a371f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .header p { color: var(--text-muted); font-size: 1.1rem; }
+    .header a { color: var(--accent); text-decoration: none; }
+    .controls { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; }
+    #search { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 0.75rem 1rem; border-radius: 6px; width: 300px; font-size: 1rem; }
+    .filter-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 0.75rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .filter-btn:hover, .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .card h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; }
+    .card .type { display: inline-block; background: #21262d; padding: 0.2rem 0.6rem; border-radius: 2rem; font-size: 0.75rem; margin-bottom: 1rem; }
+    .card p { margin: 0 0 1.5rem 0; font-size: 0.9rem; color: var(--text-muted); flex-grow: 1; }
+    .card-footer { display: flex; gap: 0.5rem; }
+    .btn { background: var(--green); color: white; text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; text-align: center; flex: 1; }
+    .btn-code { background: #21262d; border: 1px solid var(--border); }
+    .footer { text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem; }
+    .count { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>100Days100Projects 💯</h1>
+      <p>One project a day. For 100 days. Built by <a href="https://github.com/karthikbilaspur">Karthik V</a></p>
+      <p>Showing <span class="count" id="project-count">0</span> vanilla HTML, CSS, JS projects</p>
+    </div>
+    
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search projects..." onkeyup="filterProjects()">
+      <button class="filter-btn active" onclick="setFilter('all')">All</button>
+      <button class="filter-btn" onclick="setFilter('game')">🎮 Games</button>
+      <button class="filter-btn" onclick="setFilter('tool')">🛠️ Tools</button>
+      <button class="filter-btn" onclick="setFilter('ui')">🎨 UI</button>
+      <button class="filter-btn" onclick="setFilter('api')">🌐 API</button>
+      <button class="filter-btn" onclick="setFilter('concept')">⚙️ Concepts</button>
+    </div>
+
+    <div class="grid" id="project-grid"></div>
+
+    <div class="footer">
+      <p>Deployed via GitHub Actions | <a href="https://github.com/karthikbilaspur/100Days100Projects">View Source</a></p>
+    </div>
+  </div>
+
+  <script>
+    const projects = [
+      { name: 'Rock Paper Scissors', type: 'game', desc: 'Play against the computer', path: 'Rock_Paper_Scissors' },
+      { name: 'Rotating Navigation', type: 'ui', desc: 'Creative nav reveal animation', path: 'Rotating-Navigation-Animation' },
+      { name: 'Scientific Calculator', type: 'tool', desc: 'Advanced math functions', path: 'Scitenfic Calculator' },
+      { name: 'Scroll Animations', type: 'ui', desc: 'Animate on scroll with IntersectionObserver', path: 'Scroll_Animations' },
+      { name: 'Simon Says', type: 'game', desc: 'Memory sequence game', path: 'Simon Says' },
+      { name: 'Single Page', type: 'concept', desc: 'SPA architecture demo', path: 'SinglePage' },
+      { name: 'Single Page Alt', type: 'concept', desc: 'Single page layout', path: 'Single_Page' },
+      { name: 'Snake', type: 'game', desc: 'Classic snake game using Canvas', path: 'Snake' },
+      { name: 'Sound Board', type: 'tool', desc: 'Play sounds on keypress', path: 'Sound' },
+      { name: 'Split Landing Page', type: 'ui', desc: 'Hover expand effect', path: 'Split_Landing_Page' },
+      { name: 'Travel Website Demo', type: 'ui', desc: 'Tabbed content layout', path: 'TabbedContentBasedTravelWebsiteDemo' },
+      { name: 'Testimonial Switcher', type: 'ui', desc: 'Auto-rotating testimonials', path: 'Testimonial_Box_Switcher' },
+      { name: 'Theme Display', type: 'ui', desc: 'Dark/Light mode toggle', path: 'ThemeDisplay' },
+      { name: 'Tic Tac Toe', type: 'game', desc: 'Unbeatable 2-player game', path: 'Tic_Tac_Toe' },
+      { name: 'Timer', type: 'tool', desc: 'Countdown timer', path: 'Timer' },
+      { name: 'Verification Page UI', type: 'ui', desc: 'OTP input interface', path: 'VerificationPageWithUi' },
+      { name: 'WebSocket', type: 'concept', desc: 'Real-time client-server demo', path: 'WebSocket' },
+      { name: 'WebSockets', type: 'concept', desc: 'WebSocket implementation', path: 'WebSockets' },
+      { name: 'WebStorage', type: 'concept', desc: 'localStorage & sessionStorage demo', path: 'WebStorage' },
+      { name: 'WebWorker', type: 'concept', desc: 'Background thread processing', path: 'WebWorker' },
+      { name: 'Zenith Projects', type: 'concept', desc: 'Collection of mini projects', path: 'Zenith Projects' },
+      { name: 'Animated Countdown', type: 'ui', desc: 'Number animation effect', path: 'animatedcountdown' },
+      { name: 'Auto Text Effect', type: 'ui', desc: 'Typewriter effect', path: 'auto-text-effect' },
+      { name: 'Product Landing Page', type: 'ui', desc: 'Modern landing page', path: 'awesome_product_landing_page' },
+      { name: 'Background Slider', type: 'ui', desc: 'Image carousel', path: 'backgroundslider' },
+      { name: 'Button Ripple Effect', type: 'ui', desc: 'Material click effect', path: 'buttonrippleeffect' },
+      { name: 'Content Placeholder', type: 'ui', desc: 'Skeleton loading screen', path: 'content-placeholder' },
+      { name: 'Custom Range Slider', type: 'ui', desc: 'Styled input range', path: 'custom-range-slider' },
+      { name: 'Double Click Heart', type: 'ui', desc: 'Double click heart effect', path: 'double_click' },
+      { name: 'Double Vertical Slider', type: 'ui', desc: 'Vertical slider UI', path: 'double_vertical' },
+      { name: 'Drag and Drop', type: 'ui', desc: 'Drag & Drop API', path: 'drag_and_drop' },
+      { name: 'Drawing App', type: 'tool', desc: 'Canvas drawing with colors', path: 'drawing_app' },
+      { name: 'Drink Water', type: 'tool', desc: 'Water intake tracker', path: 'drink_water' },
+      { name: 'Event Keycodes', type: 'tool', desc: 'Show keyboard event data', path: 'event-keycodes' },
+      { name: 'Expanding Cards', type: 'ui', desc: 'Flexbox cards expand on click', path: 'expanding-cards' },
+      { name: 'FAQ Collapse', type: 'ui', desc: 'Accordion FAQ section', path: 'faq' },
+      { name: 'Feedback UI', type: 'ui', desc: 'Rating feedback component', path: 'feedback' },
+      { name: 'Form Wave', type: 'ui', desc: 'Animated input labels', path: 'form-wave' },
+      { name: 'Hidden Search', type: 'ui', desc: 'Expanding search widget', path: 'hidden-search' },
+      { name: 'Hoverboard', type: 'ui', desc: 'Random color hover grid', path: 'hoverboard' },
+      { name: 'Incrementing Counter', type: 'ui', desc: 'Animated number counters', path: 'incrementing-counter' },
+      { name: 'Insert Catch Match', type: 'tool', desc: 'Tag input field', path: 'insert-catch-match' },
+      { name: 'Kinetic Loader', type: 'ui', desc: 'CSS loading animation', path: 'kinectic-loader' },
+      { name: 'Live User Filter', type: 'api', desc: 'Search users from API', path: 'live-user' },
+      { name: 'Mobile Tab Navigation', type: 'ui', desc: 'Mobile app navigation UI', path: 'mobile-tab-navigation' },
+      { name: 'Movie App', type: 'api', desc: 'TMDb API movie search', path: 'movie-app' },
+      { name: 'Calculator App', type: 'tool', desc: 'React calculator', path: 'my-calculator-app/src' },
+      { name: 'Password Generator', type: 'tool', desc: 'React password tool', path: 'my-password-generator' },
+      { name: 'Quiz App', type: 'tool', desc: 'Quiz application', path: 'my-qui-app' },
+      { name: 'React App', type: 'concept', desc: 'React demo project', path: 'my-react-app/src' },
+      { name: 'Notes App', type: 'tool', desc: 'CRUD notes with localStorage', path: 'notesapp' },
+      { name: 'Password Generator', type: 'tool', desc: 'Vanilla JS password tool', path: 'passwordgenerator' },
+      { name: 'Sticky Navigation', type: 'ui', desc: 'Navbar changes on scroll', path: 'sticky_navigation_bar' },
+    ];
+
+    let currentFilter = 'all';
+    const grid = document.getElementById('project-grid');
+    const countEl = document.getElementById('project-count');
+    
+    function render() {
+      const searchTerm = document.getElementById('search').value.toLowerCase();
+      const filtered = projects.filter(p => {
+        const matchesFilter = currentFilter === 'all' || p.type === currentFilter;
+        const matchesSearch = p.name.toLowerCase().includes(searchTerm) || p.desc.toLowerCase().includes(searchTerm);
+        return matchesFilter && matchesSearch;
+      });
+
+      countEl.textContent = filtered.length;
+      grid.innerHTML = filtered.map(p => `
+        <div class="card">
+          <h3>${p.name}</h3>
+          <span class="type">${p.type}</span>
+          <p>${p.desc}</p>
+          <div class="card-footer">
+            <a href="./${encodeURIComponent(p.path)}/" class="btn" target="_blank">Live Demo</a>
+            <a href="https://github.com/karthikbilaspur/100Days100Projects/tree/main/${encodeURIComponent(p.path)}" class="btn btn-code" target="_blank">Code</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setFilter(type) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      render();
+    }
+
+    function filterProjects() { render(); }
+    render();
+  </script>
+</body>
+</html>

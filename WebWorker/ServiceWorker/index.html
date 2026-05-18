@@ -3,12 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offline Support</title>
+    <title>Offline Support Demo | Service Worker</title>
+    <meta name="description" content="A demonstration of Web Service Workers providing offline capabilities. Experience a website that loads even without an internet connection using caching strategies.">
+    <meta name="keywords" content="service worker, offline, caching, PWA, javascript, web development, html5, css3, responsive design">
+    <meta name="author" content="Meta AI for KarthikCodingSolutions">
+    <meta property="og:title" content="Offline Support Demo with Service Worker">
+    <meta property="og:description" content="Experience a website that loads even without an internet connection using caching strategies with Service Workers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://karthikcodingsolutions.com/service-worker-offline-demo"> <!-- Placeholder URL -->
+    <!-- <meta property="og:image" content="https://karthikcodingsolutions.com/sw-demo-thumbnail.jpg"> -->
+
+    <!-- Favicon (modern HTML5 feature) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Offline Support</h1>
-    <p id="status-output">Status: Online</p>
+    <header>
+        <h1>Offline Support with Service Worker</h1>
+    </header>
+
+    <main>
+        <section id="status-section" role="region" aria-labelledby="status-heading">
+            <h2 id="status-heading">Application Status</h2>
+            <div class="status-indicator-container">
+                <div id="network-status" class="status-indicator online" aria-live="polite">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Online</span>
+                </div>
+            </div>
+            <p class="status-message">This page should load even when you're offline, thanks to the Service Worker caching essential files.</p>
+        </section>
+
+        <section id="instructions" role="region" aria-labelledby="instructions-heading">
+            <h2 id="instructions-heading">How to Test Offline Functionality</h2>
+            <ol>
+                <li>Ensure you visit this page at least once while **online** to allow the Service Worker to cache files.</li>
+                <li>Open your browser's Developer Tools (F12 or Cmd+Option+I).</li>
+                <li>Go to the **"Network"** tab and select the **"Offline"** checkbox or option from the dropdown menu (usually near the top). Alternatively, simply turn off your device's Wi-Fi or data connection.</li>
+                <li>**Refresh this page.**</li>
+                <li>Observe: The page should still load from the cache, and the status indicator above should update to "Offline"!</li>
+                <li>Check the **"Application"** tab in Developer Tools for Service Worker logs and cached files.</li>
+            </ol>
+            <p>This powerful feature is a cornerstone of Progressive Web Apps (PWAs), allowing for fast, reliable, and engaging user experiences.</p>
+            <div class="learn-more">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer" class="button">Learn More about Service Workers</a>
+            </div>
+        </section>
+
+        <section id="content-placeholder" role="region" aria-labelledby="content-heading">
+            <h2 id="content-heading">Some Content to Cache</h2>
+            <article>
+                <h3>What is a Web Worker?</h3>
+                <p>A Web Worker is a JavaScript script executed by an HTML page that runs in the background, independently of other scripts, without affecting the performance of the page. They are particularly useful for performing CPU-intensive tasks without blocking the user interface.</p>
+            </article>
+            <article>
+                <h3>Why Service Workers?</h3>
+                <p>Service Workers are a type of Web Worker that primarily act as a programmable network proxy. They sit between your web application and the network, intercepting requests and allowing you to programmatically control how network requests are handled. This enables features like rich offline experiences, push notifications, and background data synchronization.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span>  KarthikCodingSolutions. All Rights Reserved.</p>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                <li><a href="#" class="footer-link">Terms of Service</a></li>
+            </ul>
+        </nav>
+    </footer>
 
     <script src="script.js"></script>
+    <script src="service-worker.js"></script> <!-- Link service worker directly in HTML for clarity if not using build tools -->
 </body>
 </html>

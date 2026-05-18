@@ -1,0 +1,438 @@
+/* General Styling */
+:root {
+    --primary-color: #4CAF50; /* Green */
+    --primary-dark: #3e8e41;
+    --secondary-color: #007bff; /* Blue */
+    --background-color: #f0f2f5;
+    --card-background: #ffffff;
+    --text-color-dark: #333;
+    --text-color-light: #666;
+    --border-color: #e0e0e0;
+    --error-color: #dc3545; /* Red */
+    --success-color: #28a745; /* Darker green */
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+
+    --font-family: 'Poppins', sans-serif;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+
+    /* Password strength colors */
+    --strength-weak: #dc3545;
+    --strength-medium: #ffc107;
+    --strength-strong: #28a745;
+    --strength-very-strong: #007bff;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color-dark);
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.portal-title {
+    color: var(--text-color-dark);
+    font-weight: 700;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+.auth-card,.dashboard-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Auth Header (Tabs) */
+.auth-header {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    background-color: transparent;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color-light);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.auth-tab:hover:not(.active) {
+    color: var(--text-color-dark);
+}
+
+.auth-tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Auth Form */
+.auth-form {
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.5s ease-out;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-form h2 {
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--text-color-dark);
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative; /* For password toggle */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+.form-group input.invalid {
+    border-color: var(--error-color);
+}
+
+.form-group input.invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85em;
+    margin-top: 5px;
+    min-height: 1em; /* Reserve space */
+}
+
+/* Password Toggle */
+.password-group {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(10px); /* Adjust based on label + input height */
+    cursor: pointer;
+    color: var(--text-color-light);
+    font-size: 1em;
+}
+
+.password-toggle i {
+    pointer-events: none; /* Prevents icon click from interfering with toggle */
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    display: flex;
+    gap: 4px;
+    margin-top: 10px;
+    height: 5px;
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: var(--border-color);
+}
+
+.strength-bar-segment {
+    flex: 1;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.strength-text {
+    font-size: 0.85em;
+    margin-top: 5px;
+    min-height: 1.2em; /* Reserve space */
+    font-weight: 600;
+}
+
+/* Checkbox group for Remember Me */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: -10px; /* Adjust spacing */
+    margin-bottom: 25px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    accent-color: var(--primary-color); /* Style checkbox itself */
+}
+
+.checkbox-group label {
+    margin-bottom: 0; /* Override default label margin */
+    font-weight: 400; /* Lighter weight for checkbox label */
+    color: var(--text-color-dark);
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative; /* For spinner positioning */
+    overflow: hidden;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+.submit-btn .spinner {
+    color: white;
+    font-size: 1.1em;
+}
+
+.submit-btn .btn-text.hidden {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute; /* Prevent layout shift */
+}
+
+/* Auth Links */
+.auth-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+    color: var(--primary-color);
+}
+
+/* Auth Message (Success/Error) */
+.auth-message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    font-size: 0.95em;
+    text-align: center;
+    display: none; /* Hidden by default */
+}
+
+.auth-message.active {
+    display: block;
+}
+
+.auth-message.success {
+    background-color: #d4edda;
+    color: var(--success-color);
+    border: 1px solid #c3e6cb;
+}
+
+.auth-message.error {
+    background-color: #f8d7da;
+    color: var(--error-color);
+    border: 1px solid #f5c6cb;
+}
+
+/* 2FA Form Specifics */
+#twofa-form {
+    text-align: center;
+}
+#twofa-form h2 {
+    margin-bottom: 15px;
+}
+.twofa-info {
+    font-size: 0.95em;
+    color: var(--text-color-light);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+#twofa-code {
+    letter-spacing: 5px; /* Spacing for verification code */
+    text-align: center;
+    text-transform: uppercase;
+}
+#twofa-code-error {
+    text-align: left; /* Align error under code input */
+}
+.resend-code-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: color 0.3s ease;
+}
+.resend-code-btn:hover {
+    color: var(--primary-color);
+}
+.resend-code-btn:disabled {
+    color: var(--text-color-light);
+    cursor: not-allowed;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+    text-align: center;
+}
+
+.dashboard-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.dashboard-card p {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    margin-bottom: 25px;
+}
+
+.dashboard-card .submit-btn {
+    max-width: 200px; /* Adjust button width for dashboard */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none!important;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+   .auth-wrapper {
+        padding: 15px;
+    }
+   .auth-card,.dashboard-card {
+        padding: 20px;
+    }
+   .portal-title {
+        font-size: 1.8em;
+    }
+   .auth-form h2 {
+        font-size: 1.5em;
+    }
+   .auth-tab {
+        font-size: 1em;
+        padding: 10px 10px;
+    }
+}
+
+/* ... (previous CSS rules remain unchanged) ... */
+
+/* Footer Styling */
+.app-footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.85em;
+    color: var(--text-color-light);
+    text-align: center;
+}
+
+.app-footer p {
+    margin-bottom: 15px;
+}
+
+.app-footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.app-footer a:hover {
+    color: var(--primary-color);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    font-size: 1.5em;
+    color: var(--text-color-light);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
